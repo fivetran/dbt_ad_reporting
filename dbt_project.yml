@@ -1,0 +1,17 @@
+name: 'ad_reporting'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'
+
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+vars:
+  ad_reporting__pinterest_enabled: true
+  ad_reporting__bing_ads_enabled: true
+  ad_reporting__linkedin_ads_enabled: false

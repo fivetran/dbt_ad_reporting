@@ -1,0 +1,11 @@
+packages:
+  # - package: fivetran/linkedin
+  #   version: 0.1.0
+
+  - git: "https://github.com/fivetran/dbt_pinterest.git"
+    revision: git-package
+    warn-unpinned: false
+
+  - git: "https://github.com/fivetran/dbt_bing_ads.git"
+    revision: git-package
+    warn-unpinned: false
