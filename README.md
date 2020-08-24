@@ -20,6 +20,23 @@ Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instruction
 
 ## Configuration
 
+### Source selection
+
+The package assumes that all packages are 'enabled', i.e. it will look to pull data from all the data sources listed above. If that is not the case, please set the relevant following variables to `false`:
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+  ad_reporting__pinterest_enabled: true
+  ad_reporting__bing_ads_enabled: true
+  ad_reporting__linkedin_ads_enabled: true
+```
+
+### Source Data
+
 By default, this package will look for your advertising data in your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your advertising data is stored, please add the relevant `_database` variables (below) to your `dbt_project.yml` file.
 
 By default, this package will also look to specific schemas for each of your data sources. The schemas for each source are highlighted in the code snippet below. If your data is stored in a different schema, please add the relevant `_schema_` variables (below) to your `dbt_project.yml` file.
