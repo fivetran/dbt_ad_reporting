@@ -1,0 +1,63 @@
+version: 2
+
+models:
+
+  - name: ad_reporting
+    description: Each record in this table represents the daily performance of ads.
+    columns:
+      - name: campaign_name
+        description: A label for the campaign.
+
+      - name: ad_group_name
+        description: A label for the ad group, if present in the source data. Mapped from fields including `campaign_group_name`.
+
+      - name: account_name
+        description: A label for the account.
+
+      - name: campaign_id
+        description: The ID representing the campaign.
+
+      - name: ad_group_id
+        description: The ID representing the ad group, if present in the source data. Mapped from fields including `campaign_group_id`.
+
+      - name: account_id
+        description: The ID representing the account.
+
+      - name: date_day
+        description: The day of the activity.
+
+      - name: clicks
+        description: The count of clicks.
+
+      - name: impressions
+        description: The count of impressions.
+
+      - name: spend
+        description: The cost of the ads.
+
+      - name: base_url
+        description: The base URL of the ad.
+
+      - name: url_host
+        description: The URL host of the ad.
+
+      - name: url_path
+        description: The URL path of the ad.
+
+      - name: utm_source
+        description: The utm_source parameter of the ad.
+
+      - name: utm_medium
+        description: The utm_medium parameter of the ad.
+
+      - name: utm_campaign
+        description: The utm_campaign parameter of the ad.
+
+      - name: utm_content
+        description: The utm_content parameter of the ad.
+
+      - name: utm_term
+        description: The utm_term parameter of the ad.
+
+      - name: platform
+        description: The ad platform the records relate to.
