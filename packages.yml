@@ -9,3 +9,7 @@ packages:
   - git: "https://github.com/fivetran/dbt_bing_ads.git"
     revision: git-package
     warn-unpinned: false
+
+  - git: "https://github.com/fivetran/dbt_linkedin.git"
+    revision: master
+    warn-unpinned: false
