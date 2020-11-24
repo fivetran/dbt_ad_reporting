@@ -9,6 +9,7 @@ packages:
 
   - git: "https://github.com/fivetran/dbt_microsoft_ads.git"
     revision: master
+    warn-unpinned: false
     
   - package: fivetran/linkedin
     version: 0.2.0
@@ -22,3 +23,4 @@ packages:
 
   - git: "https://github.com/fivetran/dbt_twitter.git"
     revision: master
+    warn-unpinned: false
