@@ -1,0 +1,139 @@
+name: 'ad_reporting_integration_tests'
+version: '1.0.0'
+profile: 'integration_tests'
+config-version: 2
+
+vars: 
+
+  google_ads__final_url_performance: "{{ ref('google_ads_final_url_performance_data') }}"
+  google_ads__click_performance: "{{ ref('google_ads_click_performance_data') }}"
+  google_ads__criteria_performance: "{{ ref('google_ads_criteria_performance_data') }}"
+
+  microsoft_ads_source:
+    account_history: "{{ ref('microsoft_ads_account_history_data') }}"
+    ad_group_history: "{{ ref('microsoft_ads_ad_group_history_data') }}"
+    ad_history: "{{ ref('microsoft_ads_ad_history_data') }}"
+    ad_performance_daily_report: "{{ ref('microsoft_ads_ad_performance_daily_report_data') }}"
+    campaign_history: "{{ ref('microsoft_ads_campaign_history_data') }}"
+    
+  linkedin_source:
+    account_history: "{{ ref('linkedin_account_history_data') }}"
+    ad_analytics_by_creative: "{{ ref('linkedin_ad_analytics_by_creative_data') }}"
+    campaign_group_history: "{{ ref('linkedin_campaign_group_history_data') }}"
+    campaign_history: "{{ ref('linkedin_campaign_history_data') }}"
+    creative_history: "{{ ref('linkedin_creative_history_data') }}"
+
+  twitter_ads_source:
+    account_history: "{{ ref('twitter_account_history_data') }}"
+    campaign_history: "{{ ref('twitter_campaign_history_data') }}"
+    line_item_history: "{{ ref('twitter_line_item_history_data') }}"
+    promoted_tweet_history: "{{ ref('twitter_promoted_tweet_history_data') }}"
+    promoted_tweet_report: "{{ ref('twitter_promoted_tweet_report_data') }}"
+    tweet_url: "{{ ref('twitter_tweet_url_data') }}"
+
+  pinterest_source:
+    ad_group_history: "{{ ref('ad_group_history_data') }}"
+    campaign_history: "{{ ref('campaign_history_data') }}"
+    pin_promotion_history: "{{ ref('pin_promotion_history_data') }}"
+    pin_promotion_report: "{{ ref('pin_promotion_report_data') }}"
+
+seeds:
+  ad_reporting_integration_tests:
+
+    ### Microsoft Seeds
+
+    microsoft_ads_ad_group_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    microsoft_ads_ad_performance_daily_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    microsoft_ads_ad_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+
+    ### LinkedIn Seeds    
+    
+    linkedin_creative_history_data:
+      +column_types:
+        created_time: timestamp
+        last_modified_time: timestamp
+        click_uri: "{{ 'string' if target.type == 'bigquery' else 'varchar' }}"
+    linkedin_ad_analytics_by_creative_data:
+      +column_types:
+        day: timestamp
+    linkedin_account_history_data:
+      +column_types:
+        created_time: timestamp
+        last_modified_time: timestamp
+    linkedin_campaign_group_history_data:
+      +column_types:
+        created_time: timestamp
+        last_modified_time: timestamp
+    linkedin_campaign_history_data:
+      +column_types:
+        created_time: timestamp
+        last_modified_time: timestamp
+    linkedin_creative_history_data:
+      +column_types:
+        created_time: timestamp
+        last_modified_time: timestamp
+
+    ### Twitter Seeds
+
+    twitter_tweet_url_data:
+      +column_types:
+        tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    twitter_promoted_tweet_history_data:
+      +column_types:
+        tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+
+    ### Pinterest Seeds
+
+    ad_group_history_data:
+      +quote_columns: "{{ true if target.type == 'redshift' else false }}"
+      +column_types:
+        ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        CAMPAIGN_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+    campaign_history_data:
+      +quote_columns: "{{ true if target.type == 'redshift' else false }}"
+      +column_types:
+        ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+    pin_promotion_history_data:
+      +quote_columns: "{{ true if target.type == 'redshift' else false }}"
+      +column_types:
+        ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        AD_GROUP_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        PIN_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+    pin_promotion_report_data:
+      +quote_columns: "{{ true if target.type == 'redshift' else false }}"
+      +column_types:
+        PIN_PROMOTION_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        AD_GROUP_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        CAMPAIGN_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ADVERTISER_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+
+    ### Google Seeds
+    
+    google_ads_click_performance_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        criteria_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_criteria_performance_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_final_url_performance_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"

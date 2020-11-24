@@ -7,7 +7,7 @@
     {% endif %}
 
     {% if var('ad_reporting__bing_ads_enabled') %} 
-    {% set _ = staging_file.append(ref('stg_bing_ads')) %}
+    {% set _ = staging_file.append(ref('stg_microsoft_ads')) %}
     {% endif %}
 
     {% if var('ad_reporting__linkedin_ads_enabled') %} 

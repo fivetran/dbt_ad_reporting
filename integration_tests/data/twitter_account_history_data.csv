@@ -1,0 +1,2 @@
+_fivetran_synced,approval_status,business_id,business_name,created_at,deleted,id,industry_type,name,salt,timezone,timezone_switch_at,updated_at
+2020-11-09 14:20:56.976 UTC,ACCEPTED,,,2017-10-25 16:26:16 UTC,false,18ce54lbsn8,,Fivetran,,America/Los_Angeles,2017-10-24 07:00:00 UTC,2020-06-24 15:41:07 UTC

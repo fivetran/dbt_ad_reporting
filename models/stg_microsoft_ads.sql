@@ -3,7 +3,7 @@
 with base as (
 
     select *
-    from {{ ref('bing_ads__ad_adapter')}}
+    from {{ ref('microsoft_ads__ad_adapter')}}
 
 ), fields as (
 
