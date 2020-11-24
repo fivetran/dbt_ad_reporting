@@ -1,21 +1,19 @@
-{{ config(enabled=var('ad_reporting__microsoft_ads_enabled')) }}
+{{ config(enabled=var('ad_reporting__twitter_ads_enabled')) }}
 
 with base as (
 
     select *
-    from {{ ref('microsoft_ads__ad_adapter')}}
+    from {{ ref('twitter__ad_adapter')}}
 
 ), fields as (
 
     select
-        'Bing Ads' as platform,
+        'Twitter Ads' as platform,
         date_day,
-        account_name,
-        account_id,
         campaign_name,
         campaign_id,
-        ad_group_name,
-        ad_group_id,
+        line_item_name as ad_group_name,
+        line_item_id as ad_group_id,
         base_url,
         url_host,
         url_path,

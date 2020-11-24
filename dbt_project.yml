@@ -13,5 +13,7 @@ snapshot-paths: ["snapshots"]
 
 vars:
   ad_reporting__pinterest_enabled: true
-  ad_reporting__bing_ads_enabled: true
+  ad_reporting__microsoft_ads_enabled: true
   ad_reporting__linkedin_ads_enabled: true
+  ad_reporting__google_ads_enabled: true
+  ad_reporting__twitter_ads_enabled: true

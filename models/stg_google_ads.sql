@@ -1,17 +1,17 @@
-{{ config(enabled=var('ad_reporting__microsoft_ads_enabled')) }}
+{{ config(enabled=var('ad_reporting__google_ads_enabled')) }}
 
 with base as (
 
     select *
-    from {{ ref('microsoft_ads__ad_adapter')}}
+    from {{ ref('google_ads__url_ad_adapter')}}
 
 ), fields as (
 
     select
-        'Bing Ads' as platform,
+        'Google Ads' as platform,
         date_day,
         account_name,
-        account_id,
+        external_customer_id as account_id,
         campaign_name,
         campaign_id,
         ad_group_name,
@@ -28,7 +28,6 @@ with base as (
         impressions,
         spend
     from base
-
 
 )
 
