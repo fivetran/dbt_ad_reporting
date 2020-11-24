@@ -9,11 +9,11 @@ with base as (
 
     select
         'Twitter Ads' as platform,
-        date_day,
+        cast(date_day as date) as date_day,
         campaign_name,
-        campaign_id,
+        cast(campaign_id as {{ dbt_utils.type_string() }}) as campaign_id,
         line_item_name as ad_group_name,
-        line_item_id as ad_group_id,
+        cast(line_item_id as {{ dbt_utils.type_string() }}) as ad_group_id,
         base_url,
         url_host,
         url_path,

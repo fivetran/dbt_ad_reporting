@@ -9,13 +9,13 @@ with base as (
 
     select
         'LinkedIn Ads' as platform,
-        date_day,
+        cast(date_day as date) as date_day,
         account_name,
         account_id,
         campaign_name,
-        campaign_id,
+        cast(campaign_id as {{ dbt_utils.type_string() }}) as campaign_id,
         campaign_group_name as ad_group_name,
-        campaign_group_id as ad_group_id,
+        cast(campaign_group_id as {{ dbt_utils.type_string() }}) as ad_group_id,
         base_url,
         url_host,
         url_path,

@@ -20,4 +20,4 @@ vars:
 
   models:
     ad_reporting:
-      +materialized: view
+      +materialized: table
