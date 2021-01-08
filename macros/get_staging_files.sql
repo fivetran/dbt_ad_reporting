@@ -3,7 +3,7 @@
     {% set staging_file = [] %}
 
     {% if var('ad_reporting__pinterest_enabled') %} 
-    {% set _ = staging_file.append(ref('stg_pinterest')) %}
+    {% set _ = staging_file.append(ref('stg_pinterest_ads')) %}
     {% endif %}
 
     {% if var('ad_reporting__microsoft_ads_enabled') %} 
@@ -21,6 +21,11 @@
     {% if var('ad_reporting__google_ads_enabled') %} 
     {% set _ = staging_file.append(ref('stg_google_ads')) %}
     {% endif %}
+
+    {% if var('ad_reporting__facebook_ads_enabled') %} 
+    {% set _ = staging_file.append(ref('stg_facebook_ads')) %}
+    {% endif %}
+
 
     {{ return(staging_file) }}
 

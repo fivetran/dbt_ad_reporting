@@ -17,7 +17,8 @@ vars:
   ad_reporting__linkedin_ads_enabled: true
   ad_reporting__google_ads_enabled: true
   ad_reporting__twitter_ads_enabled: true
+  ad_reporting__facebook_ads_enabled: true
 
-  models:
-    ad_reporting:
-      +materialized: table
+models:
+  ad_reporting:
+    +materialized: table

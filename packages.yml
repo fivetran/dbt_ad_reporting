@@ -29,3 +29,11 @@ packages:
   - git: "https://github.com/fivetran/dbt_twitter.git"
     revision: master
     warn-unpinned: false
+  
+  # Uncomment once new release is on Hub
+  # - package: fivetran/facebook_ads
+  #   version: 0.1.0
+
+  - git: "https://github.com/fivetran/dbt_facebook_ads.git"
+    revision: master
+    warn-unpinned: false
