@@ -5,7 +5,10 @@ This package models data from a number of different Fivetran advertising/marketi
 Currently, this package supports the following ad sources:
 * [LinkedIn Ads](https://github.com/fivetran/dbt_linkedin)
 * [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)
-* [Bing Ads](https://github.com/fivetran/dbt_bing_ads)
+* [Microsoft Ads](https://github.com/fivetran/dbt_microsoft_ads)
+* [Google Ads](https://github.com/fivetran/dbt_google_ads)
+* [Twitter Ads](https://github.com/fivetran/dbt_twitter)
+* [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
 
 ## Models
 
@@ -22,7 +25,7 @@ Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instruction
 
 ### Source selection
 
-The package assumes that all packages are 'enabled', i.e. it will look to pull data from all the data sources listed above. If that is not the case, please set the relevant following variables to `false`:
+The package assumes that all packages are 'enabled', i.e. it will look to pull data from all the data sources listed above. If that is not the case, please set the relevant following variables to `false` in order to disable the relevant models from this pacakge:
 ```yml
 # dbt_project.yml
 
@@ -30,16 +33,37 @@ The package assumes that all packages are 'enabled', i.e. it will look to pull d
 config-version: 2
 
 vars:
-  ad_reporting__pinterest_enabled: true
-  ad_reporting__bing_ads_enabled: true
-  ad_reporting__linkedin_ads_enabled: true
+  ad_reporting__pinterest_enabled: False
+  ad_reporting__microsoft_ads_enabled: False
+  ad_reporting__linkedin_ads_enabled: False
+  ad_reporting__google_ads_enabled: False
+  ad_reporting__twitter_ads_enabled: False
+  ad_reporting__facebook_ads_enabled: False
+```
+
+You will also need to disable the models from the related package, which require their own configuration. To do so, disable the models under the models section of your `dbt_project.yml` file:
+
+```yml
+models:
+  pinterest:
+    enabled: false
+  microsoft_ads:
+    enabled: false
+  linkedin:
+    enabled: false
+  linkedin:
+    enabled: false
+  twitter_ads:
+    enabled: false
+  facebook_ads:
+    enabled: false
 ```
 
 ### Source Data
 
 By default, this package will look for your advertising data in your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your advertising data is stored, please add the relevant `_database` variables (below) to your `dbt_project.yml` file.
 
-By default, this package will also look to specific schemas for each of your data sources. The schemas for each source are highlighted in the code snippet below. If your data is stored in a different schema, please add the relevant `_schema_` variables (below) to your `dbt_project.yml` file.
+By default, this package will also look to specific schemas for each of your data sources. The schemas for each source are highlighted in the code snippet below. If your data is stored in a different schema, please add the relevant `_schema` variables (below) to your `dbt_project.yml` file.
 
 ```yml
 # dbt_project.yml
@@ -48,12 +72,18 @@ By default, this package will also look to specific schemas for each of your dat
 config-version: 2
 
 vars:
-    bing_ads_schema: your_database_name
-    bing_ads_database: bing_ads 
-    linkedin_schema: your_database_name
-    linkedin_database: linkedin_ads 
-    pinterest_schema: your_database_name
-    pinterest_database: pinterest_ads 
+    microsoft_ads_schema: microsoft_ads
+    microsoft_ads_database: your_database_name
+    linkedin_schema: linkedin_ads 
+    linkedin_database: your_database_name  
+    pinterest_schema: pinterest_ads 
+    pinterest_database: your_database_name 
+    twitter_ads_schema: twitter_ads
+    twitter_ads_database: your_database_name  
+    facebook_ads_schema: facebook_ads
+    facebook_ads_database: your_database_name 
+    google_ads_schema: adwords
+    google_ads_database: your_database_name 
 ```
 
 For additional configurations information, please visit the relevant packages, as listed above.
