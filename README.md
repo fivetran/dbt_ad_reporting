@@ -3,13 +3,13 @@
 This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardises the schemas from the various ad connectors and creates a single reporting model for all activity.
 
 Currently, this package supports the following ad connector types:
-> NOTE: You do _not_ need to have all six ad connector types to use this package, though you should have at least two.
-* [LinkedIn Ads](https://github.com/fivetran/dbt_linkedin)
-* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)
-* [Microsoft Ads](https://github.com/fivetran/dbt_microsoft_ads)
-* [Google Ads](https://github.com/fivetran/dbt_google_ads)
-* [Twitter Ads](https://github.com/fivetran/dbt_twitter)
+> NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
 * [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
+* [Google Ads](https://github.com/fivetran/dbt_google_ads)
+* [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
+* [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
+* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)
+* [Twitter Ads](https://github.com/fivetran/dbt_twitter)
 
 ## Models
 
