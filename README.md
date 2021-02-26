@@ -1,6 +1,6 @@
 # Ad Reporting
 
-This package models data from a number of different Fivetran advertising/marketing connectors. The main focus of the package is to standardise the schemas from the various ad connectors and create a single reporting model for all activity.
+This package models data from a number of different Fivetran advertising/marketing connectors. The main focus of the package is to standardize the schemas from the various ad connectors and create a single reporting model for all activity.
 
 Currently, this package supports the following ad sources:
 * [LinkedIn Ads](https://github.com/fivetran/dbt_linkedin)
@@ -12,7 +12,7 @@ Currently, this package supports the following ad sources:
 
 ## Models
 
-This package contains a number of models, all building up to the `ad_reporting` model, which is a combination of all the data sources. A dependency on all the required dbt packages is declared in this package's `packages.yml` file, so it will automatically download them when you run `dbt deps`. The primary outputs of this package are described below.
+This package contains a number of models, all building up to the `ad_reporting` model, which is a combination of all the data sources. A dependency on all the required dbt packages is declared in this package's `packages.yml` file, so it will automatically download them when you run `dbt deps`. The primary output of this package are described below.
 
 | **model**    | **description**                                                                                                        |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -45,17 +45,37 @@ You will also need to disable the models from the related package, which require
 
 ```yml
 models:
+  # disable both pinterest models if not using pinterest ads
   pinterest:
     enabled: false
+  pinterest_source:
+    enabled: false
+  # disable both microsoft ads models if not using microsoft ads
   microsoft_ads:
     enabled: false
+  microsoft_ads_source:
+    enabled: false
+  # disable both linkedin ads models if not using linkedin ads
   linkedin:
     enabled: false
-  linkedin:
+  linkedin_source:
     enabled: false
+  # disable both twitter ads models if not using twitter ads
   twitter_ads:
     enabled: false
+  twitter_ads_source:
+    enabled: false
+  # disable all three facebook ads models if not using facebook ads
   facebook_ads:
+    enabled: false
+  facebook_ads_source:
+    enabled: false
+  facebook_ads_backwards_compatibility:
+    enabled: false
+  # disable both google ads models if not using google ads
+  google_ads:
+    enabled: false
+  google_ads_source:
     enabled: false
 ```
 
@@ -72,11 +92,11 @@ By default, this package will also look to specific schemas for each of your dat
 config-version: 2
 
 vars:
-    microsoft_ads_schema: microsoft_ads
+    microsoft_ads_schema: bingads
     microsoft_ads_database: your_database_name
     linkedin_schema: linkedin_ads 
     linkedin_database: your_database_name  
-    pinterest_schema: pinterest_ads 
+    pinterest_schema: pinterest
     pinterest_database: your_database_name 
     twitter_ads_schema: twitter_ads
     twitter_ads_database: your_database_name  
@@ -96,10 +116,13 @@ or open PRs against `master`. Check out
 on the best workflow for contributing to a package.
 
 ## Resources:
-- Learn more about Fivetran [here](https://fivetran.com/docs)
+
+- Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
+- Find all of Fivetran's pre-built dbt packages in our [dbt hub](https://hub.getdbt.com/fivetran/)
+- Learn more about Fivetran [in the Fivetran docs](https://fivetran.com/docs)
 - Check out [Fivetran's blog](https://fivetran.com/blog)
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
+- Learn more about dbt [in the dbt docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
 - Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
 - Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+- Check out [the dbt blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices

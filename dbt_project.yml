@@ -2,14 +2,7 @@ name: 'ad_reporting'
 version: '1.0.0'
 config-version: 2
 
-profile: 'default'
-
-source-paths: ["models"]
-analysis-paths: ["analysis"]
-test-paths: ["tests"]
-data-paths: ["data"]
-macro-paths: ["macros"]
-snapshot-paths: ["snapshots"]
+require-dbt-version: [">=0.18.0", "<0.20.0"]
 
 vars:
   ad_reporting__pinterest_enabled: true
@@ -21,4 +14,36 @@ vars:
 
 models:
   ad_reporting:
-    +materialized: table
+    +materialized: view
+  
+  pinterest:
+    enabled: true
+  pinterest_source:
+    enabled: true
+  
+  microsoft_ads:
+    enabled: true
+  microsoft_ads_source:
+    enabled: true
+  
+  linkedin:
+    enabled: true
+  linkedin_source:
+    enabled: true
+  
+  twitter_ads:
+    enabled: true
+  twitter_ads_source:
+    enabled: true
+  
+  facebook_ads:
+    enabled: true
+  facebook_ads_source:
+    enabled: true
+  facebook_ads_backwards_compatibility:
+    enabled: true
+  
+  google_ads:
+    enabled: true
+  google_ads_source:
+    enabled: true
