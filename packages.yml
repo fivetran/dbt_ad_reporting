@@ -1,30 +1,20 @@
 packages:
 
   - package: fivetran/pinterest
-    version: 0.2.0
+    version: 0.2.1
 
-  # Uncomment once new release is on Hub
-  # - package: fivetran/microsoft_ads
-  #   version: 0.1.0
-
-  - git: "https://github.com/fivetran/dbt_microsoft_ads.git"
-    revision: master
-    warn-unpinned: false
+  - package: fivetran/microsoft_ads
+    version: 0.1.1
     
-  # Uncomment once new release is on Hub
-  # - package: fivetran/linkedin
-  #   version: 0.2.0
-
-  - git: https://github.com/fivetran/dbt_linkedin
-    revision: master
-    warn-unpinned: false
+  - package: fivetran/linkedin
+    version: 0.2.1
 
   - package: fivetran/google_ads
-    version: 0.1.0
+    version: 0.1.1
   
   # Uncomment once new release is on Hub
   # - package: fivetran/twitter_ads
-  #   version: 0.1.0
+  #   version: 0.1.2
 
   - git: "https://github.com/fivetran/dbt_twitter.git"
     revision: master
