@@ -1,6 +1,6 @@
 # Ad Reporting
 
-This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardises the schemas from the various ad connectors and creates a single reporting model for all activity.
+This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity.
 
 Currently, this package supports the following ad connector types:
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
@@ -47,17 +47,37 @@ Next, you must disable the models in the unwanted data source's related package,
 
 ```yml
 models:
+  # disable both pinterest models if not using pinterest ads
   pinterest:
     enabled: false
+  pinterest_source:
+    enabled: false
+  # disable both microsoft ads models if not using microsoft ads
   microsoft_ads:
     enabled: false
+  microsoft_ads_source:
+    enabled: false
+  # disable both linkedin ads models if not using linkedin ads
   linkedin:
     enabled: false
-  linkedin:
+  linkedin_source:
     enabled: false
+  # disable both twitter ads models if not using twitter ads
   twitter_ads:
     enabled: false
+  twitter_ads_source:
+    enabled: false
+  # disable all three facebook ads models if not using facebook ads
   facebook_ads:
+    enabled: false
+  facebook_ads_source:
+    enabled: false
+  facebook_ads_backwards_compatibility:
+    enabled: false
+  # disable both google ads models if not using google ads
+  google_ads:
+    enabled: false
+  google_ads_source:
     enabled: false
 ```
 
@@ -74,11 +94,11 @@ By default, this package also looks for specific schemas from each of your data 
 config-version: 2
 
 vars:
-    microsoft_ads_schema: microsoft_ads
+    microsoft_ads_schema: bingads
     microsoft_ads_database: your_database_name
     linkedin_schema: linkedin_ads 
     linkedin_database: your_database_name  
-    pinterest_schema: pinterest_ads 
+    pinterest_schema: pinterest
     pinterest_database: your_database_name 
     twitter_ads_schema: twitter_ads
     twitter_ads_database: your_database_name  
