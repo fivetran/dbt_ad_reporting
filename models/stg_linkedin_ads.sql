@@ -24,9 +24,9 @@ with base as (
         utm_campaign,
         utm_content,
         utm_term,
-        clicks,
-        impressions,
-        cost as spend
+        coalesce(clicks, 0) as clicks,
+        coalesce(impressions, 0) as impressions,
+        coalesce(cost, 0) as spend
     from base
 
 

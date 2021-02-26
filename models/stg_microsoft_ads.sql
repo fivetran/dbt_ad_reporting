@@ -8,7 +8,7 @@ with base as (
 ), fields as (
 
     select
-        'Bing Ads' as platform,
+        'Microsoft Ads' as platform,
         cast(date_day as date) as date_day,
         account_name,
         account_id,
@@ -24,9 +24,9 @@ with base as (
         utm_campaign,
         utm_content,
         utm_term,
-        clicks,
-        impressions,
-        spend
+        coalesce(clicks, 0) as clicks,
+        coalesce(impressions, 0) as impressions,
+        coalesce(spend, 0) as spend
     from base
 
 

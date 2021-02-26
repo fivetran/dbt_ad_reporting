@@ -22,9 +22,9 @@ with base as (
         cast(ad_group_id as {{ dbt_utils.type_string() }}) as ad_group_id,
         ad_group_name,
         platform,
-        clicks,
-        impressions,
-        spend
+        coalesce(clicks, 0) as clicks,
+        coalesce(impressions, 0) as impressions,
+        coalesce(spend, 0) as spend
     from base
 
 
