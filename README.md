@@ -1,6 +1,6 @@
 # Ad Reporting
 
-This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity.
+This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity.  Activity is reported on a daily level, allowing you to analyze your ad spend, click and impressions by campaigns, ad groups and UTM parameters.
 
 Currently, this package supports the following ad connector types:
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
