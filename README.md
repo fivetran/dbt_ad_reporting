@@ -1,6 +1,6 @@
 # Ad Reporting
 
-This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity.  Activity is reported on a daily level, allowing you to analyze your ad spend, click and impressions by campaigns, ad groups and UTM parameters.
+This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity. It enables you to analyze your daily ad spend, clicks, and impressions by campaigns, ad groups, and UTM parameters.
 
 Currently, this package supports the following ad connector types:
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
@@ -13,20 +13,20 @@ Currently, this package supports the following ad connector types:
 
 ## Models
 
-This package contains a number of models, which all build up to the `ad_reporting` model. The `ad_reporting` model combines the data from all of the data sources. A dependency on all the required dbt packages is declared in this package's `packages.yml` file, so it will automatically download them when you run `dbt deps`. The primary outputs of this package are described below.
+This package contains a number of models, which all build up to the final `ad_reporting` model. The `ad_reporting` model combines the data from all of the connectors. A dependency on all the required dbt packages is declared in this package's `packages.yml` file, so it will automatically download them when you run `dbt deps`. The primary outputs of this package are described below.
 
 | **model**    | **description**                                                                                                        |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| ad_reporting | Each record represents the daily ad performance from all sources, including information about the UTM parameters you used. |
+| ad_reporting | Each record represents the daily ad performance from all connectors, including information about the UTM parameters you used. |
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
 
-### Source selection
+### Connector selection
 
-The package assumes that all source models are 'enabled', so it will look to pull data from all of the data sources listed [above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting). If you don't want to use certain data sources, disable those sources' models in this package by setting the relevant variables to `false`:
+The package assumes that all connector models are enabled, so it will look to pull data from all of the connectors listed [above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting). If you don't want to use certain connectors, disable those connectors' models in this package by setting the relevant variables to `false`:
 
 ```yml
 # dbt_project.yml
@@ -43,7 +43,7 @@ vars:
   ad_reporting__facebook_ads_enabled: False
 ```
 
-Next, you must disable the models in the unwanted data source's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`:
+Next, you must disable the models in the unwanted connector's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`:
 
 ```yml
 models:
@@ -81,11 +81,11 @@ models:
     enabled: false
 ```
 
-### Source Data
+### Data Location
 
 By default, this package looks for your advertising data in your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your advertising data is stored, add the relevant `_database` variables to your `dbt_project.yml` file (see below). 
 
-By default, this package also looks for specific schemas from each of your data sources. The schemas from each source are highlighted in the code snippet below. If your data is stored in a different schema, add the relevant `_schema` variables to your `dbt_project.yml` file:
+By default, this package also looks for specific schemas from each of your connectors. The schemas from each connector are highlighted in the code snippet below. If your data is stored in a different schema, add the relevant `_schema` variables to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -108,7 +108,7 @@ vars:
     google_ads_database: your_database_name 
 ```
 
-For more configuration information, see the relevant data source packages ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
+For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
 
 ## Contributions
 
