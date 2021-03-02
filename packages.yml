@@ -12,18 +12,8 @@ packages:
   - package: fivetran/google_ads
     version: [">=0.1.0", "<0.2.0"]
   
-  # Uncomment once new release is on Hub
-  # - package: fivetran/twitter_ads
-    # version: [">=0.1.0", "<0.2.0"]
-
-  - git: "https://github.com/fivetran/dbt_twitter.git"
-    revision: master
-    warn-unpinned: false
+  - package: fivetran/twitter_ads
+    version: [">=0.1.0", "<0.2.0"]
   
-  # Uncomment once new release is on Hub
-  # - package: fivetran/facebook_ads
-    # version: [">=0.1.0", "<0.2.0"]
-
-  - git: "https://github.com/fivetran/dbt_facebook_ads.git"
-    revision: master
-    warn-unpinned: false
+  - package: fivetran/facebook_ads
+    version: [">=0.1.0", "<0.2.0"]
