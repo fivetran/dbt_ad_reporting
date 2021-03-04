@@ -72,7 +72,7 @@ models:
     enabled: false
   facebook_ads_source:
     enabled: false
-  facebook_ads_backwards_compatibility:
+  facebook_ads_creative_history:
     enabled: false
   # disable both google ads models if not using google ads
   google_ads:
