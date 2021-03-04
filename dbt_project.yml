@@ -40,7 +40,7 @@ models:
     enabled: true
   facebook_ads_source:
     enabled: true
-  facebook_ads_backwards_compatibility:
+  facebook_ads_creative_history:
     enabled: true
   
   google_ads:
