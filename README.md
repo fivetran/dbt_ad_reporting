@@ -110,6 +110,50 @@ vars:
 
 For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
 
+### Changing the Build Schema (RECOMMENDED)
+By default this package will build all models in your <target_schema>.  This behavior can be tailored to your preference by making use of custom schemas. We highly recommend use of custom schemas for this package, as multiple sources are involved.  To do so, add the following configuration to your `dbt_project.yml` file: 
+
+```yml
+# dbt_project.yml
+
+...
+models:  
+  pinterest:
+    +schema: pinterest
+    enabled: false
+  pinterest_source:
+    +schema: pinterest_source
+    enabled: false
+  
+  microsoft_ads:
+    +schema: microsoft_ads
+  microsoft_ads_source:
+    +schema: microsoft_ads_source
+  
+  linkedin:
+    +schema: linkedin
+  linkedin_source:
+    +schema: linkedin_source
+  
+  twitter_ads:
+    +schema: twitter_ads
+  twitter_ads_source:
+    +schema: twitter_ads_source
+
+  facebook_ads:
+    +schema: facebook_ads
+  facebook_ads_source:
+    +schema: facebook_ads_source
+  facebook_ads_creative_history:
+    +schema: facebook_ads
+  
+  google_ads:
+    +schema: google_ads
+  google_ads_source:
+    +schema: google_ads_source
+
+```
+
 ## Contributions
 
 Additional contributions to this package are very welcome! Please create issues
