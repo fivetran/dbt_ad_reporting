@@ -43,7 +43,9 @@ vars:
   ad_reporting__facebook_ads_enabled: False
 ```
 
-Next, you must disable the models in the unwanted connector's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`:
+Next, you must disable the models in the unwanted connector's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`. 
+
+*Only include the models you want to disable.  Default values are generally `true` but that is not always the case.*
 
 ```yml
 models:
