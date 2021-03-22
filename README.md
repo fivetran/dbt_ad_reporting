@@ -120,7 +120,6 @@ By default this package will build all models in your <target_schema>.  This beh
 models:  
   pinterest:
     +schema: pinterest
-    enabled: false
   pinterest_source:
     +schema: pinterest_source
     enabled: false
@@ -153,6 +152,10 @@ models:
     +schema: google_ads_source
 
 ```
+
+## Database Support
+
+This package has been tested on BigQuery, Snowflake, Redshift, and Postgres.
 
 ## Contributions
 
