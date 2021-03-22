@@ -122,7 +122,6 @@ models:
     +schema: pinterest
   pinterest_source:
     +schema: pinterest_source
-    enabled: false
   
   microsoft_ads:
     +schema: microsoft_ads
