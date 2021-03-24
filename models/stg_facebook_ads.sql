@@ -22,10 +22,11 @@ with base as (
         cast(ad_set_id as {{ dbt_utils.type_string() }}) as ad_group_id,
         ad_set_name as ad_group_name,
         'Facebook Ads' as platform,
-        coalesce(clicks, 0) as clicks,
-        coalesce(impressions, 0) as impressions,
-        coalesce(spend, 0) as spend
+        sum(coalesce(clicks, 0)) as clicks,
+        sum(coalesce(impressions, 0)) as impressions,
+        sum(coalesce(spend, 0)) as spend
     from base
+    {{ dbt_utils.group_by(14) }}
 
 
 )
