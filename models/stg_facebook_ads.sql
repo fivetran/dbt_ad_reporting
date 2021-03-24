@@ -26,20 +26,7 @@ with base as (
         sum(coalesce(impressions, 0)) as impressions,
         sum(coalesce(spend, 0)) as spend
     from base
-    group by 
-        cast(date_day as date),
-        base_url,
-        url_host,
-        url_path,
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_content,
-        utm_term,
-        cast(campaign_id as {{ dbt_utils.type_string() }}),
-        campaign_name,
-        cast(ad_set_id as {{ dbt_utils.type_string() }}),
-        ad_set_name
+    {{ dbt_utils.group_by(14) }}
 
 
 )
