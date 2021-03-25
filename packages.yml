@@ -2,18 +2,24 @@ packages:
 
   - package: fivetran/pinterest
     version: [">=0.2.0", "<0.3.0"]
+    #version: [">=0.3.0", "<0.4.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.1.0", "<0.2.0"]
+    #version: [">=0.2.0", "<0.3.0"]
     
   - package: fivetran/linkedin
     version: [">=0.2.0", "<0.3.0"]
+    #version: [">=0.2.0", "<0.3.0"]
 
   - package: fivetran/google_ads
     version: [">=0.1.0", "<0.2.0"]
+    #version: [">=0.2.0", "<0.3.0"]
   
   - package: fivetran/twitter_ads
     version: [">=0.1.0", "<0.2.0"]
+    #version: [">=0.2.0", "<0.3.0"]
   
   - package: fivetran/facebook_ads
     version: [">=0.1.0", "<0.2.0"]
+    #version: [">=0.2.0", "<0.3.0"]
