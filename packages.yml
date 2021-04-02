@@ -17,3 +17,7 @@ packages:
   
   - package: fivetran/facebook_ads
     version: [">=0.1.0", "<0.2.0"]
+
+  - git: "https://github.com/fivetran/dbt_snapchat_ads"
+    revision: main
+    warn-unpinned: False

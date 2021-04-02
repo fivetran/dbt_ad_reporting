@@ -11,6 +11,7 @@ vars:
   ad_reporting__google_ads_enabled: true
   ad_reporting__twitter_ads_enabled: true
   ad_reporting__facebook_ads_enabled: true
+  ad_reporting__snapchat_ads_enabled: true
 
 models:
   ad_reporting:
@@ -46,4 +47,9 @@ models:
   google_ads:
     enabled: true
   google_ads_source:
+    enabled: true
+
+  snapchat_ads:
+    enabled: true
+  snapchat_ads_source:
     enabled: true

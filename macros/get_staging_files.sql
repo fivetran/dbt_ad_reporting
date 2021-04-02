@@ -26,6 +26,10 @@
     {% set _ = staging_file.append(ref('stg_facebook_ads')) %}
     {% endif %}
 
+    {% if var('ad_reporting__snapchat_ads_enabled') %} 
+    {% set _ = staging_file.append(ref('stg_snapchat_ads')) %}
+    {% endif %}
+
 
     {{ return(staging_file) }}
 
