@@ -8,8 +8,9 @@ Currently, this package supports the following ad connector types:
 * [Google Ads](https://github.com/fivetran/dbt_google_ads)
 * [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
 * [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
-* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)
+* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)0
 * [Twitter Ads](https://github.com/fivetran/dbt_twitter)
+* [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
 
 ## Models
 
@@ -41,6 +42,7 @@ vars:
   ad_reporting__google_ads_enabled: False
   ad_reporting__twitter_ads_enabled: False
   ad_reporting__facebook_ads_enabled: False
+  ad_reporting__snapchat_ads_enabled: False
 ```
 
 Next, you must disable the models in the unwanted connector's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`. 
@@ -81,6 +83,11 @@ models:
     enabled: false
   google_ads_source:
     enabled: false
+  # disable both snapchat ads models if not using google ads
+  snapchat_ads:
+    enabled: false
+  snapchat_ads_source:
+    enabled: false
 ```
 
 ### Data Location
@@ -108,6 +115,8 @@ vars:
     facebook_ads_database: your_database_name 
     google_ads_schema: adwords
     google_ads_database: your_database_name 
+    snapchat_schema: snapchat_ads
+    snapchat_database: your_database_name 
 ```
 
 For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
@@ -151,6 +160,11 @@ models:
     +schema: google_ads
   google_ads_source:
     +schema: google_ads_source
+  
+  snapchat_ads:
+    +schema: snapchat_ads
+  snapchat_ads_source:
+    +schema: snapchat_ads_source
 
 ```
 
