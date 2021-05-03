@@ -83,7 +83,7 @@ models:
     enabled: false
   google_ads_source:
     enabled: false
-  # disable both snapchat ads models if not using google ads
+  # disable both snapchat ads models if not using snapchat ads
   snapchat_ads:
     enabled: false
   snapchat_ads_source:
