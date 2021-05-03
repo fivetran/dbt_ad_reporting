@@ -8,7 +8,7 @@ Currently, this package supports the following ad connector types:
 * [Google Ads](https://github.com/fivetran/dbt_google_ads)
 * [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
 * [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
-* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)0
+* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest_ads)
 * [Twitter Ads](https://github.com/fivetran/dbt_twitter)
 * [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
 
