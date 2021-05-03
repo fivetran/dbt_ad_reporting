@@ -170,7 +170,7 @@ models:
 
 ## Database Support
 
-This package has been tested on BigQuery, Snowflake, Redshift, and Postgres.
+This package has been tested on BigQuery, Snowflake, and Redshift.
 
 ## Contributions
 
