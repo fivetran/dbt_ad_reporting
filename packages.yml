@@ -17,3 +17,6 @@ packages:
   
   - package: fivetran/facebook_ads
     version: [">=0.1.0", "<0.2.0"]
+
+  - package: fivetran/facebook_ads
+    version: [">=0.1.0", "<0.2.0"]

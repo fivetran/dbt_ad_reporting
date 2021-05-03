@@ -45,6 +45,15 @@ vars:
     campaign_history: "{{ ref('facebook_ads_campaign_history_data') }}"
     creative_history: "{{ ref('facebook_ads_creative_history_data') }}"
 
+  snapchat_ads_source:
+    ad_account_history:  "{{ ref('snapchat_ad_account_history_data') }}"
+    ad_history: "{{ ref('snapchat_ad_history_data') }}"
+    ad_hourly_report: "{{ ref('snapchat_ad_hourly_report_data') }}"
+    ad_squad_history: "{{ ref('snapchat_ad_squad_history_data') }}"
+    campaign_history: "{{ ref('snapchat_campaign_history_data') }}"
+    creative_history: "{{ ref('snapchat_creative_history_data') }}"
+    creative_url_tag_history: "{{ ref('snapchat_creative_url_tag_history_data') }}"
+
 seeds:
   ad_reporting_integration_tests:
 
@@ -177,3 +186,9 @@ seeds:
       +column_types:
         ad_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+
+    ### Snapchat Seeds
+
+    snapchat_ad_hourly_report_data:
+      +column_types:
+        date: timestamp
