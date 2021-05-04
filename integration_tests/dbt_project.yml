@@ -53,6 +53,9 @@ vars:
     campaign_history: "{{ ref('snapchat_campaign_history_data') }}"
     creative_history: "{{ ref('snapchat_creative_history_data') }}"
     creative_url_tag_history: "{{ ref('snapchat_creative_url_tag_history_data') }}"
+  
+  dbt_utils_dispatch_list: ['spark_utils', 'fivetran_utils']
+  fivetran_utils_dispatch_list: ['spark_utils']
 
 seeds:
   ad_reporting_integration_tests:
@@ -158,9 +161,9 @@ seeds:
     ### Facebook Seeds
 
     facebook_ads_creative_history_data:
-      +column_types:
-        page_link: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
-        template_page_link: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
+      +column_types:        
+        page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
     facebook_ads_account_history_data:
