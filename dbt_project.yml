@@ -2,7 +2,7 @@ name: 'ad_reporting'
 version: '1.0.0'
 config-version: 2
 
-require-dbt-version: [">=0.18.0", "<0.20.0"]
+require-dbt-version: [">=0.19.0", "<0.20.0"]
 
 vars:
   ad_reporting__pinterest_enabled: true
@@ -12,6 +12,8 @@ vars:
   ad_reporting__twitter_ads_enabled: true
   ad_reporting__facebook_ads_enabled: true
   ad_reporting__snapchat_ads_enabled: true
+  dbt_utils_dispatch_list: ['spark_utils', 'fivetran_utils']
+  fivetran_utils_dispatch_list: ['spark_utils']
 
 models:
   ad_reporting:

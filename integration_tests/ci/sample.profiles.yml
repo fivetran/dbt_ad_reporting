@@ -35,3 +35,15 @@ integration_tests:
       warehouse: "{{ env_var('CI_SNOWFLAKE_DBT_WAREHOUSE') }}"
       schema: ad_reporting_integration_tests
       threads: 8
+    spark:
+      type: spark
+      method: http
+      schema: ad_reporting_integration_tests
+      host: "{{ env_var('CI_SPARK_DBT_HOST') }}"
+      organization: "{{ env_var('CI_SPARK_DBT_ORGANIZATION') }}"
+      token: "{{ env_var('CI_SPARK_DBT_TOKEN') }}"
+      cluster: "{{ env_var('CI_SPARK_DBT_CLUSTER') }}"
+      port: 443
+      connect_timeout: 60
+      connect_retries: 5
+      threads: 4

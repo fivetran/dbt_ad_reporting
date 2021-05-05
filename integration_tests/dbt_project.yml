@@ -158,9 +158,9 @@ seeds:
     ### Facebook Seeds
 
     facebook_ads_creative_history_data:
-      +column_types:
-        page_link: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
-        template_page_link: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
+      +column_types:        
+        page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
     facebook_ads_account_history_data:
