@@ -53,9 +53,6 @@ vars:
     campaign_history: "{{ ref('snapchat_campaign_history_data') }}"
     creative_history: "{{ ref('snapchat_creative_history_data') }}"
     creative_url_tag_history: "{{ ref('snapchat_creative_url_tag_history_data') }}"
-  
-  dbt_utils_dispatch_list: ['spark_utils', 'fivetran_utils']
-  fivetran_utils_dispatch_list: ['spark_utils']
 
 seeds:
   ad_reporting_integration_tests:
