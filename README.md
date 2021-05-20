@@ -56,33 +56,39 @@ models:
     enabled: false
   pinterest_source:
     enabled: false
+  
   # disable both microsoft ads models if not using microsoft ads
   microsoft_ads:
     enabled: false
   microsoft_ads_source:
     enabled: false
+  
   # disable both linkedin ads models if not using linkedin ads
   linkedin:
     enabled: false
   linkedin_source:
     enabled: false
+  
   # disable both twitter ads models if not using twitter ads
   twitter_ads:
     enabled: false
   twitter_ads_source:
     enabled: false
+  
   # disable all three facebook ads models if not using facebook ads
   facebook_ads:
-    enabled: false
+    enabled: false #IF YOU ARE USING FACEBOOK, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
   facebook_ads_source:
-    enabled: false
+    enabled: false #IF YOU ARE USING FACEBOOK, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
   facebook_ads_creative_history:
-    enabled: false
+    enabled: false #IF YOU ARE USING FACEBOOK, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
+  
   # disable both google ads models if not using google ads
   google_ads:
     enabled: false
   google_ads_source:
     enabled: false
+  
   # disable both snapchat ads models if not using snapchat ads
   snapchat_ads:
     enabled: false
