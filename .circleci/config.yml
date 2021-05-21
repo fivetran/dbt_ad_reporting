@@ -74,7 +74,7 @@ jobs:
             cd integration_tests
             dbt deps
             dbt seed --target spark --full-refresh
-            dbt run --target spark --full-refresh --vars 'ad_reporting__google_ads_type: criteria'
+            dbt run --target spark --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
             dbt test --target spark
       - run:
           name: "Run Tests - Redshift (criteria)"
@@ -84,7 +84,7 @@ jobs:
             cd integration_tests
             dbt deps
             dbt seed --target redshift --full-refresh
-            dbt run --target redshift --full-refresh --vars 'ad_reporting__google_ads_type: criteria'
+            dbt run --target redshift --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
             dbt test --target redshift
       - run:
           name: "Run Tests - Snowflake (criteria)"
@@ -94,7 +94,7 @@ jobs:
             cd integration_tests
             dbt deps
             dbt seed --target snowflake --full-refresh
-            dbt run --target snowflake --full-refresh --vars 'ad_reporting__google_ads_type: criteria'
+            dbt run --target snowflake --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
             dbt test --target snowflake
       - run:
           name: "Run Tests - BigQuery (criteria)"
@@ -107,5 +107,5 @@ jobs:
             cd integration_tests
             dbt deps
             dbt seed --target bigquery --full-refresh
-            dbt run --target bigquery --full-refresh --vars 'ad_reporting__google_ads_type: criteria'
+            dbt run --target bigquery --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
             dbt test --target bigquery
