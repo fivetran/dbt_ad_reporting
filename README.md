@@ -174,6 +174,20 @@ models:
 
 ```
 
+### Google Ads adapter type selection
+
+The Google Ads packages has two 'ad adapter' tables. One is based on the Final URL report and the other is based on the Criteria report. 
+
+If you have specifically chosen to sync one or the other of these tables, you can tell dbt which to use. It will use the Final URL report by default.
+
+```yml
+# dbt_project.yml
+
+...
+vars:
+  ad_reporting__google_ads_type: 'criteria' # or 'final_url'
+```
+
 ## Database Support
 
 This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Spark.
