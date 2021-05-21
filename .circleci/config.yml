@@ -23,7 +23,7 @@ jobs:
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
       - run:
-          name: "Run Tests - Spark (final_url)"
+          name: "Run Tests - Spark"
           command: |
             . venv/bin/activate
             echo `pwd`
@@ -31,9 +31,10 @@ jobs:
             dbt deps
             dbt seed --target spark --full-refresh
             dbt run --target spark --full-refresh
+            dbt run --target spark --full-refresh -m stg_google_ads+ --vars 'ad_reporting__google_ads_type: criteria'
             dbt test --target spark
       - run:
-          name: "Run Tests - Redshift (final_url)"
+          name: "Run Tests - Redshift"
           command: |
             . venv/bin/activate
             echo `pwd`
@@ -41,9 +42,10 @@ jobs:
             dbt deps
             dbt seed --target redshift --full-refresh
             dbt run --target redshift --full-refresh
+            dbt run --target redshift --full-refresh -m stg_google_ads+ --vars 'ad_reporting__google_ads_type: criteria'
             dbt test --target redshift
       - run:
-          name: "Run Tests - Snowflake (final_url)"
+          name: "Run Tests - Snowflake"
           command: |
             . venv/bin/activate
             echo `pwd`
@@ -51,9 +53,10 @@ jobs:
             dbt deps
             dbt seed --target snowflake --full-refresh
             dbt run --target snowflake --full-refresh
+            dbt run --target snowflake --full-refresh -m stg_google_ads+ --vars 'ad_reporting__google_ads_type: criteria'
             dbt test --target snowflake
       - run:
-          name: "Run Tests - BigQuery (final_url)"
+          name: "Run Tests - BigQuery"
           environment:
               GCLOUD_SERVICE_KEY_PATH: "/home/circleci/gcloud-service-key.json"
 
@@ -64,48 +67,5 @@ jobs:
             dbt deps
             dbt seed --target bigquery --full-refresh
             dbt run --target bigquery --full-refresh
-            dbt test --target bigquery
-
-      - run:
-          name: "Run Tests - Spark (criteria)"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target spark --full-refresh
-            dbt run --target spark --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
-            dbt test --target spark
-      - run:
-          name: "Run Tests - Redshift (criteria)"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target redshift --full-refresh
-            dbt run --target redshift --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
-            dbt test --target redshift
-      - run:
-          name: "Run Tests - Snowflake (criteria)"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target snowflake --full-refresh
-            dbt run --target snowflake --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
-            dbt test --target snowflake
-      - run:
-          name: "Run Tests - BigQuery (criteria)"
-          environment:
-              GCLOUD_SERVICE_KEY_PATH: "/home/circleci/gcloud-service-key.json"
-
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target bigquery --full-refresh
-            dbt run --target bigquery --full-refresh --vars 'ad_reporting__google_ads_type: criteria' -m stg_google_ads+
+            dbt run --target bigquery --full-refresh -m stg_google_ads+ --vars 'ad_reporting__google_ads_type: criteria'
             dbt test --target bigquery
