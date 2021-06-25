@@ -14,6 +14,7 @@ vars:
   ad_reporting__snapchat_ads_enabled: true
   dbt_utils_dispatch_list: ['spark_utils', 'fivetran_utils']
   fivetran_utils_dispatch_list: ['spark_utils']
+  ad_reporting__google_ads_type: 'final_url'
 
 models:
   ad_reporting:
