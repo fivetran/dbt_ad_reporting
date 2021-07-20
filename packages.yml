@@ -15,8 +15,11 @@ packages:
   - package: fivetran/twitter_ads
     version: [">=0.2.0", "<0.3.0"]
   
-  - package: fivetran/facebook_ads
-    version: [">=0.2.0", "<0.3.0"]
+  # - package: fivetran/facebook_ads
+  #   version: [">=0.2.0", "<0.3.0"]
+  - git: https://github.com/fivetran/dbt_facebook_ads_creative_history.git
+    revision: feature/postgres
+    warn-unpinned: false
 
   - package: fivetran/snapchat_ads
     version: [">=0.1.1", "<0.2.0"]
