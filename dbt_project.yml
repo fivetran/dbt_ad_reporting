@@ -1,5 +1,5 @@
 name: 'ad_reporting'
-version: '1.0.0'
+version: '0.2.3'
 config-version: 2
 
 require-dbt-version: [">=0.19.0", "<0.20.0"]
