@@ -96,10 +96,6 @@ seeds:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
-    linkedin_creative_history_data:
-      +column_types:
-        created_time: timestamp
-        last_modified_time: timestamp
 
     ### Twitter Seeds
 
