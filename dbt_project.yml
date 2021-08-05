@@ -1,8 +1,8 @@
 name: 'ad_reporting'
-version: '0.2.3'
+version: '0.3.0'
 config-version: 2
 
-require-dbt-version: [">=0.19.0", "<0.20.0"]
+require-dbt-version: [">=0.20.0"]
 
 vars:
   ad_reporting__pinterest_enabled: true
