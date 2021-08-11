@@ -3,14 +3,22 @@ packages:
   - package: fivetran/pinterest
     version: [">=0.4.0", "<0.5.0"]
 
-  - package: fivetran/microsoft_ads
-    version: [">=0.3.0", "<0.4.0"]
+  # - package: fivetran/microsoft_ads
+  #   version: [">=0.3.0", "<0.4.0"]
+
+  - git: https://github.com/fivetran/dbt_google_ads.git
+    revision: feature/auto-tagging
+    warn-unpinned: false
     
   - package: fivetran/linkedin
     version: [">=0.3.0", "<0.4.0"]
 
-  - package: fivetran/google_ads
-    version: [">=0.3.0", "<0.4.0"]
+  # - package: fivetran/google_ads
+  #   version: [">=0.3.0", "<0.4.0"]
+
+  - git: https://github.com/fivetran/dbt_microsoft_ads.git
+    revision: feature/auto-tagging
+    warn-unpinned: false
   
   - package: fivetran/twitter_ads
     version: [">=0.3.0", "<0.4.0"]
