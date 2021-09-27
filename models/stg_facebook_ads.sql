@@ -9,6 +9,8 @@ with base as (
 
     select
         cast(date_day as date) as date_day,
+        account_name,
+        account_id,
         base_url,
         url_host,
         url_path,
@@ -26,7 +28,7 @@ with base as (
         sum(coalesce(impressions, 0)) as impressions,
         sum(coalesce(spend, 0)) as spend
     from base
-    {{ dbt_utils.group_by(14) }}
+    {{ dbt_utils.group_by(16) }}
 
 
 )
