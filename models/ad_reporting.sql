@@ -2,7 +2,8 @@
 
 with unioned as (
 
-    {{ dbt_utils.union_relations(get_staging_files()) }}
+    {{ dbt_utils.union_relations(get_staging_files(), 
+                                {"account_id": "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"} ) }}
 
 )
 
