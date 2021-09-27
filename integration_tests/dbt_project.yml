@@ -165,6 +165,7 @@ seeds:
     facebook_ads_account_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        name: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
     facebook_ads_ad_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
