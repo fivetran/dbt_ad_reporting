@@ -3,7 +3,7 @@
 with unioned as (
 
     {{ dbt_utils.union_relations(get_staging_files(), 
-                                {"account_id": "int64 if target.type == 'bigquery' else bigint"} ) }}
+                                column_override = {"account_id": "int64"} if target.type == 'bigquery' else {"account_id": "bigint"} ) }}
 
 )
 
