@@ -110,12 +110,6 @@ seeds:
     twitter_promoted_tweet_history_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    twitter_campaign_history_data:
-      +column_types:
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    twitter_promoted_tweet_report_data:
-      +column_types:
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
 
     ### Pinterest Seeds
 
@@ -200,9 +194,3 @@ seeds:
     snapchat_ad_hourly_report_data:
       +column_types:
         date: timestamp
-    snapchat_campaign_history_data:
-      +column_types:
-        account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-    snapchat_creative_history_data:
-      +column_types:
-        account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
