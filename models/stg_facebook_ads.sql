@@ -10,7 +10,7 @@ with base as (
     select
         cast(date_day as date) as date_day,
         account_name,
-        account_id,
+        cast(account_id as {{ dbt_utils.type_string() }} as account_id,
         base_url,
         url_host,
         url_path,
