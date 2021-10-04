@@ -11,7 +11,7 @@ with base as (
         'Google Ads' as platform,
         cast(date_day as date) as date_day,
         account_name,
-        external_customer_id as account_id,
+        cast(external_customer_id as {{ dbt_utils.type_string() }}) as account_id,
         campaign_name,
         cast(campaign_id as {{ dbt_utils.type_string() }}) as campaign_id,
         ad_group_name,
