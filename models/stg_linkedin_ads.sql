@@ -11,7 +11,7 @@ with base as (
         'LinkedIn Ads' as platform,
         cast(date_day as date) as date_day,
         account_name,
-        account_id,
+        cast(account_id as {{ dbt_utils.type_string() }}) as account_id,
         campaign_group_name as campaign_name,
         cast(campaign_group_id as {{ dbt_utils.type_string() }}) as campaign_id,
         campaign_name as ad_group_name,

@@ -101,10 +101,12 @@ seeds:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
+        account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
     linkedin_campaign_history_data:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
+        account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
 
     ### Twitter Seeds
 
@@ -197,6 +199,7 @@ seeds:
     facebook_ads_account_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        name: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
     facebook_ads_ad_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
