@@ -29,7 +29,7 @@ Include in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
 ```
 
 ## Configuration
@@ -104,7 +104,18 @@ models:
   snapchat_ads_source:
     enabled: false
 ```
+### Google Ads API Configuration
+If your connector is setup using the Google Ads API then you will need to configure your `dbt_project.yml` with the below variable:
 
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+    api_source: google_ads  ## adwords by default
+```
 ### Data Location
 
 By default, this package looks for your advertising data in your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your advertising data is stored, add the relevant `_database` variables to your `dbt_project.yml` file (see below). 

@@ -1,0 +1,2 @@
+id,sequence_id,_fivetran_synced,account_label_id,account_label_name,can_manage_clients,currency_code,date_timezone,manager_customer_id,name,test_account
+2121450128,0,2021-09-22T14:31:18.940,,,false,USD,America/Los_Angeles,,Fivetran,false
