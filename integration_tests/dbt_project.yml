@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '0.4.1'
+version: '0.5.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -12,6 +12,12 @@ vars:
   google_ads__final_url_performance: "{{ ref('google_ads_final_url_performance_data') }}"
   google_ads__click_performance: "{{ ref('google_ads_click_performance_data') }}"
   google_ads__criteria_performance: "{{ ref('google_ads_criteria_performance_data') }}"
+  google_ads__ad_final_url_history: "{{ ref('google_ads_ad_final_url_history_data') }}"
+  google_ads__ad_stats: "{{ ref('google_ads_ad_stats_data') }}"
+  google_ads__ad_history: "{{ ref('google_ads_ad_history_data') }}"
+  google_ads__ad_group_history: "{{ ref('google_ads_ad_group_history_data') }}"
+  google_ads__campaign_history: "{{ ref('google_ads_campaign_history_data') }}"
+  google_ads__account: "{{ ref('google_ads_account_data') }}"
 
   microsoft_ads_source:
     account_history: "{{ ref('microsoft_ads_account_history_data') }}"
@@ -155,6 +161,32 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_stats_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_campaign_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_final_url_history_data:
+      +column_types:
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_group_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
 
     ### Facebook Seeds
 

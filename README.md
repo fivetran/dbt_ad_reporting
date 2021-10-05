@@ -29,7 +29,7 @@ Include in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
 ```
 
 ## Configuration
@@ -104,6 +104,23 @@ models:
   snapchat_ads_source:
     enabled: false
 ```
+### Google Ads and Adwords API Configuration
+This package allows users to leverage either the Adwords API or the Google Ads API if you have enabled the Google Ads connector. You will be able to determine which API your Google Ads connector is using by navigating within your Fivetran UI to the `setup` tab -> `edit connection details` link -> and reference the `API configuration` used. You will want to refer to the respective configuration steps below based off the API used by your connector. 
+
+#### Google Ads API
+If your Google Ads connector is setup using the Google Ads API then you will need to configure your `dbt_project.yml` with the below variable:
+
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+    api_source: google_ads  ## adwords by default and is case sensitive!
+```
+#### Adwords API
+If your Google Ads connector is setup using the Adwords API (default) then you will want to follow the steps outlined in the [dbt_google_ads](https://github.com/fivetran/dbt_google_ads#adwords-api-configuration) package for configuring your package to leverage the adwords API.
 
 ### Data Location
 
