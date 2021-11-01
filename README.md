@@ -217,7 +217,7 @@ dispatch:
 ## Contributions
 
 Additional contributions to this package are very welcome! Please create issues
-or open PRs against `master`. Check out 
+or open PRs against `main`. Check out 
 [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) 
 on the best workflow for contributing to a package.
 
