@@ -94,9 +94,9 @@ models:
   
   # disable both google ads models if not using google ads
   google_ads:
-    enabled: false
+    enabled: false #IF YOU ARE USING GOOGLE ADS, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
   google_ads_source:
-    enabled: false
+    enabled: false #IF YOU ARE USING GOOGLE ADS, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
   
   # disable both snapchat ads models if not using snapchat ads
   snapchat_ads:
