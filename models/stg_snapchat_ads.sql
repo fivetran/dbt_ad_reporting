@@ -9,7 +9,7 @@ with base as (
 
     select
         ad_account_name as account_name,
-        ad_account_id as account_id,
+        cast(ad_account_id as {{ dbt_utils.type_string() }}) as account_id,
         cast(date_day as date) as date_day,
         base_url,
         url_host,
