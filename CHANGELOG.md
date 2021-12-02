@@ -5,7 +5,7 @@
 ## Under the Hood
 - Cast the `account_id` and `external_account_id` as strings within the `stg_google_ads` model.
 
-# Contributors
+# Contributors 
 - @csoule-shaker ([#30](https://github.com/fivetran/dbt_ad_reporting/pull/30))
 - @csoule1622 ([#30](https://github.com/fivetran/dbt_ad_reporting/pull/30))
 
