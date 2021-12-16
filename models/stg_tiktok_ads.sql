@@ -3,7 +3,7 @@
 with base as (
 
     select *
-    from {{ ref('tiktok__ad_adapter')}}
+    from {{ ref('tiktok_ads__ad_adapter')}}
 
 ), fields as (
 
