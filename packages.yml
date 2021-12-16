@@ -24,4 +24,4 @@ packages:
   # - package: fivetran/tiktok_ads
   #   version: [">=0.1.0", "<0.2.0"]
 
-  - local: ../../tiktok/dbt_tiktok_ads
+  - local: ../tiktok/dbt_tiktok_ads
