@@ -65,16 +65,17 @@ vars:
     creative_url_tag_history: "{{ ref('snapchat_creative_url_tag_history_data') }}"
 
   tiktok_ads_source:
-    ad_account:  "{{ ref('tiktok_advertiser_data') }}"
     ad_history: "{{ ref('tiktok_ad_history_data') }}"
     ad_report_hourly: "{{ ref('tiktok_ad_report_hourly_data') }}"
     ad_group_history: "{{ ref('tiktok_adgroup_history_data') }}"
-    ad_group_report_hourly: "{{ ref('tiktok_adgroup_report_hourly_data') }}"
+    ad_group_hourly: "{{ ref('tiktok_adgroup_report_hourly_data') }}"
     campaign_history: "{{ ref('tiktok_campaign_history_data') }}"
     campaign_report_hourly: "{{ ref('tiktok_campaign_report_hourly_data') }}"
+    advertiser: "{{ ref('tiktok_advertiser_data') }}"
 
 seeds:
   ad_reporting_integration_tests:
+    +quote_columns: "{{ true if target.type in ('redshift','postgres') else false }}"
 
     ### Microsoft Seeds
 
@@ -235,5 +236,3 @@ seeds:
     snapchat_ad_hourly_report_data:
       +column_types:
         date: timestamp
-
-    ### TikTok Seeds
