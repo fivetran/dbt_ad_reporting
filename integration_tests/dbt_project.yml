@@ -69,9 +69,9 @@ vars:
     ad_history: "{{ ref('tiktok_ad_history_data') }}"
     ad_report_hourly: "{{ ref('tiktok_ad_report_hourly_data') }}"
     ad_group_history: "{{ ref('tiktok_adgroup_history_data') }}"
-    ad_group_report_hourly: "{{ ref('tiktok_adgroup_history_data') }}"
+    ad_group_report_hourly: "{{ ref('tiktok_adgroup_report_hourly_data') }}"
     campaign_history: "{{ ref('tiktok_campaign_history_data') }}"
-    campaign_report_hourly: "{{ ref('tiktok_adgroup_history_data') }}"
+    campaign_report_hourly: "{{ ref('tiktok_campaign_report_hourly_data') }}"
 
 seeds:
   ad_reporting_integration_tests:
