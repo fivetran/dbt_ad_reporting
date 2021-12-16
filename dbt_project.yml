@@ -12,6 +12,7 @@ vars:
   ad_reporting__twitter_ads_enabled: true
   ad_reporting__facebook_ads_enabled: true
   ad_reporting__snapchat_ads_enabled: true
+  ad_reporting__tiktok_ads_enabled: true
 
 models:
   ad_reporting:
@@ -52,4 +53,9 @@ models:
   snapchat_ads:
     enabled: true
   snapchat_ads_source:
+    enabled: true
+
+  tiktok_ads:
+    enabled: true
+  tiktok_ads_source:
     enabled: true
