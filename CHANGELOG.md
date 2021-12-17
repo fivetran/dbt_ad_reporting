@@ -1,4 +1,4 @@
-# dbt_ad_reporting v0.6.1
+# dbt_ad_reporting v0.6.0
 ## Feature Additions
 - Added the TikTok Ads package to be included in the final `ad_reporting` model. ([#36](https://github.com/fivetran/dbt_ad_reporting/pull/36))
 
