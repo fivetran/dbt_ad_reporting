@@ -1,3 +1,7 @@
+# dbt_ad_reporting v0.6.1
+## Feature Additions
+- Added the TikTok Ads package to be included in the final `ad_reporting` model. ([#36](https://github.com/fivetran/dbt_ad_reporting/pull/36))
+
 # dbt_ad_reporting v0.5.1
 ## Feature Additions
 - Added the `account_name` and `account_id` to the `stg_snapchat_ads` model. This will allow for the relevant Snapchat Ads account information to flow downstream into the final `ad_reporting` model. ([#30](https://github.com/fivetran/dbt_ad_reporting/pull/30))
