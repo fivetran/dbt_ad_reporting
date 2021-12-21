@@ -26,7 +26,7 @@ with base as (
         'TikTok Ads' as platform,
         sum(coalesce(clicks, 0)) as clicks,
         sum(coalesce(impressions, 0)) as impressions,
-        sum(coalesce(spend, 0)) as spends
+        sum(coalesce(spend, 0)) as spend
     from base
     {{ dbt_utils.group_by(16) }}
 
