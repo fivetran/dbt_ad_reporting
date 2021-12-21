@@ -1,4 +1,4 @@
-[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![dbt logo and version](https://img.shields.io/static/v1?logo=dbt&label=dbt-version&message=0.20.x&color=orange)
+[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
 # Ad Reporting
 
 This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity. It enables you to analyze your daily ad spend, clicks, and impressions by campaigns, ad groups, and UTM parameters.
@@ -12,6 +12,7 @@ Currently, this package supports the following ad connector types:
 * [Pinterest Ads](https://github.com/fivetran/dbt_pinterest)
 * [Twitter Ads](https://github.com/fivetran/dbt_twitter)
 * [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
+* [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
 
 ## Models
 
@@ -29,7 +30,7 @@ Include in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 ```
 
 ## Configuration
@@ -52,6 +53,7 @@ vars:
   ad_reporting__twitter_ads_enabled: False
   ad_reporting__facebook_ads_enabled: False
   ad_reporting__snapchat_ads_enabled: False
+  ad_reporting__tiktok_ads_enabled: False
 ```
 
 Next, you must disable the models in the unwanted connector's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`. 
@@ -103,6 +105,12 @@ models:
     enabled: false
   snapchat_ads_source:
     enabled: false
+  
+  # disable both tiktok ads models if not using tiktok ads
+  tiktok_ads:
+    enabled: false
+  tiktok_ads_source:
+    enabled: false
 ```
 ### Google Ads and Adwords API Configuration
 This package allows users to leverage either the Adwords API or the Google Ads API if you have enabled the Google Ads connector. You will be able to determine which API your Google Ads connector is using by navigating within your Fivetran UI to the `setup` tab -> `edit connection details` link -> and reference the `API configuration` used. You will want to refer to the respective configuration steps below based off the API used by your connector. 
@@ -149,6 +157,8 @@ vars:
     google_ads_database: your_database_name 
     snapchat_schema: snapchat_ads
     snapchat_database: your_database_name 
+    tiktok_schema: tiktok_ads
+    tiktok_database: your_database_name 
 ```
 
 For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
@@ -197,6 +207,11 @@ models:
     +schema: snapchat_ads
   snapchat_ads_source:
     +schema: snapchat_ads_source
+  
+  tiktok_ads:
+    +schema: tiktok_ads
+  tiktok_ads_source:
+    +schema: tiktok_ads_source
 
 ```
 
