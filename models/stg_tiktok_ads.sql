@@ -3,7 +3,7 @@
 with base as (
 
     select *
-    from {{ ref('tiktok__ad_adapter')}}
+    from {{ ref('tiktok_ads__ad_adapter')}}
 
 ), fields as (
 
@@ -26,7 +26,8 @@ with base as (
         'TikTok Ads' as platform,
         sum(coalesce(clicks, 0)) as clicks,
         sum(coalesce(impressions, 0)) as impressions,
-        sum(coalesce(spend, 0)) as spends
+        sum(coalesce(spend, 0)) as spend
+
     from base
     {{ dbt_utils.group_by(16) }}
 
