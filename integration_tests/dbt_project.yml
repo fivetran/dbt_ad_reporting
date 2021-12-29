@@ -46,6 +46,7 @@ vars:
     campaign_history: "{{ ref('campaign_history_data') }}"
     pin_promotion_history: "{{ ref('pin_promotion_history_data') }}"
     pin_promotion_report: "{{ ref('pin_promotion_report_data') }}"
+    advertiser_history: "{{ ref('advertiser_history_data') }}"
     
   facebook_ads_source:
     account_history: "{{ ref('facebook_ads_account_history_data') }}"
@@ -128,6 +129,7 @@ seeds:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
         ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ADVERTISER_ID: "{{ 'string' if target.name in ('bigquery', 'spark') else 'varchar' }}"
     pin_promotion_history_data:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
@@ -141,6 +143,10 @@ seeds:
         AD_GROUP_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         CAMPAIGN_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         ADVERTISER_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+    advertiser_history_data:
+      +column_types:
+        id: "{{ 'string' if target.name in ('bigquery', 'spark') else 'varchar' }}"
+        owner_user_id: "{{ 'string' if target.name in ('bigquery', 'spark') else 'varchar' }}"
 
     ### Google Seeds
     

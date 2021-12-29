@@ -1,0 +1,5 @@
+id,updated_time,name,owner_user_id,test_account,currency,country,created_time,is_one_tap,_fivetran_synced
+549763457083,2021-12-09 22:56:48,PinterestIsAwesome,1111111111111,false,USD,US,2021-12-07 18:10:22,false,2021-12-29 10:59:37.216
+549762222963,2021-10-06 23:04:09,CedarCat,2222222222,false,USD,US,2021-03-08 23:19:39,false,2021-12-29 10:59:30.042
+549763457083,2021-12-07 18:10:22,Alfredo,333333333,false,USD,US,2021-12-07 18:10:22,false,2021-12-09 21:05:29.258
+549763148697,2021-09-21 22:56:21,Grace and Frankie,4444444444,false,USD,US,2021-09-21 18:08:41,false,2021-12-29 10:59:32.399
