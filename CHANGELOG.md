@@ -1,3 +1,10 @@
+# dbt_ad_reporting 0.6.0
+# Feature Additions
+- The `stg_pinterest_ads` model has been updated to include the `advertiser_id` and `advertiser_name` fields. These fields are then used in the downstream `ad_reporting` model. ([#42](https://github.com/fivetran/dbt_ad_reporting/pull/42))
+
+# Contributors
+- @bnealdefero ([#42](https://github.com/fivetran/dbt_ad_reporting/pull/42))
+
 # dbt_ad_reporting v0.6.0-b1
 🎉 dbt v1.0.0 Compatibility Pre Release 🎉 An official dbt v1.0.0 compatible version of the package will be released once existing feature/bug PRs are merged.
 ## 🚨 Breaking Changes 🚨
