@@ -9,7 +9,7 @@ with base as (
 
     select
         cast(campaign_date as date) as date_day,
-        cast(advertiser_id as {{ dbt_utils.type_string() }}) as accound_id,
+        cast(advertiser_id as {{ dbt_utils.type_string() }}) as account_id,
         advertiser_name as account_name,
         base_url,
         url_host,
