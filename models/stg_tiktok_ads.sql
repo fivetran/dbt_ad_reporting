@@ -8,7 +8,7 @@ with base as (
 ), fields as (
 
     select
-        company_name as account_name,
+        advertiser_name as account_name,
         cast(advertiser_id as {{ dbt_utils.type_string() }}) as account_id,
         cast(date_day as date) as date_day,
         base_url,
