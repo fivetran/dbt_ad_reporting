@@ -158,8 +158,8 @@ vars:
     google_ads_database: your_database_name 
     snapchat_schema: snapchat_ads
     snapchat_database: your_database_name 
-    tiktok_schema: tiktok_ads
-    tiktok_database: your_database_name 
+    tiktok_ads_schema: tiktok_ads
+    tiktok_ads_database: your_database_name 
 ```
 
 For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
