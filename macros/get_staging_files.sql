@@ -30,6 +30,10 @@
     {% set _ = staging_file.append(ref('stg_snapchat_ads')) %}
     {% endif %}
 
+    {% if var('ad_reporting__tiktok_ads_enabled') %} 
+    {% set _ = staging_file.append(ref('stg_tiktok_ads')) %}
+    {% endif %}
+
 
     {{ return(staging_file) }}
 
