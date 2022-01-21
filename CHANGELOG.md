@@ -1,3 +1,11 @@
+# dbt_ad_reporting v0.7.0
+## Features
+- Allow for multiple sources by unioning source tables across multiple Facebook Ads connectors.
+## Under the Hood
+- Unioning: The unioning occurs in the staging tmp models using the `fivetran_utils.union_data` macro.
+- Source Relation column: To distinguish which source each record comes from, we added a new `source_relation` column in each staging and final model and applied the `fivetran_utils.source_relation` macro.
+    - The `source_relation` column is included in all joins and window function partition clauses in the transform package. Note that an event from one Ad Reporting platform source will _never_ be attributed to an event from a different Ad Reporting Platform connector.
+
 # dbt_ad_reporting v0.6.0
 TikTok Ads has been added as a dependency and is enabled by default. Be sure to disable the models via the README if you do not have a TikTok Ads connector.
 

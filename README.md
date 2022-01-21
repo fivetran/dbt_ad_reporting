@@ -161,6 +161,24 @@ vars:
     tiktok_ads_schema: tiktok_ads
     tiktok_ads_database: your_database_name 
 ```
+### Unioning Multiple Social Media Connectors
+If you have multiple Ad Reporting connectors in Fivetran, you can use this package on all of them simultaneously. The package will union all of the data together and then pass the unioned table(s) into the reporting model. You will be able to see which source the data came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `union_schemas` or `union_databases` variables:
+
+> IMPORTANT: You _cannot_ use both the `union_schemas` and `union_databases` variables.
+
+```yml
+# dbt_project.yml
+...
+config-version: 2
+vars:
+    ##Schemas variables
+    facebook_ads_union_schemas: ['facebook_ads_one','facebook_ads_two']
+    google_ads_union_schemas: ['google_ads_one','google_ads_two']
+
+    ##Databases variables
+    facebook_ads_union_databases: ['facebook_ads_one','facebook_ads_two']
+    google_ads_union_databases: ['google_ads_one','google_ads_two']
+```
 
 For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
 

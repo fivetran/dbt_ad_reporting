@@ -23,6 +23,7 @@ with base as (
         campaign_name,
         cast(ad_set_id as {{ dbt_utils.type_string() }}) as ad_group_id,
         ad_set_name as ad_group_name,
+        source_relation,
         'Facebook Ads' as platform,
         sum(coalesce(clicks, 0)) as clicks,
         sum(coalesce(impressions, 0)) as impressions,
