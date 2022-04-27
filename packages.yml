@@ -5,8 +5,11 @@ packages:
 - package: fivetran/microsoft_ads
   version: [">=0.4.0", "<0.5.0"]
 
-- package: fivetran/linkedin
-  version: [">=0.4.0", "<0.5.0"]
+# - package: fivetran/linkedin
+#   version: [">=0.4.0", "<0.5.0"]
+  - git: https://github.com/fivetran/dbt_linkedin.git
+    revision: bugfix/timestamp-casting
+    warn-unpinned: false
 
 - package: fivetran/google_ads
   version: [">=0.6.0", "<0.7.0"]
