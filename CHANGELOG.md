@@ -1,3 +1,7 @@
+# dbt_ad_reporting v0.8.0
+## 🚨 Breaking Changes 🚨
+- The `api_source` variable for the Google Ads package is now defaulted to `google_ads` as opposed to `adwords`. The Adwords API has since been depricated by Google and is now no longer the standard API for the Google Ads connector. Please ensure you are using a Google Ads API version of the Fivetran connector before upgrading this package. 
+  - Please note, the `adwords` version of this package will be fully removed from the package in August of 2022.
 # dbt_ad_reporting v0.7.0
 ## 🚨 Breaking Changes 🚨
 - The Google Ads dependency has been updated to now reference the latest version of the `dbt_google_ads` package (v0.6.0). This version of the package incorporates new and modified tables within the `Google Ads API` version of the connector. For more information, refer to the relevant [dbt_google_ads](https://github.com/fivetran/dbt_google_ads_source/releases/tag/v0.6.0) and [dbt_google_ads_source](https://github.com/fivetran/dbt_google_ads/releases/tag/v0.6.0) v0.6.0 release notes.

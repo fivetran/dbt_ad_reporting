@@ -30,7 +30,7 @@ Include in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 
 ```
 
@@ -114,10 +114,9 @@ models:
     enabled: false
 ```
 ### Google Ads and Adwords API Configuration
-This package allows users to leverage either the Adwords API or the Google Ads API if you have enabled the Google Ads connector. You will be able to determine which API your Google Ads connector is using by navigating within your Fivetran UI to the `setup` tab -> `edit connection details` link -> and reference the `API configuration` used. You will want to refer to the respective configuration steps below based off the API used by your connector. 
+This package allows users to leverage either the Adwords API or the Google Ads API. You will be able to determine which API your connector is using by navigating within your Fivetran UI to the `setup` tab -> `edit connection details` link -> and reference the `API configuration` used. You will want to refer to the respective configuration steps below based off the API used by your connector. You may set the api type by using the below config in your root `dbt_project.yml`.
 
-#### Google Ads API
-If your Google Ads connector is setup using the Google Ads API then you will need to configure your `dbt_project.yml` with the below variable:
+> **Note**: All new Google Ads Fivetran connectors will be setup with the Google Ads API. If you are unable to infer the API type based on the above steps, it is most likely that you are using the Google Ads API. Additionally, please be aware that the Adwords API version of the package will be sunset in August of 2022.
 
 ```yml
 # dbt_project.yml
@@ -126,10 +125,10 @@ If your Google Ads connector is setup using the Google Ads API then you will nee
 config-version: 2
 
 vars:
-    api_source: google_ads  ## adwords by default and is case sensitive!
+  api_source: google_ads  ## google_ads by default, but may be changed to 'adwords' if using a previous version of the connector.
 ```
 #### Adwords API
-If your Google Ads connector is setup using the Adwords API (default) then you will want to follow the steps outlined in the [dbt_google_ads](https://github.com/fivetran/dbt_google_ads#adwords-api-configuration) package for configuring your package to leverage the adwords API.
+If your Google Ads connector is setup using the Adwords API (no longer default) then you will want to follow the steps outlined in the [dbt_google_ads](https://github.com/fivetran/dbt_google_ads#adwords-api-configuration) package for configuring your package to leverage the adwords API.
 
 ### Data Location
 
@@ -172,6 +171,8 @@ By default this package will build all models in your <target_schema>.  This beh
 
 ...
 models:  
+  ad_reporting:
+    +schema: ad_reporting
   pinterest:
     +schema: pinterest
   pinterest_source:

@@ -8,8 +8,12 @@ packages:
 - package: fivetran/linkedin
   version: [">=0.4.0", "<0.5.0"]
 
-- package: fivetran/google_ads
-  version: [">=0.6.0", "<0.7.0"]
+# - package: fivetran/google_ads
+#   version: [">=0.7.0", "<0.8.0"]
+## TO SWITCH BEFORE MERGE
+- git: https://github.com/fivetran/dbt_google_ads.git
+  revision: feature/google-ads-api-default
+  warn-unpinned: false
 
 - package: fivetran/tiktok_ads
   version: [">=0.1.0", "<0.2.0"]
