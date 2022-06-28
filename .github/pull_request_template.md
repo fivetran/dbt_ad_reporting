@@ -1,4 +1,3 @@
-Pull Request
 **Are you a current Fivetran customer?** 
 <!--- Please tell us your name, title and company -->
 
