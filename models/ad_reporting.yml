@@ -40,6 +40,9 @@ models:
       - name: spend
         description: The cost of the ads.
 
+      - name: ad_type
+        description: The type of ad.
+
       - name: base_url
         description: The base URL of the ad.
 
