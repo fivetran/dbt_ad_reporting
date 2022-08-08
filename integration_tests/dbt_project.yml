@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '0.8.0'
+version: '1.0.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -8,7 +8,6 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
     
 vars: 
-
   google_ads__final_url_performance: "{{ ref('google_ads_final_url_performance_data') }}"
   google_ads__click_performance: "{{ ref('google_ads_click_performance_data') }}"
   google_ads__criteria_performance: "{{ ref('google_ads_criteria_performance_data') }}"

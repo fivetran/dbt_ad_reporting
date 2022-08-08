@@ -1,178 +1,141 @@
-[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-# Ad Reporting
+<p align="center">
+    <a alt="License"
+        href="https://github.com/fivetran/dbt_github/blob/main/LICENSE">
+        <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
+    <a alt="Fivetran-Release"
+        href="https://fivetran.com/docs/getting-started/core-concepts#releasephases">
+        <img src="https://img.shields.io/badge/Fivetran Release Phase-_Beta-orange.svg" /></a>
+    <a alt="dbt-core">
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.0.0_<2.0.0-orange.svg" /></a>
+    <a alt="Maintained?">
+        <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
+    <a alt="PRs">
+        <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
+</p>
 
-This dbt package aggregates and models data from multiple Fivetran advertising connectors. The package standardizes the schemas from the various ad connectors and creates a single reporting model for all activity. It enables you to analyze your daily ad spend, clicks, and impressions by campaigns, ad groups, and UTM parameters.
-
-Currently, this package supports the following ad connector types:
+# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
+# 📣 What does this dbt package do?
+- Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels. 
+- Currently supports the following Fivetran ad platform connectors:
+    - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
+    - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
+    - [Google Ads](https://github.com/fivetran/dbt_google_ads)
+    - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
+    - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
+    - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest)
+    - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
+    - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
+    - [Twitter Ads](https://github.com/fivetran/dbt_twitter)
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
-* [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
-* [Google Ads](https://github.com/fivetran/dbt_google_ads)
-* [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
-* [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
-* [Pinterest Ads](https://github.com/fivetran/dbt_pinterest)
-* [Twitter Ads](https://github.com/fivetran/dbt_twitter)
-* [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
-* [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
+- Generates a comprehensive data dictionary of your source and modeled App Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
-## Models
+Refer to the table below for a detailed view of final models materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models. 
 
-This package contains a number of models, which all build up to the final `ad_reporting` model. The `ad_reporting` model combines the data from all of the connectors. A dependency on all the required dbt packages is declared in this package's `packages.yml` file, so it will automatically download them when you run `dbt deps`. The primary outputs of this package are described below.
+| **model**                  | **description**                                                                                                                                               |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ad_reporting__account_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__account_report)             | Each record represents daily metrics by account                                            |
+| [ad_reporting__campaign_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__campaign_report)     | Each record represents daily metrics by campaign and account. |
+| [ad_reporting__ad_group_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__ad_group_report)     | Each record represents daily metrics by ad group, campaign and account.                            |
+| [ad_reporting__ad_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__ad_report)    | Each record represents daily metrics by ad, ad group, campaign and account.                            |
+| [ad_reporting__keyword_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__keyword_report)   | Each record represents daily metrics by keyword, ad group, campaign and account.                           |                          |
+| [ad_reporting__search_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__search_report) | Each record represents daily metrics by search term, ad group, campaign and account.                        |
 
-| **model**    | **description**                                                                                                        |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| ad_reporting | Each record represents the daily ad performance from all connectors, including information about the UTM parameters you used. |
+> The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
-## Installation Instructions
-Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+# 🎯 How do I use the dbt package?
+## Step 1: Pre-Requisites
+- **Connector**: Have all relevant Fivetran app platform connectors syncing data into your warehouse. This package currently supports:
+    - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
+    - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
+    - [Google Ads](https://fivetran.com/docs/applications/google-ads)
+    - [LinkedIn Ad Analytics](https://fivetran.com/docs/applications/linkedin-ads)
+    - [Microsoft Advertising](https://fivetran.com/docs/applications/microsoft-advertising)
+    - [Pinterest Ads](https://fivetran.com/docs/applications/pinterest-ads)
+    - [Snapchat Ads](https://fivetran.com/docs/applications/snapchat-ads)
+    - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
+    - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
+- **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
+- **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 
-Include in your `packages.yml`
-
+## Step 2: Installing the Package
+Include the following github package version in your `packages.yml`
+> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=0.8.0", "<0.9.0"]
-
+    version: [">=1.0.0", "<1.1.0"]
 ```
-
-## Configuration
-
-### Connector selection
-
-The package assumes that all connector models are enabled, so it will look to pull data from all of the connectors listed [above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting). If you don't want to use certain connectors, disable those connectors' models in this package by setting the relevant variables to `false`:
+## Step 3: Configure Database and Schema Variables
+By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
 
 ```yml
-# dbt_project.yml
-
-...
-config-version: 2
-
 vars:
-  ad_reporting__pinterest_enabled: False
-  ad_reporting__microsoft_ads_enabled: False
-  ad_reporting__linkedin_ads_enabled: False
-  ad_reporting__google_ads_enabled: False
-  ad_reporting__twitter_ads_enabled: False
-  ad_reporting__facebook_ads_enabled: False
-  ad_reporting__snapchat_ads_enabled: False
-  ad_reporting__tiktok_ads_enabled: False
-```
+    apple_search_ads_schema: apple_search_ads
+    apple_search_ads_database: your_database_name
 
-Next, you must disable the models in the unwanted connector's related package, which has its own configuration. Disable the relevant models under the models section of your `dbt_project.yml` file by setting the `enabled` value to `false`. 
-
-*Only include the models you want to disable.  Default values are generally `true` but that is not always the case.*
-
-```yml
-models:
-  # disable both pinterest models if not using pinterest ads
-  pinterest:
-    enabled: false
-  pinterest_source:
-    enabled: false
-  
-  # disable both microsoft ads models if not using microsoft ads
-  microsoft_ads:
-    enabled: false
-  microsoft_ads_source:
-    enabled: false
-  
-  # disable both linkedin ads models if not using linkedin ads
-  linkedin:
-    enabled: false
-  linkedin_source:
-    enabled: false
-  
-  # disable both twitter ads models if not using twitter ads
-  twitter_ads:
-    enabled: false
-  twitter_ads_source:
-    enabled: false
-  
-  # disable all three facebook ads models if not using facebook ads
-  facebook_ads:
-    enabled: false #IF YOU ARE USING FACEBOOK, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
-  facebook_ads_source:
-    enabled: false #IF YOU ARE USING FACEBOOK, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
-  facebook_ads_creative_history:
-    enabled: false #IF YOU ARE USING FACEBOOK, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
-  
-  # disable both google ads models if not using google ads
-  google_ads:
-    enabled: false #IF YOU ARE USING GOOGLE ADS, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
-  google_ads_source:
-    enabled: false #IF YOU ARE USING GOOGLE ADS, DELETE THIS CONFIG, DO NOT SIMPLY SET TO TRUE
-  
-  # disable both snapchat ads models if not using snapchat ads
-  snapchat_ads:
-    enabled: false
-  snapchat_ads_source:
-    enabled: false
-  
-  # disable both tiktok ads models if not using tiktok ads
-  tiktok_ads:
-    enabled: false
-  tiktok_ads_source:
-    enabled: false
-```
-### Google Ads and Adwords API Configuration
-This package allows users to leverage either the Adwords API or the Google Ads API. You will be able to determine which API your connector is using by navigating within your Fivetran UI to the `setup` tab -> `edit connection details` link -> and reference the `API configuration` used. You will want to refer to the respective configuration steps below based off the API used by your connector. You may set the api type by using the below config in your root `dbt_project.yml`.
-
-> **Note**: As of April, 2022 all Fivetran Google Ads connectors leverage the Google Ads API rather than Adwords. Additionally, please be aware that the Adwords API version of the package will be sunset in August of 2022.
-
-```yml
-# dbt_project.yml
-
-...
-config-version: 2
-
-vars:
-  api_source: google_ads  ## google_ads by default, but may be changed to 'adwords' if using a previous version of the connector.
-```
-#### Adwords API
-If your Google Ads connector is setup using the Adwords API (no longer default) then you will want to follow the steps outlined in the [dbt_google_ads](https://github.com/fivetran/dbt_google_ads#adwords-api-configuration) package for configuring your package to leverage the adwords API.
-
-### Data Location
-
-By default, this package looks for your advertising data in your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your advertising data is stored, add the relevant `_database` variables to your `dbt_project.yml` file (see below). 
-
-By default, this package also looks for specific schemas from each of your connectors. The schemas from each connector are highlighted in the code snippet below. If your data is stored in a different schema, add the relevant `_schema` variables to your `dbt_project.yml` file:
-
-```yml
-# dbt_project.yml
-
-...
-config-version: 2
-
-vars:
-    microsoft_ads_schema: bingads
-    microsoft_ads_database: your_database_name
-    linkedin_schema: linkedin_ads 
-    linkedin_database: your_database_name  
-    pinterest_schema: pinterest
-    pinterest_database: your_database_name 
-    twitter_ads_schema: twitter_ads
-    twitter_ads_database: your_database_name  
     facebook_ads_schema: facebook_ads
     facebook_ads_database: your_database_name 
-    google_ads_schema: adwords
+
+    google_ads_schema: google_ads
     google_ads_database: your_database_name 
+
+    microsoft_ads_schema: bingads
+    microsoft_ads_database: your_database_name
+
+    linkedin_schema: linkedin_ads 
+    linkedin_database: your_database_name  
+
+    pinterest_schema: pinterest
+    pinterest_database: your_database_name 
+
+    twitter_ads_schema: twitter_ads
+    twitter_ads_database: your_database_name  
+
     snapchat_schema: snapchat_ads
     snapchat_database: your_database_name 
+    
     tiktok_ads_schema: tiktok_ads
     tiktok_ads_database: your_database_name 
 ```
 
-For more configuration information, see the relevant connectors ([listed above](https://github.com/fivetran/dbt_ad_reporting/edit/master/README.md#adreporting)).
+## Step 4: Disable and Enable Source Tables
+Your ad platform connectors might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs.
 
-### Changing the Build Schema (RECOMMENDED)
-By default this package will build all models in your <target_schema>.  This behavior can be tailored to your preference by making use of custom schemas. We highly recommend use of custom schemas for this package, as multiple sources are involved.  To do so, add the following configuration to your `dbt_project.yml` file: 
+If you have the following tables enabled for:
+- Apple Search Ads
+    - `search_term_report`
+# !!!!! TO DO: ADD OTHER TABLES AND VARS HERE!!!!
+
+Add the following variables to your dbt_project.yml file
 
 ```yml
-# dbt_project.yml
+vars:
+  apple_search_ads__using_search_terms: True # by default this is assumed to be false
+```
 
-...
+## (Recommended) Step 5: Change the Build Schema
+By default this package will build all models in your `<target_schema>` with the respective package suffixes (see below). This behavior can be tailored to your preference by making use of custom schemas. If you would like to override the current naming conventions, please add the following configuration to your `dbt_project.yml` file and rename `+schema` configs:
+
+```yml
 models:  
   ad_reporting:
     +schema: ad_reporting
+
+  apple_search_ads:
+    +schema: apple_search_ads
+  apple_search_ads_source:
+    +schema: apple_search_ads_source
+  
+  facebook_ads:
+    +schema: facebook_ads
+  facebook_ads_source:
+    +schema: facebook_ads_source
+  
+  google_ads:
+    +schema: google_ads
+  google_ads_source:
+    +schema: google_ads_source
+
   pinterest:
     +schema: pinterest
   pinterest_source:
@@ -192,18 +155,6 @@ models:
     +schema: twitter_ads
   twitter_ads_source:
     +schema: twitter_ads_source
-
-  facebook_ads:
-    +schema: facebook_ads
-  facebook_ads_source:
-    +schema: facebook_ads_source
-  facebook_ads_creative_history:
-    +schema: facebook_ads
-  
-  google_ads:
-    +schema: google_ads
-  google_ads_source:
-    +schema: google_ads_source
   
   snapchat_ads:
     +schema: snapchat_ads
@@ -214,39 +165,114 @@ models:
     +schema: tiktok_ads
   tiktok_ads_source:
     +schema: tiktok_ads_source
-
 ```
 
-## Database Support
+> Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
 
-This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks.
+## (Optional) Step 6: Additional configurations
+<details><summary>Expand to view configurations</summary>
 
-### Databricks Dispatch Configuration
-dbt `v0.20.0` introduced a new project-level dispatch configuration that enables an "override" setting for all dispatched macros. If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+### Change the source table references
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
+> IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
+    
 ```yml
-# dbt_project.yml
-
-dispatch:
-  - macro_namespace: dbt_utils
-    search_order: ['spark_utils', 'dbt_utils']
+vars:
+    <default_source_table_name>_identifier: your_table_name 
 ```
+    
+</details>
+<br>
+
+## (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
+<details><summary>Expand to view details</summary>
+<br>
+
+Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core™ setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
+
+</details>
+<br>
+
+# 🔍 Does this package have dependencies?
+This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
+> **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
+
+# !!! TO DO: DOUBLE CHECK VERSIONS ON RELEASE!!!!
+```yml
+packages: 
+    - package: fivetran/fivetran_utils
+      version: [">=0.3.0", "<0.4.0"]
+
+    - package: dbt-labs/dbt_utils
+      version: [">=0.8.0", "<0.9.0"]
+
+    - package: fivetran/apple_search_ads
+      version: [">=0.1.0", "<0.2.0"]
+
+    - package: fivetran/apple_search_ads_source
+      version: [">=0.1.0", "<0.2.0"]
+    
+    - package: fivetran/facebook_ads
+      version: [">=0.5.0", "<0.6.0"]
+
+    - package: fivetran/facebook_ads_source
+      version: [">=0.5.0", "<0.6.0"]
+    
+    - package: fivetran/google_ads
+      version: [">=0.8.0", "<0.9.0"]
+
+    - package: fivetran/google_ads_source
+      version: [">=0.8.0", "<0.9.0"]
+
+    - package: fivetran/pinterest
+      version: [">=0.6.0", "<0.7.0"]
+
+    - package: fivetran/pinterest_source
+      version: [">=0.6.0", "<0.7.0"]
+
+    - package: fivetran/microsoft_ads
+      version: [">=0.5.0", "<0.6.0"]
+
+    - package: fivetran/microsoft_ads_source
+      version: [">=0.6.0", "<0.7.0"]
+
+    - package: fivetran/linkedin
+      version: [">=0.5.0", "<0.6.0"]
+
+    - package: fivetran/linkedin_source
+      version: [">=0.5.0", "<0.6.0"]
+
+    - package: fivetran/twitter_ads
+      version: [">=0.5.0", "<0.6.0"]
+
+    - package: fivetran/twitter_ads_source
+      version: [">=0.5.0", "<0.6.0"]
+
+    - package: fivetran/snapchat_ads
+      version: [">=0.4.0", "<0.5.0"]
+
+    - package: fivetran/snapchat_ads_source
+      version: [">=0.4.0", "<0.5.0"]
+
+    - package: fivetran/tiktok_ads
+      version: [">=0.2.0", "<0.3.0"]
+
+    - package: fivetran/tiktok_ads_source
+      version: [">=0.2.0", "<0.3.0"]
+```
+# 🙌 How is this package maintained and can I contribute?
+## Package Maintenance
+The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
+
+## Opinionated Decisions
+In creating this package, which is meant for a wide range of use cases, we had to take opinionated stances on a few different questions we came across during development. We've consolidated significant choices we made in the [DECISIONLOG.md](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md), and will continue to update as the package evolves. We are always open to and encourage feedback on these choices, and the package in general.
 
 ## Contributions
+These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
 
-Additional contributions to this package are very welcome! Please create issues
-or open PRs against `main`. Check out 
-[this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) 
-on the best workflow for contributing to a package.
+We highly encourage and welcome contributions to this package. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
-## Resources:
-- Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
-- Have questions, feedback, or need help? Book a time during our office hours [using Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com
-- Find all of Fivetran's pre-built dbt packages in our [dbt hub](https://hub.getdbt.com/fivetran/)
-- Learn how to orchestrate your models with [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt)
-- Learn more about Fivetran overall [in our docs](https://fivetran.com/docs)
-- Check out [Fivetran's blog](https://fivetran.com/blog)
-- Learn more about dbt [in the dbt docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the dbt blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+# 🏪 Are there any resources available?
+- If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose) section to find the right avenue of support for you.
+- If you would like to provide feedback to the dbt package team at Fivetran, or would like to request a future dbt package to be developed, then feel free to fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
+- Have questions or want to just say hi? Book a time during our office hours [here](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or send us an email at solutions@fivetran.com.
