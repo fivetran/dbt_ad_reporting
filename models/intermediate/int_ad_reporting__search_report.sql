@@ -27,6 +27,7 @@ with prep_microsoft as (
     ) }}
 ), 
 
+{% if var('apple_search_ads__using_search_terms') %}
 prep_apple_search as (
 
     {{ field_name_conversion(
@@ -42,12 +43,12 @@ prep_apple_search as (
         relation=ref('apple_search_ads__search_term_report')
     ) }}
 ), 
+{% endif %}
 
 unioned as (
 
-    {{ union_ctes(ctes=[
-        'prep_microsoft', 
-        'prep_apple_search']
+    {{ union_ctes(ctes=['prep_microsoft', 'prep_apple_search']
+        if var('apple_search_ads__using_search_terms') else ['prep_microsoft']
     ) }}
 )
 
