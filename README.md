@@ -2,9 +2,6 @@
     <a alt="License"
         href="https://github.com/fivetran/dbt_github/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
-    <a alt="Fivetran-Release"
-        href="https://fivetran.com/docs/getting-started/core-concepts#releasephases">
-        <img src="https://img.shields.io/badge/Fivetran Release Phase-_Beta-orange.svg" /></a>
     <a alt="dbt-core">
         <img src="https://img.shields.io/badge/dbt_Core™_version->=1.0.0_<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
@@ -38,7 +35,7 @@ Refer to the table below for a detailed view of final models materialized by def
 | [ad_reporting__ad_group_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__ad_group_report)     | Each record represents daily metrics by ad group, campaign and account.                            |
 | [ad_reporting__ad_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__ad_report)    | Each record represents daily metrics by ad, ad group, campaign and account.                            |
 | [ad_reporting__keyword_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__keyword_report)   | Each record represents daily metrics by keyword, ad group, campaign and account.                           |                          |
-| [ad_reporting__search_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__search_report) | Each record represents daily metrics by search term, ad group, campaign and account.                        |
+| [ad_reporting__search_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__search_report) | Each record represents daily metrics by search query, ad group, campaign and account.                        |
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
@@ -56,6 +53,7 @@ Refer to the table below for a detailed view of final models materialized by def
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
 - **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
+- For Facebook Ads compatibility, please ensure that you have configured the necessary pre-built reports. Please refer to the [Facebook Ads package](https://github.com/fivetran/dbt_facebook_ads/tree/main#step-1-prerequisites) for more information.
 
 ## Step 2: Installing the Package
 Include the following github package version in your `packages.yml`
@@ -98,19 +96,19 @@ vars:
     tiktok_ads_database: your_database_name 
 ```
 
-## Step 4: Disable and Enable Source Tables
-Your ad platform connectors might not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs.
+## Step 4: Enabling/Disabling Models
+This package takes into consideration that not every account will have every feature enabled per platform. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs. 
 
-If you have the following tables enabled for:
-- Apple Search Ads
-    - `search_term_report`
-# !!!!! TO DO: ADD OTHER TABLES AND VARS HERE!!!!
+For **Apple Search Ads**, if you have the `search_term_report` enabled, you may choose to update the respective variable below.
+
+For **Twitter Ads**, if you are tracking keyword performance, you may choose to update the corresponding variable.
 
 Add the following variables to your dbt_project.yml file
 
 ```yml
 vars:
   apple_search_ads__using_search_terms: True # by default this is assumed to be false
+  twitter_ads__using_keywords: False # by default this is assumed to be true
 ```
 
 ## (Recommended) Step 5: Change the Build Schema
@@ -136,20 +134,20 @@ models:
   google_ads_source:
     +schema: google_ads_source
 
-  pinterest:
-    +schema: pinterest
-  pinterest_source:
-    +schema: pinterest_source
-  
-  microsoft_ads:
-    +schema: microsoft_ads
-  microsoft_ads_source:
-    +schema: microsoft_ads_source
-  
   linkedin:
     +schema: linkedin
   linkedin_source:
     +schema: linkedin_source
+
+  microsoft_ads:
+    +schema: microsoft_ads
+  microsoft_ads_source:
+    +schema: microsoft_ads_source
+
+  pinterest:
+    +schema: pinterest
+  pinterest_source:
+    +schema: pinterest_source
   
   twitter_ads:
     +schema: twitter_ads
@@ -170,7 +168,6 @@ models:
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
 
 ## (Optional) Step 6: Additional configurations
-<details><summary>Expand to view configurations</summary>
 
 ### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
@@ -185,8 +182,6 @@ vars:
 <br>
 
 ## (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
-<details><summary>Expand to view details</summary>
-<br>
 
 Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core™ setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
 

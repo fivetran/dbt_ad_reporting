@@ -2,9 +2,9 @@ packages:
 
 ## some packages are erroring because they've already incorporated the persist columns logic 
 ## and therefore using a diff version of fivetran_utils 
-  # - git: https://github.com/fivetran/dbt_apple_search_ads.git
-  #   revision: update/v2-updates
-  #   warn-unpinned: false
+  - git: https://github.com/fivetran/dbt_apple_search_ads.git
+    revision: update/v2-updates
+    warn-unpinned: false
 
   - git: https://github.com/fivetran/dbt_facebook_ads.git
     revision: update/ad-reporting-v2
@@ -14,9 +14,9 @@ packages:
     revision: feature/v2_updates
     warn-unpinned: false
 
-  # - git: https://github.com/fivetran/dbt_linkedin.git
-  #   revision: feature/v2-updates
-  #   warn-unpinned: false
+  - git: https://github.com/fivetran/dbt_linkedin.git
+    revision: feature/v2-updates
+    warn-unpinned: false
 
   - git: https://github.com/fivetran/dbt_microsoft_ads.git
     revision: update/ad-reporting-v2
@@ -30,9 +30,9 @@ packages:
     revision: feature/v2_updates
     warn-unpinned: false
 
-  # - git: https://github.com/fivetran/dbt_twitter.git
-  #   revision: feature/v2-updates
-  #   warn-unpinned: false
+  - git: https://github.com/fivetran/dbt_twitter.git
+    revision: feature/v2-updates
+    warn-unpinned: false
   
   - git: https://github.com/fivetran/dbt_snapchat_ads.git
     revision: feature/v2_updates

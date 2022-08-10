@@ -14,7 +14,6 @@
     - 'spend'
 #}
 
-{#
 with prep_microsoft as (
 
     {{ field_name_conversion(
@@ -34,22 +33,23 @@ prep_apple_search as (
         platform='apple_search_ads', 
         report_type='search', 
         field_mapping={
-                'keyword_text': 'keyword_name',
+                'account_id': 'organization_id',
+                'account_name': 'organization_name',
                 'search_match_type': 'match_type',
-                'search_query': 'search_term_text'
+                'search_query': 'search_term_text',
+                'clicks': 'taps'
             },
-        relation=ref('apple_search_ads__search_report')
+        relation=ref('apple_search_ads__search_term_report')
     ) }}
 ), 
 
 unioned as (
 
     {{ union_ctes(ctes=[
-        'prep_microsoft',
+        'prep_microsoft', 
         'prep_apple_search']
     ) }}
 )
 
 select *
 from unioned
-#}

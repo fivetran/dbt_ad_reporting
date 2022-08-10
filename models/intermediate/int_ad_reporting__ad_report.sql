@@ -49,6 +49,20 @@ prep_standardized_union_platform_rename as (
     from prep_standardized_union
 ),
 
+prep_apple_search as (
+
+    {{ field_name_conversion(
+        platform='apple_search_ads', 
+        report_type='ad', 
+        field_mapping={
+                'account_id': 'organization_id',
+                'account_name': 'organization_name',
+                'clicks': 'taps'
+            },
+        relation=ref('apple_search_ads__ad_report')
+    ) }}
+),
+
 prep_facebook as (
 
     {{ field_name_conversion(
@@ -59,6 +73,24 @@ prep_facebook as (
                 'ad_group_name': 'ad_set_name'
             },
         relation=ref('facebook_ads__ad_report')
+    ) }}
+),
+
+prep_linkedin as (
+
+    {{ field_name_conversion(
+        platform='linkedin_ads', 
+        report_type='ad', 
+        field_mapping={
+                'campaign_id': 'campaign_group_id',
+                'campaign_name': 'campaign_group_name',
+                'ad_group_id': 'campaign_id',
+                'ad_group_name': 'campaign_name',
+                'ad_id': 'creative_id',
+                'ad_name': 'null',
+                'spend': 'cost'
+            },
+        relation=ref('linkedin_ads__creative_report')
     ) }}
 ),
 
@@ -108,14 +140,32 @@ prep_tiktok as (
     ) }}
 ), 
 
+prep_twitter as (
+
+    {{ field_name_conversion(
+        platform='twitter_ads', 
+        report_type='ad', 
+        field_mapping={
+                'ad_group_id': 'line_item_id',
+                'ad_group_name': 'line_item_name',
+                'ad_id': 'promoted_tweet_id',
+                'ad_name': 'tweet_name'
+            },
+        relation=ref('twitter_ads__promoted_tweet_report')
+    ) }}
+), 
+
 unioned as (
 
     {{ union_ctes(ctes=[
         'prep_standardized_union_platform_rename',
+        'prep_apple_search',
         'prep_facebook',
+        'prep_linkedin',
         'prep_pinterest',
         'prep_snapchat',
-        'prep_tiktok']
+        'prep_tiktok',
+        'prep_twitter']
     ) }}
 )
 

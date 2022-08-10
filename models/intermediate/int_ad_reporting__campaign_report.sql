@@ -1,11 +1,11 @@
--- missing apple search ads (standalone), twitter (standard union) and linkedin (standalone) due to new persist logic 
 with prep_standardized_union as (
 
     {{ dbt_utils.union_relations(
         relations=[
             ref('facebook_ads__campaign_report'), 
             ref('google_ads__campaign_report'),
-            ref('microsoft_ads__campaign_report')
+            ref('microsoft_ads__campaign_report'),
+            ref('twitter_ads__campaign_report')
             ],
         source_column_name='platform',
         include=['date_day', 
@@ -26,6 +26,7 @@ prep_standardized_union_platform_rename as (
             WHEN lower(platform) like '%facebook_ads__campaign_report`' then 'facebook_ads'
             WHEN lower(platform) like '%google_ads__campaign_report`' then 'google_ads'
             WHEN lower(platform) like '%microsoft_ads__campaign_report`' then 'microsoft_ads'
+            WHEN lower(platform) like '%twitter_ads__campaign_report`' then 'microsoft_ads'
         END as platform,
 
         -- Below fields/aliases must be in alphabetical order 
@@ -37,6 +38,34 @@ prep_standardized_union_platform_rename as (
         cast(impressions as {{ dbt_utils.type_int() }}) as impressions,
         cast(spend as {{ dbt_utils.type_float() }}) as spend
     from prep_standardized_union
+),
+
+prep_apple_search as (
+
+    {{ field_name_conversion(
+        platform='apple_search_ads', 
+        report_type='campaign', 
+        field_mapping={
+                'account_id': 'organization_id',
+                'account_name': 'organization_name',
+                'clicks': 'taps'
+            },
+        relation=ref('apple_search_ads__campaign_report')
+    ) }}
+),
+
+prep_linkedin as (
+
+    {{ field_name_conversion(
+        platform='linkedin_ads', 
+        report_type='campaign', 
+        field_mapping={
+                'campaign_id': 'campaign_group_id',
+                'campaign_name': 'campaign_group_name',
+                'spend': 'cost'
+            },
+        relation=ref('linkedin_ads__campaign_group_report')
+    ) }}
 ),
 
 prep_pinterest as (
@@ -83,6 +112,8 @@ unioned as (
 
     {{ union_ctes(ctes=[
         'prep_standardized_union_platform_rename',
+        'prep_apple_search',
+        'prep_linkedin',
         'prep_pinterest',
         'prep_snapchat',
         'prep_tiktok']

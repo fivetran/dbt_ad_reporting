@@ -1,8 +1,3 @@
-
--- missing apple search ads (standalone), 
--- twitter (ask jamie which report maps to ad group) and 
--- linkedin (confirm with jamie if its campaign_group) due to new persist logic 
-
 with prep_standardized_union as (
 
     {{ dbt_utils.union_relations(
@@ -42,6 +37,36 @@ prep_standardized_union_platform_rename as (
         cast(impressions as {{ dbt_utils.type_int() }}) as impressions,
         cast(spend as {{ dbt_utils.type_float() }}) as spend
     from prep_standardized_union
+),
+
+prep_apple_search as (
+
+    {{ field_name_conversion(
+        platform='apple_search_ads', 
+        report_type='ad_group', 
+        field_mapping={
+                'account_id': 'organization_id',
+                'account_name': 'organization_name',
+                'clicks': 'taps'
+            },
+        relation=ref('apple_search_ads__ad_group_report')
+    ) }}
+),
+
+prep_linkedin as (
+
+    {{ field_name_conversion(
+        platform='linkedin_ads', 
+        report_type='ad_group', 
+        field_mapping={
+                'campaign_id': 'campaign_group_id',
+                'campaign_name': 'campaign_group_name',
+                'ad_group_id': 'campaign_id',
+                'ad_group_name': 'campaign_name',
+                'spend': 'cost'
+            },
+        relation=ref('linkedin_ads__campaign_report')
+    ) }}
 ),
 
 prep_facebook as (
@@ -99,14 +124,30 @@ prep_tiktok as (
     ) }}
 ), 
 
+prep_twitter as (
+
+    {{ field_name_conversion(
+        platform='twitter_ads', 
+        report_type='ad_group', 
+        field_mapping={
+                'ad_group_id': 'line_item_id',
+                'ad_group_name': 'line_item_name'
+            },
+        relation=ref('twitter_ads__line_item_report')
+    ) }}
+), 
+
 unioned as (
 
     {{ union_ctes(ctes=[
         'prep_standardized_union_platform_rename',
+        'prep_apple_search',
         'prep_facebook',
+        'prep_linkedin',
         'prep_pinterest',
         'prep_snapchat',
-        'prep_tiktok']
+        'prep_tiktok',
+        'prep_twitter']
     ) }}
 )
 

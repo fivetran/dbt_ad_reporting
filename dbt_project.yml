@@ -19,7 +19,8 @@ models:
   ad_reporting:
     +schema: ad_reporting
     +materialized: view
-  
+
+# remove once `config` settings are incorporated into upstream platform models  
   facebook_ads:
     enabled: true
   facebook_ads_source:

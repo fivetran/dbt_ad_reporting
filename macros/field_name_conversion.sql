@@ -24,14 +24,14 @@
 {%- endif -%}
 
 {#- For campaign level reports and lower, add campaign_fields -#}
-{%- if report_type == 'campaign' or report_type == 'ad_group' or report_type == 'ad' or report_type == 'url' -%}
+{%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search'] -%}
     {%- for campaign_field in campaign_fields -%}
         {%- do final_fields_superset.update({campaign_field: campaign_field}) -%}
     {%- endfor -%}
 {%- endif -%}
 
 {#- For ad_group level reports, equivalent and lower, add ad_group_fields -#}
-{%- if report_type == 'ad_group' or report_type == 'ad' or report_type == 'url' or report_type == 'keyword' or report_type == 'search' -%}
+{%- if report_type in ['ad_group', 'ad', 'url', 'keyword', 'search'] -%}
     {%- for ad_group_field in ad_group_fields -%}
         {%- do final_fields_superset.update({ad_group_field: ad_group_field}) -%}
     {%- endfor -%}
