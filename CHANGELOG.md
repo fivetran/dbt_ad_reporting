@@ -12,6 +12,7 @@
   - `ad_reporting__ad_group_report`
   - `ad_reporting__ad_report`
   - `ad_reporting__keyword_search_report`
+- New corresponding documentation and updated docs for new models.
 
 
 # dbt_ad_reporting v0.8.0
