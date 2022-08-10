@@ -68,6 +68,7 @@ prep_pinterest as (
     ) }}
 ),
 
+{% if var('twitter_ads__using_keywords') %}
 prep_twitter as (
 
     {{ field_name_conversion(
@@ -83,6 +84,7 @@ prep_twitter as (
         relation=ref('twitter_ads__keyword_report')
     ) }}
 ), 
+{% endif %}
 
 unioned as (
 
@@ -91,7 +93,14 @@ unioned as (
         'prep_google',
         'prep_microsoft',
         'prep_pinterest',
-        'prep_twitter']
+        'prep_twitter'
+        ] if var('twitter_ads__using_keywords')
+        else [
+        'prep_apple_search',
+        'prep_google',
+        'prep_microsoft',
+        'prep_pinterest'
+        ]
     ) }}
 )
 
