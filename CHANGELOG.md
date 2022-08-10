@@ -1,8 +1,10 @@
 # dbt_ad_reporting v1.0.0
 ## 🚨 Breaking Changes 🚨
+[PR #54](https://github.com/fivetran/dbt_ad_reporting/pull/54) incorporates these breaking changes:
 - The previous `ad_reporting` model has been renamed to `ad_reporting__url_report` and will only include records that have non-null url values for more information on specific filters please refer to each platform package's `url_report` model.
 
 ## 🎉 Feature Enhancements 🎉 
+[PR #54](https://github.com/fivetran/dbt_ad_reporting/pull/54) includes the following new features:
 - Apple Search Ads has officially been released and added to Ad Reporting.
 - In addition to the `ad_reporting__url_report` model update, we have added **five** new models:
   - `ad_reporting__account_report`
