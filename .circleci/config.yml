@@ -47,18 +47,6 @@ jobs:
             dbt run --target redshift --full-refresh --vars '{api_source: adwords}' 
             dbt test --target redshift
       - run:
-          name: "Run Tests - Snowflake"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target snowflake --full-refresh
-            dbt run --target snowflake --full-refresh
-            dbt test --target snowflake
-            dbt run --target snowflake --full-refresh --vars '{api_source: adwords}' 
-            dbt test --target snowflake
-      - run:
           name: "Run Tests - BigQuery"
           environment:
               GCLOUD_SERVICE_KEY_PATH: "/home/circleci/gcloud-service-key.json"
@@ -73,6 +61,18 @@ jobs:
             dbt test --target bigquery
             dbt run --target bigquery --full-refresh --vars '{api_source: adwords}' 
             dbt test --target bigquery
+      - run:
+          name: "Run Tests - Snowflake"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target snowflake --full-refresh
+            dbt run --target snowflake --full-refresh
+            dbt test --target snowflake
+            dbt run --target snowflake --full-refresh --vars '{api_source: adwords}' 
+            dbt test --target snowflake
       - run:
           name: "Run Tests - Spark"
           command: |
