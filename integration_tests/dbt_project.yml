@@ -209,6 +209,9 @@ seeds:
 
     ### Twitter Seeds
 
+    twitter_account_history_data:
+      +column_types:
+        name: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
     twitter_tweet_url_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
