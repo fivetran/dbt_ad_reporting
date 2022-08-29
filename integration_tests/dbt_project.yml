@@ -139,23 +139,23 @@ seeds:
 
     ### LinkedIn Seeds    
     
-    linkedin_creative_history_data:
+    linkedin_ad_creative_history_data:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
     linkedin_ad_analytics_by_creative_data:
       +column_types:
         day: timestamp
-    linkedin_account_history_data:
+    linkedin_ad_account_history_data:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
-    linkedin_campaign_group_history_data:
+    linkedin_ad_campaign_group_history_data:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-    linkedin_campaign_history_data:
+    linkedin_ad_campaign_history_data:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
@@ -172,22 +172,22 @@ seeds:
 
     ### Pinterest Seeds
 
-    ad_group_history_data:
+    pinterest_ads_ad_group_history_data:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
         ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         CAMPAIGN_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-    campaign_history_data:
+    pinterest_ads_campaign_history_data:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
         ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-    pin_promotion_history_data:
+    pinterest_ads_pin_promotion_history_data:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
         ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         AD_GROUP_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         PIN_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-    pin_promotion_report_data:
+    pinterest_ads_pin_promotion_report_data:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
         PIN_PROMOTION_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
@@ -196,24 +196,6 @@ seeds:
         ADVERTISER_ID: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
 
     ### Google Seeds
-    
-    google_ads_click_performance_data:
-      +column_types:
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        criteria_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    google_ads_criteria_performance_data:
-      +column_types:
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    google_ads_final_url_performance_data:
-      +column_types:
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        external_customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     google_ads_ad_stats_data:
       +column_types:
         customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -275,20 +257,20 @@ seeds:
         date: timestamp
 
     ### Apple Seeds
-    apple_ad_group_history_data: 
+    apple_search_ad_group_history_data: 
       +column_types:
         modification_time: timestamp
         start_time: timestamp
         end_time: timestamp
-    apple_campaign_history_data:
+    apple_search_campaign_history_data:
       +column_types:
         modification_time: timestamp
         start_time: timestamp
         end_time: timestamp
-    apple_keyword_history_data:
+    apple_search_keyword_history_data:
       +column_types:
         modification_time: timestamp
-    apple_creative_set_report_data:
+    apple_search_creative_set_report_data:
       +column_types:
         modification_time: timestamp
         creation_time: timestamp
