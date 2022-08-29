@@ -1,0 +1,11 @@
+date,account_id,campaign_id,ad_group_id,currency_code,device_os,device_type,network,language,ad_distribution,bid_match_type,delivered_match_type,top_vs_other,clicks,impressions,spend
+2019-04-24,150175881,349886459,1339205395433736,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Broad,Broad,Bing and Yahoo! search - Top,1,6,17.22
+2019-05-10,150175881,359751135,1345802492628766,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Broad,Broad,Bing and Yahoo! search - Top,1,5,4.76
+2019-05-17,150175881,359751135,1345802492628766,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Broad,Broad,Bing and Yahoo! search - Top,1,16,8.77
+2019-02-18,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,9,7.93
+2019-03-25,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,17,8.85
+2019-03-05,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,11,7.51
+2019-02-01,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,5,3.5
+2019-05-19,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,6,8.28
+2019-05-04,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,8,7.93
+2018-12-19,150175881,349886459,1345802427627806,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Phrase,Phrase,Bing and Yahoo! search - Top,1,9,8.26

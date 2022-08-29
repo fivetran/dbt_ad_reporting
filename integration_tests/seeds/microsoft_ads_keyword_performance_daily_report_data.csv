@@ -1,0 +1,11 @@
+date,account_id,campaign_id,ad_group_id,ad_id,keyword_id,currency_code,device_os,device_type,network,language,ad_distribution,bid_match_type,delivered_match_type,top_vs_other,clicks,impressions,spend
+2019-04-08,150175881,359751135,1338105911256039,83631648270349,83631766916614,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Broad,Broad,Bing and Yahoo! search - Top,0,2,0.0
+2019-04-08,150175881,359751135,1338105911256039,83631648270349,83631766916614,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Broad,Broad,Bing and Yahoo! search - Other,0,1,0.0
+2019-04-05,150175881,359751135,1343603469570972,83975245622721,83975364112905,USD,iOS,Tablet,Syndicated search partners,English,Search,Broad,Broad,Syndicated search partners - Top,0,2,0.0
+2019-04-08,150175881,359751135,1339205422893112,83700367752037,83700487009545,USD,Windows,Computer,Bing and Yahoo! search,English,Search,Broad,Broad,Bing and Yahoo! search - Top,0,1,0.0
+2019-04-27,150175881,349886459,1333707799903523,83356762134213,83356854576650,USD,Windows,Computer,Audience,English,Audience,Broad,Broad,Audience network,0,5,0.0
+2019-04-22,150175881,349886459,1333707799903523,83356762134213,83356854576650,USD,Windows,Computer,Audience,English,Audience,Broad,Broad,Audience network,0,3,0.0
+2019-04-28,150175881,349886459,1333707799903523,83356762134213,83356854576650,USD,Windows,Computer,Audience,English,Audience,Broad,Broad,Audience network,0,6,0.0
+2019-04-23,150175881,349886459,1333707799903523,83356762134213,83356854576650,USD,Windows,Computer,Audience,English,Audience,Broad,Broad,Audience network,0,6,0.0
+2019-04-18,150175881,349886459,1333707799903523,83356762134213,83356854576650,USD,Windows,Computer,Audience,English,Audience,Broad,Broad,Audience network,0,1,0.0
+2019-04-24,150175881,349886459,1333707799903523,83356762134213,83356854576650,USD,Windows,Computer,Audience,English,Audience,Broad,Broad,Audience network,0,10,0.0

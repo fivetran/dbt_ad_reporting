@@ -1,0 +1,2 @@
+id,updated_time,_fivetran_synced,billing_profile_status,billing_type,country,created_time,currency,merchant_id,name,owner_user_id,status
+549764253315,2022-06-07 14:43:17,2022-06-30 14:01:04,VALID,CASH_MONEY,US,2022-06-07 14:17:13,USD,,That Kitty Cat Company,1111111,ACTIVE

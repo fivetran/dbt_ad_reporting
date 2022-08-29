@@ -1,0 +1,3 @@
+date,_fivetran_synced,campaign_id,ad_group_id,ad_id,impressions,local_spend_amount,local_spend_currency,new_downloads,redownloads,taps
+2022-07-14,2022-07-20T05:17:57.811Z,1088388037,1088985837,1088718190,552,4.31,USD,2,0,6
+2022-07-13,2022-07-19T05:16:03.580Z,1088388037,1088985837,1088718190,300,1.85,USD,1,0,2
