@@ -74,13 +74,13 @@ select
     cast( '{{ platform }}' as {{ dbt_utils.type_string() }}) as platform,
 
     {% for field in final_fields_superset.keys()|sort() -%}
-    {% if '_id' in field or field in ['clicks', 'impressions'] -%}
+    {% if field in ['clicks', 'impressions'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt_utils.type_int() }}) as {{ field }}
 
     {% elif field == 'spend' -%}
     cast({{ final_fields_superset[field] }} as {{ dbt_utils.type_float() }}) as {{ field }}
 
-    {% elif '_name' in field or 'url' in field or 'utm' in field or field in ['keyword_match_type', 'keyword_text', 'search_match_type', 'search_query'] -%}
+    {% elif '_id' in field or '_name' in field or 'url' in field or 'utm' in field or field in ['keyword_match_type', 'keyword_text', 'search_match_type', 'search_query'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt_utils.type_string() }}) as {{ field }} 
     {% endif -%}
     {%- if not loop.last -%},{%- endif -%}
