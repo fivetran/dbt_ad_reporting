@@ -133,6 +133,39 @@ seeds:
         last_modified_time: "timestamp"
         modified_time: "timestamp"
         spend: "float"
+    microsoft_ads_campaign_performance_daily_report_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        last_modified_time: "timestamp"
+        modified_time: "timestamp"
+        spend: "float"
+    microsoft_ads_account_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        last_modified_time: "timestamp"
+        modified_time: "timestamp"
+        spend: "float"
+    microsoft_ads_campaign_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        last_modified_time: "timestamp"
+        modified_time: "timestamp"
+        spend: "float"
     microsoft_ads_ad_performance_daily_report_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -452,18 +485,38 @@ seeds:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-        ad_set_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ad_set_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         creative_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        _fivetran_synced: "timestamp"
+        updated_time: "timestamp"
     facebook_ads_ad_set_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ad_set_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        creative_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        _fivetran_synced: "timestamp"
+        updated_time: "timestamp"
     facebook_ads_campaign_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ad_set_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        creative_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
+        _fivetran_synced: "timestamp"
+        updated_time: "timestamp"
     facebook_ads_basic_ad_data:
       +column_types:
         ad_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
@@ -476,20 +529,38 @@ seeds:
         date: timestamp
 
     ### Apple Seeds
+    apple_ad_report_data:
+      +column_types:
+        modification_time: "timestamp"
+        start_time: "timestamp"
+        end_time: "timestamp"
+        creation_time: "timestamp"
+        _fivetran_synced: "timestamp"
     apple_ad_history_data:
       +column_types:
-        creation_time: timestamp
-        modification_time: timestamp
+        modification_time: "timestamp"
+        start_time: "timestamp"
+        end_time: "timestamp"
+        creation_time: "timestamp"
+        _fivetran_synced: "timestamp"
     apple_ad_group_history_data: 
       +column_types:
-        modification_time: timestamp
-        start_time: timestamp
-        end_time: timestamp
+        modification_time: "timestamp"
+        start_time: "timestamp"
+        end_time: "timestamp"
+        creation_time: "timestamp"
+        _fivetran_synced: "timestamp"
     apple_search_campaign_history_data:
       +column_types:
-        modification_time: timestamp
-        start_time: timestamp
-        end_time: timestamp
+        modification_time: "timestamp"
+        start_time: "timestamp"
+        end_time: "timestamp"
+        creation_time: "timestamp"
+        _fivetran_synced: "timestamp"
     apple_search_keyword_history_data:
       +column_types:
-        modification_time: timestamp
+        modification_time: "timestamp"
+        start_time: "timestamp"
+        end_time: "timestamp"
+        creation_time: "timestamp"
+        _fivetran_synced: "timestamp"
