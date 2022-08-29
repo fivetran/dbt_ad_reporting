@@ -117,7 +117,7 @@ vars:
     tiktok_ads__campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
 
 seeds:
-  ad_reporting_integration_tests_v1:
+  ad_reporting_integration_tests:
     +quote_columns: "{{ true if target.type in ('redshift','postgres') else false }}"
 
     ### Microsoft Seeds
