@@ -38,7 +38,7 @@ integration_tests:
     spark:
       type: spark
       method: http
-      schema: ad_reporting_integrations_test
+      schema: ad_reporting_integration_tests_v1
       host: "{{ env_var('CI_SPARK_DBT_HOST') }}"
       organization: "{{ env_var('CI_SPARK_DBT_ORGANIZATION') }}"
       token: "{{ env_var('CI_SPARK_DBT_TOKEN') }}"
