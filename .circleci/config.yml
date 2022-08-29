@@ -35,18 +35,6 @@ jobs:
             dbt run --target postgres --full-refresh --vars '{api_source: adwords}' 
             dbt test --target postgres
       - run:
-          name: "Run Tests - Spark"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target spark --full-refresh
-            dbt run --target spark --full-refresh
-            dbt test --target spark
-            dbt run --target spark --full-refresh --vars '{api_source: adwords}' 
-            dbt test --target spark
-      - run:
           name: "Run Tests - Redshift"
           command: |
             . venv/bin/activate
@@ -85,3 +73,13 @@ jobs:
             dbt test --target bigquery
             dbt run --target bigquery --full-refresh --vars '{api_source: adwords}' 
             dbt test --target bigquery
+      - run:
+          name: "Run Tests - Spark"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target spark --full-refresh
+            dbt run --target spark --full-refresh --vars '{ad_reporting__pinterest_ads_enabled: false, ad_reporting__tiktok_ads_enabled: false, ad_reporting__snapchat_ads_enabled: false, ad_reporting__apple_search_ads_enabled: false, ad_reporting__twitter_ads_enabled: false}' 
+            dbt test --target spark --vars '{ad_reporting__pinterest_ads_enabled: false, ad_reporting__tiktok_ads_enabled: false, ad_reporting__snapchat_ads_enabled: false, ad_reporting__apple_search_ads_enabled: false, ad_reporting__twitter_ads_enabled: false}' 
