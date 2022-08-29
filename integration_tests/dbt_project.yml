@@ -121,7 +121,9 @@ seeds:
     +quote_columns: "{{ true if target.type in ('redshift','postgres') else false }}"
 
     ### Microsoft Seeds
-
+    microsoft_ads_account_history_data:
+      +column_types:
+        name: "{{ 'string' if target.name in ['bigquery','spark'] else 'varchar' }}"
     microsoft_ads_ad_group_history_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
