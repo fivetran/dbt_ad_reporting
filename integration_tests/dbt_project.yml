@@ -257,7 +257,11 @@ seeds:
         date: timestamp
 
     ### Apple Seeds
-    apple_search_ad_group_history_data: 
+    apple_ad_history_data:
+      +column_types:
+        creation_time: timestamp
+        modification_time: timestamp
+    apple_ad_group_history_data: 
       +column_types:
         modification_time: timestamp
         start_time: timestamp
@@ -270,7 +274,3 @@ seeds:
     apple_search_keyword_history_data:
       +column_types:
         modification_time: timestamp
-    apple_search_creative_set_report_data:
-      +column_types:
-        modification_time: timestamp
-        creation_time: timestamp

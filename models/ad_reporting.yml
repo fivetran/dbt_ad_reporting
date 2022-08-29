@@ -3,9 +3,286 @@ version: 2
 models:
 
   - name: ad_reporting__account_report
-    description: yada yada
+    description: Each record represents daily metrics by account.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - account_id
     columns:
       - name: date_day
+        description: '{{ doc("date_day") }}'
       - name: platform
+        description: '{{ doc("platform") }}'
       - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
       - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+  
+  - name: ad_reporting__ad_group_report
+    description: Each record represents daily metrics by ad group, campaign and account.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - ad_group_id
+            - campaign_id
+            - account_id
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+        tests:
+          - not_null
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+
+  - name: ad_reporting__ad_report
+    description: Each record represents daily metrics by ad, ad group, campaign and account. 
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - ad_id
+            - ad_group_id
+            - campaign_id
+            - account_id
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}'
+
+  - name: ad_reporting__campaign_report
+    description: Each record represents daily metrics by campaign and account.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - campaign_id
+            - account_id
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}'
+
+  - name: ad_reporting__keyword_report
+    description: Each record represents daily metrics by keyword, ad group, campaign and account.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - keyword_text
+            - keyword_match_type
+            - ad_group_id
+            - campaign_id
+            - account_id
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: keyword_id
+        description: '{{ doc("keyword_id") }}'
+      - name: keyword_text
+        description: '{{ doc("keyword_text") }}'
+        tests:
+          - not_null
+      - name: keyword_match_type
+        description: '{{ doc("keyword_match_type") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}'
+  
+  - name: ad_reporting__search_report
+    description: Each record represents daily metrics by search query, ad group, campaign and account. 
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - search_query
+            - search_match_type
+            - keyword_id
+            - ad_group_id
+            - campaign_id
+            - account_id
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: keyword_id
+        description: '{{ doc("keyword_id") }}'
+      - name: keyword_text
+        description: '{{ doc("keyword_text") }}'
+      - name: search_query
+        description: '{{ doc("search_query") }}'
+        tests:
+          - not_null
+      - name: search_match_type
+        description: '{{ doc("search_match_type") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}' 
+
+  - name: ad_reporting__url_report
+    description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account. 
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - platform
+            - date_day
+            - ad_group_id
+            - campaign_id
+            - account_id
+            - base_url
+            - url_host
+            - url_path
+            - utm_campaign
+            - utm_content
+            - utm_medium
+            - utm_source
+            - utm_term
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: base_url
+        description: '{{ doc("base_url") }}'
+        tests:
+          - not_null
+      - name: url_host
+        description: '{{ doc("url_host") }}'
+      - name: url_path
+        description: '{{ doc("url_path") }}'
+      - name: utm_source
+        description: '{{ doc("utm_source") }}'
+      - name: utm_medium
+        description: '{{ doc("utm_medium") }}'
+      - name: utm_campaign
+        description: '{{ doc("utm_campaign") }}'
+      - name: utm_content
+        description: '{{ doc("utm_content") }}'
+      - name: utm_term
+        description: '{{ doc("utm_term") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}' 

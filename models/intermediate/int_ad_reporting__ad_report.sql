@@ -35,13 +35,13 @@ prep_standardized_union_platform_rename as (
         END as platform,
 
         -- Below field/aliases must be in alphabetical order
-        cast(account_id as {{ dbt_utils.type_int() }}) as account_id,
+        cast(account_id as {{ dbt_utils.type_string() }}) as account_id,
         cast(account_name as {{ dbt_utils.type_string() }}) as account_name,
-        cast(ad_group_id as {{ dbt_utils.type_int() }}) as ad_group_id,
+        cast(ad_group_id as {{ dbt_utils.type_string() }}) as ad_group_id,
         cast(ad_group_name as {{ dbt_utils.type_string() }}) as ad_group_name,
-        cast(ad_id as {{ dbt_utils.type_int() }}) as ad_id,
+        cast(ad_id as {{ dbt_utils.type_string() }}) as ad_id,
         cast(ad_name as {{ dbt_utils.type_string() }}) as ad_name,
-        cast(account_id as {{ dbt_utils.type_int() }}) as campaign_id,
+        cast(account_id as {{ dbt_utils.type_string() }}) as campaign_id,
         cast(account_name as {{ dbt_utils.type_string() }}) as campaign_name,
         cast(clicks as {{ dbt_utils.type_int() }}) as clicks,
         cast(impressions as {{ dbt_utils.type_int() }}) as impressions,

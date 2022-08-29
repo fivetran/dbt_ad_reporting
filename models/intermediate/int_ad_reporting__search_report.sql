@@ -47,8 +47,11 @@ prep_apple_search as (
 
 unioned as (
 
-    {{ union_ctes(ctes=['prep_microsoft', 'prep_apple_search']
-        if var('apple_search_ads__using_search_terms') else ['prep_microsoft']
+    {{ union_ctes(ctes=[
+        'prep_microsoft', 
+        'prep_apple_search'
+        ] if var('apple_search_ads__using_search_terms') 
+        else ['prep_microsoft']
     ) }}
 )
 

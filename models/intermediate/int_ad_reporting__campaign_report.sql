@@ -2,10 +2,10 @@ with prep_standardized_union as (
 
     {{ dbt_utils.union_relations(
         relations=[
+            ref('twitter_ads__campaign_report'),
             ref('facebook_ads__campaign_report'), 
             ref('google_ads__campaign_report'),
-            ref('microsoft_ads__campaign_report'),
-            ref('twitter_ads__campaign_report')
+            ref('microsoft_ads__campaign_report')
             ],
         source_column_name='platform',
         include=['date_day', 
@@ -26,13 +26,13 @@ prep_standardized_union_platform_rename as (
             WHEN lower(platform) like '%facebook_ads__campaign_report`' then 'facebook_ads'
             WHEN lower(platform) like '%google_ads__campaign_report`' then 'google_ads'
             WHEN lower(platform) like '%microsoft_ads__campaign_report`' then 'microsoft_ads'
-            WHEN lower(platform) like '%twitter_ads__campaign_report`' then 'microsoft_ads'
+            WHEN lower(platform) like '%twitter_ads__campaign_report`' then 'twitter_ads'
         END as platform,
 
         -- Below fields/aliases must be in alphabetical order 
-        cast(account_id as {{ dbt_utils.type_int() }}) as account_id,
+        cast(account_id as {{ dbt_utils.type_string() }}) as account_id,
         cast(account_name as {{ dbt_utils.type_string() }}) as account_name,
-        cast(account_id as {{ dbt_utils.type_int() }}) as campaign_id,
+        cast(account_id as {{ dbt_utils.type_string() }}) as campaign_id,
         cast(account_name as {{ dbt_utils.type_string() }}) as campaign_name,
         cast(clicks as {{ dbt_utils.type_int() }}) as clicks,
         cast(impressions as {{ dbt_utils.type_int() }}) as impressions,
