@@ -1,3 +1,12 @@
+{% if var('apple_search_ads__using_search_terms', True) %}
+    {% set include_list = ['apple_search_ads', 'microsoft_ads'] %}
+{% else %}
+    {% set include_list = ['microsoft_ads'] %}
+{% endif %}
+
+{% set enabled_packages = get_enabled_packages(include=include_list)%}
+{{ config(enabled=is_enabled(enabled_packages)) }}
+
 with base as (
 
     select *

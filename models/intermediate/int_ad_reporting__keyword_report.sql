@@ -1,19 +1,15 @@
-{# Standard fields for keyword reports are:
-    - 'account_id'
-    - 'account_name'
-    - 'campaign_id'
-    - 'campaign_name'
-    - 'ad_group_id'
-    - 'ad_group_name'
-    - 'keyword_id'
-    - 'keyword_text'
-    - 'keyword_match_type'
-    - 'clicks'
-    - 'impressions'
-    - 'spend'
-#}
+{% if var('twitter_ads__using_keywords', True) %}
+    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'twitter_ads'] %}
+{% else %}
+    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads'] %}
+{% endif %}
 
-with prep_apple_search as (
+{% set enabled_packages = get_enabled_packages(include=include_list)%}
+{{ config(enabled=is_enabled(enabled_packages)) }}
+
+with
+{% if 'apple_search_ads' in enabled_packages %}
+apple_search_ads as (
 
     {{ field_name_conversion(
         platform='apple_search_ads', 
@@ -27,8 +23,10 @@ with prep_apple_search as (
         relation=ref('apple_search_ads__keyword_report')
     ) }}
 ),
+{% endif %}
 
-prep_google as (
+{% if 'google_ads' in enabled_packages %}
+google_ads as (
 
     {{ field_name_conversion(
         platform='google_ads', 
@@ -39,8 +37,10 @@ prep_google as (
         relation=ref('google_ads__keyword_report')
     ) }}
 ),
+{% endif %}
 
-prep_microsoft as (
+{% if 'microsoft_ads' in enabled_packages %}
+microsoft_ads as (
 
     {{ field_name_conversion(
         platform='microsoft_ads', 
@@ -52,8 +52,10 @@ prep_microsoft as (
         relation=ref('microsoft_ads__keyword_report')
     ) }}
 ),
+{% endif %}
 
-prep_pinterest as (
+{% if 'pinterest_ads' in enabled_packages %}
+pinterest_ads as (
 
     {{ field_name_conversion(
         platform='pinterest_ads', 
@@ -67,9 +69,10 @@ prep_pinterest as (
         relation=ref('pinterest_ads__keyword_report')
     ) }}
 ),
+{% endif %}
 
-{% if var('twitter_ads__using_keywords') %}
-prep_twitter as (
+{% if 'twitter_ads' in enabled_packages and var('twitter_ads__using_keywords', False) %}
+twitter_ads as (
 
     {{ field_name_conversion(
         platform='twitter_ads', 
@@ -88,20 +91,7 @@ prep_twitter as (
 
 unioned as (
 
-    {{ union_ctes(ctes=[
-        'prep_apple_search',
-        'prep_google',
-        'prep_microsoft',
-        'prep_pinterest',
-        'prep_twitter'
-        ] if var('twitter_ads__using_keywords')
-        else [
-        'prep_apple_search',
-        'prep_google',
-        'prep_microsoft',
-        'prep_pinterest'
-        ]
-    ) }}
+    {{ union_ctes(ctes=enabled_packages)}}
 )
 
 select *

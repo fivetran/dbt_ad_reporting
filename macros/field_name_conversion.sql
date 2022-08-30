@@ -9,7 +9,9 @@
 {%- set keyword_fields = ['keyword_id','keyword_text','keyword_match_type'] -%}
 {%- set search_fields = ['keyword_id', 'keyword_text', 'search_match_type', 'search_query'] -%}
 
+{%- if field_mapping is not none -%}
 {%- set fields = field_mapping.keys() -%}
+{%- endif -%}
 
 {%- set final_fields_superset={} -%}
 
@@ -65,12 +67,14 @@
     {%- endfor -%}
 {%- endif -%}
 
-{%- for field in fields -%}
-    {%- do final_fields_superset.update({field:field_mapping[field]}) -%}
-{%- endfor -%}
+{%- if field_mapping is not none -%}
+    {%- for field in fields -%}
+        {%- do final_fields_superset.update({field:field_mapping[field]}) -%}
+    {%- endfor -%}
+{%- endif -%}
 
 select 
-    cast(date_day as DATE) as date_day,
+    {{ dbt_utils.date_trunc('day', 'date_day') }} as date_day,
     cast( '{{ platform }}' as {{ dbt_utils.type_string() }}) as platform,
 
     {% for field in final_fields_superset.keys()|sort() -%}

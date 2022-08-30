@@ -1,20 +1,15 @@
-{# Standard fields for search reports are:
-    - 'account_id'
-    - 'account_name'
-    - 'campaign_id'
-    - 'campaign_name'
-    - 'ad_group_id'
-    - 'ad_group_name'
-    - 'keyword_id'
-    - 'keyword_text'
-    - 'search_query'
-    - 'search_match_type'
-    - 'clicks'
-    - 'impressions'
-    - 'spend'
-#}
+{% if var('apple_search_ads__using_search_terms', True) %}
+    {% set include_list = ['apple_search_ads', 'microsoft_ads'] %}
+{% else %}
+    {% set include_list = ['microsoft_ads'] %}
+{% endif %}
 
-with prep_microsoft as (
+{% set enabled_packages = get_enabled_packages(include=include_list)%}
+{{ config(enabled=is_enabled(enabled_packages)) }}
+
+with 
+{% if 'microsoft_ads' in enabled_packages %}
+microsoft_ads as (
 
     {{ field_name_conversion(
         platform='microsoft_ads', 
@@ -26,9 +21,10 @@ with prep_microsoft as (
         relation=ref('microsoft_ads__search_report')
     ) }}
 ), 
+{% endif %}
 
-{% if var('apple_search_ads__using_search_terms') %}
-prep_apple_search as (
+{% if 'apple_search_ads' in enabled_packages and var('apple_search_ads__using_search_terms', True) %}
+apple_search_ads as (
 
     {{ field_name_conversion(
         platform='apple_search_ads', 
@@ -47,12 +43,7 @@ prep_apple_search as (
 
 unioned as (
 
-    {{ union_ctes(ctes=[
-        'prep_microsoft', 
-        'prep_apple_search'
-        ] if var('apple_search_ads__using_search_terms') 
-        else ['prep_microsoft']
-    ) }}
+    {{ union_ctes(ctes=enabled_packages)}}
 )
 
 select *

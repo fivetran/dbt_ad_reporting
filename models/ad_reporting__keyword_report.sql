@@ -1,3 +1,12 @@
+{% if var('twitter_ads__using_keywords', False) %}
+    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'twitter_ads'] %}
+{% else %}
+    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads'] %}
+{% endif %}
+
+{% set enabled_packages = get_enabled_packages(include=include_list)%}
+{{ config(enabled=is_enabled(enabled_packages)) }}
+
 with base as (
 
     select *

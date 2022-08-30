@@ -4,63 +4,8 @@ config-version: 2
 
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
-vars:
-  ad_reporting__apple_search_ads_enabled: true
-  ad_reporting__pinterest_enabled: true
-  ad_reporting__microsoft_ads_enabled: true
-  ad_reporting__linkedin_ads_enabled: true
-  ad_reporting__google_ads_enabled: true
-  ad_reporting__twitter_ads_enabled: true
-  ad_reporting__facebook_ads_enabled: true
-  ad_reporting__snapchat_ads_enabled: true
-  ad_reporting__tiktok_ads_enabled: true
-
-  apple_search_ads__using_search_terms: False 
-  twitter_ads__using_keywords: True
 
 models:
   ad_reporting:
     +schema: ad_reporting
     +materialized: view
-
-# remove once `config` settings are incorporated into upstream platform models  
-  facebook_ads:
-    enabled: true
-  facebook_ads_source:
-    enabled: true
-  
-  google_ads:
-    enabled: true
-  google_ads_source:
-    enabled: true
-
-  linkedin:
-    enabled: true
-  linkedin_source:
-    enabled: true
-
-  microsoft_ads:
-    enabled: true
-  microsoft_ads_source:
-    enabled: true
-
-  pinterest:
-    enabled: true
-  pinterest_source:
-    enabled: true
-
-  snapchat_ads:
-    enabled: true
-  snapchat_ads_source:
-    enabled: true
-
-  tiktok_ads:
-    enabled: true
-  tiktok_ads_source:
-    enabled: true
-
-  twitter_ads:
-    enabled: true
-  twitter_ads_source:
-    enabled: true
-
