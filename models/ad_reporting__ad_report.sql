@@ -1,3 +1,6 @@
+{% set enabled_packages = get_enabled_packages() %}
+{{ config(enabled=is_enabled(enabled_packages)) }}
+
 with base as (
 
     select *

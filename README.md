@@ -100,16 +100,32 @@ vars:
 ## Step 4: Enabling/Disabling Models
 This package takes into consideration that not every account will have every feature enabled per platform. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs. 
 
-For **Apple Search Ads**, if you have the `search_term_report` enabled, you may choose to update the respective variable below.
+### Disable Platform Specific Reporting
+If you would like to disable all reporting for any specific platform, please include the respective variable(s) in your `dbt_project.yml`. 
 
-For **Twitter Ads**, if you are tracking keyword performance, you may choose to update the corresponding variable.
+```yml
+vars:
+  ad_reporting__apple_search_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__pinterest_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__microsoft_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__linkedin_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__google_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__twitter_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__facebook_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__snapchat_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__tiktok_ads_enabled: False # by default this is assumed to be True
+```
+### Enable/Disable Specific Reports within Platforms
+For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below.
+
+For **Twitter Ads**, if you are tracking keyword performance, you may choose to update the corresponding variable below.
 
 Add the following variables to your dbt_project.yml file
 
 ```yml
 vars:
-  apple_search_ads__using_search_terms: True # by default this is assumed to be false
-  twitter_ads__using_keywords: False # by default this is assumed to be true
+  apple_search_ads__using_search_terms: False # by default this is assumed to be True
+  twitter_ads__using_keywords: False # by default this is assumed to be True
 ```
 
 ## (Recommended) Step 5: Change the Build Schema
@@ -169,6 +185,8 @@ models:
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
 
 ## (Optional) Step 6: Additional configurations
+<details><summary>Expand for details</summary>
+<br>
 
 ### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
@@ -183,6 +201,8 @@ vars:
 <br>
 
 ## (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
+<details><summary>Expand for details</summary>
+<br>
 
 Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core™ setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
 

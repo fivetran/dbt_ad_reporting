@@ -1,67 +1,21 @@
--- missing apple search ads (standalone), 
--- twitter (ask jamie which report maps to ad group) and 
--- linkedin (confirm with jamie if its campaign_group) and
--- due to new persist logic 
+{% set enabled_packages = get_enabled_packages(exclude=['apple_search_ads']) %}
+{{ config(enabled=is_enabled(enabled_packages)) }}
 
-
-with prep_standardized_union as (
-
-    {{ dbt_utils.union_relations(
-        relations=[
-            ref('google_ads__url_report'),
-            ref('microsoft_ads__url_report')],
-        source_column_name='platform',
-        include=['date_day', 
-                'account_id', 
-                'account_name', 
-                'campaign_id',
-                'campaign_name',
-                'ad_group_id',
-                'ad_group_name',
-                'base_url',
-                'url_host',
-                'url_path',
-                'utm_source',
-                'utm_medium',
-                'utm_campaign',
-                'utm_content',
-                'utm_term',
-                'clicks', 
-                'impressions', 
-                'spend']) }}
-), 
-
-prep_standardized_union_platform_rename as (
-
-    select 
-        cast(date_day as DATE) as date_day,
-        CASE 
-            WHEN lower(platform) like '%google_ads__url_report`' then 'google_ads'
-            WHEN lower(platform) like '%microsoft_ads__url_report`' then 'microsoft_ads'
-        END as platform,
-
-        -- Below field/aliases must be in alphabetical order
-        cast(account_id as {{ dbt_utils.type_string() }}) as account_id,
-        cast(account_name as {{ dbt_utils.type_string() }}) as account_name,
-        cast(ad_group_id as {{ dbt_utils.type_string() }}) as ad_group_id,
-        cast(ad_group_name as {{ dbt_utils.type_string() }}) as ad_group_name,
-        cast(base_url as {{ dbt_utils.type_string() }}) as base_url,
-        cast(account_id as {{ dbt_utils.type_string() }}) as campaign_id,
-        cast(account_name as {{ dbt_utils.type_string() }}) as campaign_name,
-        cast(clicks as {{ dbt_utils.type_int() }}) as clicks,
-        cast(impressions as {{ dbt_utils.type_int() }}) as impressions,
-        cast(spend as {{ dbt_utils.type_float() }}) as spend,
-        cast(url_host as {{ dbt_utils.type_string() }}) as url_host,
-        cast(url_path as {{ dbt_utils.type_string() }}) as url_path,
-        cast(utm_campaign as {{ dbt_utils.type_string() }}) as utm_campaign,
-        cast(utm_content as {{ dbt_utils.type_string() }}) as utm_content,
-        cast(utm_medium as {{ dbt_utils.type_string() }}) as utm_medium,
-        cast(utm_source as {{ dbt_utils.type_string() }}) as utm_source,
-        cast(utm_term as {{ dbt_utils.type_string() }}) as utm_term
-    from prep_standardized_union
+with
+{% for package in ['google_ads', 'microsoft_ads'] %}
+{% if package in enabled_packages %}
+{{ package }} as (
+    {{ field_name_conversion(
+        platform=package,
+        report_type='url',
+        relation=ref(package ~ '__url_report')
+    ) }}
 ),
+{% endif %}
+{% endfor %}
 
-prep_facebook as (
+{% if 'facebook_ads' in enabled_packages %}
+facebook_ads as (
 
     {{ field_name_conversion(
         platform='facebook_ads', 
@@ -73,8 +27,28 @@ prep_facebook as (
         relation=ref('facebook_ads__url_report')
     ) }}
 ),
+{% endif %}
 
-prep_pinterest as (
+{% if 'linkedin_ads' in enabled_packages %}
+linkedin_ads as (
+
+    {{ field_name_conversion(
+        platform='linkedin_ads', 
+        report_type='url', 
+        field_mapping={
+                'campaign_id': 'campaign_group_id',
+                'campaign_name': 'campaign_group_name',
+                'ad_group_id': 'campaign_id',
+                'ad_group_name': 'campaign_name',
+                'spend': 'cost'
+            },
+        relation=ref('linkedin_ads__url_report')
+    ) }}
+),
+{% endif %}
+
+{% if 'pinterest_ads' in enabled_packages %}
+pinterest_ads as (
 
     {{ field_name_conversion(
         platform='pinterest_ads', 
@@ -86,8 +60,10 @@ prep_pinterest as (
         relation=ref('pinterest_ads__url_report')
     ) }}
 ),
+{% endif %}
 
-prep_snapchat as (
+{% if 'snapchat_ads' in enabled_packages %}
+snapchat_ads as (
 
     {{ field_name_conversion(
         platform='snapchat_ads', 
@@ -104,8 +80,10 @@ prep_snapchat as (
         relation=ref('snapchat_ads__url_report')
     ) }}
 ), 
+{% endif %}
 
-prep_tiktok as (
+{% if 'tiktok_ads' in enabled_packages %}
+tiktok_ads as (
 
     {{ field_name_conversion(
         platform='tiktok_ads', 
@@ -117,16 +95,26 @@ prep_tiktok as (
         relation=ref('tiktok_ads__url_report')
     ) }}
 ), 
+{% endif %}
+
+{% if 'twitter_ads' in enabled_packages %}
+twitter_ads as (
+
+    {{ field_name_conversion(
+        platform='twitter_ads', 
+        report_type='url', 
+        field_mapping={
+                'ad_group_id': 'line_item_id',
+                'ad_group_name': 'line_item_name'
+            },
+        relation=ref('twitter_ads__url_report')
+    ) }}
+), 
+{% endif %}
 
 unioned as (
 
-    {{ union_ctes(ctes=[
-        'prep_standardized_union_platform_rename',
-        'prep_facebook',
-        'prep_pinterest',
-        'prep_snapchat',
-        'prep_tiktok']
-    ) }}
+    {{ union_ctes(ctes=enabled_packages)}}
 )
 
 select *

@@ -1,45 +1,21 @@
-with prep_standardized_union as (
+{% set enabled_packages = get_enabled_packages() %}
+{{ config(enabled=is_enabled(enabled_packages)) }}
 
-    {{ dbt_utils.union_relations(
-        relations=[
-            ref('google_ads__ad_group_report'),
-            ref('microsoft_ads__ad_group_report')],
-        source_column_name='platform',
-        include=['date_day', 
-                'account_id', 
-                'account_name', 
-                'campaign_id',
-                'campaign_name',
-                'ad_group_id',
-                'ad_group_name',
-                'clicks', 
-                'impressions', 
-                'spend']) }}
-), 
-
-prep_standardized_union_platform_rename as (
-
-    select 
-        cast(date_day as DATE) as date_day,
-        CASE 
-            WHEN lower(platform) like '%google_ads__ad_group_report`' then 'google_ads'
-            WHEN lower(platform) like '%microsoft_ads__ad_group_report`' then 'microsoft_ads'
-        END as platform,
-
-        -- Below fields/aliases must be in alphabetical order 
-        cast(account_id as {{ dbt_utils.type_string() }}) as account_id,
-        cast(account_name as {{ dbt_utils.type_string() }}) as account_name,
-        cast(ad_group_id as {{ dbt_utils.type_string() }}) as ad_group_id,
-        cast(ad_group_name as {{ dbt_utils.type_string() }}) as ad_group_name,
-        cast(account_id as {{ dbt_utils.type_string() }}) as campaign_id,
-        cast(account_name as {{ dbt_utils.type_string() }}) as campaign_name,
-        cast(clicks as {{ dbt_utils.type_int() }}) as clicks,
-        cast(impressions as {{ dbt_utils.type_int() }}) as impressions,
-        cast(spend as {{ dbt_utils.type_float() }}) as spend
-    from prep_standardized_union
+with
+{% for package in ['google_ads', 'microsoft_ads'] %}
+{% if package in enabled_packages %}
+{{ package }} as (
+    {{ field_name_conversion(
+        platform=package,
+        report_type='ad_group',
+        relation=ref(package ~ '__ad_group_report')
+    ) }}
 ),
+{% endif %}
+{% endfor %}
 
-prep_apple_search as (
+{% if 'apple_search_ads' in enabled_packages %}
+apple_search_ads as (
 
     {{ field_name_conversion(
         platform='apple_search_ads', 
@@ -52,8 +28,10 @@ prep_apple_search as (
         relation=ref('apple_search_ads__ad_group_report')
     ) }}
 ),
+{% endif %}
 
-prep_linkedin as (
+{% if 'linkedin_ads' in enabled_packages %}
+linkedin_ads as (
 
     {{ field_name_conversion(
         platform='linkedin_ads', 
@@ -68,8 +46,10 @@ prep_linkedin as (
         relation=ref('linkedin_ads__campaign_report')
     ) }}
 ),
+{% endif %}
 
-prep_facebook as (
+{% if 'facebook_ads' in enabled_packages %}
+facebook_ads as (
 
     {{ field_name_conversion(
         platform='facebook_ads', 
@@ -81,8 +61,10 @@ prep_facebook as (
         relation=ref('facebook_ads__ad_set_report')
     ) }}
 ),
+{% endif %}
 
-prep_pinterest as (
+{% if 'pinterest_ads' in enabled_packages %}
+pinterest_ads as (
 
     {{ field_name_conversion(
         platform='pinterest_ads', 
@@ -94,8 +76,10 @@ prep_pinterest as (
         relation=ref('pinterest_ads__ad_group_report')
     ) }}
 ),
+{% endif %}
 
-prep_snapchat as (
+{% if 'snapchat_ads' in enabled_packages %}
+snapchat_ads as (
 
     {{ field_name_conversion(
         platform='snapchat_ads', 
@@ -110,8 +94,10 @@ prep_snapchat as (
         relation=ref('snapchat_ads__ad_squad_report')
     ) }}
 ), 
+{% endif %}
 
-prep_tiktok as (
+{% if 'tiktok_ads' in enabled_packages %}
+tiktok_ads as (
 
     {{ field_name_conversion(
         platform='tiktok_ads', 
@@ -123,8 +109,10 @@ prep_tiktok as (
         relation=ref('tiktok_ads__ad_group_report')
     ) }}
 ), 
+{% endif %}
 
-prep_twitter as (
+{% if 'twitter_ads' in enabled_packages %}
+twitter_ads as (
 
     {{ field_name_conversion(
         platform='twitter_ads', 
@@ -136,19 +124,11 @@ prep_twitter as (
         relation=ref('twitter_ads__line_item_report')
     ) }}
 ), 
+{% endif %}
 
 unioned as (
 
-    {{ union_ctes(ctes=[
-        'prep_standardized_union_platform_rename',
-        'prep_apple_search',
-        'prep_facebook',
-        'prep_linkedin',
-        'prep_pinterest',
-        'prep_snapchat',
-        'prep_tiktok',
-        'prep_twitter']
-    ) }}
+    {{ union_ctes(ctes=enabled_packages)}}
 )
 
 select *
