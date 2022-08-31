@@ -1,4 +1,4 @@
-{% macro get_enabled_packages(exclude=[], include=[], additional_vars=[]) %}
+{% macro get_enabled_packages(exclude=[], include=[]) %}
 
 {%- if exclude and include -%}
     {{ exceptions.raise_compiler_error("Both an exclude and include list were provided `get_enabled_packages` macro. Only one is allowed") }}
