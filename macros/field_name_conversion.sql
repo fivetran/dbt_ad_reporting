@@ -74,7 +74,7 @@
 {%- endif -%}
 
 select 
-    {{ dbt_utils.date_trunc('day', 'date_day') }} as date_day,
+    {{ get_date_from_timestamp('date_day') }} as date_day,
     cast( '{{ platform }}' as {{ dbt_utils.type_string() }}) as platform,
 
     {% for field in final_fields_superset.keys()|sort() -%}
