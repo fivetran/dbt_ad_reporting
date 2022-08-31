@@ -32,8 +32,6 @@ jobs:
             dbt seed --target postgres --full-refresh
             dbt run --target postgres --full-refresh
             dbt test --target postgres
-            dbt run --target postgres --full-refresh --vars '{api_source: adwords}' 
-            dbt test --target postgres
       - run:
           name: "Run Tests - Redshift"
           command: |
@@ -43,8 +41,6 @@ jobs:
             dbt deps
             dbt seed --target redshift --full-refresh
             dbt run --target redshift --full-refresh
-            dbt test --target redshift
-            dbt run --target redshift --full-refresh --vars '{api_source: adwords}' 
             dbt test --target redshift
       - run:
           name: "Run Tests - BigQuery"
@@ -59,8 +55,6 @@ jobs:
             dbt seed --target bigquery --full-refresh
             dbt run --target bigquery --full-refresh
             dbt test --target bigquery
-            dbt run --target bigquery --full-refresh --vars '{api_source: adwords}' 
-            dbt test --target bigquery
       - run:
           name: "Run Tests - Snowflake"
           command: |
@@ -70,8 +64,6 @@ jobs:
             dbt deps
             dbt seed --target snowflake --full-refresh
             dbt run --target snowflake --full-refresh
-            dbt test --target snowflake
-            dbt run --target snowflake --full-refresh --vars '{api_source: adwords}' 
             dbt test --target snowflake
       - run:
           name: "Run Tests - Spark"
