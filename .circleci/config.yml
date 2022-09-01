@@ -33,16 +33,6 @@ jobs:
             dbt run --target postgres --full-refresh
             dbt test --target postgres
       - run:
-          name: "Run Tests - Spark"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target spark --full-refresh
-            dbt run --target spark --full-refresh
-            dbt test --target spark
-      - run:
           name: "Run Tests - Redshift"
           command: |
             . venv/bin/activate
@@ -52,16 +42,6 @@ jobs:
             dbt seed --target redshift --full-refresh
             dbt run --target redshift --full-refresh
             dbt test --target redshift
-      - run:
-          name: "Run Tests - Snowflake"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target snowflake --full-refresh
-            dbt run --target snowflake --full-refresh
-            dbt test --target snowflake
       - run:
           name: "Run Tests - BigQuery"
           environment:
@@ -75,3 +55,23 @@ jobs:
             dbt seed --target bigquery --full-refresh
             dbt run --target bigquery --full-refresh
             dbt test --target bigquery
+      - run:
+          name: "Run Tests - Snowflake"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target snowflake --full-refresh
+            dbt run --target snowflake --full-refresh
+            dbt test --target snowflake
+      - run:
+          name: "Run Tests - Spark"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target spark --full-refresh
+            dbt run --target spark --full-refresh --vars '{ad_reporting__pinterest_ads_enabled: false, ad_reporting__tiktok_ads_enabled: false, ad_reporting__snapchat_ads_enabled: false, ad_reporting__apple_search_ads_enabled: false, ad_reporting__twitter_ads_enabled: false}' 
+            dbt test --target spark --vars '{ad_reporting__pinterest_ads_enabled: false, ad_reporting__tiktok_ads_enabled: false, ad_reporting__snapchat_ads_enabled: false, ad_reporting__apple_search_ads_enabled: false, ad_reporting__twitter_ads_enabled: false}' 

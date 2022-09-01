@@ -33,10 +33,10 @@ packages:
   - git: https://github.com/fivetran/dbt_twitter.git
     revision: feature/v2-updates
     warn-unpinned: false
+
+  - package: fivetran/snapchat_ads
+    version: [">=0.4.0", "<0.5.0"]
   
-  - git: https://github.com/fivetran/dbt_snapchat_ads.git
-    revision: feature/v2_updates
-    warn-unpinned: false
 
 # - package: fivetran/facebook_ads
 #   version: [">=0.4.0", "<0.5.0"]
@@ -58,6 +58,3 @@ packages:
 
 # - package: fivetran/twitter_ads
 #   version: [">=0.4.0", "<0.5.0"]
-
-# - package: fivetran/snapchat_ads
-#   version: [">=0.3.0", "<0.4.0"]
