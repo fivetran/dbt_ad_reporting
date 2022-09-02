@@ -11,7 +11,7 @@ with
 {% if 'apple_search_ads' in enabled_packages %}
 apple_search_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='apple_search_ads', 
         report_type='keyword', 
         field_mapping={
@@ -28,7 +28,7 @@ apple_search_ads as (
 {% if 'google_ads' in enabled_packages %}
 google_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='google_ads', 
         report_type='keyword', 
         field_mapping={
@@ -42,7 +42,7 @@ google_ads as (
 {% if 'microsoft_ads' in enabled_packages %}
 microsoft_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='microsoft_ads', 
         report_type='keyword', 
         field_mapping={
@@ -57,7 +57,7 @@ microsoft_ads as (
 {% if 'pinterest_ads' in enabled_packages %}
 pinterest_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='pinterest_ads', 
         report_type='keyword', 
         field_mapping={
@@ -74,7 +74,7 @@ pinterest_ads as (
 {% if 'twitter_ads' in enabled_packages and var('twitter_ads__using_keywords', False) %}
 twitter_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='twitter_ads', 
         report_type='keyword', 
         field_mapping={

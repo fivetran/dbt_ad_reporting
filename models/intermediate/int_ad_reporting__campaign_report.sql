@@ -5,7 +5,7 @@ with
 {% for package in ['twitter_ads', 'facebook_ads', 'google_ads', 'microsoft_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
-    {{ field_name_conversion(
+    {{ get_query(
         platform=package,
         report_type='campaign',
         relation=ref(package ~ '__campaign_report')
@@ -17,7 +17,7 @@ with
 {% if 'apple_search_ads' in enabled_packages %}
 apple_search_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='apple_search_ads', 
         report_type='campaign', 
         field_mapping={
@@ -33,7 +33,7 @@ apple_search_ads as (
 {% if 'linkedin_ads' in enabled_packages %}
 linkedin_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='linkedin_ads', 
         report_type='campaign', 
         field_mapping={
@@ -49,7 +49,7 @@ linkedin_ads as (
 {% if 'pinterest_ads' in enabled_packages %}
 pinterest_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='pinterest_ads', 
         report_type='campaign', 
         field_mapping={
@@ -64,7 +64,7 @@ pinterest_ads as (
 {% if 'snapchat_ads' in enabled_packages %}
 snapchat_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='snapchat_ads', 
         report_type='campaign', 
         field_mapping={
@@ -80,7 +80,7 @@ snapchat_ads as (
 {% if 'tiktok_ads' in enabled_packages %}
 tiktok_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='tiktok_ads', 
         report_type='campaign', 
         field_mapping={

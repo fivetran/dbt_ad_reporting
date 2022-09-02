@@ -1,4 +1,4 @@
-{% macro field_name_conversion(platform=None, report_type=None, field_mapping=None, relation=None) %}
+{% macro get_query(platform=None, report_type=None, field_mapping=None, relation=None) %}
 
 {%- set consistent_fields = ['spend', 'impressions', 'clicks'] -%}
 {%- set account_fields = ['account_id', 'account_name'] -%}

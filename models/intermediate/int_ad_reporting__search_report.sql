@@ -11,7 +11,7 @@ with
 {% if 'microsoft_ads' in enabled_packages %}
 microsoft_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='microsoft_ads', 
         report_type='search', 
         field_mapping={
@@ -26,7 +26,7 @@ microsoft_ads as (
 {% if 'apple_search_ads' in enabled_packages and var('apple_search_ads__using_search_terms', True) %}
 apple_search_ads as (
 
-    {{ field_name_conversion(
+    {{ get_query(
         platform='apple_search_ads', 
         report_type='search', 
         field_mapping={
