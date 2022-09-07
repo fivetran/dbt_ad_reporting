@@ -1,0 +1,52 @@
+version: 2
+
+macros:
+  - name: get_date_from_timestamp
+    description: This macro takes a column of type timestamp or forces the column into a timestamp (depending on the data warehouse) and extracts the date in the format of e.g. 2022-01-01.
+    arguments: 
+      - name: column
+        type: string
+        description: Specifies the column of type timestamp to extract the date from.
+
+  - name: get_enabled_packages
+    description: This macro evaluates all `ad_reporting__<platform>_enabled` variables in the user's `dbt_project.yml` and returns a list of packages that are enabled.
+    arguments:
+      - name: exclude
+        type: list
+        description: This argument is optional and is the list of platforms to exclude in the enabled package evaluation.
+      - name: include
+        type: list
+        description: This argument is optional and is the list of platforms to include in the enabled package evaluation.
+  
+  - name: get_query
+    description: This macro compiles the final query with all aliasing and casting incorporated.
+    arguments:
+      - name: platform
+        type: string
+        description: >
+          Specifies the platform for the CTE; this value should match exactly one value for the `all_packages` variable within `macros/get_enabled_packages.sql`.
+      - name: report_type
+        type: string
+        description: >
+          Specifies the report type and should map to the respective model; could take on one of the following values ['account', 'campaign', 'ad_group', 'ad', 'url', 'keyword', 'search'].
+      - name: field_mapping
+        description: >
+          A dictionary that specifies any column name overriding as necessary since standard names in Ad Reporting may map to a different name as it appears natively within each platform. Each key will have exactly one corresponding string value; if a value is NULL then it will map to the string 'null'.
+      - name: relation
+        description: > 
+          This is a reference to the upstream model that the query will be selecting from; an example argument would look like this: relation=ref('tiktok_ads__advertiser_report').
+  
+  - name: is_enabled
+    description: This macro takes in a list of packages and determines if there is at least one package, if there is, it returns True, else false.
+    arguments:
+      - name: enabled_packages
+        type: list
+        description: List of packages enabled where each package name is a string.
+  
+  - name: union_ctes
+    description: This macro allows for the unioning (union all) of specified CTEs.
+    arguments:
+      - name: ctes
+        type: list
+        description: List of strings for CTE names
+

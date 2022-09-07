@@ -12,8 +12,9 @@
   - `ad_reporting__ad_group_report`
   - `ad_reporting__ad_report`
   - `ad_reporting__keyword_search_report`
+- This package now leverages `ad_reporting__<platform>_enabled` variables to enable/disable all upstream packages and respective models all in one place.
 - New corresponding documentation and updated docs for new models.
-
+- This package leverages several different macros in order to successfully build each model and features a `macros_docs.yml` within the `macros` directory that provides details for each macro.
 
 # dbt_ad_reporting v0.8.0
 ## 🚨 Breaking Changes 🚨

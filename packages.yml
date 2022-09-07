@@ -1,60 +1,27 @@
 packages:
-
-## some packages are erroring because they've already incorporated the persist columns logic 
-## and therefore using a diff version of fivetran_utils 
-  - git: https://github.com/fivetran/dbt_apple_search_ads.git
-    revision: update/v2-updates
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_facebook_ads.git
-    revision: update/ad-reporting-v2
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_google_ads.git
-    revision: feature/v2_updates
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_linkedin.git
-    revision: feature/v2-updates
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_microsoft_ads.git
-    revision: update/ad-reporting-v2
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_pinterest.git
-    revision: feature/v2-updates
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_tiktok_ads.git
-    revision: feature/v2_updates
-    warn-unpinned: false
-
-  - git: https://github.com/fivetran/dbt_twitter.git
-    revision: feature/v2-updates
-    warn-unpinned: false
+  - package: fivetran/apple_search_ads
+    version: [">=0.1.0", "<0.2.0"]
 
   - package: fivetran/snapchat_ads
     version: [">=0.4.0", "<0.5.0"]
   
+  - package: fivetran/facebook_ads
+    version: [">=0.5.0", "<0.6.0"]
 
-# - package: fivetran/facebook_ads
-#   version: [">=0.4.0", "<0.5.0"]
+  - package: fivetran/google_ads
+    version: [">=0.8.0", "<0.9.0"]
 
-# - package: fivetran/google_ads
-#   version: [">=0.7.0", "<0.8.0"]
+  - package: fivetran/pinterest
+    version: [">=0.6.0", "<0.7.0"]
 
-# - package: fivetran/pinterest
-#   version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/linkedin
+    version: [">=0.5.0", "<0.6.0"]
 
-# - package: fivetran/linkedin
-#   version: [">=0.4.0", "<0.5.0"]
+  - package: fivetran/microsoft_ads
+    version: [">=0.5.0", "<0.6.0"]
 
-# - package: fivetran/microsoft_ads
-#   version: [">=0.4.0", "<0.5.0"]
+  - package: fivetran/tiktok_ads
+    version: [">=0.2.0", "<0.3.0"]
 
-# - package: fivetran/tiktok_ads
-#   version: [">=0.1.0", "<0.2.0"]
-
-# - package: fivetran/twitter_ads
-#   version: [">=0.4.0", "<0.5.0"]
+  - package: fivetran/twitter_ads
+    version: [">=0.5.0", "<0.6.0"]

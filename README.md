@@ -213,68 +213,70 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
 
-# !!! TO DO: DOUBLE CHECK VERSIONS ON RELEASE!!!!
 ```yml
 packages: 
-    - package: fivetran/fivetran_utils
-      version: [">=0.3.0", "<0.4.0"]
+  - package: fivetran/fivetran_utils
+    version: [">=0.3.0", "<0.4.0"]
 
-    - package: dbt-labs/dbt_utils
-      version: [">=0.8.0", "<0.9.0"]
+  - package: dbt-labs/dbt_utils
+    version: [">=0.8.0", "<0.9.0"]
 
-    - package: fivetran/apple_search_ads
-      version: [">=0.1.0", "<0.2.0"]
+  - package: calogica/dbt_expectations
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/apple_search_ads_source
-      version: [">=0.1.0", "<0.2.0"]
-    
-    - package: fivetran/facebook_ads
-      version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/apple_search_ads
+    version: [">=0.1.0", "<0.2.0"]
 
-    - package: fivetran/facebook_ads_source
-      version: [">=0.5.0", "<0.6.0"]
-    
-    - package: fivetran/google_ads
-      version: [">=0.8.0", "<0.9.0"]
+  - package: fivetran/apple_search_ads_source
+    version: [">=0.1.0", "<0.2.0"]
+  
+  - package: fivetran/facebook_ads
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/google_ads_source
-      version: [">=0.8.0", "<0.9.0"]
+  - package: fivetran/facebook_ads_source
+    version: [">=0.5.0", "<0.6.0"]
+  
+  - package: fivetran/google_ads
+    version: [">=0.8.0", "<0.9.0"]
 
-    - package: fivetran/pinterest
-      version: [">=0.6.0", "<0.7.0"]
+  - package: fivetran/google_ads_source
+    version: [">=0.8.0", "<0.9.0"]
 
-    - package: fivetran/pinterest_source
-      version: [">=0.6.0", "<0.7.0"]
+  - package: fivetran/pinterest
+    version: [">=0.6.0", "<0.7.0"]
 
-    - package: fivetran/microsoft_ads
-      version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/pinterest_source
+    version: [">=0.6.0", "<0.7.0"]
 
-    - package: fivetran/microsoft_ads_source
-      version: [">=0.6.0", "<0.7.0"]
+  - package: fivetran/microsoft_ads
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/linkedin
-      version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/microsoft_ads_source
+    version: [">=0.6.0", "<0.7.0"]
 
-    - package: fivetran/linkedin_source
-      version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/linkedin
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/twitter_ads
-      version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/linkedin_source
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/twitter_ads_source
-      version: [">=0.5.0", "<0.6.0"]
+  - package: fivetran/twitter_ads
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/snapchat_ads
-      version: [">=0.4.0", "<0.5.0"]
+  - package: fivetran/twitter_ads_source
+    version: [">=0.5.0", "<0.6.0"]
 
-    - package: fivetran/snapchat_ads_source
-      version: [">=0.4.0", "<0.5.0"]
+  - package: fivetran/snapchat_ads
+    version: [">=0.4.0", "<0.5.0"]
 
-    - package: fivetran/tiktok_ads
-      version: [">=0.2.0", "<0.3.0"]
+  - package: fivetran/snapchat_ads_source
+    version: [">=0.4.0", "<0.5.0"]
 
-    - package: fivetran/tiktok_ads_source
-      version: [">=0.2.0", "<0.3.0"]
+  - package: fivetran/tiktok_ads
+    version: [">=0.2.0", "<0.3.0"]
+
+  - package: fivetran/tiktok_ads_source
+    version: [">=0.2.0", "<0.3.0"]
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
