@@ -1,0 +1,4 @@
+id,modification_time,adam_id,budget_amount,budget_currency,budget_orders,daily_budget_amount,daily_budget_currency,deleted,end_time,loc_invoice_detail_buyer_email,loc_invoice_detail_buyer_name,loc_invoice_detail_client_name,loc_invoice_detail_order_number,name,organiation_id,payment_model,serving_state_reasons,serving_status,start_time,status
+973923054,2021-12-10T19:17:21.119,1589007550,100,USD,[],5,USD,false,2022-01-31T23:59:00,,,,,Tap Away,3219110,PAYG,,RUNNING,2021-12-09T00:00:00,ENABLED
+973923054,2021-12-20T04:00:51.264,1589007550,100,USD,[],5,USD,false,2022-01-31T23:59:00,,,,,Tap Away,3219110,PAYG,"[""TOTAL_BUDGET_EXHAUSTED""]",NOT_RUNNING,2021-12-09T00:00:00,ENABLED
+973923054,2021-12-27T00:33:15.302,1589007550,100,USD,[],5,USD,false,2022-01-31T23:59:00,,,,,Tap Away,3219110,PAYG,"[""TOTAL_BUDGET_EXHAUSTED"",""PAUSED_BY_USER""]",NOT_RUNNING,2021-12-09T00:00:00,PAUSED

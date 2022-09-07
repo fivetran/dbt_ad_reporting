@@ -1,3 +1,21 @@
+# dbt_ad_reporting v1.0.0
+## 🚨 Breaking Changes 🚨
+[PR #54](https://github.com/fivetran/dbt_ad_reporting/pull/54) incorporates these breaking changes:
+- The previous `ad_reporting` model has been renamed to `ad_reporting__url_report` and will only include records that have non-null url values for more information on specific filters please refer to each platform package's `url_report` model.
+
+## 🎉 Feature Enhancements 🎉 
+[PR #54](https://github.com/fivetran/dbt_ad_reporting/pull/54) includes the following new features:
+- Apple Search Ads has officially been released and added to Ad Reporting.
+- In addition to the `ad_reporting__url_report` model update, we have added **five** new models:
+  - `ad_reporting__account_report`
+  - `ad_reporting__campaign_report`
+  - `ad_reporting__ad_group_report`
+  - `ad_reporting__ad_report`
+  - `ad_reporting__keyword_search_report`
+- This package now leverages `ad_reporting__<platform>_enabled` variables to enable/disable all upstream packages and respective models all in one place.
+- New corresponding documentation and updated docs for new models.
+- This package leverages several different macros in order to successfully build each model and features a `macros_docs.yml` within the `macros` directory that provides details for each macro.
+
 # dbt_ad_reporting v0.8.0
 ## 🚨 Breaking Changes 🚨
 - The `api_source` variable for the Google Ads package is now defaulted to `google_ads` as opposed to `adwords`. The Adwords API has since been deprecated by Google and is now no longer the standard API for the Google Ads connector. Please ensure you are using a Google Ads API version of the Fivetran connector before upgrading this package. ([#53](https://github.com/fivetran/dbt_ad_reporting/pull/53))

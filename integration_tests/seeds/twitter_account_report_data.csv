@@ -1,0 +1,5 @@
+account_id,date,placement,_fivetran_synced,engagements,follows,impressions,likes,replies,retweets,unfollows
+18ce54lbsn8,2022-05-05 07:00:00,ALL_ON_TWITTER,2022-05-31 16:43:42.368,9,0,875,0,0,0,0
+18ce54lbsn8,2022-05-08 07:00:00,ALL_ON_TWITTER,2022-05-31 16:43:42.368,1,0,610,0,0,0,0
+18ce54lbsn8,2022-05-06 07:00:00,ALL_ON_TWITTER,2022-05-31 16:43:42.368,9,1,1071,0,0,0,0
+18ce54lbsn8,2022-05-07 07:00:00,ALL_ON_TWITTER,2022-05-31 16:43:42.368,4,0,639,0,0,0,0
