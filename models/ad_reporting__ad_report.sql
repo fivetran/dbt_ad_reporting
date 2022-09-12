@@ -10,7 +10,7 @@ with base as (
 aggregated as (
     
     select 
-        date_day,
+        date_day as date_day_test,
         platform,
         account_id,
         account_name,

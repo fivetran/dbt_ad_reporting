@@ -7,13 +7,14 @@ metrics:
 
     type: sum
     sql: spend
+    description: Total spend (in currency of individual platforms)
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
       - platform
-      - campaign_id # do i include name?
+      - campaign_id
       - campaign_name
       - ad_group_id
       - ad_group_name
@@ -28,8 +29,9 @@ metrics:
 
     type: sum
     sql: clicks
+    description: Total clicks
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
@@ -46,11 +48,12 @@ metrics:
   - name: impressions
     label: Ad impressions (Fivetran)
     model: ref('ad_reporting__ad_report')
+    description: Total impressions
 
     type: sum
     sql: impressions
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
@@ -66,12 +69,12 @@ metrics:
 
   - name: cost_per_click
     label: Average ad cost per click (Fivetran)
-    model: ref('ad_reporting__ad_report')
+    description: The ratio of spend to clicks
 
     type: expression
     sql: "{{ metric('spend') }} / {{ metric('clicks') }}"
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
@@ -92,13 +95,12 @@ metrics:
 
   - name: bounce_rate
     label: Average Ad Bounce Rate (Fivetran)
-    model: ref('ad_reporting__ad_report')
     description: Percentage of impressions that did not convert into clicks.
 
     type: expression
     sql: "({{ metric('impressions') }} - {{ metric('clicks') }}) / {{ metric('impressions') }}"
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
@@ -119,13 +121,12 @@ metrics:
 
   - name: clickthrough_rate
     label: Ad Clickthrough Rate (Fivetran)
-    model: ref('ad_reporting__ad_report')
     description: Percentage of impressions that did convert into clicks.
 
     type: expression
     sql: "{{ metric('clicks') }} / {{ metric('impressions') }}"
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
@@ -139,7 +140,6 @@ metrics:
       - account_id
       - account_name
     
-    # maybe add a filter around the spend?
     filters:
       - field: impressions
         operator: '>'
@@ -153,7 +153,7 @@ metrics:
     type: count_distinct
     sql: ad_id
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [day, week, month]
 
     dimensions:
@@ -178,7 +178,7 @@ metrics:
     type: average
     sql: spend
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [week, month]
 
     dimensions:
@@ -203,7 +203,7 @@ metrics:
     type: average
     sql: spend
 
-    timestamp: date_day
+    timestamp: date_day_test
     time_grains: [week, month]
 
     dimensions:
