@@ -209,6 +209,42 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
+## (Optional) Step 8: Use predefined Metrics & the dbt Semantic Layer
+<details><summary>Expand for details</summary>
+
+On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), including:
+- Spend
+- Impressions
+- Clicks
+- Cost per click
+- Clickthrough rate
+- Bounce rate
+- Count of active ads
+- Average spend
+- Average non-zero spend
+
+You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/metrics/models/ad_reporting_metrics.yml).
+
+To utilize these metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) and the example below:
+```sql
+select *
+from {{ metrics.calculate(
+        metric('clicks'),
+        grain='month',
+        dimensions=['platform', 
+                    'campaign_id', 
+                    'campaign_name'
+        ],
+        secondary_calculations=[
+            metrics.period_over_period(comparison_strategy='difference', interval=1, alias='diff_last_mth'),
+            metrics.period_over_period(comparison_strategy='ratio', interval=1, alias='ratio_last_mth')
+        ]
+) }}
+```
+
+</details>
+<br>
+
 # 🔍 Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
@@ -277,6 +313,9 @@ packages:
 
   - package: fivetran/tiktok_ads_source
     version: [">=0.2.0", "<0.3.0"]
+
+  - package: dbt-labs/metrics
+    version: [">=0.3.0", "<0.4.0"]
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
