@@ -9,7 +9,7 @@ dispatch:
     
 vars: 
   apple_search_ads__using_search_terms: True
-  twitter_ads__using_keywords: True
+  twitter_ads__using_keywords: False
   apple_search_ads_source:
     apple_search_ads_schema: ad_reporting_integration_tests_v1
     apple_search_ads_organization_identifier: "apple_search_organization_data"
