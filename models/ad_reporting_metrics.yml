@@ -88,11 +88,6 @@ metrics:
       - account_id
       - account_name
 
-    filters:
-      - field: clicks
-        operator: '>'
-        value: '0'
-
   - name: bounce_rate
     label: Average Ad Bounce Rate (Fivetran)
     description: Percentage of impressions that did not convert into clicks.
@@ -114,11 +109,6 @@ metrics:
       - account_id
       - account_name
 
-    filters:
-      - field: impressions
-        operator: '>'
-        value: '0'
-
   - name: clickthrough_rate
     label: Ad Clickthrough Rate (Fivetran)
     description: Percentage of impressions that did convert into clicks.
@@ -139,11 +129,6 @@ metrics:
       - ad_name
       - account_id
       - account_name
-    
-    filters:
-      - field: impressions
-        operator: '>'
-        value: '0'
 
   - name: active_ads
     label: Count of Active Ads (Fivetran)
