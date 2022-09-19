@@ -223,7 +223,7 @@ On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt packag
 - Average spend
 - Average non-zero spend
 
-You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/metrics/models/ad_reporting_metrics.yml).
+You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml).
 
 To utilize these metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) and the example below:
 ```sql
