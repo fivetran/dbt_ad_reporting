@@ -209,7 +209,7 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
-## (Optional) Step 8: Use predefined Metrics & the dbt Semantic Layer
+## (Optional) Step 8: Use predefined Metrics
 <details><summary>Expand for details</summary>
 
 On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), including:
