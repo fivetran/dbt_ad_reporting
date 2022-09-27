@@ -225,7 +225,15 @@ On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt packag
 
 You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml).
 
-To utilize these metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) and the example below:
+To use dbt Metrics, add the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) to your project's `packages.yml` file:
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.3.0", "<0.4.0"]
+```
+> **Note**: The Metrics package has stricter dbt version requirements. As of today, the latest version of Metrics (v0.3.5) requires dbt `[">=1.2.0-a1", "<2.0.0"]`.
+
+To utilize the Ad Reporting's pre-defined metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) usage instructions and the example below:
 ```sql
 select *
 from {{ metrics.calculate(
@@ -313,9 +321,6 @@ packages:
 
   - package: fivetran/tiktok_ads_source
     version: [">=0.2.0", "<0.3.0"]
-
-  - package: dbt-labs/metrics
-    version: [">=0.3.0", "<0.4.0"]
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance

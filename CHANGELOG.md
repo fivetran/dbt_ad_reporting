@@ -3,9 +3,9 @@
 ## 🎉 Feature Enhancements 🎉 
 The package now includes a set of pre-defined [metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) related to clicks, impressions, and spend (definitions [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml)). 
 
-Refer to the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-8-use-predefined-metrics--the-dbt-semantic-layer) for the included metrics and instructions on how to use them.
+Refer to the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-8-use-predefined-metrics) for the included metrics and instructions on how to use them.
 
-Note: This introduces a dependency on the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics).
+Note: This requires you to manually add a dependency on the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) to use.
 
 [PR #57](https://github.com/fivetran/dbt_ad_reporting/pull/57)
 

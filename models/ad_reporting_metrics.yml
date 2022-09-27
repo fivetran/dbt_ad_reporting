@@ -9,7 +9,7 @@ metrics:
     sql: spend
     description: Total spend (in currency of individual platforms)
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -31,7 +31,7 @@ metrics:
     sql: clicks
     description: Total clicks
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -53,7 +53,7 @@ metrics:
     type: sum
     sql: impressions
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -74,7 +74,7 @@ metrics:
     type: expression
     sql: "{{ metric('spend') }} / {{ metric('clicks') }}"
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -95,7 +95,7 @@ metrics:
     type: expression
     sql: "({{ metric('impressions') }} - {{ metric('clicks') }}) / {{ metric('impressions') }}"
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -116,7 +116,7 @@ metrics:
     type: expression
     sql: "{{ metric('clicks') }} / {{ metric('impressions') }}"
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -138,7 +138,7 @@ metrics:
     type: count_distinct
     sql: ad_id
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [day, week, month]
 
     dimensions:
@@ -163,7 +163,7 @@ metrics:
     type: average
     sql: spend
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [week, month]
 
     dimensions:
@@ -188,7 +188,7 @@ metrics:
     type: average
     sql: spend
 
-    timestamp: date_day_test
+    timestamp: date_day
     time_grains: [week, month]
 
     dimensions:
