@@ -1,3 +1,9 @@
+# dbt_ad_reporting v1.0.1
+## Fixes
+- The LinkedIn Ads schema and database variables were incorrectly documented within the README. The README has been updated to reflect the correct variable names. `linkedin_schema` has been properly updated to reflect `linkedin_ads_schema`, and `linkedin_database` has been updated to reflect `linkedin_ads_database`. ([#60](https://github.com/fivetran/dbt_ad_reporting/pull/60))
+
+## Contributors
+- [@clay-walker](https://github.com/clay-walker) ([#60](https://github.com/fivetran/dbt_ad_reporting/pull/60))
 # dbt_ad_reporting v1.0.0
 ## 🚨 Breaking Changes 🚨
 [PR #54](https://github.com/fivetran/dbt_ad_reporting/pull/54) incorporates these breaking changes:
