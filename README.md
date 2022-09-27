@@ -209,6 +209,50 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
+## (Optional) Step 8: Use predefined Metrics
+<details><summary>Expand for details</summary>
+
+On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), including:
+- Spend
+- Impressions
+- Clicks
+- Cost per click
+- Clickthrough rate
+- Bounce rate
+- Count of active ads
+- Average spend
+- Average non-zero spend
+
+You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml).
+
+To use dbt Metrics, add the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) to your project's `packages.yml` file:
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.3.0", "<0.4.0"]
+```
+> **Note**: The Metrics package has stricter dbt version requirements. As of today, the latest version of Metrics (v0.3.5) requires dbt `[">=1.2.0-a1", "<2.0.0"]`.
+
+To utilize the Ad Reporting's pre-defined metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) usage instructions and the example below:
+```sql
+select *
+from {{ metrics.calculate(
+        metric('clicks'),
+        grain='month',
+        dimensions=['platform', 
+                    'campaign_id', 
+                    'campaign_name'
+        ],
+        secondary_calculations=[
+            metrics.period_over_period(comparison_strategy='difference', interval=1, alias='diff_last_mth'),
+            metrics.period_over_period(comparison_strategy='ratio', interval=1, alias='ratio_last_mth')
+        ]
+) }}
+```
+
+</details>
+<br>
+
 # 🔍 Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**

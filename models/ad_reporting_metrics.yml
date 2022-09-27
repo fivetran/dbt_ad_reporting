@@ -1,0 +1,201 @@
+version: 2
+
+metrics:
+  - name: spend
+    label: Ad spend (Fivetran)
+    model: ref('ad_reporting__ad_report')
+
+    type: sum
+    sql: spend
+    description: Total spend (in currency of individual platforms)
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - ad_id
+      - ad_name
+      - account_id
+      - account_name
+
+  - name: clicks
+    label: Ad clicks (Fivetran)
+    model: ref('ad_reporting__ad_report')
+
+    type: sum
+    sql: clicks
+    description: Total clicks
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - ad_id
+      - ad_name
+      - account_id
+      - account_name
+
+  - name: impressions
+    label: Ad impressions (Fivetran)
+    model: ref('ad_reporting__ad_report')
+    description: Total impressions
+
+    type: sum
+    sql: impressions
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - ad_id
+      - ad_name
+      - account_id
+      - account_name
+
+  - name: cost_per_click
+    label: Average ad cost per click (Fivetran)
+    description: The ratio of spend to clicks
+
+    type: expression
+    sql: "{{ metric('spend') }} / {{ metric('clicks') }}"
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - ad_id
+      - ad_name
+      - account_id
+      - account_name
+
+  - name: bounce_rate
+    label: Average Ad Bounce Rate (Fivetran)
+    description: Percentage of impressions that did not convert into clicks.
+
+    type: expression
+    sql: "({{ metric('impressions') }} - {{ metric('clicks') }}) / {{ metric('impressions') }}"
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - ad_id
+      - ad_name
+      - account_id
+      - account_name
+
+  - name: clickthrough_rate
+    label: Ad Clickthrough Rate (Fivetran)
+    description: Percentage of impressions that did convert into clicks.
+
+    type: expression
+    sql: "{{ metric('clicks') }} / {{ metric('impressions') }}"
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - ad_id
+      - ad_name
+      - account_id
+      - account_name
+
+  - name: active_ads
+    label: Count of Active Ads (Fivetran)
+    model: ref('ad_reporting__ad_report')
+    description: Count of ads witth spend > 0.
+
+    type: count_distinct
+    sql: ad_id
+
+    timestamp: date_day
+    time_grains: [day, week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - account_id
+      - account_name
+
+    filters:
+      - field: spend
+        operator: '>'
+        value: '0'
+
+  - name: avg_spend_nonzero
+    label: Average Spend, Ignore Zeros (Fivetran)
+    model: ref('ad_reporting__ad_report')
+    description: Average ad spend, ignores zero-spend days.
+
+    type: average
+    sql: spend
+
+    timestamp: date_day
+    time_grains: [week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - account_id
+      - account_name
+
+    filters:
+      - field: spend
+        operator: '>'
+        value: '0'
+
+  - name: avg_spend
+    label: Average Spend (Fivetran)
+    model: ref('ad_reporting__ad_report')
+    description: Average ad spend, does not ignore zero-spend days.
+
+    type: average
+    sql: spend
+
+    timestamp: date_day
+    time_grains: [week, month]
+
+    dimensions:
+      - platform
+      - campaign_id
+      - campaign_name
+      - ad_group_id
+      - ad_group_name
+      - account_id
+      - account_name
