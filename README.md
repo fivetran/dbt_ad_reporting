@@ -81,8 +81,8 @@ vars:
     microsoft_ads_schema: bingads
     microsoft_ads_database: your_database_name
 
-    linkedin_schema: linkedin_ads 
-    linkedin_database: your_database_name  
+    linkedin_ads_schema: linkedin_ads 
+    linkedin_ads_database: your_database_name  
 
     pinterest_schema: pinterest
     pinterest_database: your_database_name 
@@ -205,6 +205,50 @@ vars:
 <br>
 
 Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core™ setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
+
+</details>
+<br>
+
+## (Optional) Step 8: Use predefined Metrics
+<details><summary>Expand for details</summary>
+
+On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), including:
+- Spend
+- Impressions
+- Clicks
+- Cost per click
+- Clickthrough rate
+- Bounce rate
+- Count of active ads
+- Average spend
+- Average non-zero spend
+
+You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml).
+
+To use dbt Metrics, add the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) to your project's `packages.yml` file:
+```yml
+packages:
+  - package: dbt-labs/metrics
+    version: [">=0.3.0", "<0.4.0"]
+```
+> **Note**: The Metrics package has stricter dbt version requirements. As of today, the latest version of Metrics (v0.3.5) requires dbt `[">=1.2.0-a1", "<2.0.0"]`.
+
+To utilize the Ad Reporting's pre-defined metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) usage instructions and the example below:
+```sql
+select *
+from {{ metrics.calculate(
+        metric('clicks'),
+        grain='month',
+        dimensions=['platform', 
+                    'campaign_id', 
+                    'campaign_name'
+        ],
+        secondary_calculations=[
+            metrics.period_over_period(comparison_strategy='difference', interval=1, alias='diff_last_mth'),
+            metrics.period_over_period(comparison_strategy='ratio', interval=1, alias='ratio_last_mth')
+        ]
+) }}
+```
 
 </details>
 <br>
