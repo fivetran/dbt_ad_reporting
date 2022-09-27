@@ -6,6 +6,15 @@
   - Refer to the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-8-use-predefined-metrics) for the included metrics and instructions on how to use them.
   - Note: This requires you to manually add a dependency on the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) to use.
 
+## Fixes
+[PR #60](https://github.com/fivetran/dbt_ad_reporting/pull/60) incorporates the following change:
+- The LinkedIn Ads schema and database variables were incorrectly documented within the README. The README has been updated to reflect the correct variable names. 
+  - `linkedin_schema` has been properly updated to reflect `linkedin_ads_schema`
+  - `linkedin_database` has been updated to reflect `linkedin_ads_database`. 
+
+## Contributors
+- [@clay-walker](https://github.com/clay-walker) ([#60](https://github.com/fivetran/dbt_ad_reporting/pull/60))
+
 # dbt_ad_reporting v1.0.0
 ## 🚨 Breaking Changes 🚨
 [PR #54](https://github.com/fivetran/dbt_ad_reporting/pull/54) incorporates these breaking changes:

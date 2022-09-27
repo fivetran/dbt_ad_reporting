@@ -81,8 +81,8 @@ vars:
     microsoft_ads_schema: bingads
     microsoft_ads_database: your_database_name
 
-    linkedin_schema: linkedin_ads 
-    linkedin_database: your_database_name  
+    linkedin_ads_schema: linkedin_ads 
+    linkedin_ads_database: your_database_name  
 
     pinterest_schema: pinterest
     pinterest_database: your_database_name 
