@@ -13,7 +13,7 @@
 
 {% endmacro %}
 
-{% macro spark__get_date_from_timestamp(column) %}
+{% macro !!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!__get_date_from_timestamp(column) %}
 
     to_date(to_timestamp({{ column }}),'yyyyMMdd')
 
