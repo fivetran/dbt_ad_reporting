@@ -1,11 +1,11 @@
 name: 'ad_reporting_integration_tests'
-version: '1.0.1'
+version: '1.1.0'
 profile: 'integration_tests'
 config-version: 2
 
 dispatch:
   - macro_namespace: dbt_utils
-    search_order: ['!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!_utils', 'dbt_utils']
+    search_order: ['spark_utils', 'dbt_utils']
     
 vars: 
   apple_search_ads__using_search_terms: True
@@ -125,7 +125,7 @@ seeds:
     ### Microsoft Seeds
     microsoft_ads_account_history_data:
       +column_types:
-        name: "{{ 'string' if target.name in ['bigquery','!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'] else 'varchar' }}"
+        name: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
     microsoft_ads_ad_group_history_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -242,7 +242,7 @@ seeds:
 
     twitter_account_history_data:
       +column_types:
-        name: "{{ 'string' if target.name in ['bigquery','!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'] else 'varchar' }}"
+        name: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
     twitter_tweet_url_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -445,14 +445,14 @@ seeds:
     ### Facebook Seeds
     facebook_ads_creative_history_data:
       +column_types:        
-        page_link: "{{ 'string' if target.name in ['bigquery','!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'] else 'varchar' }}"
-        template_page_link: "{{ 'string' if target.name in ['bigquery','!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'] else 'varchar' }}"
+        page_link: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
     facebook_ads_account_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-        name: "{{ 'string' if target.name in ['bigquery','!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'] else 'varchar' }}"
+        name: "{{ 'string' if target.name in ['bigquery','spark','databricks'] else 'varchar' }}"
     facebook_ads_ad_history_data:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
