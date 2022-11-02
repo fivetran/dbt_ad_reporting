@@ -39,7 +39,7 @@
 - Dependencies on `fivetran/fivetran_utils` have been upgraded, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
 
 [PR #68](https://github.com/fivetran/dbt_ad_reporting/pull/68) includes the following updates:
-- Added `budget_association_status` into the `stg_microsoft_ads__campaign_daily_report` table in order to account for campaign budgets that end midday. Including `budget_association_status` as another grain to test by, will reduce tests failing due to non-uniqueness of rows. This change will therefore yield an update this package's `integration_tests/seeds/microsoft_ads_campaign_performance_daily_report_data`. 
+- Updated this package's `integration_tests/seeds/microsoft_ads_campaign_performance_daily_report_data` in light of [PR #23](https://github.com/fivetran/dbt_microsoft_ads_source/pull/23) on `dbt_microsoft_ads_source`.
 
 # dbt_ad_reporting v1.0.1
 
