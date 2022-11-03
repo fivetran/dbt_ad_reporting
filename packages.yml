@@ -38,7 +38,7 @@ packages:
   # - package: fivetran/microsoft_ads
   #   version: [">=0.6.0", "<0.7.0"]
     - git: https://github.com/fivetran/dbt_microsoft_ads.git
-      revision: bugfix/budget-association-issue-21
+      revision: MagicBot/dbt-utils-cross-db-migration
       warn-unpinned: false
 
   # - package: fivetran/tiktok_ads
