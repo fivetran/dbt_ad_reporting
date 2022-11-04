@@ -17,8 +17,11 @@ packages:
   - package: fivetran/linkedin
     version: [">=0.5.0", "<0.6.0"]
 
-  - package: fivetran/microsoft_ads
-    version: [">=0.5.0", "<0.6.0"]
+  # - package: fivetran/microsoft_ads
+  #   version: [">=0.5.0", "<0.6.0"]
+  - git: https://github.com/fivetran/dbt_microsoft_ads.git
+    revision: test-bugfix/search-uniqueness-hard-deletes
+    warn-unpinned: false
 
   - package: fivetran/tiktok_ads
     version: [">=0.2.0", "<0.3.0"]
