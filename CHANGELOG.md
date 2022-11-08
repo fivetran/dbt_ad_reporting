@@ -1,3 +1,8 @@
+# dbt_ad_reporting v1.0.2
+
+## 🕷️ Bugfixes 🕷️
+- Updated `twitter_ads__using_keywords` variables that were had inconsistent defaults [#]()
+
 # dbt_ad_reporting v1.0.1
 
 ## 🎉 Feature Enhancements 🎉 
