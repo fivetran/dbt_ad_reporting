@@ -1,3 +1,8 @@
+# dbt_ad_reporting v1.0.2
+
+## 🕷️ Bugfixes 🕷️
+- Updated `twitter_ads__using_keywords` to have consistent defaults. ([#70](https://github.com/fivetran/dbt_ad_reporting/pull/70))
+
 # dbt_ad_reporting v1.0.1
 
 ## 🎉 Feature Enhancements 🎉 

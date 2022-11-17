@@ -1,5 +1,5 @@
 
-# HEY! This file is used in the Ad Reporting tests with CircleCI.
+# HEY! This file is used in the dbt package integrations tests with Buildkite.
 # You should __NEVER__ check credentials into version control. Thanks for reading :)
 
 config:
@@ -7,7 +7,7 @@ config:
     use_colors: True
 
 integration_tests:
-  target: snowflake
+  target: redshift
   outputs:
     redshift:
       type: redshift
@@ -16,15 +16,15 @@ integration_tests:
       pass: "{{ env_var('CI_REDSHIFT_DBT_PASS') }}"
       dbname: "{{ env_var('CI_REDSHIFT_DBT_DBNAME') }}"
       port: 5439
-      schema: ad_reporting_integration_tests_v1
+      schema: ad_reporting_integration_tests_2
       threads: 8
     bigquery:
       type: bigquery
-      method: service-account
-      keyfile: "{{ env_var('GCLOUD_SERVICE_KEY_PATH') }}"
+      method: service-account-json
       project: 'dbt-package-testing'
-      schema: ad_reporting_integration_tests_v1
+      schema: ad_reporting_integration_tests_2
       threads: 8
+      keyfile_json: "{{ env_var('GCLOUD_SERVICE_KEY') | as_native }}"
     snowflake:
       type: snowflake
       account: "{{ env_var('CI_SNOWFLAKE_DBT_ACCOUNT') }}"
@@ -33,28 +33,22 @@ integration_tests:
       role: "{{ env_var('CI_SNOWFLAKE_DBT_ROLE') }}"
       database: "{{ env_var('CI_SNOWFLAKE_DBT_DATABASE') }}"
       warehouse: "{{ env_var('CI_SNOWFLAKE_DBT_WAREHOUSE') }}"
-      schema: ad_reporting_integration_tests_v1
+      schema: ad_reporting_integration_tests_2
       threads: 8
-    spark:
-      type: spark
-      method: http
-      schema: ad_reporting_integration_tests_v1
-      host: "{{ env_var('CI_SPARK_DBT_HOST') }}"
-      organization: "{{ env_var('CI_SPARK_DBT_ORGANIZATION') }}"
-      token: "{{ env_var('CI_SPARK_DBT_TOKEN') }}"
-      cluster: "{{ env_var('CI_SPARK_DBT_CLUSTER') }}"
-      port: 443
-      connect_timeout: 60
-      connect_retries: 5
-      threads: 4
     postgres:
       type: postgres
       host: "{{ env_var('CI_POSTGRES_DBT_HOST') }}"
       user: "{{ env_var('CI_POSTGRES_DBT_USER') }}"
-      password: "{{ env_var('CI_POSTGRES_DBT_PASS') }}"
+      pass: "{{ env_var('CI_POSTGRES_DBT_PASS') }}"
+      dbname: "{{ env_var('CI_POSTGRES_DBT_DBNAME') }}"
       port: 5432
-      dbname: "{{ env_var('CI_POSTGRES_DBT_DATABASE') }}"
-      schema: ad_reporting_integration_tests_v1
+      schema: ad_reporting_integration_tests_2
       threads: 8
-      keepalives_idle: 0
-      sslmode: prefer
+    databricks:
+      catalog: null
+      host: "{{ env_var('CI_DATABRICKS_DBT_HOST') }}"
+      http_path: "{{ env_var('CI_DATABRICKS_DBT_HTTP_PATH') }}"
+      schema: ad_reporting_integration_tests_2
+      threads: 2
+      token: "{{ env_var('CI_DATABRICKS_DBT_TOKEN') }}"
+      type: databricks
