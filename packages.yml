@@ -8,11 +8,8 @@ packages:
   - package: fivetran/facebook_ads
     version: [">=0.5.0", "<0.6.0"]
 
-  # - package: fivetran/google_ads
-  #   version: [">=0.8.0", "<0.9.0"]
-  - git: https://github.com/fivetran/dbt_google_ads.git
-    revision: hotfix/ad-report-model
-    warn-unpinned: false
+  - package: fivetran/google_ads
+    version: [">=0.8.0", "<0.9.0"]
 
   - package: fivetran/pinterest
     version: [">=0.6.0", "<0.7.0"]
