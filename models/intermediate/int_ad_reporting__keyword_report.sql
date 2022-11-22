@@ -80,7 +80,7 @@ twitter_ads as (
         field_mapping={
                 'ad_group_id': 'line_item_id',
                 'ad_group_name': 'line_item_name',
-                'keyword_id': 'null',
+                'keyword_id': 'keyword_id',
                 'keyword_text': 'keyword',
                 'keyword_match_type': 'null'
             },

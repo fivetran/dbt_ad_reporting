@@ -17,11 +17,17 @@ packages:
   - package: fivetran/linkedin
     version: [">=0.5.0", "<0.6.0"]
 
-  - package: fivetran/microsoft_ads
-    version: [">=0.5.0", "<0.6.0"]
+  # - package: fivetran/microsoft_ads
+  #   version: [">=0.5.0", "<0.6.0"]
+  - git: https://github.com/fivetran/dbt_microsoft_ads.git
+    revision: bugfix/match-type-report-adjustments
+    warn-unpinned: false
 
   - package: fivetran/tiktok_ads
     version: [">=0.2.0", "<0.3.0"]
 
-  - package: fivetran/twitter_ads
-    version: [">=0.5.0", "<0.6.0"]
+  # - package: fivetran/twitter_ads
+  #   version: [">=0.5.0", "<0.6.0"]
+  - git: https://github.com/fivetran/dbt_twitter.git
+    revision: bugfix/keyword-id-addition
+    warn-unpinned: false
