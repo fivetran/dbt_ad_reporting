@@ -143,6 +143,7 @@ models:
           combination_of_columns:
             - platform
             - date_day
+            - keyword_id
             - keyword_text
             - keyword_match_type
             - ad_group_id
