@@ -143,7 +143,7 @@ models:
           combination_of_columns:
             - platform
             - date_day
-            - keyword_text
+            - keyword_id
             - keyword_match_type
             - ad_group_id
             - campaign_id
@@ -167,10 +167,10 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
-      - name: keyword_text
-        description: '{{ doc("keyword_text") }}'
         tests:
           - not_null
+      - name: keyword_text
+        description: '{{ doc("keyword_text") }}'
       - name: keyword_match_type
         description: '{{ doc("keyword_match_type") }}'
       - name: clicks
