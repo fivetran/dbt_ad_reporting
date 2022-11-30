@@ -1,6 +1,6 @@
 # dbt_ad_reporting v1.0.4
 ## Feature Enhancement
-- The `keyword_id` field has been added to the `ad_reporting__keyword_report` model for the Twitter Ads platform. ([#71](https://github.com/fivetran/dbt_ad_reporting/pull/71))
+- The `keyword_id` field (which is a surrogate key generated from the combination of 'account_id', 'line_item_id', 'segment', and 'placement' fields within the Twitter Ads source) has been added to the `ad_reporting__keyword_report` model for the Twitter Ads platform. ([#71](https://github.com/fivetran/dbt_ad_reporting/pull/71))
 
 ## Bugfixes
 - The `not_null` test on the `ad_reporting__keyword_report` has been adjusted to be tested on the `keyword_id` as opposed to the `keyword_text`. This is needed as there may be times where keyword historical records may be removed and lose reference in an upstream join. As such, the text may be lost and the null test should be applied to the ID instead. ([#71](https://github.com/fivetran/dbt_ad_reporting/pull/71))
