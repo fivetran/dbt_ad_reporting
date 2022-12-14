@@ -188,21 +188,12 @@ models:
 <details><summary>Expand for details</summary>
 <br>
 
-## Enable records to have null urls
-The default behavior for the `ad_reporting__url_report` end model is to filter out records having null URL fields, however you are able to turn off this filter if necessary. This is done by setting one of the variables below to `True` in your `dbt_project.yml` file. 
-> Note that using the variable `allow_ad_reporting_null_urls` will allow records with null urls for ALL Fivetran ad packages included in your project.
+## Disabling null URL filtering from URL reports
+The default behavior for the `ad_reporting__url_report` end model is to filter out records having null URL fields, however, you are able to turn off this filter if needed. To turn off the filter, include the below in your `dbt_project.yml` file. This variable will affect ALL Fivetran platform packages enabled in Ad Reporting, therefore either all URL reports will have null URLs filtered, or all URL reports will have null URLs included.
 
 ```yml
 vars:
-  allow_ad_reporting_null_urls: True # Use this variable to allow null urls for ALL Fivetran ad packages included in your project. Default is False. 
-  allow_facebook_ads_null_urls: True # Use this variable to allow null urls for dbt_facebook_ads only. Default is False. 
-  allow_google_ads_null_urls: True # Use this variable to allow null urls for dbt_google_ads only. Default is False. 
-  allow_linkedin_ads_null_urls: True # Use this variable to allow null urls for dbt_linkedin only. Default is False. 
-  allow_microsoft_ads_null_urls: True # Use this variable to allow null urls for dbt_microsoft_ads only. Default is False. 
-  allow_pinterest_ads_null_urls: True # Use this variable to allow null urls for dbt_pinterest only. Default is False. 
-  allow_snapchat_ads_null_urls: True # Use this variable to allow null urls for dbt_snapchat_ads only. Default is False. 
-  allow_tiktok_ads_null_urls: True # Use this variable to allow null urls for dbt_tiktok_ads only. Default is False. 
-  allow_twitter_ads_null_urls: True # Use this variable to allow null urls for dbt_twitter_ads only. Default is False. 
+  ad_reporting__url_report__using_null_filter: False # Default is True.
 ```
 
 ### Change the source table references

@@ -19,5 +19,5 @@ dbt deps
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
-dbt run --vars '{allow_ad_reporting_null_urls: true}' --target "$db" --full-refresh
-dbt test --vars '{allow_ad_reporting_null_urls: true}' --target "$db"
+dbt run --vars '{ad_reporting__url_report__using_null_filter: false}' --target "$db" --full-refresh
+dbt test --vars '{ad_reporting__url_report__using_null_filter: false}' --target "$db"

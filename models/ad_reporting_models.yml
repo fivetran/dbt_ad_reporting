@@ -245,6 +245,9 @@ models:
             - utm_medium
             - utm_source
             - utm_term
+          config:
+            # Below is so we don't run this test if the user has allowed urls to have null entries
+            enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -268,20 +271,7 @@ models:
           - not_null:
               config:
                 # Below is so we don't run this test if the user has allowed urls to have null entries
-                enabled: >
-                  {%- if (var('allow_facebook_ads_null_urls', False)) 
-                  or (var('allow_google_ads_null_urls', False))
-                  or (var('allow_linkedin_ads_null_urls', False))
-                  or (var('allow_microsoft_ads_null_urls', False))
-                  or (var('allow_pinterest_ads_null_urls', False))
-                  or (var('allow_snapchat_ads_null_urls', False))
-                  or (var('allow_tiktok_ads_null_urls', False))
-                  or (var('allow_twitter_ads_null_urls', False))
-                  or (var('allow_ad_reporting_null_urls', False)) -%}
-                  {{ 'False' | as_bool }}
-                  {%- else -%}
-                  {{ 'True' | as_bool }}
-                  {%- endif -%}
+                enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
       - name: url_host
         description: '{{ doc("url_host") }}'
       - name: url_path
