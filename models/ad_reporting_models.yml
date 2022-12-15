@@ -245,6 +245,9 @@ models:
             - utm_medium
             - utm_source
             - utm_term
+          config:
+            # Below is so we don't run this test if the user has allowed urls to have null entries
+            enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -265,7 +268,10 @@ models:
       - name: base_url
         description: '{{ doc("base_url") }}'
         tests:
-          - not_null
+          - not_null:
+              config:
+                # Below is so we don't run this test if the user has allowed urls to have null entries
+                enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
       - name: url_host
         description: '{{ doc("url_host") }}'
       - name: url_path
