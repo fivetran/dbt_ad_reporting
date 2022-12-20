@@ -7,9 +7,6 @@ dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
 
-models:
-  metrics:
-    +enabled: false
 vars: 
   
   apple_search_ads__using_search_terms: True
