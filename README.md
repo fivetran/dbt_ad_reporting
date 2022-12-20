@@ -53,8 +53,17 @@ Refer to the table below for a detailed view of final models materialized by def
     - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
-- **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
-- For Facebook Ads compatibility, please ensure that you have configured the necessary pre-built reports. Please refer to the [Facebook Ads package](https://github.com/fivetran/dbt_facebook_ads/tree/main#step-1-prerequisites) for more information.
+
+### Databricks Dispatch Configuration
+If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` as well as the `calogica/dbt_expectations` then the `google_ads_source` packages respectively.
+```yml
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+
+  - macro_namespace: dbt_expectations
+    search_order: ['google_ads_source', 'dbt_expectations']
+```
 
 ## Step 2: Installing the Package
 Include the following github package version in your `packages.yml`

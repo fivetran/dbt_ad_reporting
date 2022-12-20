@@ -7,6 +7,9 @@ dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
 
+  - macro_namespace: dbt_expectations
+    search_order: ['google_ads_source', 'dbt_expectations']
+
 vars: 
   
   apple_search_ads__using_search_terms: True
