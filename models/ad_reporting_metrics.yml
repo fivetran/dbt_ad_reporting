@@ -5,8 +5,8 @@ metrics:
     label: Ad spend (Fivetran)
     model: ref('ad_reporting__ad_report')
 
-    type: sum
-    sql: spend
+    calculation_method: sum
+    expression: spend
     description: Total spend (in currency of individual platforms)
 
     timestamp: date_day
@@ -27,8 +27,8 @@ metrics:
     label: Ad clicks (Fivetran)
     model: ref('ad_reporting__ad_report')
 
-    type: sum
-    sql: clicks
+    calculation_method: sum
+    expression: clicks
     description: Total clicks
 
     timestamp: date_day
@@ -50,8 +50,8 @@ metrics:
     model: ref('ad_reporting__ad_report')
     description: Total impressions
 
-    type: sum
-    sql: impressions
+    calculation_method: sum
+    expression: impressions
 
     timestamp: date_day
     time_grains: [day, week, month]
@@ -71,8 +71,8 @@ metrics:
     label: Average ad cost per click (Fivetran)
     description: The ratio of spend to clicks
 
-    type: expression
-    sql: "{{ metric('spend') }} / {{ metric('clicks') }}"
+    calculation_method: expression
+    expression: "{{ metric('spend') }} / {{ metric('clicks') }}"
 
     timestamp: date_day
     time_grains: [day, week, month]
@@ -92,8 +92,8 @@ metrics:
     label: Average Ad Bounce Rate (Fivetran)
     description: Percentage of impressions that did not convert into clicks.
 
-    type: expression
-    sql: "({{ metric('impressions') }} - {{ metric('clicks') }}) / {{ metric('impressions') }}"
+    calculation_method: expression
+    expression: "({{ metric('impressions') }} - {{ metric('clicks') }}) / {{ metric('impressions') }}"
 
     timestamp: date_day
     time_grains: [day, week, month]
@@ -113,8 +113,8 @@ metrics:
     label: Ad Clickthrough Rate (Fivetran)
     description: Percentage of impressions that did convert into clicks.
 
-    type: expression
-    sql: "{{ metric('clicks') }} / {{ metric('impressions') }}"
+    calculation_method: expression
+    expression: "{{ metric('clicks') }} / {{ metric('impressions') }}"
 
     timestamp: date_day
     time_grains: [day, week, month]
@@ -135,8 +135,8 @@ metrics:
     model: ref('ad_reporting__ad_report')
     description: Count of ads witth spend > 0.
 
-    type: count_distinct
-    sql: ad_id
+    calculation_method: count_distinct
+    expression: ad_id
 
     timestamp: date_day
     time_grains: [day, week, month]
@@ -160,8 +160,8 @@ metrics:
     model: ref('ad_reporting__ad_report')
     description: Average ad spend, ignores zero-spend days.
 
-    type: average
-    sql: spend
+    calculation_method: average
+    expression: spend
 
     timestamp: date_day
     time_grains: [week, month]
@@ -185,8 +185,8 @@ metrics:
     model: ref('ad_reporting__ad_report')
     description: Average ad spend, does not ignore zero-spend days.
 
-    type: average
-    sql: spend
+    calculation_method: average
+    expression: spend
 
     timestamp: date_day
     time_grains: [week, month]

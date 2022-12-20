@@ -3,7 +3,7 @@
         href="https://github.com/fivetran/dbt_github/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.0.0_<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
@@ -53,8 +53,17 @@ Refer to the table below for a detailed view of final models materialized by def
     - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
-- **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
-- For Facebook Ads compatibility, please ensure that you have configured the necessary pre-built reports. Please refer to the [Facebook Ads package](https://github.com/fivetran/dbt_facebook_ads/tree/main#step-1-prerequisites) for more information.
+
+### Databricks Dispatch Configuration
+If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` as well as the `calogica/dbt_expectations` then the `google_ads_source` packages respectively.
+```yml
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+
+  - macro_namespace: dbt_expectations
+    search_order: ['google_ads_source', 'dbt_expectations']
+```
 
 ## Step 2: Installing the Package
 Include the following github package version in your `packages.yml`
@@ -62,7 +71,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.0.0", "<1.1.0"]
+    version: [">=1.1.0", "<1.2.0"]
 ```
 ## Step 3: Configure Database and Schema Variables
 By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
@@ -187,6 +196,14 @@ models:
 ## (Optional) Step 6: Additional configurations
 <details><summary>Expand for details</summary>
 <br>
+
+## Disabling null URL filtering from URL reports
+The default behavior for the `ad_reporting__url_report` end model is to filter out records having null URL fields, however, you are able to turn off this filter if needed. To turn off the filter, include the below in your `dbt_project.yml` file. This variable will affect ALL Fivetran platform packages enabled in Ad Reporting, therefore either all URL reports will have null URLs filtered, or all URL reports will have null URLs included.
+
+```yml
+vars:
+  ad_reporting__url_report__using_null_filter: False # Default is True.
+```
 
 ### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:

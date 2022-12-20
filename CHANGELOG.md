@@ -1,3 +1,57 @@
+# dbt_ad_reporting v1.1.0
+
+## 🚨 Breaking Changes 🚨:
+[PR #66](https://github.com/fivetran/dbt_ad_reporting/pull/66) includes the following breaking changes:
+- Dispatch update for dbt-utils to dbt-core cross-db macros migration. Specifically `{{ dbt_utils.<macro> }}` have been updated to `{{ dbt.<macro> }}` for the below macros:
+    - `any_value`
+    - `bool_or`
+    - `cast_bool_to_text`
+    - `concat`
+    - `date_trunc`
+    - `dateadd`
+    - `datediff`
+    - `escape_single_quotes`
+    - `except`
+    - `hash`
+    - `intersect`
+    - `last_day`
+    - `length`
+    - `listagg`
+    - `position`
+    - `replace`
+    - `right`
+    - `safe_cast`
+    - `split_part`
+    - `string_literal`
+    - `type_bigint`
+    - `type_float`
+    - `type_int`
+    - `type_numeric`
+    - `type_string`
+    - `type_timestamp`
+    - `array_append`
+    - `array_concat`
+    - `array_construct`
+- For `current_timestamp` and `current_timestamp_in_utc` macros, the dispatch AND the macro names have been updated to the below, respectively:
+    - `dbt.current_timestamp_backcompat`
+    - `dbt.current_timestamp_in_utc_backcompat`
+- `dbt_utils.surrogate_key` has also been updated to `dbt_utils.generate_surrogate_key`. Since the method for creating surrogate keys differ, we suggest all users do a `full-refresh` for the most accurate data. For more information, please refer to dbt-utils [release notes](https://github.com/dbt-labs/dbt-utils/releases) for this update.
+- Dependencies on `fivetran/fivetran_utils` have been upgraded, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
+- Metric attirbutes have been renamed to be consistent with the latest version of dbt-metrics: `sql` -> `expression` and `type` -> `calculation_method`
+
+## 🎉 Features 🎉
+- Added ability for a user to allow records having nulls in url fields to be included in the `ad_reporting__url_report` and the underlying `*url_report` models. This is done by setting the below variable to `False` in your `dbt_project.yml` file. ([#72](https://github.com/fivetran/dbt_ad_reporting/pull/72))
+
+```yml
+vars:
+  ad_reporting__url_report__using_null_filter: False # Use this variable to include null urls for ALL upstream ad platform packages enabled in your project. Default is True. 
+```
+- Updated README with this information. ([#72](https://github.com/fivetran/dbt_ad_reporting/pull/72))
+
+## 🚘 Under the Hood 🚘
+- Disabled the `not_null` test for `ad_reporting__url_report` when null urls are allowed. ([#72](https://github.com/fivetran/dbt_ad_reporting/pull/72))
+- Updated this package's `integration_tests/seeds/microsoft_ads_campaign_performance_daily_report_data` in light of [PR #23](https://github.com/fivetran/dbt_microsoft_ads_source/pull/23) on `dbt_microsoft_ads_source`.([#68](https://github.com/fivetran/dbt_ad_reporting/pull/68))
+
 # dbt_ad_reporting v1.0.4
 ## Feature Enhancement
 - The `keyword_id` field (which is a surrogate key generated from the combination of 'account_id', 'line_item_id', 'segment', and 'placement' fields within the Twitter Ads source) has been added to the `ad_reporting__keyword_report` model for the Twitter Ads platform. ([#71](https://github.com/fivetran/dbt_ad_reporting/pull/71))
