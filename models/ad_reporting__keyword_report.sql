@@ -1,4 +1,4 @@
-{% if var('twitter_ads__using_keywords', False) %}
+{% if var('twitter_ads__using_keywords', True) %}
     {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'twitter_ads'] %}
 {% else %}
     {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads'] %}

@@ -71,7 +71,7 @@ pinterest_ads as (
 ),
 {% endif %}
 
-{% if 'twitter_ads' in enabled_packages and var('twitter_ads__using_keywords', False) %}
+{% if 'twitter_ads' in enabled_packages and var('twitter_ads__using_keywords', True) %}
 twitter_ads as (
 
     {{ get_query(
