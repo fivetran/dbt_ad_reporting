@@ -14,6 +14,21 @@ vars:
   
   apple_search_ads__using_search_terms: True
   twitter_ads__using_keywords: False
+
+  amazon_ads_source:
+    amazon_ads_schema: amazon_ads_integration_tests
+    amazon_ads_ad_group_history_identifier: "amazon_ads_ad_group_history_data"
+    amazon_ads_ad_group_level_report_identifier: "amazon_ads_ad_group_level_report_data"
+    amazon_ads_advertised_product_report_identifier: "amazon_ads_advertised_product_report_data"
+    amazon_ads_campaign_history_identifier: "amazon_ads_campaign_history_data"
+    amazon_ads_campaign_level_report_identifier: "amazon_ads_campaign_level_report_data"
+    amazon_ads_portfolio_history_identifier: "amazon_ads_portfolio_history_data"
+    amazon_ads_product_ad_history_identifier: "amazon_ads_product_ad_history_data"
+    amazon_ads_profile_identifier: "amazon_ads_profile_data"
+    amazon_ads_keyword_history_identifier: "amazon_ads_keyword_history_data"
+    amazon_ads_targeting_keyword_report_identifier: "amazon_ads_targeting_keyword_report_data"
+    amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
+
   apple_search_ads_source:
     apple_search_ads_schema: ad_reporting_integration_tests_2
     apple_search_ads_organization_identifier: "apple_search_organization_data"

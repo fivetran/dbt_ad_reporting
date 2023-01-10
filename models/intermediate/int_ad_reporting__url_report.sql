@@ -1,4 +1,4 @@
-{% set enabled_packages = get_enabled_packages(exclude=['apple_search_ads']) %}
+{% set enabled_packages = get_enabled_packages(exclude=['apple_search_ads', 'amazon_ads']) %}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with

@@ -1,0 +1,7 @@
+id,last_updated_date,_fivetran_synced,bidding_strategy,campaign_type,creation_date,daily_budget,end_date,name,placement,portfolio_id,premium_bid_adjustment,profile_id,serving_status,start_date,state,targeting_type
+2187,2022-08-25 15:36:51.687000,2022-12-13 17:09:00.337000,autoForSales,sponsoredProducts,2022-07-11 22:38:16.327000,2000,,Gold Leader,,1138,false,66,CAMPAIGN_PAUSED,2022-07-11,paused,manual
+2187,2022-07-14 11:58:58.857000,2022-08-09 11:09:43.874000,autoForSales,sponsoredProducts,2022-07-11 22:38:16.327000,2000,,Gold Leader,,1138,false,66,CAMPAIGN_PAUSED,2022-07-11,paused,manual
+2187,2022-07-11 22:38:16.327000,2022-07-12 11:07:55.188000,autoForSales,sponsoredProducts,2022-07-11 22:38:16.327000,300,,Red Leader,,1138,false,66,CAMPAIGN_STATUS_ENABLED,2022-07-11,enabled,manual
+2187,2022-07-12 21:19:35.684000,2022-07-14 11:08:04.632000,autoForSales,sponsoredProducts,2022-07-11 22:38:16.327000,2000,,Gold Leader,,1138,false,66,CAMPAIGN_STATUS_ENABLED,2022-07-11,enabled,manual
+2187,2022-07-12 16:31:38.031000,2022-07-12 17:07:58.108000,autoForSales,sponsoredProducts,2022-07-11 22:38:16.327000,1000,,Gold Leader,,1138,true,66,CAMPAIGN_STATUS_ENABLED,2022-07-11,enabled,manual
+2187,2022-08-09 12:31:52.823000,2022-08-25 11:14:09.762000,autoForSales,sponsoredProducts,2022-07-11 22:38:16.327000,2000,,Gold Leader,,1138,false,66,CAMPAIGN_STATUS_ENABLED,2022-07-11,enabled,manual

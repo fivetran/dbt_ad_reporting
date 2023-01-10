@@ -1,7 +1,7 @@
 {% if var('apple_search_ads__using_search_terms', True) %}
-    {% set include_list = ['apple_search_ads', 'microsoft_ads'] %}
+    {% set include_list = ['apple_search_ads', 'microsoft_ads', 'amazon_ads'] %}
 {% else %}
-    {% set include_list = ['microsoft_ads'] %}
+    {% set include_list = ['microsoft_ads', 'amazon_ads'] %}
 {% endif %}
 
 {% set enabled_packages = get_enabled_packages(include=include_list)%}
@@ -37,6 +37,22 @@ apple_search_ads as (
                 'clicks': 'taps'
             },
         relation=ref('apple_search_ads__search_term_report')
+    ) }}
+), 
+{% endif %}
+
+{% if 'amazon_ads' in enabled_packages %}
+amazon_ads as (
+
+    {{ get_query(
+        platform='amazon_ads', 
+        report_type='search', 
+        field_mapping={
+                'spend': 'cost',
+                'search_match_type': 'match_type',
+                'search_query': 'search_term'
+            },
+        relation=ref('amazon_ads__search_report')
     ) }}
 ), 
 {% endif %}

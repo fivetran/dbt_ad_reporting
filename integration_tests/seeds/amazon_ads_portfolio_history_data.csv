@@ -1,0 +1,2 @@
+id,last_updated_date,_fivetran_synced,budget_amount,budget_currency_code,budget_end_date,budget_policy,budget_start_date,creation_date,in_budget,name,profile_id,serving_status,state
+1138,2022-12-05 22:25:00.042000,2022-12-13 15:54:53.894000,,,,,,2022-12-05 22:25:00.042000,true,Empire,66,PORTFOLIO_STATUS_ENABLED,enabled

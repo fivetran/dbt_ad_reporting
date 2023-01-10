@@ -1,0 +1,3 @@
+id,last_updated_date,_fivetran_synced,campaign_id,creation_date,default_bid,name,serving_status,state
+421,2022-07-11 22:38:16.551000,2022-12-13 17:10:16.297000,2187,2022-07-11 22:38:16.551000,1.75,Red 7,CAMPAIGN_PAUSED,enabled
+501,2022-11-09 14:37:05.332000,2022-12-13 17:11:08.594000,5555,2022-11-09 14:37:05.332000,1.45,All,AD_GROUP_STATUS_ENABLED,enabled

@@ -58,7 +58,7 @@ steps:
     commands: |
       bash .buildkite/scripts/run_models.sh redshift
 
-  - label: ":bricks: Run Tests - Databricks"
+  - label: ":databricks: Run Tests - Databricks"
     key: "run_dbt_databricks"
     plugins:
       - docker#v3.13.0:

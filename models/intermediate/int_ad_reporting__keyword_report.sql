@@ -1,7 +1,7 @@
 {% if var('twitter_ads__using_keywords', True) %}
-    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'twitter_ads'] %}
+    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'amazon_ads', 'twitter_ads'] %}
 {% else %}
-    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads'] %}
+    {% set include_list = ['apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'amazon_ads'] %}
 {% endif %}
 
 {% set enabled_packages = get_enabled_packages(include=include_list)%}
@@ -85,6 +85,21 @@ twitter_ads as (
                 'keyword_match_type': 'null'
             },
         relation=ref('twitter_ads__keyword_report')
+    ) }}
+), 
+{% endif %}
+
+{% if 'amazon_ads' in enabled_packages %}
+amazon_ads as (
+
+    {{ get_query(
+        platform='amazon_ads', 
+        report_type='keyword', 
+        field_mapping={
+                'spend': 'cost',
+                'keyword_match_type': 'match_type'
+            },
+        relation=ref('amazon_ads__keyword_report')
     ) }}
 ), 
 {% endif %}
