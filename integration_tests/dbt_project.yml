@@ -507,3 +507,26 @@ seeds:
     apple_search_keyword_history_data:
       +column_types:
         modification_time: timestamp
+
+    ### Amazon Ads Seeds
+    amazon_ads_campaign_level_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        click_through_rate: "float"
+    amazon_ads_advertised_product_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        click_through_rate: "float"
+    amazon_ads_search_term_ad_keyword_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        keyword_bid: "float"
+    amazon_ads_targeting_keyword_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        click_through_rate: "float"
+        keyword_bid: "float"
