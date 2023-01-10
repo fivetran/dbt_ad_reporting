@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.1.0'
+version: '1.2.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -136,7 +136,7 @@ vars:
     amazon_ads_keyword_history_identifier: "amazon_ads_keyword_history_data"
     amazon_ads_targeting_keyword_report_identifier: "amazon_ads_targeting_keyword_report_data"
     amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
-    
+
 seeds:
   ad_reporting_integration_tests:
     +quote_columns: "{{ true if target.type in ('redshift','postgres') else false }}"

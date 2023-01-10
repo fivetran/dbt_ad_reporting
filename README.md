@@ -14,7 +14,7 @@
 # 📣 What does this dbt package do?
 - Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels. 
 - Currently supports the following Fivetran ad platform connectors:
-    - [Amazonh Ads](https://github.com/fivetran/dbt_amazon_ads)
+    - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads)
     - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
     - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
     - [Google Ads](https://github.com/fivetran/dbt_google_ads)
