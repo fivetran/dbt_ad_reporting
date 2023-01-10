@@ -1,5 +1,5 @@
 # dbt_ad_reporting v1.2.0
-## 🎉 Feature Enhancements 🎉 
+## 🚨 Breaking Changes 🚨 and 🎉 Feature Enhancements 🎉 
 [PR #75](https://github.com/fivetran/dbt_ad_reporting/pull/75) includes the following new features:
 - Amazon Ads has officially been released and added to Ad Reporting.
 - Your Amazon Ad data can now be rolled into the below models:
