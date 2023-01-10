@@ -14,6 +14,7 @@
 # 📣 What does this dbt package do?
 - Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels. 
 - Currently supports the following Fivetran ad platform connectors:
+    - [Amazonh Ads](https://github.com/fivetran/dbt_amazon_ads)
     - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
     - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
     - [Google Ads](https://github.com/fivetran/dbt_google_ads)
@@ -43,6 +44,7 @@ Refer to the table below for a detailed view of final models materialized by def
 # 🎯 How do I use the dbt package?
 ## Step 1: Pre-Requisites
 - **Connector**: Have all relevant Fivetran app platform connectors syncing data into your warehouse. This package currently supports:
+    - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
     - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
     - [Google Ads](https://fivetran.com/docs/applications/google-ads)
@@ -78,6 +80,9 @@ By default, this package looks for your ad platform data in your target database
 
 ```yml
 vars:
+    amazon_ads_schema: amazon_ads
+    amazon_ads_database: your_database_name
+
     apple_search_ads_schema: apple_search_ads
     apple_search_ads_database: your_database_name
 
@@ -114,6 +119,7 @@ If you would like to disable all reporting for any specific platform, please inc
 
 ```yml
 vars:
+  ad_reporting__amazon_ads_enabled: False # by default this is assumed to be True
   ad_reporting__apple_search_ads_enabled: False # by default this is assumed to be True
   ad_reporting__pinterest_ads_enabled: False # by default this is assumed to be True
   ad_reporting__microsoft_ads_enabled: False # by default this is assumed to be True
@@ -144,6 +150,11 @@ By default this package will build all models in your `<target_schema>` with the
 models:  
   ad_reporting:
     +schema: ad_reporting
+
+  amazon_search_ads:
+    +schema: amazon_ads
+  amazon_ads_source:
+    +schema: amazon_ads_source
 
   apple_search_ads:
     +schema: apple_search_ads
@@ -284,6 +295,9 @@ packages:
 
   - package: calogica/dbt_expectations
     version: [">=0.5.0", "<0.6.0"]
+
+  - package: fivetran/amazon_ads
+    version: [">=0.1.0", "<0.2.0"]
 
   - package: fivetran/apple_search_ads
     version: [">=0.1.0", "<0.2.0"]
