@@ -43,7 +43,7 @@ Refer to the table below for a detailed view of final models materialized by def
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Pre-Requisites
-- **Connector**: Have all relevant Fivetran app platform connectors syncing data into your warehouse. This package currently supports:
+- **Connector**: Sync your desired Fivetran app platform connectors into your warehouse. This package currently supports:
     - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
     - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
@@ -54,6 +54,8 @@ Refer to the table below for a detailed view of final models materialized by def
     - [Snapchat Ads](https://fivetran.com/docs/applications/snapchat-ads)
     - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
+> While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
+
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
 
 ### Databricks Dispatch Configuration
@@ -73,7 +75,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.1.0", "<1.2.0"]
+    version: [">=1.2.0", "<1.3.0"]
 ```
 ## Step 3: Configure Database and Schema Variables
 By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
@@ -297,6 +299,9 @@ packages:
     version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/amazon_ads
+    version: [">=0.1.0", "<0.2.0"]
+  
+  - package: fivetran/amazon_ads_source
     version: [">=0.1.0", "<0.2.0"]
 
   - package: fivetran/apple_search_ads

@@ -5,6 +5,7 @@
 {%- endif -%}
 
 {% set all_packages = [
+    'amazon_ads',
     'apple_search_ads', 
     'facebook_ads', 
     'google_ads', 
@@ -13,8 +14,7 @@
     'pinterest_ads',
     'snapchat_ads',
     'tiktok_ads',
-    'twitter_ads',
-    'amazon_ads'] %}
+    'twitter_ads'] %}
 
 {% set enabled_packages = [] %}
 
