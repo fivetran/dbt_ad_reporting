@@ -13,7 +13,7 @@ dispatch:
 vars: 
   
   apple_search_ads__using_search_terms: True
-  twitter_ads__using_keywords: False
+  twitter_ads__using_keywords: True
 
   apple_search_ads_source:
     apple_search_ads_schema: ad_reporting_integration_tests_2
