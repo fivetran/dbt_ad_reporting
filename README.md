@@ -25,7 +25,7 @@
     - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
     - [Twitter Ads](https://github.com/fivetran/dbt_twitter)
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
-- Generates a comprehensive data dictionary of your source and modeled App Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
+- Generates a comprehensive data dictionary of your source and modeled Ad Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
 Refer to the table below for a detailed view of final models materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models. 
 
