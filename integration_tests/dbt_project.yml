@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.1.0'
+version: '1.2.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -14,6 +14,7 @@ vars:
   
   apple_search_ads__using_search_terms: True
   twitter_ads__using_keywords: False
+
   apple_search_ads_source:
     apple_search_ads_schema: ad_reporting_integration_tests_2
     apple_search_ads_organization_identifier: "apple_search_organization_data"
@@ -121,6 +122,20 @@ vars:
     tiktok_ads__ad_report_hourly_identifier: "tiktok_ad_report_hourly_data"
     tiktok_ads__ad_group_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
     tiktok_ads__campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
+
+  amazon_ads_source:
+    amazon_ads_schema: ad_reporting_integration_tests_2
+    amazon_ads_ad_group_history_identifier: "amazon_ads_ad_group_history_data"
+    amazon_ads_ad_group_level_report_identifier: "amazon_ads_ad_group_level_report_data"
+    amazon_ads_advertised_product_report_identifier: "amazon_ads_advertised_product_report_data"
+    amazon_ads_campaign_history_identifier: "amazon_ads_campaign_history_data"
+    amazon_ads_campaign_level_report_identifier: "amazon_ads_campaign_level_report_data"
+    amazon_ads_portfolio_history_identifier: "amazon_ads_portfolio_history_data"
+    amazon_ads_product_ad_history_identifier: "amazon_ads_product_ad_history_data"
+    amazon_ads_profile_identifier: "amazon_ads_profile_data"
+    amazon_ads_keyword_history_identifier: "amazon_ads_keyword_history_data"
+    amazon_ads_targeting_keyword_report_identifier: "amazon_ads_targeting_keyword_report_data"
+    amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
 
 seeds:
   ad_reporting_integration_tests:
@@ -492,3 +507,26 @@ seeds:
     apple_search_keyword_history_data:
       +column_types:
         modification_time: timestamp
+
+    ### Amazon Ads Seeds
+    amazon_ads_campaign_level_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        click_through_rate: "float"
+    amazon_ads_advertised_product_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        click_through_rate: "float"
+    amazon_ads_search_term_ad_keyword_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        keyword_bid: "float"
+    amazon_ads_targeting_keyword_report_data:
+      +column_types:
+        _fivetran_synced: "timestamp"
+        campaign_budget_amount: "float"
+        click_through_rate: "float"
+        keyword_bid: "float"

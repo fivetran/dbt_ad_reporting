@@ -1,0 +1,11 @@
+ad_group_id,campaign_id,date,keyword_id,_fivetran_synced,campaign_budget_amount,campaign_budget_currency_code,campaign_budget_type,clicks,cost,cost_per_click,impressions,keyword_bid,search_term,targeting
+421,2187,2022-08-23,1234,2022-10-14 11:40:37.510000,2000.0,USD,DAILY_BUDGET,1,1.5,1.5,566,5.0,b wing parts,b wing parts
+421,2187,2022-08-20,5678,2022-10-14 11:39:03.984000,2000.0,USD,DAILY_BUDGET,1,0.35,0.35,323,5.0,y wing parts,y wing parts
+421,2187,2022-08-20,1234,2022-10-14 11:39:03.984000,2000.0,USD,DAILY_BUDGET,1,0.72,0.72,549,5.0,b wing parts,b wing parts
+421,2187,2022-08-17,5678,2022-10-14 11:39:04.610000,2000.0,USD,DAILY_BUDGET,1,1.52,1.52,407,5.0,y wing parts,y wing parts
+421,2187,2022-08-18,1234,2022-10-14 11:39:04.610000,2000.0,USD,DAILY_BUDGET,1,1.74,1.74,128,5.0,b wing parts,b wing parts
+421,2187,2022-08-13,1234,2022-10-14 12:05:31.374000,2000.0,USD,DAILY_BUDGET,2,7.33,3.665,367,5.0,b wing parts,b wing parts
+421,2187,2022-08-24,1234,2022-10-14 11:40:37.528000,2000.0,USD,DAILY_BUDGET,1,0.91,0.91,508,5.0,b wing parts,b wing parts
+421,2187,2022-08-10,1234,2022-10-14 12:05:31.279000,2000.0,USD,DAILY_BUDGET,1,1.22,1.22,566,5.0,b wing parts,b wing parts
+421,2187,2022-08-24,5678,2022-10-14 11:40:37.528000,2000.0,USD,DAILY_BUDGET,1,0.39,0.39,396,5.0,y wing parts,y wing parts
+421,2187,2022-08-25,9101112,2022-10-14 11:40:37.528000,2000.0,USD,DAILY_BUDGET,3,5.54,1.8466666666666700,1818,6.0,x wing parts,x wing parts

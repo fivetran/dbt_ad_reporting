@@ -1,3 +1,23 @@
+# dbt_ad_reporting v1.2.0
+## 🚨 Breaking Changes 🚨 and 🎉 Feature Enhancements 🎉 
+[PR #75](https://github.com/fivetran/dbt_ad_reporting/pull/75) includes the following new features:
+- Amazon Ads has officially been released and added to the Ad Reporting package.
+- Your Amazon Ad data can now be rolled into the below models:
+  - `ad_reporting__account_report`
+  - `ad_reporting__campaign_report`
+  - `ad_reporting__ad_group_report`
+  - `ad_reporting__ad_report`
+  - `ad_reporting__search_report`
+  - `ad_reporting__keyword_report`
+- Documentation has been updated to include Amazon Ads information.
+
+> Note: If you are **NOT** using Amazon Ads, add the below variable to your `dbt_project.yml` to disable the Amazon Ads models.
+
+```yml
+vars:
+  ad_reporting__amazon_ads_enabled: False ## True by default
+```
+
 # dbt_ad_reporting v1.1.0
 
 ## 🚨 Breaking Changes 🚨:

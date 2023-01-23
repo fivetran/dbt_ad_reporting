@@ -5,6 +5,7 @@
 {%- endif -%}
 
 {% set all_packages = [
+    'amazon_ads',
     'apple_search_ads', 
     'facebook_ads', 
     'google_ads', 

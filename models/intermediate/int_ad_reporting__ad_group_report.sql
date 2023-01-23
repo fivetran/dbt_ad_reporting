@@ -126,6 +126,20 @@ twitter_ads as (
 ), 
 {% endif %}
 
+{% if 'amazon_ads' in enabled_packages %}
+amazon_ads as (
+
+    {{ get_query(
+        platform='amazon_ads', 
+        report_type='ad_group', 
+        field_mapping={
+                'spend': 'cost'
+            },
+        relation=ref('amazon_ads__ad_group_report')
+    ) }}
+), 
+{% endif %}
+
 unioned as (
 
     {{ union_ctes(ctes=enabled_packages)}}

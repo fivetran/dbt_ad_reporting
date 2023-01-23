@@ -1,0 +1,2 @@
+id,_fivetran_deleted,_fivetran_synced,account_id,account_marketplace_string_id,account_name,account_sub_type,account_type,account_valid_payment_method,country_code,currency_code,daily_budget,timezone
+66,FALSE,2022-12-16 23:08:24.260000,ENTITY31174,XYZ123,Palpatine,,vendor,TRUE,US,USD,0,America/Los_Angeles
