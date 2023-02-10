@@ -1,10 +1,10 @@
 # dbt_ad_reporting v1.2.1
 
 ## Updates
-- Updating `ad_reporting_metrics.yml` to be up to date with [dbt Metrics 1.4](https://docs.getdbt.com/docs/build/metrics#derived-metrics)([PR #](add PR URL here))
+- Updating `ad_reporting_metrics.yml` to be up to date with [dbt Metrics 1.4](https://docs.getdbt.com/docs/build/metrics#derived-metrics) ([PR #82](https://github.com/fivetran/dbt_ad_reporting/pull/82))
 
 ## Under the Hood
-- Swapped out `calculation_method: expression` for `calculation_method: derived` for derived metrics. 
+- Swapped out `calculation_method: expression` for `calculation_method: derived` for derived metrics 
 
 # dbt_ad_reporting v1.2.0
 ## 🚨 Breaking Changes 🚨 and 🎉 Feature Enhancements 🎉 
