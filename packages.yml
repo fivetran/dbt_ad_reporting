@@ -3,7 +3,7 @@ packages:
     version: [">=0.2.0", "<0.3.0"]
 
   - package: fivetran/snapchat_ads
-    version: [">=0.5.1", "<0.6.0"]
+    version: [">=0.5.0", "<0.6.0"]
     
   - package: fivetran/facebook_ads
     version: [">=0.6.0", "<0.7.0"]
