@@ -71,10 +71,8 @@ snapchat_ads as (
         field_mapping={
                 'account_id': 'ad_account_id',
                 'account_name': 'ad_account_name',
-                'campaign_id': 'null',
-                'campaign_name': 'null',
-                'ad_group_id': 'null',
-                'ad_group_name': 'null',
+                'ad_group_id': 'ad_squad_id',
+                'ad_group_name': 'ad_squad_name',
                 'clicks':'swipes'
             },
         relation=ref('snapchat_ads__url_report')
