@@ -3,12 +3,12 @@
 ## Updates
 - Updating `ad_reporting_metrics.yml` to be up to date with [dbt Metrics documentation](https://docs.getdbt.com/docs/build/metrics#derived-metrics) ([PR #82](https://github.com/fivetran/dbt_ad_reporting/pull/82))
 
-## Under the Hood
-- Swapped out `calculation_method: expression` for `calculation_method: derived` for derived metrics 
-
 ## Bug Fixes
 - Enabling additional Snapchat Ads columns in `ad_reporting__url_report` that were previously mapped to null values. ([#81](https://github.com/fivetran/dbt_ad_reporting/pull/81))
   - These columns are: ad_group_id (ad_squad_id), ad_group_name (ad_squad_name), campaign_id and campaign_name.
+  
+## Under the Hood
+- Swapped out `calculation_method: expression` for `calculation_method: derived` for derived metrics 
 
 ## Contributors
 - [@dumkydewilde](https://github.com/dumkydewilde) ([#81](https://github.com/fivetran/dbt_ad_reporting/pull/81))
