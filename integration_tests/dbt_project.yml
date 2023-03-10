@@ -560,7 +560,7 @@ seeds:
     reddit_ads_ad_report_data:
       +column_types:
         ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_ad_group_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -569,9 +569,8 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_ad_group_report_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_campaign_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
