@@ -29,6 +29,11 @@ packages:
   - package: fivetran/amazon_ads
     version: [">=0.1.0", "<0.2.0"]
 
-  - package: fivetran/reddit_ads
-    version: [">=0.1.0", "<0.2.0"]
+  # - package: fivetran/reddit_ads
+  #   version: [">=0.1.0", "<0.2.0"]
+
+
+  - git: https://github.com/fivetran/dbt_reddit_ads.git 
+    revision: main
+    warn-unpinned: false
 
