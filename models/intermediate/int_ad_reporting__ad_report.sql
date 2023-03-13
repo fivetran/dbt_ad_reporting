@@ -150,7 +150,7 @@ amazon_ads as (
 {% endif %}
 
 {% if 'reddit_ads' in enabled_packages %}
-apple_search_ads as (
+reddit_ads as (
 
     {{ get_query(
         platform='reddit_ads', 
