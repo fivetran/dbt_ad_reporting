@@ -2,7 +2,7 @@
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with
-{% for package in ['twitter_ads', 'facebook_ads', 'google_ads', 'microsoft_ads','reddit_ads'] %}
+{% for package in ['twitter_ads', 'facebook_ads', 'google_ads', 'microsoft_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
     {{ get_query(
@@ -102,6 +102,20 @@ amazon_ads as (
         relation=ref('amazon_ads__account_report')
     ) }}
 ), 
+{% endif %}
+
+{% if 'reddit_ads' in enabled_packages %}
+apple_search_ads as (
+
+    {{ get_query(
+        platform='reddit_ads', 
+        report_type='account', 
+        field_mapping={
+                'account_name': 'null'
+            },
+        relation=ref('reddit_ads__account_report')
+    ) }}
+),
 {% endif %}
 
 unioned as (

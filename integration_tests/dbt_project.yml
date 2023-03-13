@@ -138,7 +138,7 @@ vars:
     amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
 
   reddit_ads_source:
-    reddit_ads_schema: reddit_ads_integration_tests_1
+    reddit_ads_schema: ad_reporting_integration_tests_2
     reddit_ads_account_identifier: "reddit_ads_account_data"
     reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
     reddit_ads_ad_identifier: "reddit_ads_ad_data"
