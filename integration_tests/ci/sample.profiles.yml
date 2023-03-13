@@ -48,7 +48,7 @@ integration_tests:
       catalog: "{{ env_var('CI_DATABRICKS_DBT_CATALOG') }}"
       host: "{{ env_var('CI_DATABRICKS_DBT_HOST') }}"
       http_path: "{{ env_var('CI_DATABRICKS_DBT_HTTP_PATH') }}"
-      schema: recharge_source_integration_tests_02
+      schema: ad_reporting_integration_tests_2
       threads: 2
       token: "{{ env_var('CI_DATABRICKS_DBT_TOKEN') }}"
       type: databricks

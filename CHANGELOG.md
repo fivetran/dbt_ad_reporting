@@ -1,6 +1,6 @@
 # dbt_ad_reporting v1.3.0
 
-## Introducing Reddit Ads
+##  🎉 Introducing Reddit Ads Compatibility 🎉 
 - We have added Reddit Ads as another platform in our Ad Reporting package ecosystem. ([PR #83](https://github.com/fivetran/dbt_ad_reporting/pull/83))
 
 # dbt_ad_reporting v1.2.1
