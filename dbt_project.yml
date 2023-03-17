@@ -11,4 +11,7 @@ models:
     +schema: ad_reporting 
     intermediate:
       +materialized: ephemeral
-      +schema: int_ad_reporting 
+      +schema: int_ad_reporting
+
+vars:
+  ad_reporting__passthrough_metrics: []
