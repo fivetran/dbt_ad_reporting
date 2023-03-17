@@ -18,13 +18,15 @@
 {#- Add the consistent_fields and account_fields to all reports regardless of type -#}
 {%- if report_type -%}
     {%- if var('ad_reporting__passthrough_metrics') -%}
-        {% for field in var('ad_reporting__passthrough_metrics') %}
-            {% set consistent_fields = consistent_fields + [field] %}
+        {%- set ns = namespace(consistent_fields=consistent_fields) -%}
+        {%- for field in var('ad_reporting__passthrough_metrics') -%}
+            {%- set ns.consistent_fields = ns.consistent_fields + [field] -%}
         {% endfor %}
+        {%- set consistent_fields = ns.consistent_fields -%}
     {%- endif -%}
-        {%- for consistent_field in consistent_fields -%}
-            {%- do final_fields_superset.update({consistent_field: consistent_field}) -%}
-        {%- endfor -%}
+    {%- for consistent_field in consistent_fields -%}
+        {%- do final_fields_superset.update({consistent_field: consistent_field}) -%}
+    {%- endfor -%}
     {%- for account_field in account_fields -%}
         {%- do final_fields_superset.update({account_field: account_field}) -%}
     {%- endfor -%}
