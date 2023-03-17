@@ -1,3 +1,12 @@
+# dbt_ad_reporting v1.2.2
+
+## Feature Enhancement
+- Added `ad_reporting__passthrough_metrics` variable to easily add common metrics across all platforms into the `ad_reporting` models.
+
+## Contributors
+- [@aleix-cd](https://github.com/aleix-cd)
+
+
 # dbt_ad_reporting v1.2.1
 
 ## Updates
