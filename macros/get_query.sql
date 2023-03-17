@@ -17,9 +17,14 @@
 
 {#- Add the consistent_fields and account_fields to all reports regardless of type -#}
 {%- if report_type -%}
-    {%- for consistent_field in consistent_fields -%}
-        {%- do final_fields_superset.update({consistent_field: consistent_field}) -%}
-    {%- endfor -%}
+    {%- if var('ad_reporting__passthrough_metrics') -%}
+        {% for field in var('ad_reporting__passthrough_metrics') %}
+            {% set consistent_fields = consistent_fields + [field] %}
+        {% endfor %}
+    {%- endif -%}
+        {%- for consistent_field in consistent_fields -%}
+            {%- do final_fields_superset.update({consistent_field: consistent_field}) -%}
+        {%- endfor -%}
     {%- for account_field in account_fields -%}
         {%- do final_fields_superset.update({account_field: account_field}) -%}
     {%- endfor -%}
@@ -78,7 +83,7 @@ select
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
 
     {% for field in final_fields_superset.keys()|sort() -%}
-    {% if field in ['clicks', 'impressions'] -%}
+    {% if field in consistent_fields and field != 'spend' -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_int() }}) as {{ field }}
 
     {% elif field == 'spend' -%}
