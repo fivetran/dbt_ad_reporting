@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.2.1'
+version: '1.2.2'
 profile: 'integration_tests'
 config-version: 2
 
