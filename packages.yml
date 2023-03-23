@@ -14,11 +14,8 @@ packages:
   - package: fivetran/pinterest
     version: [">=0.7.0", "<0.8.0"]
 
-  # - package: fivetran/linkedin
-  #   version: [">=0.7.0", "<0.8.0"]
-  - git: https://github.com/fivetran/dbt_linkedin.git
-    revision: feature/linkedin-api-updates-2023
-    warn-unpinned: false
+  - package: fivetran/linkedin
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.6.0", "<0.7.0"]
