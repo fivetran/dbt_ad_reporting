@@ -342,10 +342,10 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/linkedin
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/linkedin_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/twitter_ads
     version: [">=0.6.0", "<0.7.0"]

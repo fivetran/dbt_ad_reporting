@@ -1,3 +1,10 @@
+# dbt_ad_reporting v1.3.1
+
+## Updates
+[PR #79](https://github.com/fivetran/dbt_ad_reporting/pull/79) includes the following updates:
+- Updated package dependencies for Linkedin Ads v0.7.0, for more information please refer to Linkedin Ads [PR #28](https://github.com/fivetran/dbt_linkedin/pull/28)
+- Updated `README` package dependencies to reflect current package versions
+
 # dbt_ad_reporting v1.3.0
 
 ##  🎉 Introducing Reddit Ads Compatibility 🎉 
