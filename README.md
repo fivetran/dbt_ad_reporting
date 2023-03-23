@@ -364,15 +364,12 @@ packages:
 
   - package: fivetran/tiktok_ads_source
     version: [">=0.3.0", "<0.4.0"]
-<<<<<<< HEAD
-=======
 
   - package: fivetran/reddit_ads
     version: [">=0.1.0", "<0.2.0"]
 
   - package: fivetran/reddit_ads_source
     version: [">=0.1.0", "<0.2.0"]
->>>>>>> main
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
