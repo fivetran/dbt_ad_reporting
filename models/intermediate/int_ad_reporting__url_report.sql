@@ -71,10 +71,8 @@ snapchat_ads as (
         field_mapping={
                 'account_id': 'ad_account_id',
                 'account_name': 'ad_account_name',
-                'campaign_id': 'null',
-                'campaign_name': 'null',
-                'ad_group_id': 'null',
-                'ad_group_name': 'null',
+                'ad_group_id': 'ad_squad_id',
+                'ad_group_name': 'ad_squad_name',
                 'clicks':'swipes'
             },
         relation=ref('snapchat_ads__url_report')
@@ -110,6 +108,20 @@ twitter_ads as (
         relation=ref('twitter_ads__url_report')
     ) }}
 ), 
+{% endif %}
+
+{% if 'reddit_ads' in enabled_packages %}
+reddit_ads as (
+
+    {{ get_query(
+        platform='reddit_ads', 
+        report_type='url', 
+        field_mapping={
+                'account_name': 'null'
+            },
+        relation=ref('reddit_ads__url_report')
+    ) }}
+),
 {% endif %}
 
 unioned as (
