@@ -20,7 +20,7 @@ aggregated as (
 
         {%- if var('ad_reporting__passthrough_metrics') -%}
             {% for metric in var('ad_reporting__passthrough_metrics') %}
-                , sum({{ metric }}) as {{ metric }}
+                , sum({{ metric }}) as {{ metric.name }}
             {% endfor %}
         {%- endif -%}
 
