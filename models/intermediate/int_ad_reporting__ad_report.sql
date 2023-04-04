@@ -149,6 +149,20 @@ amazon_ads as (
 ), 
 {% endif %}
 
+{% if 'reddit_ads' in enabled_packages %}
+reddit_ads as (
+
+    {{ get_query(
+        platform='reddit_ads', 
+        report_type='ad', 
+        field_mapping={
+                'account_name': 'null'
+            },
+        relation=ref('reddit_ads__ad_report')
+    ) }}
+),
+{% endif %}
+
 unioned as (
 
     {{ union_ctes(ctes=enabled_packages)}}

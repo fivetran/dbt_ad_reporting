@@ -24,6 +24,7 @@
     - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
     - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
     - [Twitter Ads](https://github.com/fivetran/dbt_twitter)
+    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads)
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
 - Generates a comprehensive data dictionary of your source and modeled Ad Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
@@ -54,6 +55,7 @@ Refer to the table below for a detailed view of final models materialized by def
     - [Snapchat Ads](https://fivetran.com/docs/applications/snapchat-ads)
     - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
+    - [Reddit Ads](https://fivetran.com/docs/applications/reddit-ads)
 > While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
@@ -75,7 +77,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.2.0", "<1.3.0"]
+    version: [">=1.3.0", "<1.4.0"]
 ```
 ## Step 3: Configure Database and Schema Variables
 By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
@@ -110,7 +112,10 @@ vars:
     snapchat_database: your_database_name 
     
     tiktok_ads_schema: tiktok_ads
-    tiktok_ads_database: your_database_name 
+    tiktok_ads_database: your_database_name
+
+    reddit_ads_schema: reddit_ads
+    reddit_ads_database: your_database_name 
 ```
 
 ## Step 4: Enabling/Disabling Models
@@ -131,6 +136,7 @@ vars:
   ad_reporting__facebook_ads_enabled: False # by default this is assumed to be True
   ad_reporting__snapchat_ads_enabled: False # by default this is assumed to be True
   ad_reporting__tiktok_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__reddit_ads_enabled: False # by default this is assumed to be True
 ```
 ### Enable/Disable Specific Reports within Platforms
 For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below.
@@ -202,6 +208,11 @@ models:
     +schema: tiktok_ads
   tiktok_ads_source:
     +schema: tiktok_ads_source
+  
+  reddit_ads:
+    +schema: reddit_ads
+  reddit_ads_source:
+    +schema: reddit_ads_source
 ```
 
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
@@ -301,58 +312,64 @@ packages:
     version: [">=0.1.0", "<0.2.0"]
 
   - package: fivetran/apple_search_ads
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
 
   - package: fivetran/apple_search_ads_source
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
   
   - package: fivetran/facebook_ads
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/facebook_ads_source
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
   
   - package: fivetran/google_ads
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/google_ads_source
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/pinterest
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/pinterest_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/microsoft_ads
-    version: [">=0.5.0", "<0.6.0"]
-
-  - package: fivetran/microsoft_ads_source
     version: [">=0.6.0", "<0.7.0"]
 
+  - package: fivetran/microsoft_ads_source
+    version: [">=0.7.0", "<0.8.0"]
+
   - package: fivetran/linkedin
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/linkedin_source
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/twitter_ads
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/twitter_ads_source
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/snapchat_ads
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/snapchat_ads_source
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 
   - package: fivetran/tiktok_ads_source
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
+
+  - package: fivetran/reddit_ads
+    version: [">=0.1.0", "<0.2.0"]
+
+  - package: fivetran/reddit_ads_source
+    version: [">=0.1.0", "<0.2.0"]
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance

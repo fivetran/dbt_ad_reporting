@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.2.2'
+version: '1.3.2'
 profile: 'integration_tests'
 config-version: 2
 
@@ -16,7 +16,7 @@ vars:
   twitter_ads__using_keywords: False
 
   apple_search_ads_source:
-    apple_search_ads_schema: ad_reporting_integration_tests_2
+    apple_search_ads_schema: ad_reporting_integration_tests_5
     apple_search_ads_organization_identifier: "apple_search_organization_data"
     apple_search_ads_campaign_history_identifier: "apple_search_campaign_history_data"
     apple_search_ads_campaign_report_identifier: "apple_search_campaign_report_data"
@@ -30,7 +30,7 @@ vars:
     apple_search_ads__using_search_terms: True
 
   google_ads_source:
-    google_ads_schema: ad_reporting_integration_tests_2
+    google_ads_schema: ad_reporting_integration_tests_5
     google_ads_ad_stats_identifier: "google_ads_ad_stats_data"
     google_ads_ad_history_identifier: "google_ads_ad_history_data"
     google_ads_ad_group_history_identifier: "google_ads_ad_group_history_data"
@@ -43,7 +43,7 @@ vars:
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
 
   microsoft_ads_source:
-    microsoft_ads_schema: ad_reporting_integration_tests_2
+    microsoft_ads_schema: ad_reporting_integration_tests_5
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
     microsoft_ads_account_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -57,7 +57,7 @@ vars:
     microsoft_ads_search_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
 
   linkedin_source:
-    linkedin_ads_schema: ad_reporting_integration_tests_2
+    linkedin_ads_schema: ad_reporting_integration_tests_5
     linkedin_ads_account_history_identifier: "linkedin_ad_account_history_data"
     linkedin_ads_ad_analytics_by_creative_identifier: "linkedin_ad_analytics_by_creative_data"
     linkedin_ads_campaign_group_history_identifier: "linkedin_ad_campaign_group_history_data"
@@ -66,7 +66,7 @@ vars:
     linkedin_ads_ad_analytics_by_campaign_identifier: "linkedin_ad_analytics_by_campaign_data"
 
   twitter_ads_source:
-    twitter_ads_schema: ad_reporting_integration_tests_2
+    twitter_ads_schema: ad_reporting_integration_tests_5
     twitter_ads_account_history_identifier: "twitter_account_history_data"
     twitter_ads_campaign_history_identifier: "twitter_campaign_history_data"
     twitter_ads_line_item_history_identifier: "twitter_line_item_history_data"
@@ -80,7 +80,7 @@ vars:
     twitter_ads_line_item_keywords_report_identifier: "twitter_line_item_keywords_report_data"
 
   pinterest_source:
-    pinterest_schema: ad_reporting_integration_tests_2
+    pinterest_schema: ad_reporting_integration_tests_5
     pinterest_ad_group_history_identifier: "pinterest_ads_ad_group_history_data"
     pinterest_campaign_history_identifier: "pinterest_ads_campaign_history_data"
     pinterest_pin_promotion_history_identifier: "pinterest_ads_pin_promotion_history_data"
@@ -93,7 +93,7 @@ vars:
     pinterest_advertiser_report_identifier: "pinterest_ads_advertiser_report_data"
     
   facebook_ads_source:
-    facebook_ads_schema: ad_reporting_integration_tests_2
+    facebook_ads_schema: ad_reporting_integration_tests_5
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
@@ -102,7 +102,7 @@ vars:
     facebook_ads_creative_history_identifier: "facebook_ads_creative_history_data"
 
   snapchat_ads_source:
-    snapchat_ads_schema: ad_reporting_integration_tests_2
+    snapchat_ads_schema: ad_reporting_integration_tests_5
     snapchat_ads_ad_account_history_identifier:  "snapchat_ad_account_history_data"
     snapchat_ads_ad_history_identifier: "snapchat_ad_history_data"
     snapchat_ads_ad_hourly_report_identifier: "snapchat_ad_hourly_report_data"
@@ -114,7 +114,7 @@ vars:
     snapchat_ads_creative_url_tag_history_identifier: "snapchat_creative_url_tag_history_data"
 
   tiktok_ads_source:
-    tiktok_ads_schema: ad_reporting_integration_tests_2
+    tiktok_ads_schema: ad_reporting_integration_tests_5
     tiktok_ads__ad_group_history_identifier: "tiktok_adgroup_history_data"
     tiktok_ads__ad_history_identifier: "tiktok_ad_history_data"
     tiktok_ads__advertiser_identifier: "tiktok_advertiser_data"
@@ -124,7 +124,7 @@ vars:
     tiktok_ads__campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
 
   amazon_ads_source:
-    amazon_ads_schema: ad_reporting_integration_tests_2
+    amazon_ads_schema: ad_reporting_integration_tests_5
     amazon_ads_ad_group_history_identifier: "amazon_ads_ad_group_history_data"
     amazon_ads_ad_group_level_report_identifier: "amazon_ads_ad_group_level_report_data"
     amazon_ads_advertised_product_report_identifier: "amazon_ads_advertised_product_report_data"
@@ -136,6 +136,18 @@ vars:
     amazon_ads_keyword_history_identifier: "amazon_ads_keyword_history_data"
     amazon_ads_targeting_keyword_report_identifier: "amazon_ads_targeting_keyword_report_data"
     amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
+
+  reddit_ads_source:
+    reddit_ads_schema: ad_reporting_integration_tests_5
+    reddit_ads_account_identifier: "reddit_ads_account_data"
+    reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
+    reddit_ads_ad_identifier: "reddit_ads_ad_data"
+    reddit_ads_ad_report_identifier: "reddit_ads_ad_report_data"
+    reddit_ads_ad_group_identifier: "reddit_ads_ad_group_data"
+    reddit_ads_ad_group_report_identifier: "reddit_ads_ad_group_report_data"
+    reddit_ads_campaign_identifier: "reddit_ads_campaign_data"
+    reddit_ads_campaign_report_identifier: "reddit_ads_campaign_report_data"
+
 
 seeds:
   ad_reporting_integration_tests:
@@ -530,3 +542,40 @@ seeds:
         campaign_budget_amount: "float"
         click_through_rate: "float"
         keyword_bid: "float"
+
+
+    ### Reddit Ads Seeds
+
+    reddit_ads_account_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_account_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_ad_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_ad_report_data:
+      +column_types:
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_ad_group_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_ad_group_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_campaign_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_campaign_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"

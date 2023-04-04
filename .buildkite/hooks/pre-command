@@ -22,3 +22,4 @@ export CI_SNOWFLAKE_DBT_WAREHOUSE=$(gcloud secrets versions access latest --secr
 export CI_DATABRICKS_DBT_HOST=$(gcloud secrets versions access latest --secret="CI_DATABRICKS_DBT_HOST" --project="dbt-package-testing-363917")
 export CI_DATABRICKS_DBT_HTTP_PATH=$(gcloud secrets versions access latest --secret="CI_DATABRICKS_DBT_HTTP_PATH" --project="dbt-package-testing-363917")
 export CI_DATABRICKS_DBT_TOKEN=$(gcloud secrets versions access latest --secret="CI_DATABRICKS_DBT_TOKEN" --project="dbt-package-testing-363917")
+export CI_DATABRICKS_DBT_CATALOG=$(gcloud secrets versions access latest --secret="CI_DATABRICKS_DBT_CATALOG" --project="dbt-package-testing-363917")

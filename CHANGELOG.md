@@ -1,4 +1,4 @@
-# dbt_ad_reporting v1.2.2
+# dbt_ad_reporting v1.3.2
 
 ## Feature Enhancement
 - Added `ad_reporting__passthrough_metrics` variable to easily add common metrics across all platforms into the `ad_reporting` models.
@@ -6,6 +6,31 @@
 ## Contributors
 - [@aleix-cd](https://github.com/aleix-cd)
 
+# dbt_ad_reporting v1.3.1
+
+## Updates
+[PR #79](https://github.com/fivetran/dbt_ad_reporting/pull/79) includes the following updates:
+- Updated package dependencies for Linkedin Ads v0.7.0, for more information please refer to Linkedin Ads [PR #28](https://github.com/fivetran/dbt_linkedin/pull/28)
+- Updated `README` package dependencies to reflect current package versions
+
+# dbt_ad_reporting v1.3.0
+
+##  🎉 Introducing Reddit Ads Compatibility 🎉 
+([PR #83](https://github.com/fivetran/dbt_ad_reporting/pull/83)) includes the following feature additions:
+- We have added Reddit Ads as another platform to our Ad Reporting package.
+- Your Reddit Ads data can now be rolled into the below models:
+  - `ad_reporting__account_report`
+  - `ad_reporting__campaign_report`
+  - `ad_reporting__ad_group_report`
+  - `ad_reporting__ad_report`
+  - `ad_reporting__url_report`
+
+> Note: If you are **NOT** using Reddit Ads, add the below variable to your `dbt_project.yml` to disable the Reddit Ads models.
+
+```yml
+vars:
+  ad_reporting__reddit_ads_enabled: False ## True by default
+```
 
 # dbt_ad_reporting v1.2.1
 

@@ -69,5 +69,6 @@ steps:
             - "CI_DATABRICKS_DBT_HOST"
             - "CI_DATABRICKS_DBT_HTTP_PATH"
             - "CI_DATABRICKS_DBT_TOKEN"
+            - "CI_DATABRICKS_DBT_CATALOG"
     commands: |
       bash .buildkite/scripts/run_models.sh databricks
