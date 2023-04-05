@@ -18,13 +18,13 @@ aggregated as (
         campaign_name,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
-        sum(spend) as spend
+        sum(spend) as spend 
 
-        {%- if var('ad_reporting__campaign_passthrough_metrics') -%}
+        {% if var('ad_reporting__campaign_passthrough_metrics') %}
             {% for metric in var('ad_reporting__campaign_passthrough_metrics') %}
-                , sum({{ metric }}) as {{ metric.name }}
+                , sum({{ metric }}) as {{ metric }}
             {% endfor %}
-        {%- endif -%}
+        {% endif %}
 
     from base
     {{ dbt_utils.group_by(6) }}
