@@ -30,12 +30,8 @@ aggregated as (
         sum(impressions) as impressions,
         sum(spend) as spend 
 
-        {% if var('ad_reporting__url_passthrough_metrics') %}
-            {% for metric in var('ad_reporting__url_passthrough_metrics') %}
-                , sum({{ metric }}) as {{ metric }}
-            {% endfor %}
-        {% endif %}
-    
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='ad_reporting__url_passthrough_metrics', transform = 'sum') }}
+
     from base
     {{ dbt_utils.group_by(16) }}
 )
