@@ -30,8 +30,9 @@
     {%- for campaign_field in campaign_fields -%}
         {#- When campaign_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
         {%- if report_type == 'campaign' and var('ad_reporting__campaign_passthrough_metrics') -%}
-            {%- for campaign_passthrough_metric in var('ad_reporting__campaign_passthrough_metrics') -%}
-                {%- do final_fields_superset.update({campaign_passthrough_metric: campaign_passthrough_metric}) -%}
+            {% set campaign_passthrough_metric_dict = var('ad_reporting__campaign_passthrough_metrics')[0] %}
+            {%- for campaign_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
+                {%- do final_fields_superset.update({campaign_passthrough_metric_value: campaign_passthrough_metric_value}) -%}
             {%- endfor -%}
         {%- endif -%}
         {%- do final_fields_superset.update({campaign_field: campaign_field}) -%}
@@ -43,8 +44,9 @@
     {%- for ad_group_field in ad_group_fields -%}
         {#- When ad_group_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
         {%- if report_type == 'ad_group' and var('ad_reporting__ad_group_passthrough_metrics') -%}
-            {%- for ad_group_passthrough_metric in var('ad_reporting__ad_group_passthrough_metrics') -%}
-                {%- do final_fields_superset.update({ad_group_passthrough_metric: ad_group_passthrough_metric}) -%}
+            {% set campaign_passthrough_metric_dict = var('ad_reporting__ad_group_passthrough_metrics')[0] %}
+            {%- for ad_group_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
+                {%- do final_fields_superset.update({ad_group_passthrough_metric_value: ad_group_passthrough_metric_value}) -%}
             {%- endfor -%}
         {%- endif -%}
         {%- do final_fields_superset.update({ad_group_field: ad_group_field}) -%}
@@ -54,7 +56,12 @@
 {#- For ad level reports, add ad_fields and ad_passthrough_metrics (if any) -#}
 {%- if report_type == 'ad' -%}
     {%- if var('ad_reporting__ad_passthrough_metrics') -%}
-        {%- set combined_ad_fields = ad_fields + var('ad_reporting__ad_passthrough_metrics') -%}
+        {%- set ad_passthrough_metrics_values = [] -%}
+        {%- set ad_passthrough_metrics_dict = var('ad_reporting__ad_passthrough_metrics')[0] -%}
+            {%- for _, value in ad_passthrough_metrics_dict.items() -%}
+                {%- do ad_passthrough_metrics_values.append(value) -%}
+            {%- endfor -%}
+        {%- set combined_ad_fields = ad_fields + ad_passthrough_metrics_values -%}
     {%- else -%}
         {%- set combined_ad_fields = ad_fields -%}
     {%- endif -%}
@@ -66,7 +73,12 @@
 {#- For url level reports, add url_fields and url_passthrough_metrics (if any) -#}
 {%- if report_type == 'url' -%}
     {%- if var('ad_reporting__url_passthrough_metrics') -%}
-        {%- set combined_url_fields = url_fields + var('ad_reporting__url_passthrough_metrics') -%}
+        {%- set url_passthrough_metrics_values = [] -%}
+        {%- set url_passthrough_metrics_dict = var('ad_reporting__url_passthrough_metrics')[0] -%}
+            {%- for _, value in url_passthrough_metrics_dict.items() -%}
+                {%- do url_passthrough_metrics_values.append(value) -%}
+            {%- endfor -%}
+        {%- set combined_url_fields = url_fields + url_passthrough_metrics_values -%}
     {%- else -%}
         {%- set combined_url_fields = url_fields -%}
     {%- endif -%}
@@ -78,7 +90,12 @@
 {#- For keyword level reports, add keyword_fields and keyword_passthrough_metrics (if any) -#}
 {%- if report_type == 'keyword' -%}
     {%- if var('ad_reporting__keyword_passthrough_metrics') -%}
-        {%- set combined_keyword_fields = keyword_fields + var('ad_reporting__keyword_passthrough_metrics') -%}
+        {%- set keyword_passthrough_metrics_values = [] -%}
+        {%- set keyword_passthrough_metrics_dict = var('ad_reporting__keyword_passthrough_metrics')[0] -%}
+            {%- for _, value in keyword_passthrough_metrics_dict.items() -%}
+                {%- do keyword_passthrough_metrics_values.append(value) -%}
+            {%- endfor -%}
+        {%- set combined_keyword_fields = keyword_fields + keyword_passthrough_metrics_values -%}
     {%- else -%}
         {%- set combined_keyword_fields = keyword_fields -%}
     {%- endif -%}
@@ -90,7 +107,12 @@
 {#- For search level reports, add search_fields and search_passthrough_metrics (if any) -#}
 {%- if report_type == 'search' -%}
     {%- if var('ad_reporting__search_passthrough_metrics') -%}
-        {%- set combined_search_fields = search_fields + var('ad_reporting__search_passthrough_metrics') -%}
+        {%- set search_passthrough_metrics_values = [] -%}
+        {%- set search_passthrough_metrics_dict = var('ad_reporting__search_passthrough_metrics')[0] -%}
+            {%- for _, value in search_passthrough_metrics_dict.items() -%}
+                {%- do search_passthrough_metrics_values.append(value) -%}
+            {%- endfor -%}
+        {%- set combined_search_fields = search_fields + search_passthrough_metrics_values -%}
     {%- else -%}
         {%- set combined_search_fields = search_fields -%}
     {%- endif -%}
