@@ -12,12 +12,3 @@ models:
     intermediate:
       +materialized: ephemeral
       +schema: int_ad_reporting
-
-vars:
-  ad_reporting__account_passthrough_metrics: []
-  ad_reporting__ad_group_passthrough_metrics: []
-  ad_reporting__ad_passthrough_metrics: []
-  ad_reporting__campaign_passthrough_metrics: []
-  ad_reporting__keyword_passthrough_metrics: []
-  ad_reporting__search_passthrough_metrics: []
-  ad_reporting__url_passthrough_metrics: []
