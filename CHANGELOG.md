@@ -1,3 +1,9 @@
+# dbt_ad_reporting v0.UPDATE.UPDATE
+
+ ## Under the Hood:
+
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
+- Updated the pull request [templates](/.github).
 # dbt_ad_reporting v1.3.1
 
 ## Updates
