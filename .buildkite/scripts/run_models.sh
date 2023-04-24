@@ -19,3 +19,5 @@ dbt deps
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh --vars '{ad_reporting__linkedin_ads_enabled: false, ad_reporting__pinterest_ads_enabled: false, ad_reporting__tiktok_ads_enabled: false, ad_reporting__snapchat_ads_enabled: false, ad_reporting__apple_search_ads_enabled: false, ad_reporting__facebook_ads_enabled: false, ad_reporting__amazon_ads_enabled: false}' 
 dbt test --target "$db" --vars '{ad_reporting__linkedin_ads_enabled: false, ad_reporting__pinterest_ads_enabled: false, ad_reporting__tiktok_ads_enabled: false, ad_reporting__snapchat_ads_enabled: false, ad_reporting__apple_search_ads_enabled: false, ad_reporting__facebook_ads_enabled: false, ad_reporting__amazon_ads_enabled: false}' 
+
+dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"
