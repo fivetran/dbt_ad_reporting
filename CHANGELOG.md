@@ -1,4 +1,4 @@
-# dbt_ad_reporting v0.UPDATE.UPDATE
+# dbt_ad_reporting v1.UPDATE.UPDATE
 
  ## Under the Hood:
 
