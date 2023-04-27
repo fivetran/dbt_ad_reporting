@@ -30,10 +30,12 @@
     {%- for campaign_field in campaign_fields -%}
         {#- When campaign_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
         {%- if report_type == 'campaign' and var('ad_reporting__campaign_passthrough_metrics') -%}
-            {% set campaign_passthrough_metric_dict = var('ad_reporting__campaign_passthrough_metrics')[0] %}
-            {%- for campaign_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
-                {%- do final_fields_superset.update({campaign_passthrough_metric_value: campaign_passthrough_metric_value}) -%}
-            {%- endfor -%}
+            {% set campaign_passthrough_metric_array_of_dicts = var('ad_reporting__campaign_passthrough_metrics') %}
+                {%- for campaign_group_passthrough_metric_dict in campaign_passthrough_metric_array_of_dicts -%}
+                    {%- for campaign_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
+                        {%- do final_fields_superset.update({campaign_passthrough_metric_value: campaign_passthrough_metric_value}) -%}
+                    {%- endfor -%}
+                {%- endfor -%}
         {%- endif -%}
         {%- do final_fields_superset.update({campaign_field: campaign_field}) -%}
     {%- endfor -%}
@@ -44,10 +46,12 @@
     {%- for ad_group_field in ad_group_fields -%}
         {#- When ad_group_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
         {%- if report_type == 'ad_group' and var('ad_reporting__ad_group_passthrough_metrics') -%}
-            {% set campaign_passthrough_metric_dict = var('ad_reporting__ad_group_passthrough_metrics')[0] %}
-            {%- for ad_group_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
-                {%- do final_fields_superset.update({ad_group_passthrough_metric_value: ad_group_passthrough_metric_value}) -%}
-            {%- endfor -%}
+            {% set ad_group_passthrough_metric_array_of_dicts = var('ad_reporting__ad_group_passthrough_metrics') %}
+                {%- for ad_group_passthrough_metric_dict in ad_group_passthrough_metric_array_of_dicts -%}
+                    {%- for ad_group_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
+                        {%- do final_fields_superset.update({ad_group_passthrough_metric_value: ad_group_passthrough_metric_value}) -%}
+                    {%- endfor -%}
+                {%- endfor -%}
         {%- endif -%}
         {%- do final_fields_superset.update({ad_group_field: ad_group_field}) -%}
     {%- endfor -%}
@@ -57,9 +61,11 @@
 {%- if report_type == 'ad' -%}
     {%- if var('ad_reporting__ad_passthrough_metrics') -%}
         {%- set ad_passthrough_metrics_values = [] -%}
-        {%- set ad_passthrough_metrics_dict = var('ad_reporting__ad_passthrough_metrics')[0] -%}
-            {%- for _, value in ad_passthrough_metrics_dict.items() -%}
-                {%- do ad_passthrough_metrics_values.append(value) -%}
+        {%- set ad_passthrough_metrics_array_of_dicts = var('ad_reporting__ad_passthrough_metrics') -%}
+            {%- for ad_passthrough_metrics_dict in ad_passthrough_metrics_array_of_dicts -%}
+                {%- for _, value in ad_passthrough_metrics_dict.items() -%}
+                    {%- do ad_passthrough_metrics_values.append(value) -%}
+                {%- endfor -%}
             {%- endfor -%}
         {%- set combined_ad_fields = ad_fields + ad_passthrough_metrics_values -%}
     {%- else -%}
@@ -74,9 +80,11 @@
 {%- if report_type == 'url' -%}
     {%- if var('ad_reporting__url_passthrough_metrics') -%}
         {%- set url_passthrough_metrics_values = [] -%}
-        {%- set url_passthrough_metrics_dict = var('ad_reporting__url_passthrough_metrics')[0] -%}
-            {%- for _, value in url_passthrough_metrics_dict.items() -%}
-                {%- do url_passthrough_metrics_values.append(value) -%}
+        {%- set url_passthrough_metrics_array_of_dicts = var('ad_reporting__url_passthrough_metrics') -%}
+            {%- for url_passthrough_metrics_dict in url_passthrough_metrics_array_of_dicts -%}
+                {%- for _, value in url_passthrough_metrics_dict.items() -%}
+                    {%- do url_passthrough_metrics_values.append(value) -%}
+                {%- endfor -%}
             {%- endfor -%}
         {%- set combined_url_fields = url_fields + url_passthrough_metrics_values -%}
     {%- else -%}
@@ -91,9 +99,11 @@
 {%- if report_type == 'keyword' -%}
     {%- if var('ad_reporting__keyword_passthrough_metrics') -%}
         {%- set keyword_passthrough_metrics_values = [] -%}
-        {%- set keyword_passthrough_metrics_dict = var('ad_reporting__keyword_passthrough_metrics')[0] -%}
-            {%- for _, value in keyword_passthrough_metrics_dict.items() -%}
-                {%- do keyword_passthrough_metrics_values.append(value) -%}
+        {%- set keyword_passthrough_metrics_array_of_dicts = var('ad_reporting__keyword_passthrough_metrics') -%}
+            {%- for keyword_passthrough_metrics_dict in keyword_passthrough_metrics_array_of_dicts -%}
+                {%- for _, value in keyword_passthrough_metrics_dict.items() -%}
+                    {%- do keyword_passthrough_metrics_values.append(value) -%}
+                {%- endfor -%}
             {%- endfor -%}
         {%- set combined_keyword_fields = keyword_fields + keyword_passthrough_metrics_values -%}
     {%- else -%}
@@ -108,9 +118,11 @@
 {%- if report_type == 'search' -%}
     {%- if var('ad_reporting__search_passthrough_metrics') -%}
         {%- set search_passthrough_metrics_values = [] -%}
-        {%- set search_passthrough_metrics_dict = var('ad_reporting__search_passthrough_metrics')[0] -%}
-            {%- for _, value in search_passthrough_metrics_dict.items() -%}
-                {%- do search_passthrough_metrics_values.append(value) -%}
+        {%- set search_passthrough_metrics_array_of_dicts = var('ad_reporting__search_passthrough_metrics') -%}
+            {%- for search_passthrough_metrics_dict in search_passthrough_metrics_array_of_dicts -%}
+                {%- for _, value in search_passthrough_metrics_dict.items() -%}
+                    {%- do search_passthrough_metrics_values.append(value) -%}
+                {%- endfor -%}
             {%- endfor -%}
         {%- set combined_search_fields = search_fields + search_passthrough_metrics_values -%}
     {%- else -%}
@@ -130,6 +142,8 @@
 select 
     {{ get_date_from_timestamp('date_day') }} as date_day,
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
+
+    {# {% do log(final_fields_superset, info=True) %} #}
 
     {% for field in final_fields_superset.keys()|sort() -%}
     {% if field in consistent_fields and field != 'spend' -%}
