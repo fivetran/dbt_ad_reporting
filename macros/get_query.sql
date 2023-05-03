@@ -124,8 +124,6 @@ select
     {{ get_date_from_timestamp('date_day') }} as date_day,
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
 
-    {# {% do log(final_fields_superset, info=True) %} #}
-
     {% for field in final_fields_superset.keys()|sort() -%}
     {% if field in consistent_fields and field != 'spend' -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_int() }}) as {{ field }}
