@@ -25,6 +25,22 @@
     {%- endfor -%}
 {%- endif -%}
 
+{#- For account level reports and lower, add account_fields -#}
+{%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search', 'account'] -%}
+    {%- for account_field in account_fields -%}
+        {#- When campaign_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
+        {%- if report_type == 'account' and var('ad_reporting__account_passthrough_metrics', []) -%}
+            {% set account_passthrough_metric_array_of_dicts = var('ad_reporting__account_passthrough_metrics') %}
+                {%- for account_passthrough_metric_dict in account_passthrough_metric_array_of_dicts -%}
+                    {%- for account_passthrough_metric_value in account_passthrough_metric_dict.values() -%}
+                        {%- do final_fields_superset.update({account_passthrough_metric_value: account_passthrough_metric_value}) -%}
+                    {%- endfor -%}
+                {%- endfor -%}
+        {%- endif -%}
+        {%- do final_fields_superset.update({account_field: account_field}) -%}
+    {%- endfor -%}
+{%- endif -%}
+
 {#- For campaign level reports and lower, add campaign_fields -#}
 {%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search'] -%}
     {%- for campaign_field in campaign_fields -%}
@@ -57,8 +73,8 @@
     {%- endfor -%}
 {%- endif -%}
 
-{#- For ad and url level reports, add ad_fields and ad_passthrough_metrics (if any) -#}
-{%- if report_type in ['ad', 'url'] -%}
+{#- For ad reports, add ad_fields and ad_passthrough_metrics (if any) -#}
+{%- if report_type == 'ad' -%}
     {%- if var('ad_reporting__ad_passthrough_metrics', []) -%}
         {%- set ad_passthrough_metrics_values = [] -%}
         {%- set ad_passthrough_metrics_array_of_dicts = var('ad_reporting__ad_passthrough_metrics') -%}
@@ -70,6 +86,25 @@
         {%- set combined_ad_fields = ad_fields + ad_passthrough_metrics_values -%}
     {%- else -%}
         {%- set combined_ad_fields = ad_fields -%}
+    {%- endif -%}
+    {%- for ad_field in combined_ad_fields -%}
+        {%- do final_fields_superset.update({ad_field: ad_field})-%}
+    {%- endfor -%}
+{%- endif -%}
+
+{#- For url level reports, add ad_fields and ad_passthrough_metrics (if any) -#}
+{%- if report_type == 'url' -%}
+    {%- if var('ad_reporting__ad_passthrough_metrics', []) -%}
+        {%- set ad_passthrough_metrics_values = [] -%}
+        {%- set ad_passthrough_metrics_array_of_dicts = var('ad_reporting__ad_passthrough_metrics') -%}
+            {%- for ad_passthrough_metrics_dict in ad_passthrough_metrics_array_of_dicts -%}
+                {%- for _, value in ad_passthrough_metrics_dict.items() -%}
+                    {%- do ad_passthrough_metrics_values.append(value) -%}
+                {%- endfor -%}
+            {%- endfor -%}
+        {%- set combined_ad_fields = url_fields + ad_passthrough_metrics_values -%}
+    {%- else -%}
+        {%- set combined_ad_fields = url_fields -%}
     {%- endif -%}
     {%- for ad_field in combined_ad_fields -%}
         {%- do final_fields_superset.update({ad_field: ad_field})-%}
@@ -97,7 +132,7 @@
 
 {#- For search level reports, add search_fields and search_passthrough_metrics (if any) -#}
 {%- if report_type == 'search' -%}
-    {%- if var('ad_reporting__search_passthrough_metrics') -%}
+    {%- if var('ad_reporting__search_passthrough_metrics',[]) -%}
         {%- set search_passthrough_metrics_values = [] -%}
         {%- set search_passthrough_metrics_array_of_dicts = var('ad_reporting__search_passthrough_metrics') -%}
             {%- for search_passthrough_metrics_dict in search_passthrough_metrics_array_of_dicts -%}
