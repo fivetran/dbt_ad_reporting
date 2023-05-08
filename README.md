@@ -221,6 +221,209 @@ models:
 <details><summary>Expand for details</summary>
 <br>
 
+## Adding custom metrics to final reports
+By default, this package will select `clicks`, `impressions`, and `cost` metrics from the upstream Ad platform reports. Additionally, each of the upstream Ad specific platform packages allow for custom passthrough metrics to be added to the individual Ad final reports. For a full list of the available passthrough metric variables per platform, please view the relevant links below and inspect the respective passthrough metric variables within the additional configurations for each platform:
+    - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads#optional-step-5-additional-configurations)
+    - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads#optional-step-4-additional-configurations)
+    - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads#optional-step-4-additional-configurations)
+    - [Google Ads](https://github.com/fivetran/dbt_google_ads#optional-step-4-additional-configurations)
+    - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin#optional-step-4-additional-configurations)
+    - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads#optional-step-4-additional-configurations)
+    - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest#optional-step-4-additional-configurations)
+    - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads#optional-step-4-additional-configurations)
+    - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads#optional-step-4-additional-configurations)
+    - [Twitter Ads](https://github.com/fivetran/dbt_twitter#optional-step-5-additional-configurations)
+    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads#optional-step-4-additional-configurations)
+
+This package allows for these configured upstream passthrough metrics to be included in the final roll up models of the combination Ad Reporting package. These passthrough metrics can be included in the respective final models by using the below `ad_reporting__*` variables.
+
+```yml
+vars:
+  ad_reporting__account_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+  ad_reporting__campaign_passthrough_metrics: 
+    - name: total_shares
+    - name: conversions
+  ad_reporting__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: interactions
+  ad_reporting__ad_passthrough_metrics: ## For both Ad and URL reports
+    - name: conversions
+    - name: video_views_captured
+  ad_reporting__keyword_passthrough_metrics:
+    - name: interactions
+  ad_reporting__search_passthrough_metrics:
+    - name: conversions
+    - name: local_spend_amount
+```
+It is important that if you are looking to configure a passthrough metric for an ad reporting end model you will need to ensure that metric is included in all of your upstream variables. Additionally, you will need to ensure the name is consistent. If a certain upstream platform does not include the metric you want to pass along, you can simply include a `transform_sql` argument to pass a null value through. Please see the below configuration as an example when using the Microsoft Ads, Apple Search Ads, Google Ads, Snapchat Ads, TikTok Ads, and Reddit Ads platforms within a `dbt_project.yml`.
+
+Finally, please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
+
+>**Note**: While the below configuration is only for a subset of Ad platforms, the same strategy will be used for all other possible combinations of upstream Ad platform dependencies.
+
+```yml
+vars:
+  ## Account Report Passthrough Metrics
+  microsoft_ads__account_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+      transform_sql: "null"
+  apple_search_ads__campaign_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+      transform_sql: "null"
+    - name: total_shares
+      transform_sql: "null"
+  google_ads__account_stats_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+  # snapchat_ads__ad_hourly_passthrough_metrics: # Defined below in the ad/url metrics therefore, not needed here but kept for documentation.
+  #   - name: conversion_view_content
+  #     alias: view_through_conversions
+  #   - name: conversion_sign_ups
+  #     alias: conversions
+  tiktok_ads__ad_hourly_passthrough_metrics:
+    - name: conversion
+      alias: conversions
+    - name: view_through_conversions
+      transform_sql: "null"
+  reddit_ads__account_passthrough_metrics:
+    - name: conversion_roas
+      alias: conversions
+    - name: legacy_view_conversions_attribution_window_day
+      alias: view_through_conversions
+  ad_reporting__account_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+
+  ## Campaign Report Passthrough Metrics
+  microsoft_ads__campaign_passthrough_metrics:
+    - name: conversions
+    - name: total_shares
+      transform_sql: "null"
+  google_ads__campaign_stats_passthrough_metrics:
+    - name: conversions
+    - name: total_shares
+      transform_sql: cast(total_shares as int)
+  snapchat_ads__campaign_hourly_report_passthrough_metrics:
+    - name: conversion_sign_ups
+      alias: conversions
+    - name: shares
+      alias: total_shares
+  tiktok_ads__campaign_hourly_passthrough_metrics:
+    - name: conversion
+      alias: conversions
+    - name: shares
+      alias: total_shares
+  reddit_ads__campaign_passthrough_metrics:
+    - name: conversions
+      transform_sql: "null"
+    - name: total_shares
+      transform_sql: "null"
+  ad_reporting__campaign_passthrough_metrics: 
+    - name: total_shares
+    - name: conversions
+
+  ## Ad Group Report Passthrough Metrics
+  microsoft_ads__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: phone_calls
+      alias: interactions
+  apple_search_ads__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: new_downloads
+      alias: interactions
+  google_ads__ad_group_stats_passthrough_metrics:
+    - name: conversions
+    - name: interactions
+  snapchat_ads__ad_squad_hourly_passthrough_metrics:
+    - name: conversion_add_cart
+      alias: conversions
+    - name: saves
+      alias: interactions
+  tiktok_ads__ad_group_hourly_passthrough_metrics:
+    - name: conversion
+      alias: conversions
+    - name: likes
+      alias: interactions
+  reddit_ads__ad_group_passthrough_metrics:
+    - name: conversion_roas
+      alias: conversions
+    - name: video_started
+      alias: interactions
+  ad_reporting__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: interactions
+
+## Ad and URL Report Passthrough Metrics
+  microsoft_ads__ad_passthrough_metrics:
+    - name: conversions
+    - name: video_views_captured
+      transform_sql: "null"
+  apple_search_ads__ad_passthrough_metrics:
+    - name: conversions
+    - name: video_views_captured
+      transform_sql: "null"
+  google_ads__ad_stats_passthrough_metrics:
+    - name: video_views
+      alias: video_views_captured
+      transform_sql: cast(video_views_captured as int64)
+    - name: conversions
+  snapchat_ads__ad_hourly_passthrough_metrics:
+    - name: conversion_view_content
+      alias: view_through_conversions
+    - name: conversion_sign_ups
+      alias: conversions
+    - name: video_views
+      alias: video_views_captured
+      transform_sql: cast(video_views_captured as int64)
+  tiktok_ads__ad_hourly_passthrough_metrics:
+    - name: conversion
+      alias: conversions
+    - name: view_through_conversions
+      transform_sql: "null"
+    - name: video_watched_2_s
+      alias: video_views_captured
+      transform_sql: cast(video_views_captured as int64)
+  reddit_ads__ad_passthrough_metrics:
+    - name: conversion_roas
+      alias: conversions
+    - name: video_watched_3_seconds
+      alias: video_views_captured
+      transform_sql: cast(video_views_captured as int64)
+  ad_reporting__ad_passthrough_metrics:
+    - name: conversions
+    - name: video_views_captured
+
+  # Keyword Report Passthrough Metrics
+  microsoft_ads__keyword_passthrough_metrics:
+    - name: interactions
+      transform_sql: "null"
+  apple_search_ads__keyword_passthrough_metrics:
+    - name: new_downloads
+      alias: interactions
+  google_ads__keyword_stats_passthrough_metrics:
+    - name: interactions
+  ad_reporting__keyword_passthrough_metrics:
+    - name: interactions
+
+  # Search Report Passthrough Metrics
+  microsoft_ads__search_passthrough_metrics:
+    - name: conversions
+    - name: local_spend_amount
+      transform_sql: "null"
+  apple_search_ads__search_term_passthrough_metrics:
+    - name: local_spend_amount
+      transform_sql: "cast(local_spend_amount as int64)"
+    - name: conversions
+      transform_sql: "null"
+  ad_reporting__search_passthrough_metrics:
+    - name: conversions
+    - name: local_spend_amount
+```
+
 ## Disabling null URL filtering from URL reports
 The default behavior for the `ad_reporting__url_report` end model is to filter out records having null URL fields, however, you are able to turn off this filter if needed. To turn off the filter, include the below in your `dbt_project.yml` file. This variable will affect ALL Fivetran platform packages enabled in Ad Reporting, therefore either all URL reports will have null URLs filtered, or all URL reports will have null URLs included.
 

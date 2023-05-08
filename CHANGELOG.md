@@ -1,10 +1,31 @@
-# dbt_ad_reporting v1.3.2
-
-## Feature Enhancement
-- Added `ad_reporting__<report>_passthrough_metrics` variables to easily add common metrics across all platforms into the `ad_reporting` models.
+# dbt_ad_reporting v1.4.0
+## 🎉 Feature Enhancement 🎉
+- Added `ad_reporting__<report>_passthrough_metrics` variables to easily add common metrics across all platforms into the `ad_reporting` models! This allows metrics other than the standard `clicks`, `impressions`, and `cost` to be included in the final ad reporting models. See below for a full list of new variables and example metrics to passthrough. ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))
+```yml
+vars:
+  ad_reporting__account_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+  ad_reporting__campaign_passthrough_metrics: 
+    - name: total_shares
+    - name: conversions
+  ad_reporting__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: interactions
+  ad_reporting__ad_passthrough_metrics: ## For both Ad and URL reports
+    - name: conversions
+    - name: video_views_captured
+  ad_reporting__keyword_passthrough_metrics:
+    - name: interactions
+  ad_reporting__search_passthrough_metrics:
+    - name: conversions
+    - name: local_spend_amount
+```
+  - It is important to call out that this is only possible if the relevant upstream Ad platform variables have the same metric to be unioned in the roll up model. Please see the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-6-additional-configurations) section for details around how to configure the passthrough metrics.
+  - Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
 
 ## Contributors
-- [@aleix-cd](https://github.com/aleix-cd)
+- [@aleix-cd](https://github.com/aleix-cd) ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))
 
 # dbt_ad_reporting v1.3.1
 
