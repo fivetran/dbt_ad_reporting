@@ -226,7 +226,7 @@ models:
 <br>
 
 ## Adding custom metrics to final reports
-By default, this package will select `clicks`, `impressions`, and `cost` metrics from the upstream Ad platform reports. Additionally, each of the upstream Ad specific platform packages allow for custom passthrough metrics to be added to the individual Ad final reports. For a full list of the available passthrough metric variables per platform, please view the relevant links below and inspect the respective passthrough metric variables within the additional configurations for each platform:
+By default, this package will select `clicks`, `impressions`, and `cost` metrics from the upstream Ad platform reports. In addition, each of the upstream Ad specific platform packages allow for custom passthrough metrics to be added to the individual platform final reports. For a full list of the available passthrough metric variables per platform please view the relevant links below and inspect the respective passthrough metric variables within the additional configurations for each platform:
     - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads#optional-step-5-additional-configurations)
     - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads#optional-step-4-additional-configurations)
     - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads#optional-step-4-additional-configurations)
@@ -239,7 +239,7 @@ By default, this package will select `clicks`, `impressions`, and `cost` metrics
     - [Twitter Ads](https://github.com/fivetran/dbt_twitter#optional-step-5-additional-configurations)
     - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads#optional-step-4-additional-configurations)
 
-This package allows for these configured upstream passthrough metrics to be included in the final roll up models of the combination Ad Reporting package. These passthrough metrics can be included in the respective final models by using the below `ad_reporting__*` variables.
+Further, this package allows for these configured upstream passthrough metrics to be included in the final roll up models of the combination Ad Reporting package. These passthrough metrics can be included in the respective final models by defining the below `ad_reporting__*` variables in your `dbt_project.yml`.
 
 ```yml
 vars:
@@ -261,9 +261,9 @@ vars:
     - name: conversions
     - name: local_spend_amount
 ```
-It is important that if you are looking to configure a passthrough metric for an ad reporting end model you will need to ensure that metric is included in all of your upstream variables. Additionally, you will need to ensure the name is consistent. If a certain upstream platform does not include the metric you want to pass along, you can simply include a `transform_sql` argument to pass a null value through. Please see the below configuration as an example when using the Microsoft Ads, Apple Search Ads, Google Ads, Snapchat Ads, TikTok Ads, and Reddit Ads platforms within a `dbt_project.yml`.
+It is important that if you are looking to configure a passthrough metric for an ad reporting end model you will need to ensure that metric is included in all of your upstream variables. Additionally, you will need to ensure the name of the metric is consistent across platforms. If a certain upstream platform does not include the metric you want to pass along, you can simply include a `transform_sql` argument to pass a null value through. Please see the below configuration as an example when using the Microsoft Ads, Apple Search Ads, Google Ads, Snapchat Ads, TikTok Ads, and Reddit Ads platforms within a `dbt_project.yml`.
 
-Finally, please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
+>**Note**: Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
 
 >**Note**: While the below configuration is only for a subset of Ad platforms, the same strategy will be used for all other possible combinations of upstream Ad platform dependencies.
 
