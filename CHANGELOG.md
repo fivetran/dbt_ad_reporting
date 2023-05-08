@@ -24,6 +24,11 @@ vars:
   - It is important to call out that this is only possible if the relevant upstream Ad platform variables have the same metric to be unioned in the roll up model. Please see the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-6-additional-configurations) section for details around how to configure the passthrough metrics.
   - Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
 
+## Under the Hood:
+
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([PR #86](https://github.com/fivetran/dbt_ad_reporting/pull/86))
+- Updated the pull request [templates](/.github). ([PR #86](https://github.com/fivetran/dbt_ad_reporting/pull/86))
+
 ## Contributors
 - [@aleix-cd](https://github.com/aleix-cd) ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))
 
