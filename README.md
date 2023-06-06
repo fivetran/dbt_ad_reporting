@@ -155,7 +155,7 @@ Add the following variables to your dbt_project.yml file
 vars:
   apple_search_ads__using_search_terms: False # by default this is assumed to be True
   twitter_ads__using_keywords: False # by default this is assumed to be True
-  pinterest_ads__using_keywords: False # by default this is assumed to be True
+  pinterest__using_keywords: False # by default this is assumed to be True
 ```
 
 ## (Recommended) Step 5: Change the Build Schema
