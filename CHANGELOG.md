@@ -1,10 +1,7 @@
 # dbt_ad_reporting v1.4.0
 ## Features
-- Addition of the `pinterest__using_keywords` (default=`true`) variable that allows users to disable the relevant keyword reports in the downstream Pinterest models if they are not used.
-## Under the Hood:
-- Refactored the conditional logic within `int_ad_reporting__keyword_report` and `ad_reporting__keyword_report` to more dynamically handle upstream models being disabled.
-- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
-- Updated the pull request [templates](/.github).
+- Addition of the `pinterest__using_keywords` (default=`true`) variable that allows users to disable the relevant keyword reports in the downstream Pinterest models if they are not used. ([PR #89](https://github.com/fivetran/dbt_ad_reporting/pull/89))
+
 # dbt_ad_reporting v1.3.1
 
 ## Updates

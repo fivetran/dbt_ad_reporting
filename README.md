@@ -77,7 +77,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.3.0", "<1.4.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.4.0", "<1.5.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -145,7 +145,9 @@ vars:
 ### Enable/Disable Specific Reports within Platforms
 For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below.
 
-For **Twitter Ads**, if you are tracking keyword performance, you may choose to update the corresponding variable below.
+For **Twitter Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
+
+For **Pinterest Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
 
 Add the following variables to your dbt_project.yml file
 
@@ -153,6 +155,7 @@ Add the following variables to your dbt_project.yml file
 vars:
   apple_search_ads__using_search_terms: False # by default this is assumed to be True
   twitter_ads__using_keywords: False # by default this is assumed to be True
+  pinterest_ads__using_keywords: False # by default this is assumed to be True
 ```
 
 ## (Recommended) Step 5: Change the Build Schema
