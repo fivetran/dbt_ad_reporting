@@ -28,7 +28,10 @@ aggregated as (
         utm_term,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
-        sum(spend) as spend
+        sum(spend) as spend 
+
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='ad_reporting__url_passthrough_metrics', transform = 'sum') }}
+
     from base
     {{ dbt_utils.group_by(16) }}
 )
