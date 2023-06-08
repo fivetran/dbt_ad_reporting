@@ -5,10 +5,19 @@ config-version: 2
 
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 
+vars:
+  ad_reporting:
+    ad_reporting__account_passthrough_metrics: []
+    ad_reporting__campaign_passthrough_metrics: []
+    ad_reporting__ad_group_passthrough_metrics: []
+    ad_reporting__ad_passthrough_metrics: []
+    ad_reporting__keyword_passthrough_metrics: []
+    ad_reporting__search_passthrough_metrics: []
+
 models:
   ad_reporting:
     +materialized: table 
     +schema: ad_reporting 
     intermediate:
       +materialized: ephemeral
-      +schema: int_ad_reporting 
+      +schema: int_ad_reporting
