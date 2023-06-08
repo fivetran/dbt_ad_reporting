@@ -1,8 +1,6 @@
-{% if var('twitter_ads__using_keywords', True) %}
-    {% set include_list = ['amazon_ads', 'apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads', 'twitter_ads'] %}
-{% else %}
-    {% set include_list = ['amazon_ads', 'apple_search_ads', 'google_ads', 'microsoft_ads', 'pinterest_ads'] %}
-{% endif %}
+{% set include_list = ['amazon_ads', 'apple_search_ads', 'google_ads', 'microsoft_ads'] %}
+{% do include_list.append('pinterest_ads') if var('pinterest__using_keywords', true) %}
+{% do include_list.append('twitter_ads') if var('twitter_ads__using_keywords', true) %}
 
 {% set enabled_packages = get_enabled_packages(include=include_list)%}
 {{ config(enabled=is_enabled(enabled_packages)) }}

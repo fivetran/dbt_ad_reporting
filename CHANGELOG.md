@@ -1,4 +1,5 @@
 # dbt_ad_reporting v1.4.0
+
 ## 🎉 Feature Enhancement 🎉
 - Added `ad_reporting__<report>_passthrough_metrics` variables to easily add common metrics across all platforms into the `ad_reporting` models! This allows metrics other than the standard `clicks`, `impressions`, and `cost` to be included in the final ad reporting models. See below for a full list of new variables and example metrics to passthrough. ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))
   - It is important to call out that this is only possible if the relevant upstream Ad platform variables have the same metric to be unioned in the roll up model. Please see the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-6-additional-configurations) section for details around how to configure the passthrough metrics.
@@ -23,6 +24,8 @@ vars:
     - name: conversions
     - name: local_spend_amount
 ```
+- Addition of the `pinterest__using_keywords` (default=`true`) variable that allows users to disable the relevant keyword reports in the downstream Pinterest models if they are not used. ([PR #89](https://github.com/fivetran/dbt_ad_reporting/pull/89))
+
 ## Under the Hood:
 
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([PR #86](https://github.com/fivetran/dbt_ad_reporting/pull/86))
