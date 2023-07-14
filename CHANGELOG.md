@@ -3,7 +3,7 @@
 ## 🚨 Breaking Changes 🚨
 [PR #93](https://github.com/fivetran/dbt_ad_reporting/pull/93) includes the following changes based on the underlying individual package upgrades:
 
-- Pinterest Ads dependency upgraded to v0.8.0 ([PR #26](https://github.com/fivetran/dbt_pinterest/pull/26))
+- Pinterest Ads dependency upgraded to v0.8.0. Please see the respective upstream [Pinterest Ads](https://github.com/fivetran/dbt_pinterest/releases/tag/v0.8.0) and [Pinterest Ads Source](https://github.com/fivetran/dbt_pinterest_source/releases/tag/v0.8.0) releases for more details.
 
 # dbt_ad_reporting v1.4.0
 
