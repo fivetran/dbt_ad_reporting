@@ -26,8 +26,11 @@ packages:
   - package: fivetran/twitter_ads
     version: [">=0.6.0", "<0.7.0"]
 
-  - package: fivetran/amazon_ads
-    version: [">=0.1.0", "<0.2.0"]
+  # - package: fivetran/amazon_ads
+  #   version: [">=0.2.0", "<0.3.0"]
+  - git: https://github.com/fivetran/dbt_amazon_ads.git
+    revision: feature/api-v3-updates
+    warn-unpinned: false
 
   - package: fivetran/reddit_ads
     version: [">=0.1.0", "<0.2.0"]
