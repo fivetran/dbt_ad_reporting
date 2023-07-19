@@ -3,7 +3,7 @@
 ## 🚨 Breaking Changes 🚨
 [PR #93](https://github.com/fivetran/dbt_ad_reporting/pull/93) includes the following changes based on the underlying individual package upgrades:
 
-- Amazon Ads dependency upgraded to v0.2.0. Please see the respective upstream [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads/releases/tag/v0.2.0) and [Amazon Ads Source](https://github.com/fivetran/dbt_pinterest_source/releases/tag/v0.8.0) releases for more details.
+- Amazon Ads dependency upgraded to v0.2.0. Please see the respective upstream [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads/releases/tag/v0.2.0) and [Amazon Ads Source](https://github.com/fivetran/dbt_amazon_ads_source/releases/tag/v0.2.0) releases for more details.
 
 # dbt_ad_reporting v1.4.0
 
