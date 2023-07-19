@@ -1,3 +1,8 @@
+# dbt_ad_reporting v1.4.1
+
+## Bug Fixes
+- Adding the correct variable name in `ad_reporting__url_report` for passthrough metrics.
+
 # dbt_ad_reporting v1.4.0
 
 ## 🎉 Feature Enhancement 🎉
