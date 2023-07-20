@@ -517,10 +517,10 @@ packages:
     version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/amazon_ads
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
   
   - package: fivetran/amazon_ads_source
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
 
   - package: fivetran/apple_search_ads
     version: [">=0.2.0", "<0.3.0"]
