@@ -5,6 +5,13 @@
 
 - Pinterest Ads dependency upgraded to v0.8.0. Please see the respective upstream [Pinterest Ads](https://github.com/fivetran/dbt_pinterest/releases/tag/v0.8.0) and [Pinterest Ads Source](https://github.com/fivetran/dbt_pinterest_source/releases/tag/v0.8.0) releases for more details.
 
+## Bug Fixes
+- Adding the correct variable name in `ad_reporting__url_report` for passthrough metrics. ([PR #96](https://github.com/fivetran/dbt_ad_reporting/pull/96))
+
+## Contributors
+- [@aleix-cd](https://github.com/aleix-cd) ([PR #96](https://github.com/fivetran/dbt_ad_reporting/pull/96))
+
+
 # dbt_ad_reporting v1.4.0
 
 ## 🎉 Feature Enhancement 🎉
