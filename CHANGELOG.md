@@ -1,3 +1,11 @@
+# dbt_ad_reporting v1.5.0
+
+## Bug Fixes
+- Adding the correct variable name in `ad_reporting__url_report` for passthrough metrics. ([PR #96](https://github.com/fivetran/dbt_ad_reporting/pull/96))
+
+## Contributors
+- [@aleix-cd](https://github.com/aleix-cd) ([PR #96](https://github.com/fivetran/dbt_ad_reporting/pull/96))
+
 # dbt_ad_reporting v1.4.0
 
 ## 🎉 Feature Enhancement 🎉
