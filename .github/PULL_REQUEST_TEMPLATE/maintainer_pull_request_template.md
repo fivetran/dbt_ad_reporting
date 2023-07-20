@@ -42,6 +42,12 @@ Please acknowledge that your PR contains the following standard updates:
 - [ ] DECISIONLOG updates have been updated (if applicable)
 - [ ] Appropriate yml documentation has been added (if applicable)
 
+### ❗ Special Updates for Ad Reporting ❗
+To reduce integration testing time, not all models should be enabled in the `run_models.sh` vars. Update the variables after `dbt run` and `dbt test` to set:
+- [ ] this PR's package to `true`
+- [ ] Google Ads and Facebook Ads to `true` (if not already)
+- [ ] All other packages to `false`S
+
 ### dbt Docs
 Please acknowledge that after the above were all completed the below were applied to your branch:
 - [ ] docs were regenerated (unless this PR does not include any code or yml updates)
