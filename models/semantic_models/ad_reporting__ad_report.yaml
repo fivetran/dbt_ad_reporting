@@ -1,0 +1,56 @@
+semantic_models:
+  - name: ad_reporting__ad_report
+    description: Each record represents daily metrics by ad, ad group, campaign and
+      account.
+    model: ref('ad_reporting__ad_report')
+    measures:
+      - name: ad_spend
+        agg: sum
+        expr: spend
+        agg_time_dimension: date_day
+      - name: impressions
+        agg: sum
+        expr: impressions
+        agg_time_dimension: date_day
+      - name: avg_spend
+        agg: average
+        expr: spend
+        agg_time_dimension: date_day
+      - name: clicks
+        agg: sum
+        expr: clicks
+        agg_time_dimension: date_day
+      - name: active_ads
+        agg: count_distinct
+        expr: ad_id
+        agg_time_dimension: date_day
+      - name: avg_spend_nonzero
+        agg: average
+        expr: spend
+        agg_time_dimension: date_day
+    dimensions:
+      - name: spend
+        type: categorical
+      - name: account_name
+        type: categorical
+      - name: ad_name
+        type: categorical
+      - name: date_day
+        type: time
+        type_params:
+          time_granularity: day
+      - name: campaign_name
+        type: categorical
+      - name: campaign_id
+        type: categorical
+      - name: account_id
+        type: categorical
+      - name: ad_id
+        type: categorical
+      - name: platform
+        type: categorical
+      - name: ad_group_id
+        type: categorical
+      - name: ad_group_name
+        type: categorical
+  

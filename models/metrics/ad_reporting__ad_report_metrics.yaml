@@ -1,0 +1,66 @@
+metrics:
+  - name: active_ads
+    description: Count of ads witth spend > 0.
+    type: simple
+    type_params:
+      measure: active_ads
+    filter: "{{dimension('spend')}} > 0"
+    label: 'Active Ads (Fivetran)'
+  - name: avg_spend_nonzero
+    description: Average ad spend, ignores zero-spend days.
+    type: simple
+    type_params:
+      measure: avg_spend_nonzero
+    filter: "{{dimension('spend')}} > 0"
+    label: 'Avg Spend Non-Zero (Fivetran)'
+  - name: avg_spend
+    description: Average ad spend, does not ignore zero-spend days.
+    type: simple
+    type_params:
+      measure: avg_spend
+    label: 'Avg Spend (Fivetran)'
+  - name: clicks
+    description: Total clicks
+    type: simple
+    type_params:
+      measure: clicks
+    label: 'Ad Clicks (Fivetran)'
+  - name: impressions
+    description: Total impressions
+    type: simple
+    type_params:
+      measure: impressions
+    label: 'Ad Impressions (Fivetran)'
+  - name: spend
+    description: Total spend (in currency of individual platforms)
+    type: simple
+    type_params:
+      measure: ad_spend
+    label: 'Ad Spend (Fivetran)'
+  - name: clickthrough_rate
+    description: Percentage of impressions that did convert into clicks.
+    label: Ad Clickthrough Rate (Fivetran)
+    type: derived
+    type_params:
+      expr: clicks/impressions
+      metrics:
+        - clicks
+        - impressions
+  - name: cost_per_click
+    description:  The ratio of spend to clicks
+    label: Average ad cost per click (Fivetran)
+    type: derived
+    type_params:
+      expr: spend/clicks
+      metrics:
+        - clicks
+        - spend
+  - name: bounce_rate
+    description:  Percentage of impressions that did not convert into clicks.
+    label: Average Ad Bounce Rate (Fivetran)
+    type: derived
+    type_params:
+      expr: impressions - clicks/impressions
+      metrics:
+        - impressions
+        - clicks
