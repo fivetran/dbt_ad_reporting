@@ -1,5 +1,10 @@
 # dbt_ad_reporting v1.4.0
 
+## Update metrics spec and add semantic models
+- Updated the metrics spec to reflect the new spec in dbt-core 1.6
+- Added `ad_reporting__ad_report` semantic model which is required to define metrics.
+- Added `metricflow_time_spine.sql` which is required for metrics. This will be deprecated in future releases.
+
 ## 🎉 Feature Enhancement 🎉
 - Added `ad_reporting__<report>_passthrough_metrics` variables to easily add common metrics across all platforms into the `ad_reporting` models! This allows metrics other than the standard `clicks`, `impressions`, and `cost` to be included in the final ad reporting models. See below for a full list of new variables and example metrics to passthrough. ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))
   - It is important to call out that this is only possible if the relevant upstream Ad platform variables have the same metric to be unioned in the roll up model. Please see the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-6-additional-configurations) section for details around how to configure the passthrough metrics.
