@@ -5,6 +5,7 @@
 
 - Amazon Ads dependency upgraded to v0.2.0. Please see the respective upstream [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads/releases/tag/v0.2.0) and [Amazon Ads Source](https://github.com/fivetran/dbt_amazon_ads_source/releases/tag/v0.2.0) releases for more details.
 - Pinterest Ads dependency upgraded to v0.8.0. Please see the respective upstream [Pinterest Ads](https://github.com/fivetran/dbt_pinterest/releases/tag/v0.8.0) and [Pinterest Ads Source](https://github.com/fivetran/dbt_pinterest_source/releases/tag/v0.8.0) releases for more details.
+- Tiktok Ads dependency upgraded to v0.4.0. Please see the respective upstream [Tiktok Ads](https://github.com/fivetran/dbt_tiktok_ads/releases/tag/v0.4.0) and [Tiktok Ads Source](https://github.com/fivetran/dbt_tiktok_ads_source/releases/tag/v0.4.0)
 
 ## Bug Fixes
 - Adding the correct variable name in `ad_reporting__url_report` for passthrough metrics. ([PR #96](https://github.com/fivetran/dbt_ad_reporting/pull/96))
