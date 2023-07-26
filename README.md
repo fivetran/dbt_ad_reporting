@@ -541,10 +541,10 @@ packages:
     version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/pinterest
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/pinterest_source
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.6.0", "<0.7.0"]
