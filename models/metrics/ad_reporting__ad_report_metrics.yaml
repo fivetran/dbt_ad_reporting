@@ -4,14 +4,16 @@ metrics:
     type: simple
     type_params:
       measure: active_ads
-    filter: "{{dimension('spend')}} > 0"
+    filter: |
+       {{Dimension('ad__spend')}} > 0
     label: 'Active Ads (Fivetran)'
   - name: avg_spend_nonzero
     description: Average ad spend, ignores zero-spend days.
     type: simple
     type_params:
       measure: avg_spend_nonzero
-    filter: "{{dimension('spend')}} > 0"
+    filter: | 
+      {{Dimension('ad__spend')}} > 0
     label: 'Avg Spend Non-Zero (Fivetran)'
   - name: avg_spend
     description: Average ad spend, does not ignore zero-spend days.

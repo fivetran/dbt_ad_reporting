@@ -3,6 +3,7 @@ semantic_models:
     description: Each record represents daily metrics by ad, ad group, campaign and
       account.
     model: ref('ad_reporting__ad_report')
+    primary_entity: ad
     measures:
       - name: ad_spend
         agg: sum
