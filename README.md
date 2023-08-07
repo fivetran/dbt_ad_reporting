@@ -461,10 +461,10 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
-## (Optional) Step 8: Use predefined Metrics
+## (Optional) Step 8: Use predefined Metrics and the dbt Semantic Layer
 <details><summary>Expand for details</summary>
 
-On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), including:
+On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/build/build-metrics-intro) using [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) that can be queried with the [dbt Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl). These metrics include:
 - Spend
 - Impressions
 - Clicks
@@ -475,27 +475,11 @@ On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt packag
 - Average spend
 - Average non-zero spend
 
-You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml).
+You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml), and the semantic model definitions [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/metrics/models/semantic_models/ad_reporting__ad_report.yaml).
 
-To use dbt Metrics, please refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) and install the relevant version to your project's `packages.yml` file.
+Refer to the Semantic Layer [quickstart guide](https://docs.getdbt.com/docs/use-dbt-semantic-layer/quickstart-sl) for instructions on how to get setup with the dbt Semantic Layer and start querying these metrics.
 
-> **Note**: The Metrics package has stricter dbt version requirements, therefore, please take note of the correct dbt version for your desired version of dbt Metrics.
-
-To utilize the Ad Reporting's pre-defined metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) usage instructions and the example below:
-```sql
-select *
-from {{ metrics.calculate(
-        metric('clicks'),
-        grain='month',
-        dimensions=['platform', 
-                    'campaign_id', 
-                    'campaign_name'
-        ],
-        secondary_calculations=[
-            metrics.period_over_period(comparison_strategy='difference', interval=1, alias='diff_last_mth'),
-            metrics.period_over_period(comparison_strategy='ratio', interval=1, alias='ratio_last_mth')
-        ]
-) }}
+> **Note**: The Metricflow is only supported in dbt>=v1.6, therefore, please take note of the correct dbt version.
 ```
 
 </details>

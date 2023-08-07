@@ -41,7 +41,7 @@ metrics:
     label: 'Ad Spend (Fivetran)'
   - name: clickthrough_rate
     description: Percentage of impressions that did convert into clicks.
-    label: Ad Clickthrough Rate (Fivetran)
+    label: 'Ad Clickthrough Rate (Fivetran)'
     type: derived
     type_params:
       expr: clicks/impressions
@@ -50,7 +50,7 @@ metrics:
         - impressions
   - name: cost_per_click
     description:  The ratio of spend to clicks
-    label: Average ad cost per click (Fivetran)
+    label: 'Average Ad Cost Per Click (Fivetran)'
     type: derived
     type_params:
       expr: spend/clicks
@@ -59,7 +59,7 @@ metrics:
         - spend
   - name: bounce_rate
     description:  Percentage of impressions that did not convert into clicks.
-    label: Average Ad Bounce Rate (Fivetran)
+    label: 'Average Ad Bounce Rate (Fivetran)'
     type: derived
     type_params:
       expr: impressions - clicks/impressions
