@@ -482,7 +482,12 @@ Refer to the Semantic Layer [quickstart guide](https://docs.getdbt.com/docs/use-
 **Metricflow Time Spine Configuration**
 This package includes a model called `metricflow_time_spine.sql` that MetricFlow requires to build cumulative metrics. Documentation on the metricflow time spine model can be [found here.](https://docs.getdbt.com/docs/build/metricflow-time-spine) If you have already configured a metricflow time spine model in your project, you will need to disable the one in this package by adding the `metricflow_time_spine: False` env variable to your dbt_project.yml.
 
+**Semantic Manifest**
+You may notice a new run artifact called `semantic_manifest.json`. This file serves as the integation point between dbt-core and metricflow, and contains all the information MetricFlow needs to build a semantic graph, and generate SQL from query requests. You can learn more about the semantic manifest file [in the docs](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-manifest).
+
 > **Note**: Metricflow is only supported in dbt>=v1.6, therefore, please take note of the correct dbt version.
+
+
 ```
 
 </details>
