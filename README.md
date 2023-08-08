@@ -479,7 +479,10 @@ You can find the supported dimensions and full definitions of these metrics [her
 
 Refer to the Semantic Layer [quickstart guide](https://docs.getdbt.com/docs/use-dbt-semantic-layer/quickstart-sl) for instructions on how to get setup with the dbt Semantic Layer and start querying these metrics.
 
-> **Note**: The Metricflow is only supported in dbt>=v1.6, therefore, please take note of the correct dbt version.
+**Metricflow Time Spine Configuration**
+This package includes a model called `metricflow_time_spine.sql` that MetricFlow requires to build cumulative metrics. Documentation on the metricflow time spine model can be [found here.](https://docs.getdbt.com/docs/build/metricflow-time-spine) If you have already configured a metricflow time spine model in your project, you will need to disable the one in this package by adding the `metricflow_time_spine: False` env variable to your dbt_project.yml.
+
+> **Note**: Metricflow is only supported in dbt>=v1.6, therefore, please take note of the correct dbt version.
 ```
 
 </details>

@@ -3,7 +3,7 @@
 ## Update metrics spec and add semantic models
 - Updated the metrics spec to reflect the new spec in dbt-core 1.6
 - Added `ad_reporting__ad_report` semantic model which is required to define metrics.
-- Added `metricflow_time_spine.sql` which is required for metrics. This will be deprecated in future releases.
+- Added `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `metricflow_time_spine: false` in your dbt_project.yml
 
 ## 🎉 Feature Enhancement 🎉
 - Added `ad_reporting__<report>_passthrough_metrics` variables to easily add common metrics across all platforms into the `ad_reporting` models! This allows metrics other than the standard `clicks`, `impressions`, and `cost` to be included in the final ad reporting models. See below for a full list of new variables and example metrics to passthrough. ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))

@@ -2,6 +2,7 @@ name: 'ad_reporting'
 version: '1.4.0'
 
 config-version: 2
+profile: snowflake
 
 require-dbt-version: [">=1.6.0", "<2.0.0"]
 
@@ -13,6 +14,8 @@ vars:
     ad_reporting__ad_passthrough_metrics: []
     ad_reporting__keyword_passthrough_metrics: []
     ad_reporting__search_passthrough_metrics: []
+  metricflow_time_spine: false
+  "dbt_date:time_zone": "America/Los_Angeles"
 
 models:
   ad_reporting:
