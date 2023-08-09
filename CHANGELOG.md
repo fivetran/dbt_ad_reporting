@@ -24,6 +24,9 @@ vars:
   "dbt_date:time_zone": "America/Chicago" # Default is "America/Los_Angeles"
 ```
 
+## Documentation
+- Please be aware that due to a bug in dbt-core v1.6.0 the docs were not regenerated as part of this release. You can expect a new release in the future with the regenerated docs that contain these updates.
+
 ## Contributors
 - [@Jstein77](https://github.com/Jstein77) ([PR #100](https://github.com/fivetran/dbt_ad_reporting/pull/100))
 
