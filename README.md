@@ -523,10 +523,10 @@ packages:
     version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/amazon_ads
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
   
   - package: fivetran/amazon_ads_source
-    version: [">=0.1.0", "<0.2.0"]
+    version: [">=0.2.0", "<0.3.0"]
 
   - package: fivetran/apple_search_ads
     version: [">=0.2.0", "<0.3.0"]
@@ -547,10 +547,10 @@ packages:
     version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/pinterest
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/pinterest_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.6.0", "<0.7.0"]
@@ -577,10 +577,10 @@ packages:
     version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 
   - package: fivetran/tiktok_ads_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 
   - package: fivetran/reddit_ads
     version: [">=0.1.0", "<0.2.0"]
