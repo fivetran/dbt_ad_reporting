@@ -14,7 +14,7 @@ vars:
     ad_reporting__ad_passthrough_metrics: []
     ad_reporting__keyword_passthrough_metrics: []
     ad_reporting__search_passthrough_metrics: []
-  "dbt_date:time_zone": "America/Los_Angeles"
+    "dbt_date:time_zone": "America/Los_Angeles"
 
 models:
   ad_reporting:

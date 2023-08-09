@@ -1,10 +1,33 @@
+# dbt_ad_reporting v1.6.0
+[PR #100](https://github.com/fivetran/dbt_ad_reporting/pull/100) includes the following updates.
+
+## 🚨 New dbt-core version requirement 🚨
+- Updated the metrics spec to reflect the new spec in dbt-core 1.6.0. As a result, the new required dbt version is `[">=1.6.0", "<2.0.0"]`. Be sure to upgrade your dbt-core version when upgrading this package to avoid dbt version compatibility errors.
+
+## Feature Updates
+- Added `ad_reporting__ad_report.yml` semantic model which is required to define metrics.
+- Included `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `ad_reporting__metricflow_time_spine` to `false in your project.
+
+```yml
+## root dbt_project.yml
+vars:
+  ad_reporting__metricflow_time_spine: false ## true by default
+```
+
+## Under the Hood
+- Added a new variable `dbt_date:time_zone` which is used by the `dbt_date.get_base_dates` macro within the `metricflow_time_spine` model. This variable is nested under the `ad_reporting` hierarchy in the variables config and should not affect any global declarations if you leverage the `dbt_date` package in your own environment. 
+  - The default value of this variable is `America/Los_Angeles`, but you may be able override this in your own root project.
+
+```yml
+## root dbt_project.yml
+vars:
+  "dbt_date:time_zone": "America/Chicago" # Default is "America/Los_Angeles"
+```
+
+## Contributors
+- [@Jstein77](https://github.com/Jstein77) ([PR #100](https://github.com/fivetran/dbt_ad_reporting/pull/100))
+
 # dbt_ad_reporting v1.4.0
-
-## Update metrics spec and add semantic models
-- Updated the metrics spec to reflect the new spec in dbt-core 1.6
-- Added `ad_reporting__ad_report` semantic model which is required to define metrics.
-- Added `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `metricflow_time_spine: false` in your dbt_project.yml
-
 ## 🎉 Feature Enhancement 🎉
 - Added `ad_reporting__<report>_passthrough_metrics` variables to easily add common metrics across all platforms into the `ad_reporting` models! This allows metrics other than the standard `clicks`, `impressions`, and `cost` to be included in the final ad reporting models. See below for a full list of new variables and example metrics to passthrough. ([PR #85](https://github.com/fivetran/dbt_ad_reporting/pull/84))
   - It is important to call out that this is only possible if the relevant upstream Ad platform variables have the same metric to be unioned in the roll up model. Please see the [README](https://github.com/fivetran/dbt_ad_reporting#optional-step-6-additional-configurations) section for details around how to configure the passthrough metrics.
