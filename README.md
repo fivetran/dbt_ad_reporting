@@ -502,8 +502,6 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 
 > **Note**: Metricflow is only supported in dbt>=v1.6.0, therefore, please take note of the correct dbt version.
 
-```
-
 </details>
 <br>
 
