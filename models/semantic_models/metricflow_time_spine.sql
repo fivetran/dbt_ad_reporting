@@ -1,4 +1,4 @@
-{{ config(enabled=var('ad_reporting__metricflow_time_spine', True)) }}
+{{ config(enabled=var('ad_reporting__metricflow_time_spine_enabled', True)) }}
 with 
 
 days as (

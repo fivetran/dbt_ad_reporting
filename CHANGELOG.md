@@ -6,12 +6,12 @@
 
 ## Feature Updates
 - Added `ad_reporting__ad_report.yml` semantic model which is required to define metrics.
-- Included `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `ad_reporting__metricflow_time_spine` to `false in your project.
+- Included `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `ad_reporting__metricflow_time_spine_enabled` to `false in your project.
 
 ```yml
 ## root dbt_project.yml
 vars:
-  ad_reporting__metricflow_time_spine: false ## true by default
+  ad_reporting__metricflow_time_spine_enabled: false ## true by default
 ```
 
 ## Under the Hood

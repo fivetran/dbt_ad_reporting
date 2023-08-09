@@ -480,12 +480,12 @@ You can find the supported dimensions and full definitions of these metrics [her
 Refer to the Semantic Layer [quickstart guide](https://docs.getdbt.com/docs/use-dbt-semantic-layer/quickstart-sl) for instructions on how to get setup with the dbt Semantic Layer and start querying these metrics.
 
 **Metricflow Time Spine Configuration**
-This package includes a model called `metricflow_time_spine.sql` that MetricFlow requires to build cumulative metrics. Documentation on the metricflow time spine model can be [found here.](https://docs.getdbt.com/docs/build/metricflow-time-spine) If you have already configured a metricflow time spine model in your project, you will need to disable the one in this package by defining the `ad_reporting__metricflow_time_spine` variable as `false` in your project.
+This package includes a model called `metricflow_time_spine.sql` that MetricFlow requires to build cumulative metrics. Documentation on the metricflow time spine model can be [found here.](https://docs.getdbt.com/docs/build/metricflow-time-spine) If you have already configured a metricflow time spine model in your project, you will need to disable the one in this package by defining the `ad_reporting__metricflow_time_spine_enabled` variable as `false` in your project.
 
 ```yml
 ## root dbt_project.yml
 vars:
-  ad_reporting__metricflow_time_spine: false ## true by default
+  ad_reporting__metricflow_time_spine_enabled: false ## true by default
 ```
 Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish. 
 
