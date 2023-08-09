@@ -2,7 +2,6 @@ name: 'ad_reporting'
 version: '1.4.0'
 
 config-version: 2
-profile: snowflake
 
 require-dbt-version: [">=1.6.0", "<2.0.0"]
 
