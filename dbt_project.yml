@@ -1,9 +1,9 @@
 name: 'ad_reporting'
-version: '1.5.0'
+version: '1.6.0'
 
 config-version: 2
 
-require-dbt-version: [">=1.3.0", "<2.0.0"]
+require-dbt-version: [">=1.6.0", "<2.0.0"]
 
 vars:
   ad_reporting:
@@ -13,6 +13,7 @@ vars:
     ad_reporting__ad_passthrough_metrics: []
     ad_reporting__keyword_passthrough_metrics: []
     ad_reporting__search_passthrough_metrics: []
+    "dbt_date:time_zone": "America/Los_Angeles"
 
 models:
   ad_reporting:

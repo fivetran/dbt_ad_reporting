@@ -3,7 +3,7 @@
         href="https://github.com/fivetran/dbt_github/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.6.0_<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
@@ -77,7 +77,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.5.0", "<1.6.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.6.0", "<1.7.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -461,10 +461,10 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
-## (Optional) Step 8: Use predefined Metrics
+## (Optional) Step 8: Use predefined Metrics and the dbt Semantic Layer
 <details><summary>Expand for details</summary>
 
-On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), including:
+On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/build/build-metrics-intro) using [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) that can be queried with the [dbt Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl). These metrics include:
 - Spend
 - Impressions
 - Clicks
@@ -475,28 +475,32 @@ On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt packag
 - Average spend
 - Average non-zero spend
 
-You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml).
+You can find the supported dimensions and full definitions of these metrics [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/ad_reporting_metrics.yml), and the semantic model definitions [here](https://github.com/fivetran/dbt_ad_reporting/blob/main/models/metrics/models/semantic_models/ad_reporting__ad_report.yaml).
 
-To use dbt Metrics, please refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) and install the relevant version to your project's `packages.yml` file.
+Refer to the Semantic Layer [quickstart guide](https://docs.getdbt.com/docs/use-dbt-semantic-layer/quickstart-sl) for instructions on how to get setup with the dbt Semantic Layer and start querying these metrics.
 
-> **Note**: The Metrics package has stricter dbt version requirements, therefore, please take note of the correct dbt version for your desired version of dbt Metrics.
+**Metricflow Time Spine Configuration**
+This package includes a model called `metricflow_time_spine.sql` that MetricFlow requires to build cumulative metrics. Documentation on the metricflow time spine model can be [found here.](https://docs.getdbt.com/docs/build/metricflow-time-spine) If you have already configured a metricflow time spine model in your project, you will need to disable the one in this package by defining the `ad_reporting__metricflow_time_spine_enabled` variable as `false` in your project.
 
-To utilize the Ad Reporting's pre-defined metrics in your code, refer to the [dbt metrics package](https://github.com/dbt-labs/dbt_metrics) usage instructions and the example below:
-```sql
-select *
-from {{ metrics.calculate(
-        metric('clicks'),
-        grain='month',
-        dimensions=['platform', 
-                    'campaign_id', 
-                    'campaign_name'
-        ],
-        secondary_calculations=[
-            metrics.period_over_period(comparison_strategy='difference', interval=1, alias='diff_last_mth'),
-            metrics.period_over_period(comparison_strategy='ratio', interval=1, alias='ratio_last_mth')
-        ]
-) }}
+```yml
+## root dbt_project.yml
+vars:
+  ad_reporting__metricflow_time_spine_enabled: false ## true by default
 ```
+Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish. 
+
+>**Note**: This variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
+
+```yml
+## root dbt_project.yml
+vars:
+  "dbt_date:time_zone": "America/Chicago" # Default is "America/Los_Angeles"
+```
+
+**Semantic Manifest**
+You may notice a new run artifact called `semantic_manifest.json`. This file serves as the integation point between dbt-core and metricflow, and contains all the information MetricFlow needs to build a semantic graph, and generate SQL from query requests. You can learn more about the semantic manifest file [in the docs](https://docs.getdbt.com/docs/dbt-cloud-apis/sl-manifest).
+
+> **Note**: Metricflow is only supported in dbt>=v1.6.0, therefore, please take note of the correct dbt version.
 
 </details>
 <br>
