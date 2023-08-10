@@ -7,7 +7,7 @@
 
 ## Feature Updates
 - Added `ad_reporting__ad_report.yml` semantic model which is required to define metrics.
-- Included `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `ad_reporting__metricflow_time_spine_enabled` to `false in your project.
+- Included `metricflow_time_spine.sql` which is required by Metricflow. This will be deprecated in future releases. If you have already created a `metricflow_time_spine.sql` model in your project, you will need to disable it for this package by setting the variable `ad_reporting__metricflow_time_spine_enabled` to `false` in your project.
 
 ```yml
 ## root dbt_project.yml
@@ -17,7 +17,7 @@ vars:
 
 ## Under the Hood
 - Added a new variable `dbt_date:time_zone` which is used by the `dbt_date.get_base_dates` macro within the `metricflow_time_spine` model. This variable is nested under the `ad_reporting` hierarchy in the variables config and should not affect any global declarations if you leverage the `dbt_date` package in your own environment. 
-  - The default value of this variable is `America/Los_Angeles`, but you may be able override this in your own root project.
+  - The default value of this variable is `America/Los_Angeles`, but you may be able override this in your own root project. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
 
 ```yml
 ## root dbt_project.yml
