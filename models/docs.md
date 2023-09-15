@@ -49,3 +49,5 @@
 {% docs utm_source %} The utm_source parameter of the ad. {% enddocs %}
 
 {% docs utm_term %} The utm_term parameter of the ad. {% enddocs %}
+
+{% docs source_relation %} The source of the record if the unioning functionality is being used. If not this field will be empty. {% enddocs %}

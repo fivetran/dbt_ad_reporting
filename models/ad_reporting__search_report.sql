@@ -15,7 +15,8 @@ with base as (
 
 aggregated as (
     
-    select 
+    select
+        source_relation,
         date_day,
         platform,
         account_id,
@@ -35,7 +36,7 @@ aggregated as (
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='ad_reporting__search_passthrough_metrics', transform = 'sum') }}
 
     from base
-    {{ dbt_utils.group_by(12) }}
+    {{ dbt_utils.group_by(13) }}
 )
 
 select *
