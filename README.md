@@ -21,10 +21,10 @@
     - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
     - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
     - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest)
+    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads)
     - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
     - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
     - [Twitter Ads](https://github.com/fivetran/dbt_twitter)
-    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads)
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
 - Generates a comprehensive data dictionary of your source and modeled Ad Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
@@ -52,10 +52,10 @@ Refer to the table below for a detailed view of final models materialized by def
     - [LinkedIn Ad Analytics](https://fivetran.com/docs/applications/linkedin-ads)
     - [Microsoft Advertising](https://fivetran.com/docs/applications/microsoft-advertising)
     - [Pinterest Ads](https://fivetran.com/docs/applications/pinterest-ads)
+    - [Reddit Ads](https://fivetran.com/docs/applications/reddit-ads)
     - [Snapchat Ads](https://fivetran.com/docs/applications/snapchat-ads)
     - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
-    - [Reddit Ads](https://fivetran.com/docs/applications/reddit-ads)
 > While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
@@ -109,8 +109,8 @@ vars:
     pinterest_schema: pinterest
     pinterest_database: your_database_name 
 
-    twitter_ads_schema: twitter_ads
-    twitter_ads_database: your_database_name  
+    reddit_ads_schema: reddit_ads
+    reddit_ads_database: your_database_name 
 
     snapchat_schema: snapchat_ads
     snapchat_database: your_database_name 
@@ -118,8 +118,8 @@ vars:
     tiktok_ads_schema: tiktok_ads
     tiktok_ads_database: your_database_name
 
-    reddit_ads_schema: reddit_ads
-    reddit_ads_database: your_database_name 
+    twitter_ads_schema: twitter_ads
+    twitter_ads_database: your_database_name  
 ```
 
 ## Step 4: Enabling/Disabling Models
@@ -132,30 +132,30 @@ If you would like to disable all reporting for any specific platform, please inc
 vars:
   ad_reporting__amazon_ads_enabled: False # by default this is assumed to be True
   ad_reporting__apple_search_ads_enabled: False # by default this is assumed to be True
-  ad_reporting__pinterest_ads_enabled: False # by default this is assumed to be True
-  ad_reporting__microsoft_ads_enabled: False # by default this is assumed to be True
-  ad_reporting__linkedin_ads_enabled: False # by default this is assumed to be True
-  ad_reporting__google_ads_enabled: False # by default this is assumed to be True
-  ad_reporting__twitter_ads_enabled: False # by default this is assumed to be True
   ad_reporting__facebook_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__google_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__linkedin_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__microsoft_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__pinterest_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__reddit_ads_enabled: False # by default this is assumed to be True
   ad_reporting__snapchat_ads_enabled: False # by default this is assumed to be True
   ad_reporting__tiktok_ads_enabled: False # by default this is assumed to be True
-  ad_reporting__reddit_ads_enabled: False # by default this is assumed to be True
+  ad_reporting__twitter_ads_enabled: False # by default this is assumed to be True
 ```
 ### Enable/Disable Specific Reports within Platforms
 For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below.
 
-For **Twitter Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
-
 For **Pinterest Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
+
+For **Twitter Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
 
 Add the following variables to your dbt_project.yml file
 
 ```yml
 vars:
   apple_search_ads__using_search_terms: False # by default this is assumed to be True
-  twitter_ads__using_keywords: False # by default this is assumed to be True
   pinterest__using_keywords: False # by default this is assumed to be True
+  twitter_ads__using_keywords: False # by default this is assumed to be True
 ```
 
 ## (Recommended) Step 5: Change the Build Schema
@@ -200,12 +200,12 @@ models:
     +schema: pinterest
   pinterest_source:
     +schema: pinterest_source
-  
-  twitter_ads:
-    +schema: twitter_ads
-  twitter_ads_source:
-    +schema: twitter_ads_source
-  
+
+  reddit_ads:
+    +schema: reddit_ads
+  reddit_ads_source:
+    +schema: reddit_ads_source
+
   snapchat_ads:
     +schema: snapchat_ads
   snapchat_ads_source:
@@ -216,10 +216,10 @@ models:
   tiktok_ads_source:
     +schema: tiktok_ads_source
   
-  reddit_ads:
-    +schema: reddit_ads
-  reddit_ads_source:
-    +schema: reddit_ads_source
+  twitter_ads:
+    +schema: twitter_ads
+  twitter_ads_source:
+    +schema: twitter_ads_source
 ```
 
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
@@ -227,6 +227,48 @@ models:
 ## (Optional) Step 6: Additional configurations
 <details><summary>Expand for details</summary>
 <br>
+
+### Union multiple connectors
+If you have multiple ad reporting connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
+
+```yml
+vars:
+    amazon_ads_union_schemas: ['amazon_ads_usa','amazon_ads_canada']
+    amazon_ads_union_databases: ['amazon_ads_usa','amazon_ads_canada']
+
+    apple_search_ads_union_schemas: ['apple_search_ads_usa','apple_search_ads_canada']
+    apple_search_ads_union_databases: ['apple_search_ads_usa','apple_search_ads_canada']
+
+    facebook_ads_union_schemas: ['facebook_ads_usa','facebook_ads_canada']
+    facebook_ads_union_databases: ['facebook_ads_usa','facebook_ads_canada']
+
+    google_ads_union_schemas: ['google_ads_usa','google_ads_canada']
+    google_ads_union_databases: ['google_ads_usa','google_ads_canada']
+
+    linkedin_union_schemas: ['linkedin_usa','linkedin_canada']
+    linkedin_union_databases: ['linkedin_usa','linkedin_canada']
+
+    microsoft_ads_union_schemas: ['microsoft_ads_usa','microsoft_ads_canada']
+    microsoft_ads_union_databases: ['microsoft_ads_usa','microsoft_ads_canada']
+
+    pinterest_ads_union_schemas: ['pinterest_usa','pinterest_canada']
+    pinterest_ads_union_databases: ['pinterest_usa','pinterest_canada']
+
+    reddit_ads_union_schemas: ['reddit_ads_usa','reddit_ads_canada']
+    reddit_ads_union_databases: ['reddit_ads_usa','reddit_ads_canada']
+
+    snapchat_ads_union_schemas: ['snapchat_ads_usa','snapchat_ads_canada']
+    snapchat_ads_union_databases: ['snapchat_ads_usa','snapchat_ads_canada']
+
+    tiktok_ads_union_schemas: ['tiktok_ads_usa','tiktok_ads_canada']
+    tiktok_ads_union_databases: ['tiktok_ads_usa','tiktok_ads_canada']
+
+    twitter_ads_union_schemas: ['twitter_usa','twitter_canada']
+    twitter_ads_union_databases: ['twitter_usa','twitter_canada']
+```
+Please be aware that the native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
+
+To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
 ## Adding custom metrics to final reports
 
@@ -238,10 +280,10 @@ By default, this package selects `clicks`, `impressions`, and `cost` metrics fro
     - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin#optional-step-4-additional-configurations)
     - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads#optional-step-4-additional-configurations)
     - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest#optional-step-4-additional-configurations)
+    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads#optional-step-4-additional-configurations)
     - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads#optional-step-4-additional-configurations)
     - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads#optional-step-4-additional-configurations)
     - [Twitter Ads](https://github.com/fivetran/dbt_twitter#optional-step-5-additional-configurations)
-    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads#optional-step-4-additional-configurations)
 
 Furthermore, this package allows you to include these configured upstream passthrough metrics in the final roll-up models of the combined Ad Reporting package. To include passthrough metrics in the respective final models, you need to define the following `ad_reporting__*` variables in your `dbt_project.yml` file:
 
@@ -562,11 +604,11 @@ packages:
   - package: fivetran/linkedin_source
     version: [">=0.7.0", "<0.8.0"]
 
-  - package: fivetran/twitter_ads
-    version: [">=0.6.0", "<0.7.0"]
+  - package: fivetran/reddit_ads
+    version: [">=0.1.0", "<0.2.0"]
 
-  - package: fivetran/twitter_ads_source
-    version: [">=0.6.0", "<0.7.0"]
+  - package: fivetran/reddit_ads_source
+    version: [">=0.1.0", "<0.2.0"]
 
   - package: fivetran/snapchat_ads
     version: [">=0.5.0", "<0.6.0"]
@@ -580,11 +622,11 @@ packages:
   - package: fivetran/tiktok_ads_source
     version: [">=0.4.0", "<0.5.0"]
 
-  - package: fivetran/reddit_ads
-    version: [">=0.1.0", "<0.2.0"]
+  - package: fivetran/twitter_ads
+    version: [">=0.6.0", "<0.7.0"]
 
-  - package: fivetran/reddit_ads_source
-    version: [">=0.1.0", "<0.2.0"]
+  - package: fivetran/twitter_ads_source
+    version: [">=0.6.0", "<0.7.0"]
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
