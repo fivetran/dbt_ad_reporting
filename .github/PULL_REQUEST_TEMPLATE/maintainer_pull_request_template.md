@@ -46,7 +46,7 @@ Please acknowledge that your PR contains the following standard updates:
 To reduce integration testing time, not all models should be enabled in the `run_models.sh` vars. Update the variables after `dbt run` and `dbt test` to set:
 - [ ] this PR's package to `true`
 - [ ] Google Ads and Facebook Ads to `true` (if not already)
-- [ ] All other packages to `false`S
+- [ ] All other packages to `false`
 
 ### dbt Docs
 Please acknowledge that after the above were all completed the below were applied to your branch:

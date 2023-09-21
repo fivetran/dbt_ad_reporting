@@ -245,8 +245,8 @@ vars:
     google_ads_union_schemas: ['google_ads_usa','google_ads_canada']
     google_ads_union_databases: ['google_ads_usa','google_ads_canada']
 
-    linkedin_union_schemas: ['linkedin_usa','linkedin_canada']
-    linkedin_union_databases: ['linkedin_usa','linkedin_canada']
+    linkedin_ads_union_schemas: ['linkedin_usa','linkedin_canada']
+    linkedin_ads_union_databases: ['linkedin_usa','linkedin_canada']
 
     microsoft_ads_union_schemas: ['microsoft_ads_usa','microsoft_ads_canada']
     microsoft_ads_union_databases: ['microsoft_ads_usa','microsoft_ads_canada']
