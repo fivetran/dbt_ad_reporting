@@ -1,7 +1,7 @@
 # dbt_ad_reporting v1.7.0
 [PR #103](https://github.com/fivetran/dbt_ad_reporting/pull/103) includes the following updates.
 ## Feature update 🎉
-- Unioning capability! This adds the ability to union source data from multiple ad reporting connectors. Refer to the [README](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md) for more details.
+- Unioning capability! This adds the ability to union source data from multiple ad reporting connectors. Refer to the [Union Multiple Connectors README section](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#union-multiple-connectors) for more details.
 # dbt_ad_reporting v1.6.0
 [PR #100](https://github.com/fivetran/dbt_ad_reporting/pull/100) includes the following updates.
 

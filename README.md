@@ -227,7 +227,6 @@ models:
 ## (Optional) Step 6: Additional configurations
 <details><summary>Expand for details</summary>
 <br>
-
 ### Union multiple connectors
 If you have multiple ad reporting connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
 
