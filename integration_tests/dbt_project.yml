@@ -80,17 +80,17 @@ vars:
     twitter_ads_line_item_keywords_report_identifier: "twitter_line_item_keywords_report_data"
 
   pinterest_source:
-    pinterest_schema: ad_reporting_integration_tests_5
-    pinterest_ad_group_history_identifier: "pinterest_ad_group_history_data"
-    pinterest_campaign_history_identifier: "pinterest_campaign_history_data"
-    pinterest_pin_promotion_history_identifier: "pinterest_pin_promotion_history_data"
-    pinterest_pin_promotion_report_identifier: "pinterest_pin_promotion_report_data"
-    pinterest_keyword_history_identifier: "pinterest_keyword_history_data"
-    pinterest_keyword_report_identifier: "pinterest_keyword_report_data"
-    pinterest_ad_group_report_identifier: "pinterest_ad_group_report_data"
-    pinterest_campaign_report_identifier: "pinterest_campaign_report_data"
-    pinterest_advertiser_history_identifier: "pinterest_advertiser_history_data"
-    pinterest_advertiser_report_identifier: "pinterest_advertiser_report_data"
+    pinterest_ads_schema: ad_reporting_integration_tests_5
+    pinterest_ads_ad_group_history_identifier: "pinterest_ad_group_history_data"
+    pinterest_ads_campaign_history_identifier: "pinterest_campaign_history_data"
+    pinterest_ads_pin_promotion_history_identifier: "pinterest_pin_promotion_history_data"
+    pinterest_ads_pin_promotion_report_identifier: "pinterest_pin_promotion_report_data"
+    pinterest_ads_keyword_history_identifier: "pinterest_keyword_history_data"
+    pinterest_ads_keyword_report_identifier: "pinterest_keyword_report_data"
+    pinterest_ads_ad_group_report_identifier: "pinterest_ad_group_report_data"
+    pinterest_ads_campaign_report_identifier: "pinterest_campaign_report_data"
+    pinterest_ads_advertiser_history_identifier: "pinterest_advertiser_history_data"
+    pinterest_ads_advertiser_report_identifier: "pinterest_advertiser_report_data"
     
   facebook_ads_source:
     facebook_ads_schema: ad_reporting_integration_tests_5
