@@ -1,5 +1,5 @@
 semantic_models:
-  - name: ad_reporting__ad_report
+  - name: ad_report
     description: Each record represents daily metrics by ad, ad group, campaign and
       account.
     model: ref('ad_reporting__ad_report')
