@@ -1,5 +1,5 @@
 # dbt_ad_reporting v1.7.0
-[PR #103](https://github.com/fivetran/dbt_ad_reporting/pull/103) includes the following update:
+[PR #103](https://github.com/fivetran/dbt_ad_reporting/pull/103) includes the following update.
 
 ## Breaking changes
 - Identifiers for the following packages have been updated for consistency with the source name and compatibility with the union schema feature. See the package's changelog for a full list of changes.
