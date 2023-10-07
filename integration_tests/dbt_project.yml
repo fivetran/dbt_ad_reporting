@@ -45,16 +45,16 @@ vars:
   microsoft_ads_source:
     microsoft_ads_schema: ad_reporting_integration_tests_5
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
-    microsoft_ads_account_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
+    microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
-    microsoft_ads_ad_group_daily_report_identifier: "microsoft_ads_ad_group_performance_daily_report_data"
+    microsoft_ads_ad_group_performance_daily_report_identifier: "microsoft_ads_ad_group_performance_daily_report_data"
     microsoft_ads_ad_history_identifier: "microsoft_ads_ad_history_data"
-    microsoft_ads_ad_daily_report_identifier: "microsoft_ads_ad_performance_daily_report_data"
+    microsoft_ads_ad_performance_daily_report_identifier: "microsoft_ads_ad_performance_daily_report_data"
     microsoft_ads_campaign_history_identifier: "microsoft_ads_campaign_history_data"
-    microsoft_ads_campaign_daily_report_identifier: "microsoft_ads_campaign_performance_daily_report_data"
+    microsoft_ads_campaign_performance_daily_report_identifier: "microsoft_ads_campaign_performance_daily_report_data"
     microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
-    microsoft_ads_keyword_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
-    microsoft_ads_search_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
+    microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
+    microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
 
   linkedin_source:
     linkedin_ads_schema: ad_reporting_integration_tests_5
@@ -115,13 +115,13 @@ vars:
 
   tiktok_ads_source:
     tiktok_ads_schema: ad_reporting_integration_tests_5
-    tiktok_ads__ad_group_history_identifier: "tiktok_adgroup_history_data"
-    tiktok_ads__ad_history_identifier: "tiktok_ad_history_data"
-    tiktok_ads__advertiser_identifier: "tiktok_advertiser_data"
-    tiktok_ads__campaign_history_identifier: "tiktok_campaign_history_data"
-    tiktok_ads__ad_report_hourly_identifier: "tiktok_ad_report_hourly_data"
-    tiktok_ads__ad_group_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
-    tiktok_ads__campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
+    tiktok_ads_adgroup_history_identifier: "tiktok_adgroup_history_data"
+    tiktok_ads_ad_history_identifier: "tiktok_ad_history_data"
+    tiktok_ads_advertiser_identifier: "tiktok_advertiser_data"
+    tiktok_ads_campaign_history_identifier: "tiktok_campaign_history_data"
+    tiktok_ads_ad_report_hourly_identifier: "tiktok_ad_report_hourly_data"
+    tiktok_ads_adgroup_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
+    tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
 
   amazon_ads_source:
     amazon_ads_schema: ad_reporting_integration_tests_5
