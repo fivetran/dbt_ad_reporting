@@ -1,3 +1,9 @@
+# dbt_ad_reporting v1.6.1
+## Updates
+- Renames the semantic model from `ad_reporting__ad_report` --> `ad_report` in order to avoid the dunder(__) keyword. ([PR #105](https://github.com/fivetran/dbt_ad_reporting/pull/105))
+
+## Contributors
+- [@Jstein77](https://github.com/Jstein77) ([PR #105](https://github.com/fivetran/dbt_ad_reporting/pull/105))
 
 # dbt_ad_reporting v1.6.0
 [PR #100](https://github.com/fivetran/dbt_ad_reporting/pull/100) includes the following updates.
