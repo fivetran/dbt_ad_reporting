@@ -7,6 +7,8 @@
   - [dbt_microsoft_ads](https://github.com/fivetran/dbt_microsoft_ads/blob/main/CHANGELOG.md)
   - [dbt_pinterest](https://github.com/fivetran/dbt_pinterest/blob/main/CHANGELOG.md)
   - [dbt_tiktok_ads](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md)
+- Updated materializations of [dbt_linkedin](https://github.com/fivetran/dbt_linkedin/blob/main/CHANGELOG.md) non-`tmp` staging models from views to tables. This is to bring the materializations into alignment with other ad reporting packages and eliminate errors in Redshift.
+
 ## Feature update 🎉
 - Unioning capability! This adds the ability to union source data from multiple ad reporting connectors. Refer to the [Union Multiple Connectors README section](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#union-multiple-connectors) for more details.
 
