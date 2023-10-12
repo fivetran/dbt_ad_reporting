@@ -80,7 +80,7 @@ vars:
     twitter_ads_line_item_keywords_report_identifier: "twitter_line_item_keywords_report_data"
 
   pinterest_source:
-    pinterest_ads_schema: ad_reporting_integration_tests_6
+    pinterest_schema: ad_reporting_integration_tests_6
     pinterest_ads_ad_group_history_identifier: "pinterest_ad_group_history_data"
     pinterest_ads_campaign_history_identifier: "pinterest_campaign_history_data"
     pinterest_ads_pin_promotion_history_identifier: "pinterest_pin_promotion_history_data"
