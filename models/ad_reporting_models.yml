@@ -7,10 +7,13 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - account_id
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform
@@ -33,12 +36,15 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - ad_group_id
             - campaign_id
             - account_id
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform
@@ -69,6 +75,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - ad_id
@@ -76,6 +83,8 @@ models:
             - campaign_id
             - account_id
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform
@@ -110,11 +119,14 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - campaign_id
             - account_id
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform
@@ -141,6 +153,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - keyword_id
@@ -149,6 +162,8 @@ models:
             - campaign_id
             - account_id
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform
@@ -185,6 +200,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - search_query
@@ -194,6 +210,8 @@ models:
             - campaign_id
             - account_id
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform
@@ -232,6 +250,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+            - source_relation
             - platform
             - date_day
             - ad_group_id
@@ -249,6 +268,8 @@ models:
             # Below is so we don't run this test if the user has allowed urls to have null entries
             enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
     columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
       - name: date_day
         description: '{{ doc("date_day") }}'
       - name: platform

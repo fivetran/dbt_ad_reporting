@@ -156,6 +156,7 @@
 {%- endif -%}
 
 select 
+    source_relation,
     {{ get_date_from_timestamp('date_day') }} as date_day,
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
 

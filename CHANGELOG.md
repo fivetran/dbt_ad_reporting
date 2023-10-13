@@ -1,3 +1,20 @@
+# dbt_ad_reporting v1.7.0
+[PR #103](https://github.com/fivetran/dbt_ad_reporting/pull/103) includes the following update.
+
+## Breaking changes
+- Identifiers for the following packages have been updated for consistency with the source name and compatibility with the union schema feature. See the package's changelog for a full list of changes.
+  - [dbt_linkedin](https://github.com/fivetran/dbt_linkedin/blob/main/CHANGELOG.md)
+  - [dbt_microsoft_ads](https://github.com/fivetran/dbt_microsoft_ads/blob/main/CHANGELOG.md)
+  - [dbt_pinterest](https://github.com/fivetran/dbt_pinterest/blob/main/CHANGELOG.md)
+  - [dbt_tiktok_ads](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md)
+
+- Linkedin ads updates:
+  - Updated materializations of [dbt_linkedin](https://github.com/fivetran/dbt_linkedin/blob/main/CHANGELOG.md) non-`tmp` staging models from views to tables. This is to bring the materializations into alignment with other ad reporting packages and eliminate errors in Redshift.
+  - Updated the name of the source created by `dbt_linkedin_source` from `linkedin` to `linkedin_ads`. This was to bring the naming used in this package in alignment with our other ad packages and for compatibility with the union schema feature. If you are using this source, you will need to update the name.
+ 
+## Feature update 🎉
+- Unioning capability! This adds the ability to union source data from multiple ad reporting connectors. Refer to the [Union Multiple Connectors README section](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#union-multiple-connectors) for more details.
+
 # dbt_ad_reporting v1.6.1
 ## Updates
 - Renames the semantic model from `ad_reporting__ad_report` --> `ad_report` in order to avoid the dunder(__) keyword. ([PR #105](https://github.com/fivetran/dbt_ad_reporting/pull/105))
