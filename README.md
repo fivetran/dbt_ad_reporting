@@ -550,7 +550,7 @@ This dbt package is dependent on the following dbt packages. For more informatio
 ```yml
 packages: 
   - package: fivetran/fivetran_utils
-    version: [">=0.3.0", "<0.5.0"]
+    version: [">=0.4.0", "<0.5.0"]
 
   - package: dbt-labs/dbt_utils
     version: [">=0.8.0", "<0.9.0"]
