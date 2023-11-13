@@ -5,8 +5,12 @@ packages:
   - package: fivetran/apple_search_ads
     version: [">=0.3.0", "<0.4.0"]
 
-  - package: fivetran/facebook_ads
-    version: [">=0.7.0", "<0.8.0"]
+  # - package: fivetran/facebook_ads
+  #   version: [">=0.7.0", "<0.8.0"]
+
+  - git: https://github.com/fivetran/dbt_facebook_ads.git
+    revision: patch/to-json-string
+    warn-unpinned: false 
 
   - package: fivetran/google_ads
     version: [">=0.10.0", "<0.11.0"]
