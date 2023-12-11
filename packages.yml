@@ -55,7 +55,7 @@ packages:
 
   # - package: fivetran/twitter_ads
   #   version: [">=0.7.0", "<0.8.0"]
-  - git: https://github.com/fivetran/dbt_twitter_ads.git
+  - git: https://github.com/fivetran/dbt_twitter.git
     revision: MagicBot/package-extract-url-parameters
     warn-unpinned: false 
 
