@@ -17,8 +17,11 @@ packages:
     revision: MagicBot/package-extract-url-parameters
     warn-unpinned: false 
     
-  - package: fivetran/linkedin
-    version: [">=0.8.0", "<0.9.0"]
+  # - package: fivetran/linkedin
+  #   version: [">=0.8.0", "<0.9.0"]
+  - git: https://github.com/fivetran/dbt_linkedin.git
+    revision: MagicBot/package-extract-url-parameters
+    warn-unpinned: false 
 
   # - package: fivetran/microsoft_ads
   #   version: [">=0.7.0", "<0.8.0"]
@@ -26,8 +29,11 @@ packages:
     revision: MagicBot/package-extract-url-parameters
     warn-unpinned: false 
 
-  - package: fivetran/pinterest
-    version: [">=0.10.0", "<0.11.0"]
+  # - package: fivetran/pinterest
+  #   version: [">=0.10.0", "<0.11.0"]
+  - git: https://github.com/fivetran/dbt_pinterest.git
+    revision: MagicBot/package-extract-url-parameters
+    warn-unpinned: false 
 
   # - package: fivetran/reddit_ads
   #   version: [">=0.2.0", "<0.3.0"]
@@ -41,11 +47,17 @@ packages:
     revision: MagicBot/package-extract-url-parameters
     warn-unpinned: false 
 
-  - package: fivetran/tiktok_ads
-    version: [">=0.5.0", "<0.6.0"]
+  # - package: fivetran/tiktok_ads
+  #   version: [">=0.5.0", "<0.6.0"]
+  - git: https://github.com/fivetran/dbt_twitter_ads.git
+    revision: MagicBot/package-extract-url-parameters
+    warn-unpinned: false 
 
-  - package: fivetran/twitter_ads
-    version: [">=0.7.0", "<0.8.0"]
+  # - package: fivetran/twitter_ads
+  #   version: [">=0.7.0", "<0.8.0"]
+  - git: https://github.com/fivetran/dbt_twitter_ads.git
+    revision: MagicBot/package-extract-url-parameters
+    warn-unpinned: false 
 
   - package: calogica/dbt_date
     version: [">=0.9.0", "<1.0.0"]
