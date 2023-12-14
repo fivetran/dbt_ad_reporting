@@ -20,23 +20,14 @@ packages:
   - package: fivetran/pinterest
     version: [">=0.10.0", "<0.11.0"]
 
-  # - package: fivetran/reddit_ads
-  #   version: [">=0.2.0", "<0.3.0"]
-  - git: https://github.com/fivetran/dbt_reddit_ads.git
-    revision: MagicBot/package-extract-url-parameters
-    warn-unpinned: false 
+  - package: fivetran/reddit_ads
+    version: [">=0.2.0", "<0.3.0"]
 
-  # - package: fivetran/snapchat_ads
-  #   version: [">=0.6.0", "<0.7.0"]
-  - git: https://github.com/fivetran/dbt_snapchat_ads.git
-    revision: MagicBot/package-extract-url-parameters
-    warn-unpinned: false 
+  - package: fivetran/snapchat_ads
+    version: [">=0.6.0", "<0.7.0"]
 
-  # - package: fivetran/tiktok_ads
-  #   version: [">=0.5.0", "<0.6.0"]
-  - git: https://github.com/fivetran/dbt_tiktok_ads.git
-    revision: MagicBot/package-extract-url-parameters
-    warn-unpinned: false 
+  - package: fivetran/tiktok_ads
+    version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/twitter_ads
     version: [">=0.7.0", "<0.8.0"]
