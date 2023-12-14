@@ -11,11 +11,11 @@ packages:
     revision: MagicBot/package-extract-url-parameters
     warn-unpinned: false 
 
-  # - package: fivetran/google_ads
-  #   version: [">=0.10.0", "<0.11.0"]
-  - git: https://github.com/fivetran/dbt_google_ads.git
-    revision: MagicBot/package-extract-url-parameters
-    warn-unpinned: false 
+  - package: fivetran/google_ads
+    version: [">=0.10.0", "<0.11.0"]
+  # - git: https://github.com/fivetran/dbt_google_ads.git
+  #   revision: MagicBot/package-extract-url-parameters
+  #   warn-unpinned: false 
     
   # - package: fivetran/linkedin
   #   version: [">=0.8.0", "<0.9.0"]
