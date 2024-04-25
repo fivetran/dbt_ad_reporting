@@ -3,6 +3,10 @@
 - Adjust the severity of the `account_id` test in `ad_reporting__account_report` to `warn`. This is required since Snapchat can hard-delete records from the history tables, but not from the reporting tables. This ensures that accurate statistics are being reported and production pipelines aren't failing. ([PR #20](https://github.com/fivetran/dbt_snapchat_ads/pull/20))
   - Documents the above decision in the [DECISIONLOG.md](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md).
 
+## Under the Hood
+- Updated the pull request [templates](/.github) ([PR #110](https://github.com/fivetran/dbt_ad_reporting/pull/110)).
+- Included auto-releaser GitHub Actions workflow to automate future releases ([PR #110](https://github.com/fivetran/dbt_ad_reporting/pull/110)).
+
 ## Contributors
 - [@bthomson22](https://github.com/bthomson22) ([PR #20](https://github.com/fivetran/dbt_snapchat_ads/pull/20))
 
