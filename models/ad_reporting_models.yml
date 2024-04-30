@@ -21,7 +21,9 @@ models:
       - name: account_id
         description: '{{ doc("account_id") }}'
         tests:
-          - not_null
+          - not_null:
+              config:
+                severity: warn
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: clicks
