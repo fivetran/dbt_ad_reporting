@@ -1,3 +1,8 @@
+# dbt_ad_reporting v1.8.0
+Tiny release here!
+
+[PR #103](https://github.com/fivetran/dbt_ad_reporting/pull/103) just upticks the `microsoft_ads` dependency following the a major release. Refer to the Microsoft Ads v0.8.0 [release notes](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.8.0) for what exact updates have been included.
+
 # dbt_ad_reporting v1.7.1
 ## Bug Fixes
 - Adjust the severity of the `account_id` test in `ad_reporting__account_report` to `warn`. This is required since Snapchat can hard-delete records from the history tables, but not from the reporting tables. This ensures that accurate statistics are being reported and production pipelines aren't failing. ([PR #20](https://github.com/fivetran/dbt_snapchat_ads/pull/20))
