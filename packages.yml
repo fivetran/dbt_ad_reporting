@@ -14,8 +14,10 @@ packages:
   - package: fivetran/linkedin
     version: [">=0.8.0", "<0.9.0"]
 
-  - package: fivetran/microsoft_ads
-    version: [">=0.8.0", "<0.9.0"]
+  # - package: fivetran/microsoft_ads
+  #   version: [">=0.8.0", "<0.9.0"]
+  - git: https://github.com/fivetran/dbt_microsoft_ads.git
+    revision: bugfix/campaign-report-add-budget
 
   - package: fivetran/pinterest
     version: [">=0.10.0", "<0.11.0"]
