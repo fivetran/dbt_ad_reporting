@@ -6,3 +6,6 @@ logs/
 venv
 dbt_packages/
 env/
+integration_tests/package-lock.yml
+package-lock.yml
+integration_tests/.DS_Store
