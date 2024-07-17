@@ -28,6 +28,7 @@
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
 - Generates a comprehensive data dictionary of your source and modeled Ad Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
+<!--section="ad_reporting_transformation_model"-->
 Refer to the table below for a detailed view of final models materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models. 
 
 | **model**                  | **description**                                                                                                                                               |
@@ -41,6 +42,7 @@ Refer to the table below for a detailed view of final models materialized by def
 | [ad_reporting__url_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__url_report) | Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account.                        |
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
+<!--section-end-->
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Pre-Requisites
