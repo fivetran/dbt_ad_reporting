@@ -1,4 +1,4 @@
-# dbt_ad_reporting v1.NEXT.RELEASE
+# dbt_ad_reporting vNEXTRELEASE
 
 ## Under the Hood
 - Addition of a section tag within the README so the model descriptions may be accessible within the Fivetran UI for Quickstart. ([PR #113](https://github.com/fivetran/dbt_ad_reporting/pull/113))
