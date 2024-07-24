@@ -1,0 +1,76 @@
+dbt_versions: '>=1.3.0 <2.0.0'
+
+multi_connector_config:
+    amazon_ads:
+       database_key: amazon_ads_database
+       union_schema_key: amazon_ads_union_schemas
+       model_variable: ad_reporting__amazon_ads_enabled
+    apple_search_ads:
+       database_key: apple_search_ads_database
+       union_schema_key: apple_search_ads_union_schemas
+       model_variable: ad_reporting__apple_search_ads_enabled
+    facebook_ads:
+       database_key: facebook_ads_database
+       union_schema_key: facebook_ads_union_schemas
+       model_variable: ad_reporting__facebook_ads_enabled
+    google_ads:
+       database_key: google_ads_database
+       union_schema_key: google_ads_union_schemas
+       model_variable: ad_reporting__google_ads_enabled
+    linkedin_ads:
+       database_key: linkedin_ads_database
+       union_schema_key: linkedin_ads_union_schemas
+       model_variable: ad_reporting__linkedin_ads_enabled
+    bingads:
+       database_key: microsoft_ads_database
+       union_schema_key: microsoft_ads_union_schemas
+       model_variable: ad_reporting__microsoft_ads_enabled
+    pinterest_ads:
+       database_key: pinterest_database
+       union_schema_key: pinterest_ads_union_schemas
+       model_variable: ad_reporting__pinterest_ads_enabled
+    reddit_ads:
+       database_key: reddit_ads_database
+       union_schema_key: reddit_ads_union_schemas
+       model_variable: ad_reporting__reddit_ads_enabled
+    snapchat_ads:
+       database_key: snapchat_database
+       union_schema_key: snapchat_ads_union_schemas
+       model_variable: ad_reporting__snapchat_ads_enabled
+    tiktok_ads:
+       database_key: tiktok_ads_database
+       union_schema_key: tiktok_ads_union_schemas
+       model_variable: ad_reporting__tiktok_ads_enabled
+    twitter_ads:
+       database_key: twitter_ads_database
+       union_schema_key: twitter_ads_union_schemas
+       model_variable: ad_reporting__twitter_ads_enabled
+
+table_variables:
+  amazon_ads__portfolio_history_enabled:
+    - portfolio_history
+  apple_search_ads__using_search_terms:
+    - search_term_report
+  pinterest__using_keywords:
+    - keyword_history
+    - keyword_report
+  twitter_ads__using_keywords:
+    - line_item_keywords_report
+
+destination_configurations:
+  databricks:
+    dispatch:
+      - macro_namespace: dbt_utils
+        search_order:
+          - spark_utils
+          - dbt_utils
+
+public_models: [
+  "ad_reporting__account_report",
+  "ad_reporting__campaign_report",
+  "ad_reporting__ad_group_report",
+  "ad_reporting__ad_report",
+  "ad_reporting__keyword_report",
+  "ad_reporting__search_report",
+  "ad_reporting__url_report"
+]
