@@ -79,7 +79,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.7.0", "<1.8.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.9.0", "<1.10.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -579,10 +579,10 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
   
   - package: fivetran/google_ads
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/google_ads_source
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/pinterest
     version: [">=0.10.0", "<0.11.0"]
@@ -597,10 +597,10 @@ packages:
     version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/linkedin
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/linkedin_source
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/reddit_ads
     version: [">=0.2.0", "<0.3.0"]
