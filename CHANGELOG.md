@@ -2,8 +2,12 @@
 
 ## Under the Hood
 - Addition of a section tag within the README so the model descriptions may be accessible within the Fivetran UI for Quickstart. ([PR #113](https://github.com/fivetran/dbt_ad_reporting/pull/113))
-- Upticked the `google_ads` and `linkedin_ads` dependencies following major releases in both packages in which conversion metrics have been added. Refer to the individual package release notes for more details ([Google Ads](https://github.com/fivetran/dbt_google_ads/releases/tag/v0.11.0), [Linkedin Ads](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.9.0)). ([PR #114](https://github.com/fivetran/dbt_ad_reporting/pull/114))
+- Upticked the `google_ads` and `linkedin_ads` dependencies following major releases in both packages in which conversion metrics have been added. Refer to the individual package release notes for more details ([Google Ads](https://github.com/fivetran/dbt_google_ads/releases/tag/v0.11.0), [Linkedin Ads](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.9.0)). ([PR #115](https://github.com/fivetran/dbt_ad_reporting/pull/115))
   - Note: Conversions have not been added to `ad_reporting` models _yet_, as we are rolling out conversion support to all upstream Ad packages first.
+
+## Contributors
+- [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)
+- [@fivetran-poonamagate](https://github.com/fivetran-poonamagate) ([PR #59](https://github.com/fivetran/dbt_google_ads_source/pull/59))
 
 # dbt_ad_reporting v1.8.0
 
