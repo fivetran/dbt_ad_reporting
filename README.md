@@ -42,6 +42,7 @@ Refer to the table below for a detailed view of final models materialized by def
 | [ad_reporting__url_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__url_report) | Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account.                        |
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
+
 <!--section-end-->
 
 # 🎯 How do I use the dbt package?
