@@ -1,6 +1,9 @@
 # dbt_ad_reporting v1.9.0
 
 ## Under the Hood
+- Addition of an blank line between the quoted line and the comment.
+
+## Under the Hood
 - Addition of a section tag within the README so the model descriptions may be accessible within the Fivetran UI for Quickstart. ([PR #113](https://github.com/fivetran/dbt_ad_reporting/pull/113))
 - Upticked the `google_ads` and `linkedin_ads` dependencies following major releases in both packages in which conversion metrics have been added. Refer to the individual package release notes for more details ([Google Ads](https://github.com/fivetran/dbt_google_ads/releases/tag/v0.11.0), [Linkedin Ads](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.9.0)). ([PR #115](https://github.com/fivetran/dbt_ad_reporting/pull/115))
   - Note: Conversions have not been added to `ad_reporting` models _yet_, as we are rolling out conversion support to all upstream Ad packages first.
