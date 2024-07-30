@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.8.0'
+version: '1.9.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -251,9 +251,14 @@ seeds:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
+    linkedin_ad_analytics_by_campaign_data:
+      +column_types:
+        day: timestamp
+        external_website_conversions: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     linkedin_ad_analytics_by_creative_data:
       +column_types:
         day: timestamp
+        external_website_conversions: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     linkedin_ad_account_history_data:
       +column_types:
         created_time: timestamp
