@@ -1,6 +1,6 @@
 <p align="center">
     <a alt="License"
-        href="https://github.com/fivetran/dbt_github/blob/main/LICENSE">
+        href="https://github.com/fivetran/dbt_ad_reporting/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
         <img src="https://img.shields.io/badge/dbt_Core™_version->=1.6.0_<2.0.0-orange.svg" /></a>
