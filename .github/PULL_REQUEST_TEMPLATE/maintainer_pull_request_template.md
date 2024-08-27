@@ -20,6 +20,12 @@ Before marking this PR as "ready for review" the following have been applied:
 - [ ] BuildKite integration tests are passing
 - [ ] Detailed validation steps have been provided below
 
+#### ❗ Special Updates for Ad Reporting ❗
+To reduce integration testing time, not all models should be enabled in the `run_models.sh` vars. Update the variables after `dbt run` and `dbt test` to set:
+- [ ] this PR's package to `true`
+- [ ] Google Ads and Facebook Ads to `true` (if not already)
+- [ ] All other packages to `false`
+
 ### Detailed Validation
 Please share any and all of your validation steps:
 <!--- Provide the steps you took to validate your changes below. -->
