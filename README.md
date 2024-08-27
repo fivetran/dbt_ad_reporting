@@ -31,7 +31,7 @@
 <!--section="ad_reporting_transformation_model"-->
 Refer to the table below for a detailed view of final models materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models.
 
-| **model**                  | **description**                                                                                                                                               |
+| **table**                  | **description**                                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [ad_reporting__account_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__account_report)             | Each record represents daily metrics by account                                            |
 | [ad_reporting__campaign_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__campaign_report)     | Each record represents daily metrics by campaign and account. |
