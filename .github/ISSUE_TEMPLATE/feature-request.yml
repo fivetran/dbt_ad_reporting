@@ -1,7 +1,7 @@
 name: 🎉 Feature
 description: Suggest a new feature for the Fivetran dbt package
 title: "[Feature] <title>"
-labels: ["enhancement"]
+labels: ["type:enhancement"]
 body:
   - type: markdown
     attributes:
@@ -22,6 +22,13 @@ body:
       required: true
   - type: textarea
     attributes:
+      label: How would you implement this feature?
+      description: |
+        How would you build out this feature with your existing data? Any code examples you can provide to help accelerate development on this issue?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
       label: Describe alternatives you've considered
       description: |
         A clear and concise description of any alternative solutions or features you've considered.
@@ -34,7 +41,7 @@ body:
       description: Our team will assess this feature and let you know if we will add it to a future sprint. However, if you would like to expedite the feature, we encourage you to contribute to the package via a PR. Our team will then work with you to approve and merge your contributions as soon as possible.
       options:
         - label: Yes.
-        - label: Yes, but I will need assistance and will schedule time during your [office hours](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) for guidance.
+        - label: Yes, but I will need assistance.
         - label: No.
           required: false
   - type: textarea

@@ -16,16 +16,9 @@ Please acknowledge that you have successfully performed the following commands l
 Before marking this PR as "ready for review" the following have been applied:
 - [ ] The appropriate issue has been linked, tagged, and properly assigned
 - [ ] All necessary documentation and version upgrades have been applied
-    <!--- Be sure to update the package version in the dbt_project.yml, integration_tests/dbt_project.yml, and README if necessary. -->
 - [ ] docs were regenerated (unless this PR does not include any code or yml updates)
 - [ ] BuildKite integration tests are passing
 - [ ] Detailed validation steps have been provided below
-
-#### ❗ Special Updates for Ad Reporting ❗
-To reduce integration testing time, not all models should be enabled in the `run_models.sh` vars. Update the variables after `dbt run` and `dbt test` to set:
-- [ ] this PR's package to `true`
-- [ ] Google Ads and Facebook Ads to `true` (if not already)
-- [ ] All other packages to `false`
 
 ### Detailed Validation
 Please share any and all of your validation steps:

@@ -11,8 +11,8 @@
 </p>
 
 # Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
-# 📣 What does this dbt package do?
-- Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels. 
+## What does this dbt package do?
+- Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels.
 - Currently supports the following Fivetran ad platform connectors:
     - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads)
     - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
@@ -29,7 +29,7 @@
 - Generates a comprehensive data dictionary of your source and modeled Ad Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
 <!--section="ad_reporting_transformation_model"-->
-Refer to the table below for a detailed view of final models materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models. 
+Refer to the table below for a detailed view of final models materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models.
 
 | **model**                  | **description**                                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,8 +45,8 @@ Refer to the table below for a detailed view of final models materialized by def
 
 <!--section-end-->
 
-# 🎯 How do I use the dbt package?
-## Step 1: Pre-Requisites
+## How do I use the dbt package?
+### Step 1: Pre-Requisites
 **Connector**: Have at least one of the below supported Fivetran ad platform connectors syncing data into your warehouse. This package currently supports:
     - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
@@ -63,7 +63,7 @@ Refer to the table below for a detailed view of final models materialized by def
 
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
 
-### Databricks Dispatch Configuration
+#### Databricks Dispatch Configuration
 If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` as well as the `calogica/dbt_expectations` then the `google_ads_source` packages respectively.
 ```yml
 dispatch:
@@ -74,7 +74,7 @@ dispatch:
     search_order: ['google_ads_source', 'dbt_expectations']
 ```
 
-## Step 2: Installing the Package
+### Step 2: Installing the Package
 Include the following github package version in your `packages.yml`
 > Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
@@ -86,7 +86,7 @@ packages:
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
 
 
-## Step 3: Configure Database and Schema Variables
+### Step 3: Configure Database and Schema Variables
 By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
 
 ```yml
@@ -125,11 +125,11 @@ vars:
     twitter_ads_database: your_database_name  
 ```
 
-## Step 4: Enabling/Disabling Models
-This package takes into consideration that not every account will have every feature enabled per platform. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs. 
+### Step 4: Enabling/Disabling Models
+This package takes into consideration that not every account will have every feature enabled per platform. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs.
 
-### Disable Platform Specific Reporting
-If you would like to disable all reporting for any specific platform, please include the respective variable(s) in your `dbt_project.yml`. 
+#### Disable Platform Specific Reporting
+If you would like to disable all reporting for any specific platform, please include the respective variable(s) in your `dbt_project.yml`.
 
 ```yml
 vars:
@@ -145,7 +145,7 @@ vars:
   ad_reporting__tiktok_ads_enabled: False # by default this is assumed to be True
   ad_reporting__twitter_ads_enabled: False # by default this is assumed to be True
 ```
-### Enable/Disable Specific Reports within Platforms
+#### Enable/Disable Specific Reports within Platforms
 For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below.
 
 For **Pinterest Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
@@ -161,7 +161,7 @@ vars:
   twitter_ads__using_keywords: False # by default this is assumed to be True
 ```
 
-## (Recommended) Step 5: Change the Build Schema
+### (Recommended) Step 5: Change the Build Schema
 By default this package will build all models in your `<target_schema>` with the respective package suffixes (see below). This behavior can be tailored to your preference by making use of custom schemas. If you would like to override the current naming conventions, please add the following configuration to your `dbt_project.yml` file and rename `+schema` configs:
 
 ```yml
@@ -227,8 +227,8 @@ models:
 
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
 
-## (Optional) Step 6: Additional configurations
-### Union multiple connectors
+### (Optional) Step 6: Additional configurations
+#### Union multiple connectors
 If you have multiple ad reporting connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
 
 ```yml
@@ -266,11 +266,11 @@ vars:
     twitter_ads_union_schemas: ['twitter_usa','twitter_canada']
     twitter_ads_union_databases: ['twitter_usa','twitter_canada']
 ```
-Please be aware that the native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
+> NOTE: The native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
-## Adding custom metrics to final reports
+### Adding custom metrics to final reports
 
 By default, this package selects `clicks`, `impressions`, and `cost` metrics from the upstream Ad platform reports. Additionally, each specific upstream Ad platform package allows for custom passthrough metrics to be included in the individual platform's final reports. You can find a complete list of available passthrough metric variables for each platform by referring to the relevant links below and inspecting the additional configurations for each platform:
     - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads#optional-step-5-additional-configurations)
@@ -474,7 +474,7 @@ vars:
     - name: local_spend_amount
 ```
 
-## Disabling null URL filtering from URL reports
+### Disabling null URL filtering from URL reports
 The default behavior for the `ad_reporting__url_report` end model is to filter out records having null URL fields, however, you are able to turn off this filter if needed. To turn off the filter, include the below in your `dbt_project.yml` file. This variable will affect ALL Fivetran platform packages enabled in Ad Reporting, therefore either all URL reports will have null URLs filtered, or all URL reports will have null URLs included.
 
 ```yml
@@ -482,7 +482,7 @@ vars:
   ad_reporting__url_report__using_null_filter: False # Default is True.
 ```
 
-### Change the source table references
+#### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connectors.
 > IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
@@ -493,7 +493,7 @@ vars:
     
 <br>
 
-## (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
+### (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for details</summary>
 <br>
 
@@ -502,7 +502,7 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
-## (Optional) Step 8: Use predefined Metrics and the dbt Semantic Layer
+### (Optional) Step 8: Use predefined Metrics and the dbt Semantic Layer
 <details><summary>Expand for details</summary>
 
 On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/build/build-metrics-intro) using [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) that can be queried with the [dbt Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl). These metrics include:
@@ -528,7 +528,7 @@ This package includes a model called `metricflow_time_spine.sql` that MetricFlow
 vars:
   ad_reporting__metricflow_time_spine_enabled: false ## true by default
 ```
-Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish. 
+Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish.
 
 >**Note**: This variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
 
@@ -546,7 +546,7 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 </details>
 <br>
 
-# 🔍 Does this package have dependencies?
+## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
 
@@ -627,18 +627,18 @@ packages:
   - package: fivetran/twitter_ads_source
     version: [">=0.7.0", "<0.8.0"]
 ```
-# 🙌 How is this package maintained and can I contribute?
-## Package Maintenance
+## How is this package maintained and can I contribute?
+### Package Maintenance
 The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
-## Opinionated Decisions
+### Opinionated Decisions
 In creating this package, which is meant for a wide range of use cases, we had to take opinionated stances on a few different questions we came across during development. We've consolidated significant choices we made in the [DECISIONLOG.md](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md), and will continue to update as the package evolves. We are always open to and encourage feedback on these choices, and the package in general.
 
-## Contributions
-These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
+### Contributions
+These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions.
 
-We highly encourage and welcome contributions to this package. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
+We highly encourage and welcome contributions to this package. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
 
-# 🏪 Are there any resources available?
-- If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose) section to find the right avenue of support for you.
+## Are there any resources available?
+- If you encounter any questions or want to reach out for help, see the [GitHub Issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran, or would like to request a future dbt package to be developed, then feel free to fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).

@@ -1,5 +1,5 @@
 contact_links:
-  - name: Provide feedback or request a new package to our dbt package team
+  - name: Provide feedback to our dbt package team
     url: https://www.surveymonkey.com/r/DQ7K7WW
     about: Fill out our survey form to provide valuable feedback to the Fivetran team developing and maintaining the dbt packages.
   - name: Fivetran connector question
