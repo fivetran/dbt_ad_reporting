@@ -16,7 +16,7 @@ vars:
   twitter_ads__using_keywords: False
 
   apple_search_ads_source:
-    apple_search_ads_schema: ad_reporting_integration_tests_6
+    apple_search_ads_schema: ad_reporting_integration_tests_7
     apple_search_ads_organization_identifier: "apple_search_organization_data"
     apple_search_ads_campaign_history_identifier: "apple_search_campaign_history_data"
     apple_search_ads_campaign_report_identifier: "apple_search_campaign_report_data"
