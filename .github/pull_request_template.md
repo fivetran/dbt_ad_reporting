@@ -19,7 +19,13 @@
 <!--- To select a checkbox you simply need to add an "x" with no spaces between the brackets (eg. [x] Yes). -->
 - [ ] Yes
 
-**Provide an emoji that best describes your current mood**
+**Typically there are additional maintenance changes required before this will be ready for an upcoming release. Are you comfortable with the Fivetran team making a few commits directly to your branch?**
+<!--- If you select Yes this will help expedite your PR in case there are small changes required before approval. We encourage you not to use this branch in a production environment as we may make additional updates.  -->
+<!--- If you select No, we will not make any changes directly to your branch and will either communicate any planned changes via the PR thread or will merge your PR into a separate branch so we may make changes without modifying your branch.. -->
+- [ ] Yes
+- [ ] No
+
+**If you had to summarize this PR in an emoji, which would it be?**
 <!--- For a complete list of markdown compatible emojis check our this git repo (https://gist.github.com/rxaviers/7360908)  --> 
 :dancer:
 
