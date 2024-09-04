@@ -73,7 +73,7 @@ body:
       label: How are you running this dbt package?
       multiple: true
       options:
-        - Quickstart
+        - Fivetran Quickstart Data Model
         - Fivetran Transformations
         - dbt Core™
         - dbt Cloud™
