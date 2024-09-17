@@ -1,3 +1,24 @@
+# dbt_ad_reporting v1.10.0
+
+[PR #]() includes the following updates:
+
+## Breaking Changes (within upstream dbt_linkedin_source and dbt_linkedin)
+- The dependency on dbt_linkedin has been bumped to the `[">=0.10.0", "<0.11.0"]` range and the dbt_linkedin_source dependency has been bumped to the `[">=0.10.0", "<0.11.0"]` range. These upstream version ranges include the following breaking changes. For more details regarding these changes, refer to the [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) and [dbt_linkedin v0.10.0](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.10.0) release notes.
+  - The `click_uri_type` field has been added to the below mentioned models. This field allows users to differentiate which click uri type (`text_ad` or `spotlight`) is being used to populate the results of the `click_uri` field. 
+    - `stg_linkedin_ads__creative_history`
+    - `linkedin_ads__creative_report`
+    - `linkedin_ads__url_report`
+    - Please be aware this new field only supports `text_ad` or `spotlight` click uri types. If you are interested in this package supporting more click uri ad types, please let us know in this [Feature Request](https://github.com/fivetran/dbt_linkedin_source/issues/70).
+
+## Bug Fixes (upstream dbt_linkedin_source change)
+- The `click_uri` field has been adjusted to populate the results following a coalesce on the `text_ad_landing_page`, `spotlight_landing_page`, or `click_uri` fields. For more details refer to [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) release notes.
+  - This change is in response to a [LinkedIn Ads API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/contentapi-migration-guide?view=li-lms-2024-05#adcreativesv2-api-creatives-api) and [Fivetran LinkedIn Ads connector update](https://fivetran.com/docs/connectors/applications/linkedin-ads/changelog#january2024) which moved `click_uri` data to either the `text_ad_landing_page` or `spotlight_landing_page` fields depending on the creative type.
+
+## Under the Hood
+- Addition of the following consistency validation tests for the below mentioned models to be used during integration tests (only used by Fivetran maintainers):
+  - `ad_reporting__ad_report` 
+  - `ad_reporting__url_report`
+
 # dbt_ad_reporting v1.9.0
 
 ## Under the Hood
