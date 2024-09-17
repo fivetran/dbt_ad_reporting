@@ -1,6 +1,6 @@
 # dbt_ad_reporting v1.10.0
 
-[PR #]() includes the following updates:
+[PR #120](https://github.com/fivetran/dbt_ad_reporting/pull/120) includes the following updates:
 
 ## Breaking Changes (within upstream dbt_linkedin_source and dbt_linkedin)
 - The dependency on dbt_linkedin has been bumped to the `[">=0.10.0", "<0.11.0"]` range and the dbt_linkedin_source dependency has been bumped to the `[">=0.10.0", "<0.11.0"]` range. These upstream version ranges include the following breaking changes. For more details regarding these changes, refer to the [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) and [dbt_linkedin v0.10.0](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.10.0) release notes.
