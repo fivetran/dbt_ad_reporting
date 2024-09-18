@@ -17,9 +17,13 @@ packages:
   - package: fivetran/microsoft_ads
     version: [">=0.8.0", "<0.9.0"]
 
-  - package: fivetran/pinterest
-    version: [">=0.10.0", "<0.11.0"]
+  # - package: fivetran/pinterest
+  #   version: [">=0.10.0", "<0.11.0"]
 
+  - git: https://github.com/fivetran/dbt_pinterest.git
+    revision: test/upstream-pinterest-source-update
+    warn-unpinned: false 
+    
   - package: fivetran/reddit_ads
     version: [">=0.2.0", "<0.3.0"]
 
