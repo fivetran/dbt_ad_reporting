@@ -1,3 +1,10 @@
+# dbt_ad_reporting v1.10.0
+
+PR #something introduces the following **BREAKING CHANGES:**
+
+## Feature Updates: Native Conversion Metric Support
+- 
+
 # dbt_ad_reporting v1.9.0
 
 ## Under the Hood

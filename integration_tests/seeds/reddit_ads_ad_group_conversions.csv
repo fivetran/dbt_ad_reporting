@@ -1,0 +1,9 @@
+_fivetran_synced,account_id,ad_group_id,avg_value,click_through_conversion_attribution_window_day,click_through_conversion_attribution_window_month,click_through_conversion_attribution_window_week,date,event_name,total_items,total_value,view_through_conversion_attribution_window_day,view_through_conversion_attribution_window_month,view_through_conversion_attribution_window_week
+2023-01-10 12:00:00,1234,1510393829097718070,28.50,10,15,7,2022-10-09,purchase,1,28.50,1,3,2
+2023-01-10 12:00:00,1234,1510393829097718070,33.75,10,15,7,2022-10-10,purchase,2,67.50,1,3,2
+2023-01-10 12:00:00,1234,1522247226241194321,25.80,10,15,7,2022-10-11,purchase,1,25.80,1,3,2
+2023-01-10 12:00:00,1234,1522247226241194321,31.60,10,15,7,2022-10-12,purchase,2,63.20,1,3,2
+2023-01-10 12:00:00,1234,1535743345604192832,38.20,10,15,7,2022-10-13,purchase,3,114.60,1,3,2
+2023-01-10 12:00:00,1234,1535743345604192832,30.90,10,15,7,2022-10-14,purchase,1,30.90,1,3,2
+2023-01-10 12:00:00,1234,1542438363648999385,34.50,10,15,7,2022-10-15,purchase,1,34.50,1,3,2
+2023-01-10 12:00:00,1234,1542438363648999385,32.75,10,15,7,2022-10-16,purchase,2,65.50,1,3,2

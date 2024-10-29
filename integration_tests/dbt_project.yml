@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.9.0'
+version: '1.10.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -98,6 +98,8 @@ vars:
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
     facebook_ads_basic_ad_identifier: "facebook_ads_basic_ad_data"
+    facebook_ads_basic_ad_actions_identifier: "facebook_ads_basic_ad_actions_data"
+    facebook_ads_basic_ad_action_values_identifier: "facebook_ads_basic_ad_action_values_data"
     facebook_ads_campaign_history_identifier: "facebook_ads_campaign_history_data"
     facebook_ads_creative_history_identifier: "facebook_ads_creative_history_data"
 
@@ -147,6 +149,10 @@ vars:
     reddit_ads_ad_group_report_identifier: "reddit_ads_ad_group_report_data"
     reddit_ads_campaign_identifier: "reddit_ads_campaign_data"
     reddit_ads_campaign_report_identifier: "reddit_ads_campaign_report_data"
+    reddit_ads_account_conversions_report_identifier: "reddit_ads_account_conversions"
+    reddit_ads_ad_conversions_report_identifier: "reddit_ads_ad_conversions"
+    reddit_ads_ad_group_conversions_report_identifier: "reddit_ads_ad_group_conversions"
+    reddit_ads_campaign_conversions_report_identifier: "reddit_ads_campaign_conversions"
 
 
 seeds:
