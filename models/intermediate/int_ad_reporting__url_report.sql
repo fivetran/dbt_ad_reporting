@@ -22,9 +22,7 @@ facebook_ads as (
         report_type='url', 
         field_mapping={
                 'ad_group_id': 'ad_set_id',
-                'ad_group_name': 'ad_set_name',
-                'conversions': 'total_conversions',
-                'conversions_value': 'total_conversions_value'
+                'ad_group_name': 'ad_set_name'
             },
         relation=ref('facebook_ads__url_report')
     ) }}

@@ -2,7 +2,7 @@
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with
-{% for package in ['google_ads', 'microsoft_ads'] %}
+{% for package in ['facebook_ads', 'google_ads', 'microsoft_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
     {{ get_query(
@@ -27,21 +27,6 @@ apple_search_ads as (
                 'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__organization_report')
-    ) }}
-),
-{% endif %}
-
-{% if 'facebook_ads' in enabled_packages %}
-facebook_ads as (
-
-    {{ get_query(
-        platform='facebook_ads', 
-        report_type='account', 
-        field_mapping={
-                'conversions': 'total_conversions',
-                'conversions_value': 'total_conversions_value'
-            },
-        relation=ref('facebook_ads__account_report')
     ) }}
 ),
 {% endif %}

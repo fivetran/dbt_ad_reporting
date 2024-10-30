@@ -109,7 +109,15 @@
         {%- set combined_ad_fields = ad_fields -%}
     {%- endif -%}
     {%- for ad_field in combined_ad_fields -%}
-        {%- do final_fields_superset.update({ad_field: ad_field})-%}
+        {# {%- do final_fields_superset.update({ad_field: ad_field})-%} #}
+
+        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+        {%- if ad_field == 'conversions' or ad_field == 'conversions_value' -%}
+            {%- do final_fields_superset.update({ad_field ~ '_c': ad_field}) -%}
+        {%- else -%}
+            {%- do final_fields_superset.update({ad_field: ad_field}) -%}
+        {%- endif -%}
+
     {%- endfor -%}
 {%- endif -%}
 

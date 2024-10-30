@@ -33,7 +33,6 @@ aggregated as (
         sum(conversions) as conversions,
         sum(conversions_value) as conversions_value
 
-        {# {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='ad_reporting__ad_passthrough_metrics', transform = 'sum') }} #}
         {{ ad_reporting_persist_pass_through_columns(pass_through_variable='ad_reporting__ad_passthrough_metrics', transform = 'sum', alias_fields=['conversions', 'conversions_value']) }}
 
     from base
