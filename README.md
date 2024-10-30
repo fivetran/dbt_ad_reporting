@@ -270,9 +270,28 @@ vars:
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
-### Adding custom metrics to final reports
+#### Configure types of conversion events
+For the following platforms, conversion data is sent along with the type of event that you may or may not consider to be a conversion. For the most part, the packages consider **leads**, **purchases**, and **custom** user-defined events as conversions by default, but this can be configured via the appropriate variables.
 
-By default, this package selects `clicks`, `impressions`, and `cost` metrics from the upstream Ad platform reports. Additionally, each specific upstream Ad platform package allows for custom passthrough metrics to be included in the individual platform's final reports. You can find a complete list of available passthrough metric variables for each platform by referring to the relevant links below and inspecting the additional configurations for each platform:
+| Platform    | Variable | Default Values | Instructions Link |
+| ------------ | ----------- | -------- | ---------- |
+| Facebook Ads    | `facebook_ads__conversion_action_types`    |  `offsite_conversion.fb_pixel_custom` + `offsite_conversion.fb_pixel_lead` + `onsite_conversion.lead_grouped` + `offsite_conversion.fb_pixel_purchase` + `onsite_conversion.purchase` | [Configuring Conversion Action Types](https://github.com/fivetran/dbt_facebook_ads?tab=readme-ov-file#configuring-conversion-action-types) |
+| LinkedIn Ad Analytics   | `linkedin_ads__conversion_fields`   | `external_website_conversions` + `one_click_leads` | [Adding in Conversion Fields](https://github.com/fivetran/dbt_linkedin?tab=readme-ov-file#adding-in-conversion-fields-variable) |
+| Reddit Ads      | `reddit_ads__conversion_event_types` | `lead` + `purchase` + `custom` | [Configure Conversion Event Types](https://github.com/fivetran/dbt_reddit_ads?tab=readme-ov-file#configure-conversion-event-types) |
+| Snapchat Ads    | `snapchat_ads__conversion_fields`    | `conversion_purchases` | [Configuring Conversion Fields](https://github.com/fivetran/dbt_snapchat_ads?tab=readme-ov-file#configuring-conversion-fields) |
+| Twitter Ads     | `twitter_ads__conversion_fields` AND `twitter_ads__conversion_sale_amount_fields` | `conversion_purchases_metric` + `conversion_custom_metric` AND `conversion_purchases_sale_amount` + `conversion_custom_sale_amount` | [Customizing Types of Conversions](https://github.com/fivetran/dbt_twitter?tab=readme-ov-file#customizing-types-of-conversions) |
+
+For the other platforms, conversions are sent as a whole and cannot be separated by event type in the connector data:
+- Amazon Ads
+- Apple Search Ads (does not include `conversion_value`, this is likely found in the Apple App Store data)
+- Google Ads
+- Microsoft Advertising
+- Pinterest Ads
+- TikTok Ads
+
+#### Adding custom metrics to final reports
+
+By default, this package selects `clicks`, `impressions`, `cost`, `conversions`, and `conversions_value` metrics from the upstream Ad platform reports. Additionally, each specific upstream Ad platform package allows for custom passthrough metrics to be included in the individual platform's final reports. You can find a complete list of available passthrough metric variables for each platform by referring to the relevant links below and inspecting the additional configurations for each platform:
     - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads#optional-step-5-additional-configurations)
     - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads#optional-step-4-additional-configurations)
     - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads#optional-step-4-additional-configurations)
@@ -474,7 +493,7 @@ vars:
     - name: local_spend_amount
 ```
 
-### Disabling null URL filtering from URL reports
+#### Disabling null URL filtering from URL reports
 The default behavior for the `ad_reporting__url_report` end model is to filter out records having null URL fields, however, you are able to turn off this filter if needed. To turn off the filter, include the below in your `dbt_project.yml` file. This variable will affect ALL Fivetran platform packages enabled in Ad Reporting, therefore either all URL reports will have null URLs filtered, or all URL reports will have null URLs included.
 
 ```yml
@@ -562,22 +581,22 @@ packages:
     version: [">=0.9.0", "<1.0.0"]
 
   - package: fivetran/amazon_ads
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
   
   - package: fivetran/amazon_ads_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 
   - package: fivetran/apple_search_ads
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 
   - package: fivetran/apple_search_ads_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
   
   - package: fivetran/facebook_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 
   - package: fivetran/facebook_ads_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
   
   - package: fivetran/google_ads
     version: [">=0.11.0", "<0.12.0"]
@@ -586,16 +605,16 @@ packages:
     version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/pinterest
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/pinterest_source
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/microsoft_ads
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/microsoft_ads_source
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/linkedin
     version: [">=0.9.0", "<0.10.0"]
@@ -604,28 +623,28 @@ packages:
     version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/reddit_ads
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 
   - package: fivetran/reddit_ads_source
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 
   - package: fivetran/snapchat_ads
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/snapchat_ads_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/tiktok_ads_source
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/twitter_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 
   - package: fivetran/twitter_ads_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 ```
 ## How is this package maintained and can I contribute?
 ### Package Maintenance
