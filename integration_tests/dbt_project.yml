@@ -516,7 +516,13 @@ seeds:
       +column_types:
         ad_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-
+    facebook_ads_basic_ad_actions_data:
+      +column_types:
+        value: "float"
+        inline: "float"
+        _1_d_view: "float"
+        _7_d_click: "float"
+        
     ### Snapchat Seeds
 
     snapchat_ad_hourly_report_data:
