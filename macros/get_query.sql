@@ -218,10 +218,10 @@ select
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
 
     {% for field in final_fields_superset.keys()|sort() -%}
-    {% if field in consistent_fields and field != 'spend' and field != 'conversions_value' -%}
+    {% if field in consistent_fields and field not in ['spend', 'conversions', 'conversions_value'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_int() }}) as {{ field }}
 
-    {% elif field == 'spend' or field == 'conversions_value' -%}
+    {% elif field in ['spend', 'conversions', 'conversions_value'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_float() }}) as {{ field }}
 
     {% elif '_id' in field or '_name' in field or 'url' in field or 'utm' in field or field in ['keyword_match_type', 'keyword_text', 'search_match_type', 'search_query'] -%}

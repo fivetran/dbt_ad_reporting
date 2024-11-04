@@ -10,6 +10,9 @@ dispatch:
   - macro_namespace: dbt_expectations
     search_order: ['google_ads_source', 'dbt_expectations']
 
+models:
+  +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
+
 vars: 
   
   apple_search_ads__using_search_terms: True
@@ -162,7 +165,7 @@ seeds:
     ### Microsoft Seeds
     microsoft_ads_account_history_data:
       +column_types:
-        name: "{{ 'string' if target.name in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        name: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
     microsoft_ads_ad_group_history_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -284,7 +287,7 @@ seeds:
 
     twitter_account_history_data:
       +column_types:
-        name: "{{ 'string' if target.name in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        name: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
     twitter_tweet_url_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -488,14 +491,14 @@ seeds:
     ### Facebook Seeds
     facebook_ads_creative_history_data:
       +column_types:        
-        page_link: "{{ 'string' if target.name in ['bigquery','spark', 'databricks'] else 'varchar' }}"
-        template_page_link: "{{ 'string' if target.name in ['bigquery','spark', 'databricks'] else 'varchar' }}"
-        id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-        account_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        page_link: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        template_page_link: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     facebook_ads_account_history_data:
       +column_types:
-        id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
-        name: "{{ 'string' if target.name in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        name: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
     facebook_ads_ad_history_data:
       +column_types:
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
