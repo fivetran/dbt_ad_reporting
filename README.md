@@ -286,7 +286,7 @@ For the following platforms, conversion data is sent along with the type of even
 
 For the other platforms, conversions are sent as a whole (though you may configure them in the platform UIs) and cannot be separated by event type in the connector data:
 - Amazon Ads
-- Apple Search Ads (does not include `conversion_value` however)
+- Apple Search Ads (does [not](https://github.com/fivetran/dbt_apple_search_ads/blob/main/DECISIONLOG.md#conversion-value) include `conversion_value`)
 - Google Ads
 - Microsoft Advertising
 - Pinterest Ads

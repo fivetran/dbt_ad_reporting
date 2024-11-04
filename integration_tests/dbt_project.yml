@@ -26,7 +26,7 @@ vars:
     apple_search_ads_ad_group_history_identifier: "apple_search_ad_group_history_data"
     apple_search_ads_ad_group_report_identifier: "apple_search_ad_group_report_data"
     apple_search_ads_ad_history_identifier: "apple_search_ad_history_data"
-    apple_search_ads_ad_report_identifier: "apple_search_ad_report_data"
+    apple_search_ads_ad_level_report_identifier: "apple_search_ad_report_data"
     apple_search_ads_keyword_history_identifier: "apple_search_keyword_history_data"
     apple_search_ads_keyword_report_identifier: "apple_search_keyword_report_data"
     apple_search_ads_search_term_report_identifier: "apple_search_search_term_report_data"
