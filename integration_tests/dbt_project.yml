@@ -160,7 +160,7 @@ vars:
 
 seeds:
   ad_reporting_integration_tests:
-    +quote_columns: "{{ true if target.type in ('redshift','postgres') else false }}"
+    +quote_columns: "{{ true if target.type in ('redshift') else false }}"
 
     ### Microsoft Seeds
     microsoft_ads_account_history_data:
