@@ -109,7 +109,6 @@
         {%- set combined_ad_fields = ad_fields -%}
     {%- endif -%}
     {%- for ad_field in combined_ad_fields -%}
-        {# {%- do final_fields_superset.update({ad_field: ad_field})-%} #}
 
         {#- Add _c suffix if conversions are present in the passthrough metrics -#}
         {%- if ad_field == 'conversions' or ad_field == 'conversions_value' -%}
@@ -136,7 +135,6 @@
         {%- set combined_ad_fields = url_fields -%}
     {%- endif -%}
     {%- for ad_field in combined_ad_fields -%}
-        {# {%- do final_fields_superset.update({ad_field: ad_field})-%} #}
 
         {#- Add _c suffix if conversions are present in the passthrough metrics -#}
         {%- if ad_field == 'conversions' or ad_field == 'conversions_value' -%}
@@ -157,7 +155,6 @@
                 {%- for _, value in keyword_passthrough_metrics_dict.items() -%}
                     {%- do keyword_passthrough_metrics_values.append(value) -%}
 
-                    {# {%- do keyword_passthrough_metrics_values.append((value ~ ('_c' if value == 'conversions' or value == 'conversions_value' else ''))) -%} #}
                 {%- endfor -%}
             {%- endfor -%}
         {%- set combined_keyword_fields = keyword_fields + keyword_passthrough_metrics_values -%}
@@ -165,7 +162,6 @@
         {%- set combined_keyword_fields = keyword_fields -%}
     {%- endif -%}
     {%- for keyword_field in combined_keyword_fields -%}
-        {# {%- do final_fields_superset.update({keyword_field: keyword_field})-%} #}
 
         {#- Add _c suffix if conversions are present in the passthrough metrics -#}
         {%- if keyword_field == 'conversions' or keyword_field == 'conversions_value' -%}
@@ -185,7 +181,6 @@
             {%- for search_passthrough_metrics_dict in search_passthrough_metrics_array_of_dicts -%}
                 {%- for _, value in search_passthrough_metrics_dict.items() -%}
                     {%- do search_passthrough_metrics_values.append(value) -%}
-                    {# {%- do search_passthrough_metrics_values.append((value ~ ('_c' if value == 'conversions' or value == 'conversions_value' else ''))) -%} #}
 
                 {%- endfor -%}
             {%- endfor -%}
@@ -194,7 +189,6 @@
         {%- set combined_search_fields = search_fields -%}
     {%- endif -%}
     {%- for search_field in combined_search_fields -%}
-        {# {%- do final_fields_superset.update({search_field: search_field})-%} #}
 
         {#- Add _c suffix if conversions are present in the passthrough metrics -#}
         {%- if search_field == 'conversions' or search_field == 'conversions_value' -%}

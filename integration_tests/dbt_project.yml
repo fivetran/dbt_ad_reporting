@@ -18,6 +18,25 @@ vars:
   apple_search_ads__using_search_terms: True
   twitter_ads__using_keywords: False
 
+  ad_reporting__ad_passthrough_metrics:
+    - name: conversions
+    - name: video_views
+  ad_reporting__campaign_passthrough_metrics:
+    - name: conversions
+    - name: video_views
+  ad_reporting__account_passthrough_metrics:
+    - name: conversions
+    - name: video_views
+  ad_reporting__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: video_views
+  ad_reporting__keyword_passthrough_metrics:
+    - name: conversions
+    - name: video_views
+  ad_reporting__search_passthrough_metrics:
+    - name: conversions
+    - name: video_views
+
   apple_search_ads_source:
     apple_search_ads_schema: ad_reporting_integration_tests_7
     apple_search_ads_organization_identifier: "apple_search_organization_data"
@@ -31,6 +50,36 @@ vars:
     apple_search_ads_keyword_report_identifier: "apple_search_keyword_report_data"
     apple_search_ads_search_term_report_identifier: "apple_search_search_term_report_data"
     apple_search_ads__using_search_terms: True
+  apple_search_ads__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: lat_off_installs
+      alias: installs
+    - name: video_views
+      alias: "null"
+  apple_search_ads__ad_passthrough_metrics:
+    - name: conversions
+    - name: lat_off_installs
+      alias: installs
+    - name: video_views
+      alias: "null"
+  apple_search_ads__campaign_passthrough_metrics:
+    - name: conversions
+    - name: lat_off_installs
+      alias: installs
+    - name: video_views
+      alias: "null"
+  apple_search_ads__keyword_passthrough_metrics:
+    - name: conversions
+    - name: lat_off_installs
+      alias: installs
+    - name: video_views
+      alias: "null"
+  apple_search_ads__search_term_passthrough_metrics:
+    - name: conversions
+    - name: lat_off_installs
+      alias: installs
+    - name: video_views
+      alias: "null"
 
   google_ads_source:
     google_ads_schema: ad_reporting_integration_tests_7
@@ -44,6 +93,42 @@ vars:
     google_ads_ad_group_stats_identifier: "google_ads_ad_group_stats_data"
     google_ads_campaign_stats_identifier: "google_ads_campaign_stats_data"
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
+  google_ads__account_stats_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+      alias: view_through_conversions_aliased
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  google_ads__ad_stats_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+      alias: view_through_conversions_aliased
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  google_ads__ad_group_stats_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  google_ads__keyword_stats_passthrough_metrics:
+    - name: conversions
+    - name: view_through_conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  google_ads__campaign_stats_passthrough_metrics:
+    - name: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
 
   microsoft_ads_source:
     microsoft_ads_schema: ad_reporting_integration_tests_7
@@ -58,6 +143,55 @@ vars:
     microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
     microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
     microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
+  microsoft_ads__account_passthrough_metrics: 
+    - name: "conversions_qualified"
+      alias: "conversions"
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  microsoft_ads__ad_passthrough_metrics:
+    - name: "assists" # test something else
+    - name: "revenue" # test revenue field not aliased (Though we are aliasing)
+    - name: "conversions_qualified" 
+      alias: "conversions"
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  microsoft_ads__campaign_passthrough_metrics:
+    - name: "assists" # test something else
+    - name: "revenue" # test revenue field not aliased (Though we are aliasing)
+    - name: "conversions_qualified"
+      alias: "conversions"
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  microsoft_ads__ad_group_passthrough_metrics:
+    - name: "all_conversions"
+      alias: "multipled_all_conversions"
+    - name: "all_conversions_qualified"
+    - name: "conversions_qualified"
+      alias: "conversions"
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  microsoft_ads__keyword_passthrough_metrics:
+    - name: "conversions_qualified"
+      alias: "conversions"
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  microsoft_ads__search_passthrough_metrics:
+    - name: "conversions_qualified"
+      alias: "conversions"
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
 
   linkedin_source:
     linkedin_ads_schema: ad_reporting_integration_tests_7
@@ -67,6 +201,20 @@ vars:
     linkedin_ads_campaign_history_identifier: "linkedin_ad_campaign_history_data"
     linkedin_ads_creative_history_identifier: "linkedin_ad_creative_history_data"
     linkedin_ads_ad_analytics_by_campaign_identifier: "linkedin_ad_analytics_by_campaign_data"
+  linkedin_ads__creative_passthrough_metrics:
+    - name: 'external_website_conversions'
+    - name: 'one_click_leads'
+      alias: conversions
+      transform_sql: conversions + external_website_conversions
+    - name: 'conversion_value_in_local_currency'
+    - name: video_views
+  linkedin_ads__campaign_passthrough_metrics:
+    - name: 'external_website_conversions'
+    - name: 'one_click_leads'
+      alias: conversions
+      transform_sql: conversions + external_website_conversions
+    - name: 'conversion_value_in_local_currency'
+    - name: video_views
 
   twitter_ads_source:
     twitter_ads_schema: ad_reporting_integration_tests_7
@@ -81,6 +229,38 @@ vars:
     twitter_ads_line_item_report_identifier: "twitter_line_item_report_data"
     twitter_ads_account_report_identifier: "twitter_account_report_data"
     twitter_ads_line_item_keywords_report_identifier: "twitter_line_item_keywords_report_data"
+  twitter_ads__conversion_sale_amount_fields:
+    - conversion_purchases_sale_amount
+    - conversion_custom_sale_amount
+    - conversion_sign_ups_sale_amount
+  twitter_ads__promoted_tweet_report_passthrough_metrics:
+    - name: "conversion_purchases_metric"
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  twitter_ads__campaign_report_passthrough_metrics:
+    - name: "conversion_purchases_metric"
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  twitter_ads__line_item_report_passthrough_metrics: 
+    - name: "conversion_purchases_metric"
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  twitter_ads__line_item_keywords_report_passthrough_metrics: 
+    - name: "conversion_purchases_metric"
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
 
   pinterest_source:
     pinterest_schema: ad_reporting_integration_tests_7
@@ -94,7 +274,48 @@ vars:
     pinterest_ads_campaign_report_identifier: "pinterest_campaign_report_data"
     pinterest_ads_advertiser_history_identifier: "pinterest_advertiser_history_data"
     pinterest_ads_advertiser_report_identifier: "pinterest_advertiser_report_data"
-    
+  pinterest__campaign_report_passthrough_metrics:
+    - name: "total_conversions_value_in_micro_dollar"
+      alias: total_conversions_value
+    - name: "paid_impression"
+    - name: total_conversions
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  pinterest__ad_group_report_passthrough_metrics:
+    - name: total_conversions
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  pinterest__advertiser_report_passthrough_metrics:
+    - name: total_conversions
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  pinterest__keyword_report_passthrough_metrics:
+    - name: total_conversions
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  pinterest__pin_promotion_report_passthrough_metrics:
+    - name: "total_conversions_value_in_micro_dollar"
+      alias: total_conversions_value
+    - name: "paid_impression"
+    - name: total_conversions
+      alias: conversions
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+
   facebook_ads_source:
     facebook_ads_schema: ad_reporting_integration_tests_7
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
@@ -105,6 +326,23 @@ vars:
     facebook_ads_basic_ad_action_values_identifier: "facebook_ads_basic_ad_action_values_data"
     facebook_ads_campaign_history_identifier: "facebook_ads_campaign_history_data"
     facebook_ads_creative_history_identifier: "facebook_ads_creative_history_data"
+  facebook_ads__basic_ad_passthrough_metrics: 
+    - name: 'reach'
+      transform_sql: 3333
+    - name: conversions
+    - name: 'frequency'
+      alias: 'fake_freq_name'
+      transform_sql: 78910
+    - name: installs 
+      transform_sql: "null"
+    - name: video_views 
+      transform_sql: "null"
+  facebook_ads__basic_ad_actions_passthrough_metrics: 
+    - name: 'inline'
+      alias: 'conversion_value_inline'
+      transform_sql: 1234
+  facebook_ads__basic_ad_action_values_passthrough_metrics: 
+    - name: '_7_d_click'
 
   snapchat_ads_source:
     snapchat_ads_schema: ad_reporting_integration_tests_7
@@ -117,6 +355,30 @@ vars:
     snapchat_ads_campaign_hourly_report_identifier: "snapchat_campaign_hourly_report_data"
     snapchat_ads_creative_history_identifier: "snapchat_creative_history_data"
     snapchat_ads_creative_url_tag_history_identifier: "snapchat_creative_url_tag_history_data"
+  snapchat_ads__campaign_hourly_report_passthrough_metrics:
+    - name: conversion_add_billing
+      alias: conversion_add_billing_alias
+    - name: conversion_purchases_value
+    - name: conversion_purchases
+      alias: conversions
+    - name: conversion_sign_ups
+      alias: installs
+    - name: video_views
+  snapchat_ads__ad_hourly_passthrough_metrics:
+    - name: conversion_add_billing
+      alias: conversion_add_billing_alias
+    - name: conversion_purchases_value
+    - name: conversion_purchases
+      alias: conversions
+    - name: conversion_sign_ups
+      alias: installs
+    - name: video_views
+  snapchat_ads__ad_squad_hourly_passthrough_metrics:
+    - name: conversion_purchases
+      alias: conversions
+    - name: conversion_sign_ups
+      alias: installs
+    - name: video_views
 
   tiktok_ads_source:
     tiktok_ads_schema: ad_reporting_integration_tests_7
@@ -127,6 +389,30 @@ vars:
     tiktok_ads_ad_report_hourly_identifier: "tiktok_ad_report_hourly_data"
     tiktok_ads_adgroup_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
+  tiktok_ads__ad_hourly_passthrough_metrics:
+    - name: real_time_conversions
+    - name: conversion
+      alias: conversions
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views_p_100
+      alias: video_views
+  tiktok_ads__campaign_hourly_passthrough_metrics:
+    - name: real_time_conversions
+    - name: conversion
+      alias: conversions
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views_p_100
+      alias: video_views
+  tiktok_ads__ad_group_hourly_passthrough_metrics:
+    - name: real_time_conversions
+    - name: conversion
+      alias: conversions
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views_p_100
+      alias: video_views
 
   amazon_ads_source:
     amazon_ads_schema: ad_reporting_integration_tests_7
@@ -141,6 +427,45 @@ vars:
     amazon_ads_keyword_history_identifier: "amazon_ads_keyword_history_data"
     amazon_ads_targeting_keyword_report_identifier: "amazon_ads_targeting_keyword_report_data"
     amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
+  amazon_ads__advertised_product_passthrough_metrics:
+    - name: purchases_30_d
+      alias: conversions
+    - name: sales_30_d
+      alias: sales_30_d_alias
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views
+      tranform_sql: "null"
+  amazon_ads__campaign_passthrough_metrics:
+    - name: purchases_30_d
+      alias: conversions
+    - name: sales_30_d
+      alias: sales_30_d_alias
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views
+      tranform_sql: "null"
+  amazon_ads__ad_group_passthrough_metrics:
+    - name: purchases_30_d
+      alias: conversions
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views
+      tranform_sql: "null"
+  amazon_ads__targeting_keyword_passthrough_metrics:
+    - name: purchases_30_d
+      alias: conversions
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views
+      tranform_sql: "null"
+  amazon_ads__search_term_ad_keyword_passthrough_metrics:
+    - name: purchases_30_d
+      alias: conversions
+    - name: installs
+      tranform_sql: "null"
+    - name: video_views
+      tranform_sql: "null"
 
   reddit_ads_source:
     reddit_ads_schema: ad_reporting_integration_tests_7
@@ -156,7 +481,30 @@ vars:
     reddit_ads_ad_conversions_report_identifier: "reddit_ads_ad_conversions"
     reddit_ads_ad_group_conversions_report_identifier: "reddit_ads_ad_group_conversions"
     reddit_ads_campaign_conversions_report_identifier: "reddit_ads_campaign_conversions"
-
+  reddit_ads__account_passthrough_metrics: 
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: video_started
+      alias: video_views
+  reddit_ads__campaign_passthrough_metrics: 
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: video_started
+      alias: video_views
+  reddit_ads__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: video_started
+      alias: video_views
+  reddit_ads__ad_passthrough_metrics:
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: video_started
+      alias: video_views
 
 seeds:
   ad_reporting_integration_tests:
