@@ -335,14 +335,14 @@ vars:
     - name: 'frequency'
       alias: 'fake_freq_name'
       transform_sql: 78910
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
   facebook_ads__basic_ad_actions_passthrough_metrics: 
     - name: 'inline'
       alias: 'conversion_value_inline'
       transform_sql: 1234
+    - name: installs 
+      transform_sql: "null"
+    - name: videos 
+      transform_sql: "null"
   facebook_ads__basic_ad_action_values_passthrough_metrics: 
     - name: '_7_d_click'
 
