@@ -1,11 +1,11 @@
-campaign_id,date,_fivetran_synced,campaign_applicable_budget_rule_id,campaign_applicable_budget_rule_name,campaign_bidding_strategy,campaign_budget_amount,campaign_budget_currency_code,campaign_budget_type,clicks,cost,impressions,campaign_rule_based_budget_amount
-2187,2022-07-26,2022-10-14 11:54:40.980000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-07-21,2022-10-14 11:52:57.796000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-08-29,2022-10-14 11:40:45.808000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-08-31,2022-10-14 11:42:29.065000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-07-27,2022-10-14 11:54:40.980000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-08-28,2022-10-14 11:40:45.807000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-09-06,2022-10-14 11:42:29.062000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-07-11,2022-10-14 12:07:12.424000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET0.0,2,1.67,1095,
-2187,2022-07-15,2022-10-14 12:07:12.428000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
-2187,2022-07-18,2022-10-14 11:52:57.802000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,
+campaign_id,date,_fivetran_synced,campaign_applicable_budget_rule_id,campaign_applicable_budget_rule_name,campaign_bidding_strategy,campaign_budget_amount,campaign_budget_currency_code,campaign_budget_type,clicks,cost,impressions,campaign_rule_based_budget_amount,sales_7_d,purchases_30_d,sales_30_d
+2187,2022-07-26,2022-10-14 11:54:40.980000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,12,44,54
+2187,2022-07-21,2022-10-14 11:52:57.796000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,2,34,345
+2187,2022-08-29,2022-10-14 11:40:45.808000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,,,
+2187,2022-08-31,2022-10-14 11:42:29.065000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,,,
+2187,2022-07-27,2022-10-14 11:54:40.980000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,3,35,350
+2187,2022-08-28,2022-10-14 11:40:45.807000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,,,
+2187,2022-09-06,2022-10-14 11:42:29.062000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,4,24,335
+2187,2022-07-11,2022-10-14 12:07:12.424000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET0.0,2,1.67,1095,,0,64,234
+2187,2022-07-15,2022-10-14 12:07:12.428000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,,,
+2187,2022-07-18,2022-10-14 11:52:57.802000,,,optimizeForSales,2000.0,USD,DAILY_BUDGET,0,0.0,,,,,

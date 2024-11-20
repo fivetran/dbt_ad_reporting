@@ -34,7 +34,8 @@ apple_search_ads as (
                 'account_name': 'organization_name',
                 'search_match_type': 'match_type',
                 'search_query': 'search_term_text',
-                'clicks': 'taps'
+                'clicks': 'taps',
+                'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__search_term_report')
     ) }}
@@ -50,7 +51,9 @@ amazon_ads as (
         field_mapping={
                 'spend': 'cost',
                 'search_match_type': 'match_type',
-                'search_query': 'search_term'
+                'search_query': 'search_term',
+                'conversions': 'purchases_30_d',
+                'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__search_report')
     ) }}

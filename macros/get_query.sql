@@ -1,6 +1,6 @@
 {% macro get_query(platform=None, report_type=None, field_mapping=None, relation=None) %}
 
-{%- set consistent_fields = ['spend', 'impressions', 'clicks'] -%}
+{%- set consistent_fields = ['spend', 'impressions', 'clicks', 'conversions', 'conversions_value'] -%}
 {%- set account_fields = ['account_id', 'account_name'] -%}
 {%- set campaign_fields = ['campaign_id', 'campaign_name'] -%}
 {%- set ad_group_fields = ['ad_group_id', 'ad_group_name'] -%}
@@ -33,7 +33,14 @@
             {% set account_passthrough_metric_array_of_dicts = var('ad_reporting__account_passthrough_metrics') %}
                 {%- for account_passthrough_metric_dict in account_passthrough_metric_array_of_dicts -%}
                     {%- for account_passthrough_metric_value in account_passthrough_metric_dict.values() -%}
-                        {%- do final_fields_superset.update({account_passthrough_metric_value: account_passthrough_metric_value}) -%}
+
+                        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+                        {%- if account_passthrough_metric_value == 'conversions' or account_passthrough_metric_value == 'conversions_value' -%}
+                            {%- do final_fields_superset.update({account_passthrough_metric_value ~ '_c': account_passthrough_metric_value}) -%}
+                        {%- else -%}
+                            {%- do final_fields_superset.update({account_passthrough_metric_value: account_passthrough_metric_value}) -%}
+                        {%- endif -%}
+
                     {%- endfor -%}
                 {%- endfor -%}
         {%- endif -%}
@@ -49,7 +56,14 @@
             {% set campaign_passthrough_metric_array_of_dicts = var('ad_reporting__campaign_passthrough_metrics') %}
                 {%- for campaign_passthrough_metric_dict in campaign_passthrough_metric_array_of_dicts -%}
                     {%- for campaign_passthrough_metric_value in campaign_passthrough_metric_dict.values() -%}
-                        {%- do final_fields_superset.update({campaign_passthrough_metric_value: campaign_passthrough_metric_value}) -%}
+
+                        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+                        {%- if campaign_passthrough_metric_value == 'conversions' or campaign_passthrough_metric_value == 'conversions_value' -%}
+                            {%- do final_fields_superset.update({campaign_passthrough_metric_value ~ '_c': campaign_passthrough_metric_value}) -%}
+                        {%- else -%}
+                            {%- do final_fields_superset.update({campaign_passthrough_metric_value: campaign_passthrough_metric_value}) -%}
+                        {%- endif -%}
+
                     {%- endfor -%}
                 {%- endfor -%}
         {%- endif -%}
@@ -65,7 +79,14 @@
             {% set ad_group_passthrough_metric_array_of_dicts = var('ad_reporting__ad_group_passthrough_metrics') %}
                 {%- for ad_group_passthrough_metric_dict in ad_group_passthrough_metric_array_of_dicts -%}
                     {%- for ad_group_passthrough_metric_value in ad_group_passthrough_metric_dict.values() -%}
-                        {%- do final_fields_superset.update({ad_group_passthrough_metric_value: ad_group_passthrough_metric_value}) -%}
+
+                        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+                        {%- if ad_group_passthrough_metric_value == 'conversions' or ad_group_passthrough_metric_value == 'conversions_value' -%}
+                            {%- do final_fields_superset.update({ad_group_passthrough_metric_value ~ '_c': ad_group_passthrough_metric_value}) -%}
+                        {%- else -%}
+                            {%- do final_fields_superset.update({ad_group_passthrough_metric_value: ad_group_passthrough_metric_value}) -%}
+                        {%- endif -%}
+
                     {%- endfor -%}
                 {%- endfor -%}
         {%- endif -%}
@@ -88,7 +109,14 @@
         {%- set combined_ad_fields = ad_fields -%}
     {%- endif -%}
     {%- for ad_field in combined_ad_fields -%}
-        {%- do final_fields_superset.update({ad_field: ad_field})-%}
+
+        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+        {%- if ad_field == 'conversions' or ad_field == 'conversions_value' -%}
+            {%- do final_fields_superset.update({ad_field ~ '_c': ad_field}) -%}
+        {%- else -%}
+            {%- do final_fields_superset.update({ad_field: ad_field}) -%}
+        {%- endif -%}
+
     {%- endfor -%}
 {%- endif -%}
 
@@ -107,7 +135,14 @@
         {%- set combined_ad_fields = url_fields -%}
     {%- endif -%}
     {%- for ad_field in combined_ad_fields -%}
-        {%- do final_fields_superset.update({ad_field: ad_field})-%}
+
+        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+        {%- if ad_field == 'conversions' or ad_field == 'conversions_value' -%}
+            {%- do final_fields_superset.update({ad_field ~ '_c': ad_field}) -%}
+        {%- else -%}
+            {%- do final_fields_superset.update({ad_field: ad_field}) -%}
+        {%- endif -%}
+
     {%- endfor -%}
 {%- endif -%}
 
@@ -119,6 +154,7 @@
             {%- for keyword_passthrough_metrics_dict in keyword_passthrough_metrics_array_of_dicts -%}
                 {%- for _, value in keyword_passthrough_metrics_dict.items() -%}
                     {%- do keyword_passthrough_metrics_values.append(value) -%}
+
                 {%- endfor -%}
             {%- endfor -%}
         {%- set combined_keyword_fields = keyword_fields + keyword_passthrough_metrics_values -%}
@@ -126,7 +162,14 @@
         {%- set combined_keyword_fields = keyword_fields -%}
     {%- endif -%}
     {%- for keyword_field in combined_keyword_fields -%}
-        {%- do final_fields_superset.update({keyword_field: keyword_field})-%}
+
+        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+        {%- if keyword_field == 'conversions' or keyword_field == 'conversions_value' -%}
+            {%- do final_fields_superset.update({keyword_field ~ '_c': keyword_field}) -%}
+        {%- else -%}
+            {%- do final_fields_superset.update({keyword_field: keyword_field}) -%}
+        {%- endif -%}
+
     {%- endfor -%}
 {%- endif -%}
 
@@ -138,6 +181,7 @@
             {%- for search_passthrough_metrics_dict in search_passthrough_metrics_array_of_dicts -%}
                 {%- for _, value in search_passthrough_metrics_dict.items() -%}
                     {%- do search_passthrough_metrics_values.append(value) -%}
+
                 {%- endfor -%}
             {%- endfor -%}
         {%- set combined_search_fields = search_fields + search_passthrough_metrics_values -%}
@@ -145,7 +189,14 @@
         {%- set combined_search_fields = search_fields -%}
     {%- endif -%}
     {%- for search_field in combined_search_fields -%}
-        {%- do final_fields_superset.update({search_field: search_field})-%}
+
+        {#- Add _c suffix if conversions are present in the passthrough metrics -#}
+        {%- if search_field == 'conversions' or search_field == 'conversions_value' -%}
+            {%- do final_fields_superset.update({search_field ~ '_c': search_field}) -%}
+        {%- else -%}
+            {%- do final_fields_superset.update({search_field: search_field}) -%}
+        {%- endif -%}
+
     {%- endfor -%}
 {%- endif -%}
 
@@ -161,10 +212,10 @@ select
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
 
     {% for field in final_fields_superset.keys()|sort() -%}
-    {% if field in consistent_fields and field != 'spend' -%}
+    {% if field in consistent_fields and field not in ['spend', 'conversions', 'conversions_value'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_int() }}) as {{ field }}
 
-    {% elif field == 'spend' -%}
+    {% elif field in ['spend', 'conversions', 'conversions_value'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_float() }}) as {{ field }}
 
     {% elif '_id' in field or '_name' in field or 'url' in field or 'utm' in field or field in ['keyword_match_type', 'keyword_text', 'search_match_type', 'search_query'] -%}

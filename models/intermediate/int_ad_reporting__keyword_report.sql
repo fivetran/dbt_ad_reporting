@@ -16,7 +16,8 @@ apple_search_ads as (
                 'account_id': 'organization_id',
                 'account_name': 'organization_name',
                 'keyword_match_type': 'match_type',
-                'clicks': 'taps'
+                'clicks': 'taps',
+                'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__keyword_report')
     ) }}
@@ -62,7 +63,9 @@ pinterest_ads as (
                 'account_id': 'advertiser_id',
                 'account_name': 'advertiser_name',
                 'keyword_text': 'keyword_value',
-                'keyword_match_type': 'match_type'
+                'keyword_match_type': 'match_type',
+                'conversions': 'total_conversions',
+                'conversions_value': 'total_conversions_value'
             },
         relation=ref('pinterest_ads__keyword_report')
     ) }}
@@ -80,7 +83,9 @@ twitter_ads as (
                 'ad_group_name': 'line_item_name',
                 'keyword_id': 'keyword_id',
                 'keyword_text': 'keyword',
-                'keyword_match_type': 'null'
+                'keyword_match_type': 'null',
+                'conversions': 'total_conversions',
+                'conversions_value': 'total_conversions_sale_amount'
             },
         relation=ref('twitter_ads__keyword_report')
     ) }}
@@ -95,7 +100,9 @@ amazon_ads as (
         report_type='keyword', 
         field_mapping={
                 'spend': 'cost',
-                'keyword_match_type': 'match_type'
+                'keyword_match_type': 'match_type',
+                'conversions': 'purchases_30_d',
+                'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__keyword_report')
     ) }}
