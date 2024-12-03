@@ -2,7 +2,7 @@
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with
-{% for package in ['twitter_ads', 'facebook_ads', 'google_ads', 'microsoft_ads'] %}
+{% for package in ['facebook_ads', 'google_ads', 'microsoft_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
     {{ get_query(
@@ -23,7 +23,8 @@ apple_search_ads as (
         field_mapping={
                 'account_id': 'organization_id',
                 'account_name': 'organization_name',
-                'clicks': 'taps'
+                'clicks': 'taps',
+                'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__organization_report')
     ) }}
@@ -37,7 +38,9 @@ linkedin_ads as (
         platform='linkedin_ads', 
         report_type='account', 
         field_mapping={
-                'spend': 'cost'
+                'spend': 'cost',
+                'conversions': 'total_conversions',
+                'conversions_value': 'conversion_value_in_local_currency'
             },
         relation=ref('linkedin_ads__account_report')
     ) }}
@@ -52,7 +55,9 @@ pinterest_ads as (
         report_type='account', 
         field_mapping={
                 'account_id': 'advertiser_id',
-                'account_name': 'advertiser_name'
+                'account_name': 'advertiser_name',
+                'conversions': 'total_conversions',
+                'conversions_value': 'total_conversions_value'
             },
         relation=ref('pinterest_ads__advertiser_report')
     ) }}
@@ -68,7 +73,9 @@ snapchat_ads as (
         field_mapping={
                 'account_id': 'ad_account_id',
                 'account_name': 'ad_account_name',
-                'clicks':'swipes'
+                'clicks':'swipes',
+                'conversions': 'total_conversions',
+                'conversions_value': 'conversion_purchases_value'
             },
         relation=ref('snapchat_ads__account_report')
     ) }}
@@ -83,11 +90,28 @@ tiktok_ads as (
         report_type='account', 
         field_mapping={
                 'account_id': 'advertiser_id',
-                'account_name': 'advertiser_name'
+                'account_name': 'advertiser_name',
+                'conversions': 'conversion',
+                'conversions_value': 'total_conversion_value'
             },
         relation=ref('tiktok_ads__advertiser_report')
     ) }}
 ), 
+{% endif %}
+
+{% if 'twitter_ads' in enabled_packages %}
+twitter_ads as (
+
+    {{ get_query(
+        platform='twitter_ads', 
+        report_type='account', 
+        field_mapping={
+                'conversions': 'total_conversions',
+                'conversions_value': 'total_conversions_sale_amount'
+            },
+        relation=ref('twitter_ads__account_report')
+    ) }}
+),
 {% endif %}
 
 {% if 'amazon_ads' in enabled_packages %}
@@ -97,7 +121,9 @@ amazon_ads as (
         platform='amazon_ads', 
         report_type='account', 
         field_mapping={
-                'spend': 'cost'
+                'spend': 'cost',
+                'conversions': 'purchases_30_d',
+                'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__account_report')
     ) }}
@@ -111,7 +137,8 @@ reddit_ads as (
         platform='reddit_ads', 
         report_type='account', 
         field_mapping={
-                'account_name': 'null'
+                'account_name': 'null',
+                'conversions_value': 'total_value'
             },
         relation=ref('reddit_ads__account_report')
     ) }}

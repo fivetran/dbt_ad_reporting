@@ -18,6 +18,10 @@
 
 {% docs clicks %} The count of clicks. {% enddocs %}
 
+{% docs conversions %} The count of attributed conversion events. {% enddocs %}
+
+{% docs conversions_value %} The monetary value of attributed conversion events. {% enddocs %}
+
 {% docs date_day %} The date of the report. {% enddocs %}
 
 {% docs impressions %} The count of impressions. {% enddocs %}

@@ -1,11 +1,11 @@
-date,account_id,device_os,device_type,network,currency_code,ad_distribution,bid_match_type,delivered_match_type,top_vs_other,clicks,impressions,spend
-2019-04-25,150175881,Android,Smartphone,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2019-03-15,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2019-05-11,150175881,Windows,Computer,AOL search,USD,Search,Phrase,Phrase,AOL search - Top,0,0,0.0
-2019-04-21,150175881,Android,Smartphone,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2019-04-15,150175881,iOS,Tablet,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2019-04-22,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2018-12-06,150175881,Unknown,Computer,AOL search,USD,Search,Phrase,Phrase,AOL search - Top,0,0,0.0
-2019-04-15,150175881,Windows,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2019-04-16,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0
-2018-12-26,150175881,Windows,Computer,AOL search,USD,Search,Broad,Phrase,AOL search - Top,0,0,0.0
+date,account_id,device_os,device_type,network,currency_code,ad_distribution,bid_match_type,delivered_match_type,top_vs_other,clicks,impressions,spend,conversions_qualified,conversions,revenue,all_conversions_qualified
+2019-04-25,150175881,Android,Smartphone,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
+2019-03-15,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,,,,
+2019-05-11,150175881,Windows,Computer,AOL search,USD,Search,Phrase,Phrase,AOL search - Top,0,0,0.0,0,0,0.0,0
+2019-04-21,150175881,Android,Smartphone,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
+2019-04-15,150175881,iOS,Tablet,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
+2019-04-22,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
+2018-12-06,150175881,Unknown,Computer,AOL search,USD,Search,Phrase,Phrase,AOL search - Top,0,0,0.0,0,0,0.0,0
+2019-04-15,150175881,Windows,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
+2019-04-16,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
+2018-12-26,150175881,Windows,Computer,AOL search,USD,Search,Broad,Phrase,AOL search - Top,4,5,0.0,1,2,0.1,3

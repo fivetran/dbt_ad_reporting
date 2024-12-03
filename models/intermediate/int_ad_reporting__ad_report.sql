@@ -23,7 +23,8 @@ apple_search_ads as (
         field_mapping={
                 'account_id': 'organization_id',
                 'account_name': 'organization_name',
-                'clicks': 'taps'
+                'clicks': 'taps',
+                'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__ad_report')
     ) }}
@@ -58,7 +59,9 @@ linkedin_ads as (
                 'ad_group_name': 'campaign_name',
                 'ad_id': 'creative_id',
                 'ad_name': 'null',
-                'spend': 'cost'
+                'spend': 'cost',
+                'conversions': 'total_conversions',
+                'conversions_value': 'conversion_value_in_local_currency'
             },
         relation=ref('linkedin_ads__creative_report')
     ) }}
@@ -75,7 +78,9 @@ pinterest_ads as (
                 'account_id': 'advertiser_id',
                 'account_name': 'advertiser_name',
                 'ad_id': 'pin_promotion_id',
-                'ad_name': 'pin_name'
+                'ad_name': 'pin_name',
+                'conversions': 'total_conversions',
+                'conversions_value': 'total_conversions_value'
             },
         relation=ref('pinterest_ads__pin_promotion_report')
     ) }}
@@ -95,7 +100,9 @@ snapchat_ads as (
                 'campaign_name': 'null',
                 'ad_group_id': 'null',
                 'ad_group_name': 'null',
-                'clicks':'swipes'
+                'clicks':'swipes',
+                'conversions': 'total_conversions',
+                'conversions_value': 'conversion_purchases_value'
             },
         relation=ref('snapchat_ads__ad_report')
     ) }}
@@ -110,7 +117,9 @@ tiktok_ads as (
         report_type='ad', 
         field_mapping={
                 'account_id': 'advertiser_id',
-                'account_name': 'advertiser_name'
+                'account_name': 'advertiser_name',
+                'conversions': 'conversion',
+                'conversions_value': 'total_conversion_value'
             },
         relation=ref('tiktok_ads__ad_report')
     ) }}
@@ -127,7 +136,9 @@ twitter_ads as (
                 'ad_group_id': 'line_item_id',
                 'ad_group_name': 'line_item_name',
                 'ad_id': 'promoted_tweet_id',
-                'ad_name': 'tweet_name'
+                'ad_name': 'tweet_name',
+                'conversions': 'total_conversions',
+                'conversions_value': 'total_conversions_sale_amount'
             },
         relation=ref('twitter_ads__promoted_tweet_report')
     ) }}
@@ -142,7 +153,9 @@ amazon_ads as (
         report_type='ad', 
         field_mapping={
                 'spend': 'cost',
-                'ad_name': 'advertised_asin'
+                'ad_name': 'advertised_asin',
+                'conversions': 'purchases_30_d',
+                'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__ad_report')
     ) }}
@@ -156,7 +169,8 @@ reddit_ads as (
         platform='reddit_ads', 
         report_type='ad', 
         field_mapping={
-                'account_name': 'null'
+                'account_name': 'null',
+                'conversions_value': 'total_value'
             },
         relation=ref('reddit_ads__ad_report')
     ) }}
