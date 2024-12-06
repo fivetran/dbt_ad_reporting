@@ -1,3 +1,9 @@
+# dbt_ad_reporting v1.11.0
+
+[PR #127](https://github.com/fivetran/dbt_ad_reporting/pull/127)  includes the following updates:
+
+## Breaking Changes
+
 # dbt_ad_reporting v1.10.0
 
 [PR #122](https://github.com/fivetran/dbt_ad_reporting/pull/122) introduces the following **BREAKING CHANGES:**
