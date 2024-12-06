@@ -80,7 +80,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.10.0", "<1.11.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.11.0", "<1.12.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -563,11 +563,11 @@ packages:
   - package: fivetran/google_ads_source
     version: [">=0.11.0", "<0.12.0"]
 
-  - package: fivetran/pinterest
-    version: [">=0.11.0", "<0.12.0"]
+  - package: fivetran/linkedin
+    version: [">=0.9.0", "<0.10.0"]
 
-  - package: fivetran/pinterest_source
-    version: [">=0.11.0", "<0.12.0"]
+  - package: fivetran/linkedin_source
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.9.0", "<0.10.0"]
@@ -575,11 +575,11 @@ packages:
   - package: fivetran/microsoft_ads_source
     version: [">=0.10.0", "<0.11.0"]
 
-  - package: fivetran/linkedin
-    version: [">=0.9.0", "<0.10.0"]
+  - package: fivetran/pinterest
+    version: [">=0.11.0", "<0.12.0"]
 
-  - package: fivetran/linkedin_source
-    version: [">=0.9.0", "<0.10.0"]
+  - package: fivetran/pinterest_source
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/reddit_ads
     version: [">=0.3.0", "<0.4.0"]
@@ -594,10 +594,10 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/tiktok_ads_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/twitter_ads
     version: [">=0.8.0", "<0.9.0"]
