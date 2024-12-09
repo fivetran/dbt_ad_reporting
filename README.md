@@ -564,10 +564,10 @@ packages:
     version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/linkedin
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/linkedin_source
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.9.0", "<0.10.0"]
