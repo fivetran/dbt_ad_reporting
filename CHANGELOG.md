@@ -18,7 +18,6 @@
   - If necessary, you can populate historical data in the `age_groups` column by performing a resync of the `ADGROUP_HISTORY` table, since TikTok provides all data regardless of the previous sync state.
   - For more details, see the [DECISIONLOG entry](https://github.com/fivetran/dbt_tiktok_ads_source/blob/main/DECISIONLOG.md).
 
-# dbt_ad_reporting v1.10.0
 ## Under the Hood
 - Addition of the following consistency validation tests for the below mentioned models to be used during integration tests (only used by Fivetran maintainers):
   - `ad_reporting__ad_report` 
