@@ -13,8 +13,7 @@ dispatch:
 models:
   +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
 
-vars: 
-  
+vars:
   apple_search_ads__using_search_terms: True
   twitter_ads__using_keywords: False
 
@@ -613,6 +612,10 @@ seeds:
       +column_types:
         created_time: timestamp
         last_modified_time: timestamp
+        status: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        intended_status: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
+        last_modified_at: timestamp
+        created_at: timestamp
     linkedin_ad_analytics_by_campaign_data:
       +column_types:
         day: timestamp
