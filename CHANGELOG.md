@@ -8,6 +8,9 @@
     - `linkedin_ads__creative_report`
     - `linkedin_ads__url_report`
     - Please be aware this new field only supports `text_ad` or `spotlight` click uri types. If you are interested in this package supporting more click uri ad types, please let us know in this [Feature Request](https://github.com/fivetran/dbt_linkedin_source/issues/70).
+- The `click_uri` field has been adjusted to populate the results following a coalesce on the `text_ad_landing_page`, `spotlight_landing_page`, or `click_uri` fields. For more details refer to [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) release notes. ([PR #120](https://github.com/fivetran/dbt_ad_reporting/pull/120))
+  - This change is in response to a [LinkedIn Ads API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/contentapi-migration-guide?view=li-lms-2024-05#adcreativesv2-api-creatives-api) and [Fivetran LinkedIn Ads connector update](https://fivetran.com/docs/connectors/applications/linkedin-ads/changelog#january2024) which moved `click_uri` data to either the `text_ad_landing_page` or `spotlight_landing_page` fields depending on the creative type.
+
 ### tiktok_ads
 - In the [July 2023 update](https://fivetran.com/docs/connectors/applications/tiktok-ads/changelog#july2023) for the `ADGROUP_HISTORY` table, the `age` column was renamed to `age_groups`. ([PR #127](https://github.com/fivetran/dbt_ad_reporting/pull/127))
   - Previously in `dbt_tiktok_source`, we coalesced these two columns in the `stg_tiktok_ads__ad_group_history` model to account for connectors using the old naming convention. However, due to inconsistent data types, we can no longer use this approach.
@@ -16,11 +19,6 @@
   - For more details, see the [DECISIONLOG entry](https://github.com/fivetran/dbt_tiktok_ads_source/blob/main/DECISIONLOG.md).
 
 # dbt_ad_reporting v1.10.0
-
-## Bug Fixes (upstream dbt_linkedin_source change)
-- The `click_uri` field has been adjusted to populate the results following a coalesce on the `text_ad_landing_page`, `spotlight_landing_page`, or `click_uri` fields. For more details refer to [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) release notes.
-  - This change is in response to a [LinkedIn Ads API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/contentapi-migration-guide?view=li-lms-2024-05#adcreativesv2-api-creatives-api) and [Fivetran LinkedIn Ads connector update](https://fivetran.com/docs/connectors/applications/linkedin-ads/changelog#january2024) which moved `click_uri` data to either the `text_ad_landing_page` or `spotlight_landing_page` fields depending on the creative type.
-
 ## Under the Hood
 - Addition of the following consistency validation tests for the below mentioned models to be used during integration tests (only used by Fivetran maintainers):
   - `ad_reporting__ad_report` 
