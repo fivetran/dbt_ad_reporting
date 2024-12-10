@@ -1,11 +1,11 @@
-# Tiktok Ads Source dbt Package ([Docs](https://fivetran.github.io/dbt_tiktok_ads_source/))
+# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
 
 <p align="left">
     <a alt="License"
-        href="https://github.com/fivetran/dbt_tiktok_ads_source/blob/main/LICENSE">
+        href="https://github.com/fivetran/dbt_ad_reporting/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.6.0_<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
