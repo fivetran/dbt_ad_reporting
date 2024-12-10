@@ -37,7 +37,7 @@ vars:
     - name: videos
 
   apple_search_ads_source:
-    apple_search_ads_schema: ad_reporting_integration_tests_7
+    apple_search_ads_schema: ad_reporting_integration_tests_8
     apple_search_ads_organization_identifier: "apple_search_organization_data"
     apple_search_ads_campaign_history_identifier: "apple_search_campaign_history_data"
     apple_search_ads_campaign_report_identifier: "apple_search_campaign_report_data"
@@ -81,7 +81,7 @@ vars:
       transform_sql: "null"
 
   google_ads_source:
-    google_ads_schema: ad_reporting_integration_tests_7
+    google_ads_schema: ad_reporting_integration_tests_8
     google_ads_ad_stats_identifier: "google_ads_ad_stats_data"
     google_ads_ad_history_identifier: "google_ads_ad_history_data"
     google_ads_ad_group_history_identifier: "google_ads_ad_group_history_data"
@@ -130,7 +130,7 @@ vars:
       transform_sql: "null"
 
   microsoft_ads_source:
-    microsoft_ads_schema: ad_reporting_integration_tests_7
+    microsoft_ads_schema: ad_reporting_integration_tests_8
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
     microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -193,7 +193,7 @@ vars:
       transform_sql: "null"
 
   linkedin_source:
-    linkedin_ads_schema: ad_reporting_integration_tests_7
+    linkedin_ads_schema: ad_reporting_integration_tests_8
     linkedin_ads_account_history_identifier: "linkedin_ad_account_history_data"
     linkedin_ads_ad_analytics_by_creative_identifier: "linkedin_ad_analytics_by_creative_data"
     linkedin_ads_campaign_group_history_identifier: "linkedin_ad_campaign_group_history_data"
@@ -218,7 +218,7 @@ vars:
       alias: videos
 
   twitter_ads_source:
-    twitter_ads_schema: ad_reporting_integration_tests_7
+    twitter_ads_schema: ad_reporting_integration_tests_8
     twitter_ads_account_history_identifier: "twitter_account_history_data"
     twitter_ads_campaign_history_identifier: "twitter_campaign_history_data"
     twitter_ads_line_item_history_identifier: "twitter_line_item_history_data"
@@ -264,7 +264,7 @@ vars:
       transform_sql: "null"
 
   pinterest_source:
-    pinterest_schema: ad_reporting_integration_tests_7
+    pinterest_schema: ad_reporting_integration_tests_8
     pinterest_ads_ad_group_history_identifier: "pinterest_ad_group_history_data"
     pinterest_ads_campaign_history_identifier: "pinterest_campaign_history_data"
     pinterest_ads_pin_promotion_history_identifier: "pinterest_pin_promotion_history_data"
@@ -318,7 +318,7 @@ vars:
       transform_sql: "null"
 
   facebook_ads_source:
-    facebook_ads_schema: ad_reporting_integration_tests_7
+    facebook_ads_schema: ad_reporting_integration_tests_8
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
@@ -346,7 +346,7 @@ vars:
     - name: '_7_d_click'
 
   snapchat_ads_source:
-    snapchat_ads_schema: ad_reporting_integration_tests_7
+    snapchat_ads_schema: ad_reporting_integration_tests_8
     snapchat_ads_ad_account_history_identifier:  "snapchat_ad_account_history_data"
     snapchat_ads_ad_history_identifier: "snapchat_ad_history_data"
     snapchat_ads_ad_hourly_report_identifier: "snapchat_ad_hourly_report_data"
@@ -385,7 +385,7 @@ vars:
       alias: videos
 
   tiktok_ads_source:
-    tiktok_ads_schema: ad_reporting_integration_tests_7
+    tiktok_ads_schema: ad_reporting_integration_tests_8
     tiktok_ads_adgroup_history_identifier: "tiktok_adgroup_history_data"
     tiktok_ads_ad_history_identifier: "tiktok_ad_history_data"
     tiktok_ads_advertiser_identifier: "tiktok_advertiser_data"
@@ -419,7 +419,7 @@ vars:
       alias: videos
 
   amazon_ads_source:
-    amazon_ads_schema: ad_reporting_integration_tests_7
+    amazon_ads_schema: ad_reporting_integration_tests_8
     amazon_ads_ad_group_history_identifier: "amazon_ads_ad_group_history_data"
     amazon_ads_ad_group_level_report_identifier: "amazon_ads_ad_group_level_report_data"
     amazon_ads_advertised_product_report_identifier: "amazon_ads_advertised_product_report_data"
@@ -472,7 +472,7 @@ vars:
       tranform_sql: "null"
 
   reddit_ads_source:
-    reddit_ads_schema: ad_reporting_integration_tests_7
+    reddit_ads_schema: ad_reporting_integration_tests_8
     reddit_ads_account_identifier: "reddit_ads_account_data"
     reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
     reddit_ads_ad_identifier: "reddit_ads_ad_data"
