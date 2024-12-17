@@ -1,4 +1,6 @@
-<p align="center">
+# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_ad_reporting/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
 ## What does this dbt package do?
 - Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels.
 - Currently supports the following Fivetran ad platform connectors:
