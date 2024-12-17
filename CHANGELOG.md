@@ -1,29 +1,30 @@
 # dbt_ad_reporting v1.11.0
 
 ## Breaking Changes
+
 ### LinkedIn Ads
-- The dependency on dbt_linkedin has been bumped to the `[">=0.10.0", "<0.11.0"]` range and the dbt_linkedin_source dependency has been bumped to the `[">=0.10.0", "<0.11.0"]` range. These upstream version ranges include the following breaking changes. For more details regarding these changes, refer to the [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) and [dbt_linkedin v0.10.0](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.10.0) release notes. ([PR #120](https://github.com/fivetran/dbt_ad_reporting/pull/120))
-  - The `click_uri_type` field has been added to the below mentioned models. This field allows users to differentiate which click uri type (`text_ad` or `spotlight`) is being used to populate the results of the `click_uri` field. 
+- The `dbt_linkedin` dependency has been updated to `[">=0.10.0", "<0.11.0"]`, and the `dbt_linkedin_source` dependency has been updated to `[">=0.10.0", "<0.11.0"]`. These upstream versions introduce breaking changes. For details, refer to the [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) and [dbt_linkedin v0.10.0](https://github.com/fivetran/dbt_linkedin/releases/tag/v0.10.0) release notes. ([PR #120](https://github.com/fivetran/dbt_ad_reporting/pull/120))
+  - Added the `click_uri_type` field to the following models. This field allows users to differentiate which click uri type (`text_ad` or `spotlight`) was used to populate the `click_uri` field.
     - `stg_linkedin_ads__creative_history`
     - `linkedin_ads__creative_report`
     - `linkedin_ads__url_report`
-    - Please be aware this new field only supports `text_ad` or `spotlight` click uri types. If you are interested in this package supporting more click uri ad types, please let us know in this [Feature Request](https://github.com/fivetran/dbt_linkedin_source/issues/70).
-- The `click_uri` field has been adjusted to populate the results following a coalesce on the `text_ad_landing_page`, `spotlight_landing_page`, or `click_uri` fields. For more details refer to [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) release notes. ([PR #120](https://github.com/fivetran/dbt_ad_reporting/pull/120))
-  - This change is in response to a [LinkedIn Ads API](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/contentapi-migration-guide?view=li-lms-2024-05#adcreativesv2-api-creatives-api) and [Fivetran LinkedIn Ads connector update](https://fivetran.com/docs/connectors/applications/linkedin-ads/changelog#january2024) which moved `click_uri` data to either the `text_ad_landing_page` or `spotlight_landing_page` fields depending on the creative type.
+    - Note: Only `text_ad` and `spotlight` click URI types are supported. To request support for additional types, submit a [Feature Request](https://github.com/fivetran/dbt_linkedin_source/issues/70).
+  - The `click_uri` field now populates values using a `COALESCE` of `text_ad_landing_page`, `spotlight_landing_page`, and `click_uri`. For details, refer to the [dbt_linkedin_source v0.10.0](https://github.com/fivetran/dbt_linkedin_source/releases/tag/v0.10.0) release notes. ([PR #120](https://github.com/fivetran/dbt_ad_reporting/pull/120))
+    - This change aligns with the [LinkedIn Ads API migration](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/contentapi-migration-guide?view=li-lms-2024-05#adcreativesv2-api-creatives-api) and [Fivetran LinkedIn Ads connector update](https://fivetran.com/docs/connectors/applications/linkedin-ads/changelog#january2024), which moved `click_uri` data to `text_ad_landing_page` or `spotlight_landing_page` based on creative type.
 
-### tiktok_ads
-- In the [July 2023 update](https://fivetran.com/docs/connectors/applications/tiktok-ads/changelog#july2023) for the `ADGROUP_HISTORY` table, the `age` column was renamed to `age_groups`. ([PR #127](https://github.com/fivetran/dbt_ad_reporting/pull/127))
-  - Previously in `dbt_tiktok_source`, we coalesced these two columns in the `stg_tiktok_ads__ad_group_history` model to account for connectors using the old naming convention. However, due to inconsistent data types, we can no longer use this approach.
-  - As a result, the coalesced field has been removed in favor of the `age_groups` column.
-  - If necessary, you can populate historical data in the `age_groups` column by performing a resync of the `ADGROUP_HISTORY` table, since TikTok provides all data regardless of the previous sync state.
-  - For more details, see the [DECISIONLOG entry](https://github.com/fivetran/dbt_tiktok_ads_source/blob/main/DECISIONLOG.md).
+### TikTok Ads
+- The `dbt_tiktok_ads` dependency has been updated to `[">=0.7.0", "<0.8.0"]`, and the `dbt_tiktok_source` dependency has been updated to `[">=0.7.0", "<0.8.0"]`. These upstream versions introduce breaking changes. For details, refer to the [dbt_tiktok_ads_source v0.7.0](https://github.com/fivetran/dbt_tiktok_ads_source/releases/tag/v0.7.0) and [dbt_tiktok_ads v0.7.0](https://github.com/fivetran/dbt_tiktok_ads/releases/tag/v0.10.0) release notes. ([PR #127](https://github.com/fivetran/dbt_ad_reporting/pull/127))
+- The `age` column in the `ADGROUP_HISTORY` table was renamed to `age_groups` in the [July 2023 TikTok update](https://fivetran.com/docs/connectors/applications/tiktok-ads/changelog#july2023). ([PR #127](https://github.com/fivetran/dbt_ad_reporting/pull/127))
+  - Previously, the `stg_tiktok_ads__ad_group_history` model coalesced `age` and `age_groups` to handle legacy data. Due to incompatible data types (string and JSON), this coalesced field has been removed in favor of solely the `age_groups` column.
+  - To populate historical data in the `age_groups` column, perform a resync of the `ADGROUP_HISTORY` table. TikTok provides all data regardless of the previous sync state.
+  - For more details, see the [Tiktok Ads DECISIONLOG](https://github.com/fivetran/dbt_tiktok_ads_source/blob/main/DECISIONLOG.md).
 
 ## Documentation Changes
-- Moved the Ad Reporting heading above the README tags as well as changing the positioning to the left. ([PR #124](https://github.com/fivetran/dbt_ad_reporting/pull/124))
+- Improved README structure by moving the Ad Reporting heading above the README tags and aligning it to the left. ([PR #124](https://github.com/fivetran/dbt_ad_reporting/pull/124))
 
 ## Under the Hood
-- Addition of the following consistency validation tests for the below mentioned models to be used during integration tests (only used by Fivetran maintainers):
-  - `ad_reporting__ad_report` 
+- Added consistency validation tests for the following models to enhance integration testing (used internally by Fivetran maintainers) ([PR #127](https://github.com/fivetran/dbt_ad_reporting/pull/127)):
+  - `ad_reporting__ad_report`
   - `ad_reporting__url_report`
 
 ## Contributors
