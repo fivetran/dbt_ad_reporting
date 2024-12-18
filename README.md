@@ -1,4 +1,6 @@
-<p align="center">
+# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_ad_reporting/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
 ## What does this dbt package do?
 - Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels.
 - Currently supports the following Fivetran ad platform connectors:
@@ -80,7 +81,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.10.0", "<1.11.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.11.0", "<1.12.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -563,11 +564,11 @@ packages:
   - package: fivetran/google_ads_source
     version: [">=0.11.0", "<0.12.0"]
 
-  - package: fivetran/pinterest
-    version: [">=0.11.0", "<0.12.0"]
+  - package: fivetran/linkedin
+    version: [">=0.10.0", "<0.11.0"]
 
-  - package: fivetran/pinterest_source
-    version: [">=0.11.0", "<0.12.0"]
+  - package: fivetran/linkedin_source
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/microsoft_ads
     version: [">=0.9.0", "<0.10.0"]
@@ -575,11 +576,11 @@ packages:
   - package: fivetran/microsoft_ads_source
     version: [">=0.10.0", "<0.11.0"]
 
-  - package: fivetran/linkedin
-    version: [">=0.9.0", "<0.10.0"]
+  - package: fivetran/pinterest
+    version: [">=0.11.0", "<0.12.0"]
 
-  - package: fivetran/linkedin_source
-    version: [">=0.9.0", "<0.10.0"]
+  - package: fivetran/pinterest_source
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/reddit_ads
     version: [">=0.3.0", "<0.4.0"]
@@ -594,10 +595,10 @@ packages:
     version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/tiktok_ads_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/twitter_ads
     version: [">=0.8.0", "<0.9.0"]
