@@ -13,8 +13,8 @@
 </p>
 
 ## What does this dbt package do?
-- Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels.
-- Currently supports the following Fivetran ad platform connectors:
+- Standardizes schemas from various ad platform connections and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels.
+- Currently supports the following Fivetran ad platform connections:
     - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads)
     - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
     - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
@@ -44,11 +44,13 @@ Refer to the table below for a detailed view of final tables materialized by def
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
+### Materialized Models
+Each Quickstart transformation job run materializes 8 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
 ### Step 1: Pre-Requisites
-**Connector**: Have at least one of the below supported Fivetran ad platform connectors syncing data into your warehouse. This package currently supports:
+**Connector**: Have at least one of the below supported Fivetran ad platform connections syncing data into your destination. This package currently supports:
     - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
     - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
@@ -60,7 +62,7 @@ Refer to the table below for a detailed view of final tables materialized by def
     - [Snapchat Ads](https://fivetran.com/docs/applications/snapchat-ads)
     - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
-> While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
+> While you need only one of the above connections to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
 - **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
 
@@ -232,8 +234,8 @@ models:
 ### (Optional) Step 6: Additional configurations
 <details open><summary>Expand/Collapse details</summary>
 
-#### Union multiple connectors
-If you have multiple ad reporting connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
+#### Union multiple connections
+If you have multiple ad reporting connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
 
 ```yml
 vars:
@@ -462,7 +464,7 @@ vars:
 </details>
 
 #### Change the source table references
-If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connectors.
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connections.
 > IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
 ```yml

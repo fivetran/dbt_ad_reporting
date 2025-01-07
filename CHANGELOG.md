@@ -1,3 +1,9 @@
+# dbt_ad_reporting version.version
+
+## Documentation
+- Added Quickstart model counts to README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
+- Corrected references to connectors and connections in the README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
+
 # dbt_ad_reporting v1.11.0
 
 ## Breaking Changes
