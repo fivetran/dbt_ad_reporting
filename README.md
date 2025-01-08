@@ -46,7 +46,7 @@ Refer to the table below for a detailed view of final tables materialized by def
 
 ### Materialized Models
 
-Each Quickstart transformation job run materializes the following model counts for the selected connectors. The total model count represents all staging, intermediate, and final models, materialized as `view`, `table`, or `incremental`:
+Each Quickstart transformation job run materializes the following model counts for each selected connector. The total model count represents all staging, intermediate, and final models, materialized as `view`, `table`, or `incremental`:
 
 | **Connector** | **Model Count** |
 | ------------- | --------------- |
