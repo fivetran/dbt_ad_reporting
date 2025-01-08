@@ -50,6 +50,7 @@ Each Quickstart transformation job run materializes the following model counts f
 
 | **Connector** | **Model Count** |
 | ------------- | --------------- |
+| Ad Reporting | 8 |
 | [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads) | 30 |
 | [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads) | 26 |
 | [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads) | 24 |
