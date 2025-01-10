@@ -31,3 +31,26 @@ tests:
     not_null_ad_reporting__account_report_account_id:
       +enabled: false
 ```
+
+### Ad Reporting Timezones
+
+The table below documents timezone differences across platforms in the `dbt_ad_reporting` package. These differences exist due to the following reasons:
+
+- Ad platforms send pre-aggregated data that cannot be back-calculated to a finer granularity to account for timezone differences. 
+- Some platforms offer hourly report data, which could potentially be standardized. However, this approach does not ensure full coverage due to non-standard timezones, such as ±30-minute and ±45-minute offsets.
+
+Although this presents challenges within this package, customers can achieve standardization by configuring all Ad accounts and connectors to UTC whenever possible.
+
+| Platform | Grain of Data | Timezone | Hourly Custom Reports? | Can Configure Time Zones for Custom Reports? |
+|----------|---------------|----------|------------------------|----------------------------------------------|
+| Amazon Ads | Day | CLIENT SET - Timezone set by the "profile" to request the report | No | No |
+| Apple Search Ads | Day | CLIENT SET - Configured in connector setup - either UTC or the Apple account's timezone | Yes | ORTZ, UTC |
+| Facebook Ads | Day | CLIENT SET - Facebook Ads account's timezone | No | No |
+| Google Ads | Hour - aggregated to daily in the package | CLIENT SET - Timezone used when creating manager account | Yes | No |
+| Linkedin Ad Analytics | Day | UTC | No | No |
+| Microsoft Advertising | Hour - aggregated to daily in the package | CLIENT SET - Microsoft Ads account's timezone or UTC if not set | No | No |
+| Pinterest Ads | Hour - aggregated to daily in the package | UTC | Yes | No |
+| Reddit Ads | Day | UTC | No | Customer can choose timezone in custom reports |
+| Snapchat Ads | Hour | UTC | No | No |
+| TikTok Ads | Hour | UTC | Yes | No |
+| Twitter Ads | Day | CLIENT SET - Twitter Ads account's time zone | No | No |
