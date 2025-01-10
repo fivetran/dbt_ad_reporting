@@ -32,7 +32,7 @@ tests:
       +enabled: false
 ```
 
-### Ad Reporting Timezones
+### Timezone Considerations
 
 The table below documents timezone differences across platforms in the `dbt_ad_reporting` package. These differences exist due to the following reasons:
 

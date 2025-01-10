@@ -44,6 +44,8 @@ Refer to the table below for a detailed view of final tables materialized by def
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
+## Timezone Considerations
+Timezone differences across ad platforms impact standardization due to pre-aggregated data and non-standard timezones. See the [Decision Log - Timezone Considerations](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md#timezone-considerations) for details.
 <!--section-end-->
 
 ## How do I use the dbt package?
