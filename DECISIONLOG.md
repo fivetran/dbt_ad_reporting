@@ -43,14 +43,14 @@ Although this presents challenges within this package, customers can achieve sta
 
 | Platform | Grain of Data | Timezone | Hourly Custom Reports? | Can Configure Time Zones for Custom Reports? |
 |----------|---------------|----------|------------------------|----------------------------------------------|
-| Amazon Ads | Day | CLIENT SET - Timezone set by the "profile" to request the report | No | No |
-| Apple Search Ads | Day | CLIENT SET - Configured in connector setup - either UTC or the Apple account's timezone | Yes | ORTZ, UTC |
-| Facebook Ads | Day | CLIENT SET - Facebook Ads account's timezone | No | No |
-| Google Ads | Hour - aggregated to daily in the package | CLIENT SET - Timezone used when creating manager account | Yes | No |
+| Amazon Ads | Day | CLIENT SET | No | No |
+| Apple Search Ads | Day | CLIENT SET | Yes | ORTZ, UTC |
+| Facebook Ads | Day | CLIENT SET | No | No |
+| Google Ads | Hour - aggregated to daily in the package | CLIENT SET | Yes | No |
 | Linkedin Ad Analytics | Day | UTC | No | No |
-| Microsoft Advertising | Hour - aggregated to daily in the package | CLIENT SET - Microsoft Ads account's timezone or UTC if not set | No | No |
+| Microsoft Advertising | Hour - aggregated to daily in the package | CLIENT SET | No | No |
 | Pinterest Ads | Hour - aggregated to daily in the package | UTC | Yes | No |
 | Reddit Ads | Day | UTC | No | Customer can choose timezone in custom reports |
 | Snapchat Ads | Hour | UTC | No | No |
 | TikTok Ads | Hour | UTC | Yes | No |
-| Twitter Ads | Day | CLIENT SET - Twitter Ads account's time zone | No | No |
+| Twitter Ads | Day | CLIENT SET | No | No |
