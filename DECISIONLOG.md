@@ -46,11 +46,11 @@ As of January 2025:
 | Platform | Grain of Data | Timezone |
 |----------|---------------|----------|
 | Amazon Ads | Day | CLIENT SET in Amazon Ads |
-| Apple Search Ads | Day | CLIENT SET in Fivetran Connector |
+| Apple Search Ads | Day | CLIENT SET in Fivetran Connector to either UTC or the Apple Search Ads account timezone |
 | Facebook Ads | Day | CLIENT SET in Facebook Ads |
-| Google Ads | Hour - aggregated to daily in the package | CLIENT SET in Google Ads |
+| Google Ads | Hour (account, campaign, ad group) and Day (ad) - aggregated to daily in the package | CLIENT SET in Google Ads |
 | Linkedin Ad Analytics | Day | UTC |
-| Microsoft Advertising | Hour - aggregated to daily in the package | CLIENT SET in Microsoft Ads, UTC if not set|
+| Microsoft Advertising | Hour - package uses daily reports | CLIENT SET in Microsoft Ads, UTC if not set|
 | Pinterest Ads | Hour - aggregated to daily in the package | UTC |
 | Reddit Ads | Day | UTC |
 | Snapchat Ads | Hour | UTC |
