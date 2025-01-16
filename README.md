@@ -67,7 +67,7 @@ Each Quickstart transformation job run materializes the following model counts f
 
 ## How do I use the dbt package?
 ### Step 1: Pre-Requisites
-**Connector**: Have at least one of the below supported Fivetran ad platform connections syncing data into your destination. This package currently supports:
+- Have at least one of the below supported Fivetran ad platform connections syncing data into your destination. This package currently supports:
     - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
     - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
@@ -81,7 +81,7 @@ Each Quickstart transformation job run materializes the following model counts f
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 > While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
-- **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
+- This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
 
 #### Databricks Dispatch Configuration
 If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` as well as the `calogica/dbt_expectations` then the `google_ads_source` packages respectively.
@@ -107,7 +107,7 @@ Do NOT include the individual ad platform packages in this file. The ad reportin
 
 
 ### Step 3: Configure Database and Schema Variables
-By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
+By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connection>_database` variables to your `dbt_project.yml` file (see below).
 
 ```yml
 vars:
@@ -251,8 +251,8 @@ models:
 ### (Optional) Step 6: Additional configurations
 <details open><summary>Expand/Collapse details</summary>
 
-#### Union multiple connectors
-If you have multiple ad reporting connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
+#### Union multiple connections
+If you have multiple ad reporting connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connection:
 
 ```yml
 vars:
@@ -481,7 +481,7 @@ vars:
 </details>
 
 #### Change the source table references
-If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connectors.
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connections.
 > IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
 ```yml
