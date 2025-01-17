@@ -31,3 +31,28 @@ tests:
     not_null_ad_reporting__account_report_account_id:
       +enabled: false
 ```
+
+### Timezone Considerations
+
+The following table documents timezone differences across platforms in the `dbt_ad_reporting` package. These differences exist due to the following reasons:
+
+- Ad platforms send pre-aggregated data that cannot be back-calculated to a finer granularity to account for timezone differences. 
+- Some platforms offer hourly report data, which could potentially be standardized. However, this approach does not ensure full coverage due to non-standard timezones, such as ±30-minute and ±45-minute offsets.
+
+Although this presents challenges within this package, customers can achieve standardization by configuring all Ad accounts and connectors to UTC whenever possible.
+
+As of January 2025:
+
+| Platform | Grain of Data | Timezone |
+|----------|---------------|----------|
+| Amazon Ads | Day | CLIENT SET in Amazon Ads |
+| Apple Search Ads | Day | CLIENT SET in Fivetran Connector to either UTC or the Apple Search Ads account timezone |
+| Facebook Ads | Day | CLIENT SET in Facebook Ads |
+| Google Ads | Hour (account, campaign, ad group) and Day (ad) - package uses daily reports | CLIENT SET in Google Ads |
+| Linkedin Ad Analytics | Day | UTC |
+| Microsoft Advertising | Hour - package uses daily reports | CLIENT SET in Microsoft Ads, UTC if not set|
+| Pinterest Ads | Hour - package uses daily reports | UTC |
+| Reddit Ads | Day | UTC |
+| Snapchat Ads | Hour | UTC |
+| TikTok Ads | Hour | UTC |
+| Twitter Ads | Day | CLIENT SET in Twitter Ads |

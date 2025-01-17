@@ -3,6 +3,7 @@
 ## Documentation
 - Added Quickstart model counts to README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
 - Corrected references to connectors and connections in the README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
+- Updated the [DECISIONLOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md#timezone-considerations) and [README](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#timezone-considerations) to include details about timezone differences across ad platforms. ([#131](https://github.com/fivetran/dbt_ad_reporting/pull/131))
 
 # dbt_ad_reporting v1.11.0
 

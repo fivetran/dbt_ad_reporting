@@ -44,6 +44,7 @@ Refer to the table below for a detailed view of final tables materialized by def
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
+
 ### Materialized Models
 
 Each Quickstart transformation job run materializes the following model counts for each selected connector. The total model count represents all staging, intermediate, and final models, materialized as `view`, `table`, or `incremental`:
@@ -63,6 +64,8 @@ Each Quickstart transformation job run materializes the following model counts f
 | [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads) | 19 |
 | [Twitter Ads](https://github.com/fivetran/dbt_twitter) | 26 |
 
+## Timezone Considerations
+Timezone differences across ad platforms impact standardization due to pre-aggregated data and non-standard timezones. See the [Decision Log - Timezone Considerations](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md#timezone-considerations) for details.
 <!--section-end-->
 
 ## How do I use the dbt package?
