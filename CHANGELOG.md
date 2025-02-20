@@ -3,14 +3,14 @@
 ## Breaking Changes
 
 ### Snapchat Ads
-- The `dbt_snapchat_ads` dependency has been updated to `[">=0.8.0", "<0.9.0"]`. These upstream versions introduce breaking changes. For details, refer to the [dbt_snapchat_ads v0.8.0](https://github.com/fivetran/dbt_snapchat_ads/releases/tag/v0.8.0) release notes. 
+- The `dbt_snapchat_ads` dependency has been updated to `[">=0.8.0", "<0.9.0"]`. These upstream versions introduce breaking changes. For details, refer to the [dbt_snapchat_ads v0.8.0](https://github.com/fivetran/dbt_snapchat_ads/releases/tag/v0.8.0) release notes. ([PR #133](https://github.com/fivetran/dbt_ad_reporting/pull/133))
   - Added ad squad and campaign details to the `snapchat_ads__ad_report` model so they can fill snapchat ad fields `int_ad_reporting__ad_report` model. These details populate the following fields in `ad_reporting__ad_report`: 
-  - `ad_squad_id` corresponds to the `ad_group_id` value. 
-  - `ad_squad_name` corresponds to the `ad_group_name` value.
-  - `campaign_id` and `campaign_name` have the equivalent values.
+    - `ad_squad_id` corresponds to the `ad_group_id` value. 
+    - `ad_squad_name` corresponds to the `ad_group_name` value.
+    - `campaign_id` and `campaign_name` have the equivalent values.
 
 ## Under The Hood
-- Updated validation tests in the `integration_tests` folder to check for discrepancies between `conversions` and `conversions_value`.
+- Updated validation tests in the `integration_tests` folder to check for discrepancies between `conversions` and `conversions_value`. ([PR #133](https://github.com/fivetran/dbt_ad_reporting/pull/133))
 
 ## Documentation
 - Added Quickstart model counts to README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
