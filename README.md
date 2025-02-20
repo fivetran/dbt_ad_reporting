@@ -103,7 +103,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.11.0", "<1.12.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.12.0", "<1.13.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -611,7 +611,7 @@ packages:
     version: [">=0.3.0", "<0.4.0"]
 
   - package: fivetran/snapchat_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 
   - package: fivetran/snapchat_ads_source
     version: [">=0.7.0", "<0.8.0"]
