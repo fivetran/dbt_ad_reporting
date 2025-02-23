@@ -1,3 +1,8 @@
+# dbt_ad_reporting version.version
+
+## Under The Hood
+- Migrate `dbt-date` dependency from Calogica's package to GoDataDriven's. ([PR #134](https://github.com/fivetran/dbt_ad_reporting/pull/134))
+
 # dbt_ad_reporting v1.12.0
 
 ## Breaking Changes
@@ -147,7 +152,7 @@ vars:
 
 ## Under the Hood
 - Added a new variable `dbt_date:time_zone` which is used by the `dbt_date.get_base_dates` macro within the `metricflow_time_spine` model. This variable is nested under the `ad_reporting` hierarchy in the variables config and should not affect any global declarations if you leverage the `dbt_date` package in your own environment. 
-  - The default value of this variable is `America/Los_Angeles`, but you may be able override this in your own root project. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
+  - The default value of this variable is `America/Los_Angeles`, but you may be able override this in your own root project. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/godatadriven/dbt-date#variables).
 
 ```yml
 ## root dbt_project.yml

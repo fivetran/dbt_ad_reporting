@@ -531,7 +531,7 @@ vars:
 ```
 Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish.
 
->**Note**: This variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
+>**Note**: This variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/godatadriven/dbt-date#variables).
 
 ```yml
 ## root dbt_project.yml
@@ -559,7 +559,7 @@ packages:
   - package: dbt-labs/dbt_utils
     version: [">=0.8.0", "<0.9.0"]
 
-  - package: calogica/dbt_date
+  - package: godatadriven/dbt_date
     version: [">=0.9.0", "<1.0.0"]
 
   - package: fivetran/amazon_ads
