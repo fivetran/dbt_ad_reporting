@@ -35,7 +35,7 @@ apple_search_ads as (
                 'search_match_type': 'match_type',
                 'search_query': 'search_term_text',
                 'clicks': 'taps',
-                'conversions': 'tap_installs'
+                'conversions': 'tap_installs',
                 'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__search_term_report')

@@ -24,7 +24,7 @@ apple_search_ads as (
                 'account_id': 'organization_id',
                 'account_name': 'organization_name',
                 'clicks': 'taps',
-                'conversions': 'tap_installs'
+                'conversions': 'tap_installs',
                 'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__ad_group_report')
