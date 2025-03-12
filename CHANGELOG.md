@@ -1,3 +1,5 @@
+# dbt_ad_reporting v1.13.0
+
 # dbt_ad_reporting v1.12.0
 
 ## Breaking Changes
