@@ -575,10 +575,10 @@ packages:
     version: [">=0.5.0", "<0.6.0"]
   
   - package: fivetran/facebook_ads
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.8.0", "<0.9.0"]
 
   - package: fivetran/facebook_ads_source
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.8.0", "<0.9.0"]
   
   - package: fivetran/google_ads
     version: [">=0.11.0", "<0.12.0"]
