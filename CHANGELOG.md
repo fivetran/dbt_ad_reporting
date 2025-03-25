@@ -1,5 +1,14 @@
 # dbt_ad_reporting v1.13.0
 
+## Breaking Changes: Version Updates
+The following dependencies have been updated following upstream breaking changes. See the below release notes for more information.
+  - `dbt_apple_search_ads` ([v0.5.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v0.5.0))
+  - `dbt_microsoft_ads` ([v0.10.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.10.0))
+The `conversions` field now exists for `apple_search_ads`, using `tap_installs` as the titular field.
+
+## Under The Hood
+  - Updated `apple_search_ads` and `microsoft_ads` seed files to keep consistent with changes to seed files in the individual packages.
+
 # dbt_ad_reporting v1.12.0
 
 ## Breaking Changes
