@@ -14,6 +14,7 @@ models:
   +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
 
 vars:
+  ad_reporting__metricflow_time_spine_enabled: true
   # Comment out passthroughs when generating docs!!!
   ############################ START PASSTHROUGHS ############################
   # ad_reporting__ad_passthrough_metrics:
