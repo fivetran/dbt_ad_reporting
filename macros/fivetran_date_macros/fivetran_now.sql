@@ -3,5 +3,5 @@
 {%- endmacro -%}
 
 {%- macro default__fivetran_now(tz=None) -%}    
-    {{ ad_reporting.fivetran_convert_timezone(ad_reporting.fivetran_current_timestamp(), tz) }}
+    {{ ad_reporting.fivetran_convert_timezone(dbt.current_timestamp(), tz) }}
 {%- endmacro -%}
