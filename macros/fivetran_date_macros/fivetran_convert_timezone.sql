@@ -37,16 +37,3 @@
         to_utc_timestamp({{ column }}, '{{ source_tz }}'), '{{ target_tz }}'
     )
 {%- endmacro -%}
-
-{%- macro trino__fivetran_convert_timezone(column, target_tz, source_tz) -%}
-    cast(
-        (
-            at_timezone(
-                with_timezone(
-                    cast({{ column }} as {{ dbt.type_timestamp() }}), '{{ source_tz }}'
-                ),
-                '{{ target_tz }}'
-            )
-        ) as {{ dbt.type_timestamp() }}
-    )
-{%- endmacro -%}
