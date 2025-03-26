@@ -1,5 +1,5 @@
 {%- macro fivetran_today(tz=None) -%}
-    {{ return(adapter.dispatch('fivetran_today', 'ad_reporting')) (tz) }}
+    {{ return(adapter.dispatch('fivetran_today', 'ad_reporting') (tz)) }}
 {%- endmacro -%}
 
 {%- macro default__fivetran_today(tz=None) -%}
