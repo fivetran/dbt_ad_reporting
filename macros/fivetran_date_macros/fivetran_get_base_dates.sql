@@ -1,7 +1,4 @@
-{% macro fivetran_get_base_dates(
-    start_date=None, end_date=None, n_dateparts=None, datepart="day"
-) %}
-
+{% macro fivetran_get_base_dates(start_date=None, end_date=None, n_dateparts=None, datepart="day") %}
     {{ return(adapter.dispatch('fivetran_get_base_dates', 'ad_reporting') (start_date, end_date, n_dateparts, datepart)) }}
 {% endmacro %}
 

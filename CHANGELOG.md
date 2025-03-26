@@ -6,6 +6,9 @@ The following dependencies have been updated following upstream breaking changes
   - `dbt_microsoft_ads` ([v0.10.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.10.0))
 The `conversions` field now exists for `apple_search_ads`, using `tap_installs` as the titular field.
 
+## Bug Fixes
+- Resolved a CLI Warning caused by the `metricflow_time_spine` model not having a properly documented YAML configuration.
+
 ## Under The Hood
   - Updated `apple_search_ads` and `microsoft_ads` seed files to keep consistent with changes to seed files in the individual packages.
 
