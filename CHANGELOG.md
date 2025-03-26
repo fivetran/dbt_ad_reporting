@@ -1,10 +1,11 @@
 # dbt_ad_reporting v1.13.0
+[PR #137](https://github.com/fivetran/dbt_ad_reporting/pull/137) includes the following updates:
 
 ## Breaking Changes: Version Updates
 The following dependencies have been updated following upstream breaking changes. See the below release notes for more information.
   - `dbt_apple_search_ads` ([v0.5.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v0.5.0))
   - `dbt_microsoft_ads` ([v0.10.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.10.0))
-The `conversions` field now exists for `apple_search_ads`, using `tap_installs` as the titular field.
+The `conversions` field for `apple_search_ads` now sources from `tap_installs`.
 
 ## Bug Fixes
 - Resolved a CLI Warning caused by the `metricflow_time_spine` model not having a properly documented YAML configuration.
