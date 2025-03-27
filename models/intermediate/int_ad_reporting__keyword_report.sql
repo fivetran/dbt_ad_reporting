@@ -17,6 +17,7 @@ apple_search_ads as (
                 'account_name': 'organization_name',
                 'keyword_match_type': 'match_type',
                 'clicks': 'taps',
+                'conversions': 'tap_installs',
                 'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__keyword_report')

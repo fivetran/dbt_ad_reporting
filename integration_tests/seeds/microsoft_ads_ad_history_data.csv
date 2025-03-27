@@ -1,11 +1,11 @@
-id,title_part_1,final_url,ad_group_id,modified_time,status,type
-83769087188948,LKxLUP62OMuqYOnH5orp0A==,https://fivetran.com/directory/marketo,1340304934202281,2019-04-18T13:49:15.253Z,Active,Expanded Text Ad
-83769087188947,8megrr5FKm6ChQILJK65Cg==,https://fivetran.com/directory/google-analytics,1340304934202265,2019-04-18T13:49:15.253Z,Active,Expanded Text Ad
-83631648270348,VDc1NVjlQblN+eNbripfsQ==,https://fivetran.com/directory/facebook-ads-account,1338105911256023,2019-04-18T13:49:16.373Z,Active,Expanded Text Ad
-83631648270349,e7L/v/fiGh2rg37b19Quew==,https://fivetran.com/directory/intercom,1338105911256039,2019-04-18T13:49:16.373Z,Active,Expanded Text Ad
-83425489849365,Ggg6SfVdFT+XvFwzXH5f7w==,https://fivetran.com/directory/bing-ads,1334807376555988,2019-04-18T13:49:11.797Z,Active,Expanded Text Ad
-83425489849364,7Wzn6woQmbWz7u9JX7VLrQ==,https://fivetran.com/directory/amazon-dynamodb,1334807376555972,2019-04-18T13:49:11.797Z,Active,Expanded Text Ad
-84181395865934,WwfGmlh/43PQDdH8bbMi9Q==,http://fivetran.com/,1346901938949055,2019-04-18T13:46:01.610Z,Active,Expanded Text Ad
-84181395865928,WwfGmlh/43PQDdH8bbMi9Q==,http://fivetran.com/,1346901938949023,2019-04-18T13:46:01.610Z,Active,Expanded Text Ad
-84181395865931,WwfGmlh/43PQDdH8bbMi9Q==,https://fivetran.com/demo,1346901938949039,2019-04-18T13:46:01.610Z,Active,Expanded Text Ad
-84181395865939,WwfGmlh/43PQDdH8bbMi9Q==,http://fivetran.com/,1346901938949071,2019-04-18T13:46:01.610Z,Active,Expanded Text Ad
+id,title_part_1,final_url,ad_group_id,modified_time,status,type,title,title_part_2,title_part_3,domain
+83769087188948,LKxLUP62OMuqYOnH5orp0A==,https://fivetran.com/directory/marketo,1340304934202281,2019-04-18T13:49:15.253,Active,Expanded Text Ad,Connect Marketo with Fivetran,Automate Your Data Pipeline,No Maintenance Required,fivetran.com
+83769087188947,8megrr5FKm6ChQILJK65Cg==,https://fivetran.com/directory/google-analytics,1340304934202265,2019-04-18T13:49:15.253,Active,Expanded Text Ad,Google Analytics Integration,Sync Your Analytics Data,No Maintenance Required,fivetran.com
+83631648270348,VDc1NVjlQblN+eNbripfsQ==,https://fivetran.com/directory/facebook-ads-account,1338105911256023,2019-04-18T13:49:16.373,Active,Expanded Text Ad,Facebook Ads Data Connector,Seamless Facebook Ads Sync,Start Analyzing Data Instantly,fivetran.com
+83631648270349,e7L/v/fiGh2rg37b19Quew==,https://fivetran.com/directory/intercom,1338105911256039,2019-04-18T13:49:16.373,Active,Expanded Text Ad,Intercom Data Sync,Automate Customer Data Transfer,Integrate in Minutes,fivetran.com
+83425489849365,Ggg6SfVdFT+XvFwzXH5f7w==,https://fivetran.com/directory/bing-ads,1334807376555988,2019-04-18T13:49:11.797,Active,Expanded Text Ad,Bing Ads Data Integration,Easy Bing Ads Reporting,Automate Your Marketing Data,fivetran.com
+83425489849364,7Wzn6woQmbWz7u9JX7VLrQ==,https://fivetran.com/directory/amazon-dynamodb,1334807376555972,2019-04-18T13:49:11.797,Active,Expanded Text Ad,Amazon DynamoDB Sync,Seamless No-Code ETL,Fast & Reliable Data Pipelines,fivetran.com
+84181395865934,WwfGmlh/43PQDdH8bbMi9Q==,http://fivetran.com/,1346901938949055,2019-04-18T13:46:01.610,Active,Expanded Text Ad,Fivetran: Automated Data Pipelines,ETL Without the Hassle,Get Started in Minutes,fivetran.com
+84181395865928,WwfGmlh/43PQDdH8bbMi9Q==,http://fivetran.com/,1346901938949023,2019-04-18T13:46:01.610,Active,Expanded Text Ad,Fivetran: Automated Data Pipelines,Connect Your Data Effortlessly,Get Started in Minutes,fivetran.com
+84181395865931,WwfGmlh/43PQDdH8bbMi9Q==,https://fivetran.com/demo,1346901938949039,2019-04-18T13:46:01.610,Active,Expanded Text Ad,Fivetran Demo - See It in Action,Try Our Hands-On Demo Today,See How It Works,fivetran.com
+84181395865939,WwfGmlh/43PQDdH8bbMi9Q==,http://fivetran.com/,1346901938949071,2019-04-18T13:46:01.610,Active,Expanded Text Ad,Fivetran: Automated Data Pipelines,ETL Without the Hassle,Get Started in Minutes,fivetran.com

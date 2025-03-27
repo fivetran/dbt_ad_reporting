@@ -103,7 +103,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.12.0", "<1.13.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.13.0", "<1.14.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -529,14 +529,16 @@ This package includes a model called `metricflow_time_spine.sql` that MetricFlow
 vars:
   ad_reporting__metricflow_time_spine_enabled: false ## true by default
 ```
-Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish.
+Additionally, the `fivetran_get_base_dates` macro is used in the generation of the `metricsflow_time_spine` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish. See below for an example.
 
->**Note**: This variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
+>**Note**: This `dbt_date:time_zone` variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. 
+
+You may specify any [valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of America/Los_Angeles. For example, use America/New_York for East Coast Time.
 
 ```yml
 ## root dbt_project.yml
 vars:
-  "dbt_date:time_zone": "America/Chicago" # Default is "America/Los_Angeles"
+  "dbt_date:time_zone": "America/New_York" # Default is "America/Los_Angeles"
 ```
 
 **Semantic Manifest**
@@ -559,9 +561,6 @@ packages:
   - package: dbt-labs/dbt_utils
     version: [">=0.8.0", "<0.9.0"]
 
-  - package: calogica/dbt_date
-    version: [">=0.9.0", "<1.0.0"]
-
   - package: fivetran/amazon_ads
     version: [">=0.4.0", "<0.5.0"]
   
@@ -569,10 +568,10 @@ packages:
     version: [">=0.4.0", "<0.5.0"]
 
   - package: fivetran/apple_search_ads
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/apple_search_ads_source
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
   
   - package: fivetran/facebook_ads
     version: [">=0.8.0", "<0.9.0"]
@@ -593,10 +592,10 @@ packages:
     version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/microsoft_ads
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/microsoft_ads_source
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 
   - package: fivetran/pinterest
     version: [">=0.11.0", "<0.12.0"]
