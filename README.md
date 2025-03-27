@@ -529,14 +529,16 @@ This package includes a model called `metricflow_time_spine.sql` that MetricFlow
 vars:
   ad_reporting__metricflow_time_spine_enabled: false ## true by default
 ```
-Additionally, the `fivetran_get_base_dates` macro is used in the generation of the `metricsflow_time_spine` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish.
+Additionally, the `fivetran_get_base_dates` macro is used in the generation of the `metricsflow_time_spine` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish. See below for an example.
 
->**Note**: This `dbt_date:time_zone` variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the Variable section of the [dbt-date package documentation](https://github.com/godatadriven/dbt-date/tree/main?tab=readme-ov-file#variables).
+>**Note**: This `dbt_date:time_zone` variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. 
+
+You may specify any [valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of America/Los_Angeles. For example, use America/New_York for East Coast Time.
 
 ```yml
 ## root dbt_project.yml
 vars:
-  "dbt_date:time_zone": "America/Chicago" # Default is "America/Los_Angeles"
+  "dbt_date:time_zone": "America/New_York" # Default is "America/Los_Angeles"
 ```
 
 **Semantic Manifest**

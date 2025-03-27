@@ -1,10 +1,12 @@
 # dbt_ad_reporting v1.13.0
 [PR #137](https://github.com/fivetran/dbt_ad_reporting/pull/137) includes the following updates:
 
-## Breaking Changes: Version Updates
-The following dependencies have been updated following upstream breaking changes. See the below release notes for more information.
+## Breaking Changes
+- The following dependencies have been updated following upstream breaking changes. See the below release notes for more information.
   - `dbt_apple_search_ads` ([v0.5.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v0.5.0))
   - `dbt_microsoft_ads` ([v0.10.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.10.0))
+- Removed the dependency on [calogica/dbt_date](https://github.com/calogica/dbt-date) as it is no longer actively maintained. To maintain functionality, the `get_base_dates` macro (along with all other dependent macros) used in `metricflow_time_spine` semantic model has been replicated and housed within the `macros/fivetran_date_macros` [folder](https://github.com/fivetran/dbt_ad_reporting/tree/main/macros/fivetran_date_macros). All fivetran_date_macros have been prefixed with `fivetran_` to avoid potential naming conflicts.
+  - In order to make the transition more seamless, we have retained the variable name of `dbt_date:time_zone`. Therefore, although we removed the dependency on the dbt-date macros and have renamed them, this variable will still be the same.
 
 ## Bug Fixes
 - Resolved a CLI Warning caused by the `metricflow_time_spine` model not having a properly documented YAML configuration.
@@ -12,7 +14,6 @@ The following dependencies have been updated following upstream breaking changes
 ## Under The Hood
 - Updated `apple_search_ads` and `microsoft_ads` seed files to keep consistent with changes to seed files in the individual packages.
 - The `conversions` field for `apple_search_ads` now sources from `tap_installs`.
-- Removed the dependency on [calogica/dbt_date](https://github.com/calogica/dbt-date) as it is no longer actively maintained. To maintain functionality, the `get_base_dates` macro used in `metricflow_time_spine` semantic model has been replicated and housed within the `macros/fivetran_date_macros` [folder](https://github.com/fivetran/dbt_ad_reporting/tree/main/macros/fivetran_date_macros). All relevant macros have been prefixed with `fivetran_` to avoid potential naming conflicts.
 
 # dbt_ad_reporting v1.12.0
 
