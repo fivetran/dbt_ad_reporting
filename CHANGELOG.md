@@ -5,6 +5,7 @@
 The following dependencies have been updated following upstream breaking changes. See the below release notes for more information.
   - `dbt_apple_search_ads` ([v0.5.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v0.5.0))
   - `dbt_microsoft_ads` ([v0.10.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.10.0))
+
 The `conversions` field for `apple_search_ads` now sources from `tap_installs`.
 
 ## Bug Fixes
