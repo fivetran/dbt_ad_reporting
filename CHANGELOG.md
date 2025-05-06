@@ -1,3 +1,8 @@
+# dbt_ad_reporting v1.13.1
+
+## Bug Fixes
+- Resolved a CLI Warning caused by extraneous `endmacro` blocks.
+
 # dbt_ad_reporting v1.13.0
 [PR #137](https://github.com/fivetran/dbt_ad_reporting/pull/137) includes the following updates:
 
