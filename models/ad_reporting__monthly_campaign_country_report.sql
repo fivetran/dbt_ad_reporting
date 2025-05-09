@@ -284,7 +284,7 @@ standardize_country_names as (
         case
         {% for country in country_mapping %}
             {%- if country.alternative_country_name != '' -%}
-            when country = '{{ country.alternative_country_name | replace("'", "\\'") if target.type != "postgres" else country.alternative_country_name }}' then '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name }}'
+            when country = '{{ country.alternative_country_name | replace("'", "\\'") if target.type != "postgres" else country.alternative_country_name | replace("'", "''") }}' then '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name | replace("'", "''") }}'
             {% endif -%}
         {% endfor %} 
         else country end as standardized_alt_country_name
@@ -300,13 +300,13 @@ map_countries_and_codes as (
 
         case 
         {% for country in country_mapping %}
-            when standardized_alt_country_name is null and country_code = '{{ country.country_code }}' then '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name }}'
+            when standardized_alt_country_name is null and country_code = '{{ country.country_code }}' then '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name | replace("'", "''") }}'
         {% endfor %}
         else standardized_alt_country_name end as standardized_country,
 
         case 
         {% for country in country_mapping %}
-            when country_code is null and standardized_alt_country_name = '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name }}' then '{{ country.country_code }}'
+            when country_code is null and standardized_alt_country_name = '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name | replace("'", "''") }}' then '{{ country.country_code }}'
         {% endfor %}
         else country_code end as standardized_country_code
 
