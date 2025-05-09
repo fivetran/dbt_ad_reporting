@@ -1,8 +1,6 @@
-{% if var('apple_search_ads__using_search_terms', True) %}
-    {% set include_list = ['amazon_ads', 'apple_search_ads', 'microsoft_ads'] %}
-{% else %}
-    {% set include_list = ['amazon_ads', 'microsoft_ads'] %}
-{% endif %}
+{% set include_list = ['amazon_ads', 'microsoft_ads'] %}
+{% do include_list.append('apple_search_ads') if var('apple_search_ads__using_search_terms', true) %}
+{% do include_list.append('google_ads') if var('google_ads__using_search_term_keyword_stats', true) %}
 
 {% set enabled_packages = get_enabled_packages(include=include_list)%}
 {{ config(enabled=is_enabled(enabled_packages)) }}

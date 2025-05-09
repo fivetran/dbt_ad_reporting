@@ -9,6 +9,9 @@
 {%- set keyword_fields = ['keyword_id','keyword_text','keyword_match_type'] -%}
 {%- set search_fields = ['keyword_id', 'keyword_text', 'search_match_type', 'search_query'] -%}
 
+{%- set country_fields = ['country', 'country_code'] -%}
+{%- set region_fields = ['region_id', 'region'] -%}
+
 {%- if field_mapping is not none -%}
 {%- set fields = field_mapping.keys() -%}
 {%- endif -%}
@@ -26,7 +29,7 @@
 {%- endif -%}
 
 {#- For account level reports and lower, add account_fields -#}
-{%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search', 'account'] -%}
+{%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search', 'account', 'country', 'region'] -%}
     {%- for account_field in account_fields -%}
         {#- When campaign_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
         {%- if report_type == 'account' and var('ad_reporting__account_passthrough_metrics', []) -%}
@@ -49,7 +52,7 @@
 {%- endif -%}
 
 {#- For campaign level reports and lower, add campaign_fields -#}
-{%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search'] -%}
+{%- if report_type in ['campaign', 'ad_group', 'ad', 'url', 'keyword', 'search', 'country', 'region'] -%}
     {%- for campaign_field in campaign_fields -%}
         {#- When campaign_passthrough_metrics are defined, add them too but only to the ad_group report_type -#}
         {%- if report_type == 'campaign' and var('ad_reporting__campaign_passthrough_metrics', []) -%}
@@ -200,6 +203,45 @@
     {%- endfor -%}
 {%- endif -%}
 
+{#- For country level reports and lower, add country_fields -#}
+{%- if report_type in ['country', 'region'] -%}
+    {%- for country_field in country_fields -%}
+        {%- if report_type == 'country' and var('ad_reporting__country_passthrough_metrics', []) -%}
+            {% set country_passthrough_metric_array_of_dicts = var('ad_reporting__country_passthrough_metrics') %}
+                {%- for country_passthrough_metric_dict in country_passthrough_metric_array_of_dicts -%}
+                    {%- for country_passthrough_metric_value in country_passthrough_metric_dict.values() -%}
+
+                        {%- do final_fields_superset.update({country_passthrough_metric_value: country_passthrough_metric_value}) -%}
+
+                    {%- endfor -%}
+                {%- endfor -%}
+        {%- endif -%}
+        {%- do final_fields_superset.update({country_field: country_field}) -%}
+    {%- endfor -%}
+{%- endif -%}
+
+{#- For region-level reports, add search_fields and search_passthrough_metrics (if any) -#}
+{%- if report_type == 'region' -%}
+    {%- if var('ad_reporting__region_passthrough_metrics',[]) -%}
+        {%- set region_passthrough_metrics_values = [] -%}
+        {%- set region_passthrough_metrics_array_of_dicts = var('ad_reporting__region_passthrough_metrics') -%}
+            {%- for region_passthrough_metrics_dict in region_passthrough_metrics_array_of_dicts -%}
+                {%- for _, value in region_passthrough_metrics_dict.items() -%}
+                    {%- do region_passthrough_metrics_values.append(value) -%}
+
+                {%- endfor -%}
+            {%- endfor -%}
+        {%- set combined_region_fields = region_fields + region_passthrough_metrics_values -%}
+    {%- else -%}
+        {%- set combined_region_fields = region_fields -%}
+    {%- endif -%}
+    {%- for region_field in combined_region_fields -%}
+
+        {%- do final_fields_superset.update({region_field: region_field}) -%}
+
+    {%- endfor -%}
+{%- endif -%}
+
 {%- if field_mapping is not none -%}
     {%- for field in fields -%}
         {%- do final_fields_superset.update({field:field_mapping[field]}) -%}
@@ -208,17 +250,17 @@
 
 select 
     source_relation,
-    {{ get_date_from_timestamp('date_day') }} as date_day,
+    {{ get_date_from_timestamp('date_month' if platform == 'linkedin_ads' and report_type in ('country', 'region') else 'date_day') }} as date_day,
     cast( '{{ platform }}' as {{ dbt.type_string() }}) as platform,
 
-    {% for field in final_fields_superset.keys()|sort() -%}
+    {% for field in final_fields_superset.keys()|sort()|reject('equalto', 'date_month') -%}
     {% if field in consistent_fields and field not in ['spend', 'conversions', 'conversions_value'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_int() }}) as {{ field }}
 
     {% elif field in ['spend', 'conversions', 'conversions_value'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_float() }}) as {{ field }}
 
-    {% elif '_id' in field or '_name' in field or 'url' in field or 'utm' in field or field in ['keyword_match_type', 'keyword_text', 'search_match_type', 'search_query'] -%}
+    {% elif '_id' in field or '_name' in field or 'url' in field or 'utm' in field or field in ['keyword_match_type', 'keyword_text', 'search_match_type', 'search_query', 'country', 'country_code', 'region'] -%}
     cast({{ final_fields_superset[field] }} as {{ dbt.type_string() }}) as {{ field }}
 
     {# This is the case for the rest of fields (passthrough_metrics) #}
