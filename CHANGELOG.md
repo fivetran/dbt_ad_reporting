@@ -1,10 +1,3 @@
-# dbt_ad_reporting v1.14.0
-
-TODO
-- google in search report
-- country report with standardization of country names
-- region report
-
 # dbt_ad_reporting v1.13.0
 [PR #137](https://github.com/fivetran/dbt_ad_reporting/pull/137) includes the following updates:
 
