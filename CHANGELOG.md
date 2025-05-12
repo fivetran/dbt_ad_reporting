@@ -1,7 +1,15 @@
-# dbt_ad_reporting v1.13.1
+# dbt_ad_reporting v1.14.0
+
+## Todo
+- add Google Ads to search term report
+- country report with standardization of country names
+- region report
 
 ## Bug Fixes
-- Resolved a CLI Warning caused by extraneous `endmacro` blocks.
+- Resolved a CLI Warning caused by extraneous `endmacro` blocks. ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))
+
+## Contributors
+- [@QMalcolm](https://github.com/QMalcolm) ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))
 
 # dbt_ad_reporting v1.13.0
 [PR #137](https://github.com/fivetran/dbt_ad_reporting/pull/137) includes the following updates:

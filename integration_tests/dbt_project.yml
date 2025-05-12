@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.13.0'
+version: '1.14.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -818,6 +818,9 @@ seeds:
         ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    pinterest_pin_promotion_targeting_report_data:
+      +column_types:
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         
     ### Google Seeds
     google_ads_ad_group_stats_data:
@@ -908,6 +911,11 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_search_term_keyword_stats_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     
     ### Facebook Seeds
     facebook_ads_creative_history_data:
@@ -949,9 +957,17 @@ seeds:
     facebook_ads_demographics_country_actions_data:
       +column_types:
         value: "float"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     facebook_ads_demographics_region_actions_data:
       +column_types:
         value: "float"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_country_data:
+      +column_types:
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_region_data:
+      +column_types:
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
 
     ### Snapchat Seeds
 
@@ -1036,4 +1052,10 @@ seeds:
     reddit_ads_campaign_report_data:
       +column_types:
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_campaign_country_conversions_report_data:
+      +column_types:
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_campaign_country_report_data:
+      +column_types:
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
