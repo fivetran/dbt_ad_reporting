@@ -66,7 +66,9 @@
     {'country_name': 'Congo, Democratic Republic of the', 'alternative_country_name': 'Democratic Republic of the Congo', 'country_code': 'CD', 'global_region': 'Sub-Saharan Africa'},
     {'country_name': 'Cook Islands', 'alternative_country_name': '', 'country_code': 'CK', 'global_region': 'Polynesia'},
     {'country_name': 'Costa Rica', 'alternative_country_name': '', 'country_code': 'CR', 'global_region': 'Latin America and the Caribbean'},
-    {'country_name': "Côte d\'Ivoire", 'alternative_country_name': "Cote d\'Ivoire", 'country_code': 'CI', 'global_region': 'Sub-Saharan Africa'},
+
+    {'country_name': "Côte d'Ivoire", 'alternative_country_name': "Cote d'Ivoire", 'country_code': 'CI', 'global_region': 'Sub-Saharan Africa'},
+
     {'country_name': 'Croatia', 'alternative_country_name': '', 'country_code': 'HR', 'global_region': 'Southern Europe'},
     {'country_name': 'Cuba', 'alternative_country_name': '', 'country_code': 'CU', 'global_region': 'Latin America and the Caribbean'},
     {'country_name': 'Curaçao', 'alternative_country_name': '', 'country_code': 'CW', 'global_region': 'Latin America and the Caribbean'},
@@ -130,11 +132,15 @@
     {'country_name': 'Kazakhstan', 'alternative_country_name': '', 'country_code': 'KZ', 'global_region': 'Central Asia'},
     {'country_name': 'Kenya', 'alternative_country_name': '', 'country_code': 'KE', 'global_region': 'Sub-Saharan Africa'},
     {'country_name': 'Kiribati', 'alternative_country_name': '', 'country_code': 'KI', 'global_region': 'Micronesia'},
-    {'country_name': "Korea (Democratic People''s Republic of)", 'alternative_country_name': '', 'country_code': 'KP', 'global_region': 'Eastern Asia'},
+
+    {'country_name': "Korea (Democratic People's Republic of)", 'alternative_country_name': '', 'country_code': 'KP', 'global_region': 'Eastern Asia'},
+
     {'country_name': 'Korea, Republic of', 'alternative_country_name': 'South Korea', 'country_code': 'KR', 'global_region': 'Eastern Asia'},
     {'country_name': 'Kuwait', 'alternative_country_name': '', 'country_code': 'KW', 'global_region': 'Western Asia'},
     {'country_name': 'Kyrgyzstan', 'alternative_country_name': '', 'country_code': 'KG', 'global_region': 'Central Asia'},
-    {'country_name': "Lao People''s Democratic Republic", 'alternative_country_name': 'Laos', 'country_code': 'LA', 'global_region': 'South-eastern Asia'},
+
+    {'country_name': "Lao People's Democratic Republic", 'alternative_country_name': 'Laos', 'country_code': 'LA', 'global_region': 'South-eastern Asia'},
+
     {'country_name': 'Latvia', 'alternative_country_name': '', 'country_code': 'LV', 'global_region': 'Northern Europe'},
     {'country_name': 'Lebanon', 'alternative_country_name': '', 'country_code': 'LB', 'global_region': 'Western Asia'},
     {'country_name': 'Lesotho', 'alternative_country_name': '', 'country_code': 'LS', 'global_region': 'Sub-Saharan Africa'},
@@ -262,13 +268,13 @@
     {'country_name': 'Zambia', 'alternative_country_name': '', 'country_code': 'ZM', 'global_region': 'Sub-Saharan Africa'},
     {'country_name': 'Zimbabwe', 'alternative_country_name': '', 'country_code': 'ZW', 'global_region': 'Sub-Saharan Africa'},
     {'country_name': 'Kosovo', 'alternative_country_name': '', 'country_code': 'XK', 'global_region': 'Southern Europe'},
+    {'country_name': 'Unknown', 'alternative_country_name': '', 'country_code': 'Unknown', 'global_region': 'Unknown'}
 ] %}
 
-{% if target.type == 'postgres' %}
-{% do country_mapping.append({'country_name': "Côte d''Ivoire", 'alternative_country_name': "Cote d''Ivoire", 'country_code': 'CI', 'global_region': 'Sub-Saharan Africa'}) %}
-{% else %}
-{% do country_mapping.append({'country_name': "Côte d\'Ivoire", 'alternative_country_name': "Cote d\'Ivoire", 'country_code': 'CI', 'global_region': 'Sub-Saharan Africa'}) %}
-{% endif %}
+{# 
+Postgres requires double single quotes '' to escape a single quote in a string
+The other warehouses use a backslash \ to escape a single quote in a string
+#}
 
 with create_country_mapping as (
     {%- for country in country_mapping %}
@@ -277,6 +283,7 @@ with create_country_mapping as (
         '{{ country.alternative_country_name | replace("'", "\\'") if target.type != "postgres" else country.alternative_country_name | replace("'", "''") }}' as alternative_country_name,
         '{{ country.country_code }}' as country_code,
         '{{ country.global_region }}' as global_region
+
     {% if not loop.last %} union all {% endif %}
     {% endfor %}
 ), 

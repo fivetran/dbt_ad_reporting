@@ -336,7 +336,8 @@ map_countries_and_codes as (
     select 
         standardize_country_names.*,
         coalesce(standardize_country_names.standardized_alt_country_name, country_mapping.country_name) as standardized_country,
-        coalesce(standardize_country_names.country_code, country_mapping.country_code) as standardized_country_code
+        coalesce(standardize_country_names.country_code, country_mapping.country_code) as standardized_country_code,
+        country_mapping.global_region
 
     from standardize_country_names 
     left join country_mapping
@@ -356,6 +357,7 @@ aggregated as (
         campaign_name,
         standardized_country as country,
         standardized_country_code as country_code,
+        global_region,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
         sum(spend) as spend,
@@ -365,7 +367,7 @@ aggregated as (
         {{ ad_reporting_persist_pass_through_columns(pass_through_variable='ad_reporting__country_passthrough_metrics', transform = 'sum', alias_fields=['conversions', 'conversions_value']) }}
 
     from map_countries_and_codes
-    {{ dbt_utils.group_by(9) }}
+    {{ dbt_utils.group_by(10) }}
 )
 
 select *

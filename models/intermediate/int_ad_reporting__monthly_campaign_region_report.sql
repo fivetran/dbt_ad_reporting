@@ -6,7 +6,7 @@
 {% do include_list.append('snapchat_ads') if var('snapchat_ads__using_campaign_region_report', false) %}
 {% do include_list.append('twitter_ads') if var('twitter_ads__using_campaign_regions_report', false) %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list)%}
+{% set enabled_packages = get_enabled_packages(include=include_list) %}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with 
@@ -57,7 +57,6 @@ microsoft_ads as (
 {% endif %}
 
 {% if 'pinterest_ads' in enabled_packages %}
-{# Pinterest Ads labels the United States as U.S. #}
 pinterest_ads as (
 
     {{ get_query(
@@ -86,7 +85,8 @@ snapchat_ads as (
                 'account_name': 'ad_account_name',
                 'clicks':'swipes',
                 'conversions': 'total_conversions',
-                'conversions_value': 'conversion_purchases_value'
+                'conversions_value': 'conversion_purchases_value',
+                'region': "replace(region, 'UNKNOWN', 'Unknown')"
             },
         relation=ref('snapchat_ads__campaign_region_report')
     ) }}

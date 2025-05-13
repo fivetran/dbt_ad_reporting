@@ -202,7 +202,7 @@
     {%- endfor -%}
 {%- endif -%}
 
-{#- For country level reports and lower, add country_fields -#}
+{#- For country level reports and lower (currently not passing to region), add country_fields and country_passthrough_metrics -#}
 {%- if report_type == 'country' -%}
     {%- for country_field in country_fields -%}
         {%- if var('ad_reporting__country_passthrough_metrics', []) -%}
@@ -219,7 +219,7 @@
     {%- endfor -%}
 {%- endif -%}
 
-{#- For region-level reports, add search_fields and search_passthrough_metrics (if any) -#}
+{#- For region-level reports, add region_fields and region_passthrough_metrics (if any) -#}
 {%- if report_type == 'region' -%}
     {%- if var('ad_reporting__region_passthrough_metrics',[]) -%}
         {%- set region_passthrough_metrics_values = [] -%}

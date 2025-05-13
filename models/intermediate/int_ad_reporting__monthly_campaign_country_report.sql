@@ -8,7 +8,7 @@
 {% do include_list.append('tiktok_ads') if var('tiktok_ads__using_campaign_country_report', true) %}
 {% do include_list.append('twitter_ads') if var('twitter_ads__using_campaign_locations_report', false) %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list)%}
+{% set enabled_packages = get_enabled_packages(include=include_list) %}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with 
@@ -23,7 +23,7 @@ facebook_ads as (
                 'campaign_name': "'Account-level'",
                 'conversions_value': 'null',
                 'country': 'null',
-                'country_code': 'country'
+                'country_code': "replace(country, 'unknown', 'Unknown')"
             },
         relation=ref('facebook_ads__country_report')
     ) }}
@@ -111,7 +111,7 @@ snapchat_ads as (
         field_mapping={
                 'account_id': 'ad_account_id',
                 'account_name': 'ad_account_name',
-                'clicks':'swipes',
+                'clicks': 'swipes',
                 'conversions': 'total_conversions',
                 'conversions_value': 'conversion_purchases_value',
                 'country': 'null',
