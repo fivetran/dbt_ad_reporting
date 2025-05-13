@@ -17,8 +17,14 @@ with base as (
     from {{ ref('int_ad_reporting__monthly_campaign_country_report') }}
 ),
 
+country_mapping as (
+
+    select *
+    from {{ ref('int_ad_reporting__country_mapping') }}
+),
+
 {# May want to import this in via a macro but let's get it working first #}
-{% set country_mapping = [
+{# {% set country_mapping = [
     {'country_name': 'Afghanistan', 'alternative_country_name': '', 'country_code': 'AF', 'global_region': 'Southern Asia'},
     {'country_name': 'Åland Islands', 'alternative_country_name': '', 'country_code': 'AX', 'global_region': 'Northern Europe'},
     {'country_name': 'Albania', 'alternative_country_name': '', 'country_code': 'AL', 'global_region': 'Southern Europe'},
@@ -312,6 +318,30 @@ map_countries_and_codes as (
 
     from standardize_country_names 
 
+), #}
+
+standardize_country_names as (
+
+    select 
+        base.*,
+        coalesce(country_mapping.country_name, base.country) as standardized_alt_country_name
+
+    from base 
+    left join country_mapping
+        on base.country = country_mapping.alternative_country_name
+),
+
+map_countries_and_codes as (
+
+    select 
+        standardize_country_names.*,
+        coalesce(standardize_country_names.standardized_alt_country_name, country_mapping.country_name) as standardized_country,
+        coalesce(standardize_country_names.country_code, country_mapping.country_code) as standardized_country_code
+
+    from standardize_country_names 
+    left join country_mapping
+        on standardize_country_names.standardized_alt_country_name = country_mapping.country_name
+        or standardize_country_names.country_code = country_mapping.country_code
 ),
 
 aggregated as (

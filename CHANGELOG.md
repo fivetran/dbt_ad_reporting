@@ -3,7 +3,7 @@
 ## Todo
 - add Google Ads to search term report
 - country report with standardization of country names
-- region report
+- region report (not reddit or tiktok)
 
 ## Bug Fixes
 - Resolved a CLI Warning caused by extraneous `endmacro` blocks. ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))

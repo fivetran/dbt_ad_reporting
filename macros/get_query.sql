@@ -8,9 +8,8 @@
 {%- set url_fields = ['base_url', 'url_host', 'url_path', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] -%}
 {%- set keyword_fields = ['keyword_id','keyword_text','keyword_match_type'] -%}
 {%- set search_fields = ['keyword_id', 'keyword_text', 'search_match_type', 'search_query'] -%}
-
 {%- set country_fields = ['country', 'country_code'] -%}
-{%- set region_fields = ['region_id', 'region'] -%}
+{%- set region_fields = ['region'] -%}
 
 {%- if field_mapping is not none -%}
 {%- set fields = field_mapping.keys() -%}
@@ -204,9 +203,9 @@
 {%- endif -%}
 
 {#- For country level reports and lower, add country_fields -#}
-{%- if report_type in ['country', 'region'] -%}
+{%- if report_type == 'country' -%}
     {%- for country_field in country_fields -%}
-        {%- if report_type == 'country' and var('ad_reporting__country_passthrough_metrics', []) -%}
+        {%- if var('ad_reporting__country_passthrough_metrics', []) -%}
             {% set country_passthrough_metric_array_of_dicts = var('ad_reporting__country_passthrough_metrics') %}
                 {%- for country_passthrough_metric_dict in country_passthrough_metric_array_of_dicts -%}
                     {%- for country_passthrough_metric_value in country_passthrough_metric_dict.values() -%}
