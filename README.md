@@ -552,7 +552,30 @@ vars:
   twitter_ads__campaign_locations_report_passthrough_metrics:
     - name: cpm 
       transform_sql: "null"
+  ad_reporting__country_passthrough_metrics:
+    - name: cpm
+
   # Region Report Passthrough Metrics
+  facebook_ads__demographics_region_passthrough_metrics:
+    - name: cpm
+  linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  microsoft_ads__geographic_passthrough_metrics:
+    - name: average_cpm
+      alias: cpm
+  pinterest__pin_promotion_targeting_report_passthrough_metrics:
+    - name: cpm_in_micro_dollar
+      alias: cpm
+      transform_sql: cpm / 1000000.0
+  snapchat_ads__campaign_daily_region_report_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  twitter_ads__campaign_regions_report_passthrough_metrics:
+    - name: cpm 
+      transform_sql: "null"
+  ad_reporting__region_passthrough_metrics:
+    - name: cpm
 ```
 
 >**Note**: Please make sure to use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, `spend`, `conversions`, and `conversions_value`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.

@@ -26,11 +26,11 @@ aggregated as (
         campaign_id,
         campaign_name,
         region,
-        sum(clicks) as clicks,
-        sum(impressions) as impressions,
-        sum(spend) as spend,
-        sum(conversions) as conversions,
-        sum(conversions_value) as conversions_value
+        sum(coalesce(clicks, 0)) as clicks,
+        sum(coalesce(impressions, 0)) as impressions,
+        sum(coalesce(spend, 0)) as spend,
+        sum(coalesce(conversions, 0)) as conversions,
+        sum(coalesce(conversions_value, 0)) as conversions_value
 
         {{ ad_reporting_persist_pass_through_columns(pass_through_variable='ad_reporting__country_passthrough_metrics', transform = 'sum', alias_fields=['conversions', 'conversions_value']) }}
 

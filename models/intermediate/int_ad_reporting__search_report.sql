@@ -59,7 +59,6 @@ amazon_ads as (
 ), 
 {% endif %}
 
-{# I currently don't have the keyword_id. #}
 {% if 'google_ads' in enabled_packages and var('google_ads__using_search_term_keyword_stats', True) %}
 google_ads as (
 
