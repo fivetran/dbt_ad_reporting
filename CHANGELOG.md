@@ -65,10 +65,24 @@
 | stg_twitter_ads__campaign_regions_report | New Staging Model |   |   |  Uses `campaign_regions_report` source table  |
 | stg_twitter_ads__campaign_regions_report_tmp | New Staging Model |   |   | Uses `campaign_regions_report` source table   |
 
-## Todo
-- add Google Ads to search term report
-- country report with standardization of country names
-- region report (not reddit or tiktok)
+## Feature Updates
+### Google Ads Support in Search Report
+- Google Ads search term report data is now included, by default, in `ad_reporting__search_report`. This leverages the `search_term_keyword_stats` source table from the Google Ads connector.
+  - Transformations related to `search_term_keyword_stats` can be disabled by using the new `google_ads__using_search_term_keyword_stats` variable. See the Google Ads [README](https://github.com/fivetran/dbt_google_ads?tab=readme-ov-file#disable-search-term-keyword-stats) for more details.
+- Introduced the `google_ads__search_term_keyword_stats_passthrough_metrics` variable, which can be used to pass through additional metrics fields from the `search_term_keyword_stats` report to downstream models.
+
+### New Country and Geographic Region Based Campaign Reports
+- Added two new end models: `ad_reporting__monthly_campaign_country_report` and `ad_reporting__monthly_campaign_region_report`, which both reflect monthly campaign performance across different geographies. 
+  - The country names in `ad_reporting__monthly_campaign_country_report` are standardized to align with official ISO-3166 names. Greater *global* region names (ex: Southern Asia) are also included and leveraged from [lukes/ISO-3166-Countries-with-Regional-Codes](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes).
+- The platforms included in these geo-based reports are:
+  - Facebook Ads
+  - Linkedin Ads
+  - Microsoft Ads
+  - Pinterest Ads
+  - Reddit Ads (not in the region report)
+  - Snapchat Ads
+  - TikTok Ads (not in the region report)
+  - Twitter Ads
 
 ## Bug Fixes
 - Resolved a CLI Warning caused by extraneous `endmacro` blocks. ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))
@@ -76,6 +90,7 @@
 ## Under the Hood
 - Updated search report data validation tests to include Google Ads data.
 - Added data validation tests for the new country and region reports.
+- `get_query` macro updated to support country and region reports.
 
 ## Contributors
 - [@QMalcolm](https://github.com/QMalcolm) ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))

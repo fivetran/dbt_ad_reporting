@@ -399,6 +399,10 @@ vars:
     - name: interactions
   ad_reporting__search_passthrough_metrics:
     - name: local_spend_amount
+  ad_reporting__country_passthrough_metrics:
+    - name: video_views
+  ad_reporting__region_passthrough_metrics:
+    - name: billed_engagements
 ```
 
 It is important to ensure that if you want to configure a passthrough metric for an ad reporting end model, that metric **must** be included in all of your upstream variables. Additionally, the name of the metric **must** be consistent across platforms. If a certain upstream platform does not include the metric you **must** include a `transform_sql` argument to pass a null value through (see below for examples). The following configuration is an example when using the Microsoft Ads, Apple Search Ads, Google Ads, Snapchat Ads, TikTok Ads, and Reddit Ads platforms within a `dbt_project.yml` file:
@@ -447,7 +451,6 @@ vars:
     - name: shares
       alias: total_shares
   reddit_ads__campaign_passthrough_metrics:
-      transform_sql: "null"
     - name: total_shares
       transform_sql: "null"
   ad_reporting__campaign_passthrough_metrics: 
@@ -519,9 +522,37 @@ vars:
   apple_search_ads__search_term_passthrough_metrics:
     - name: local_spend_amount
       transform_sql: "cast(local_spend_amount as int64)"
+  google_ads__search_term_keyword_stats_passthrough_metrics:
+    - name: local_spend_amount
       transform_sql: "null"
   ad_reporting__search_passthrough_metrics:
     - name: local_spend_amount
+
+  # Country Report Passthrough Metrics
+  facebook_ads__demographics_country_passthrough_metrics:
+    - name: cpm
+  linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  microsoft_ads__geographic_passthrough_metrics:
+    - name: average_cpm
+      alias: cpm
+  pinterest__pin_promotion_targeting_report_passthrough_metrics:
+    - name: cpm_in_micro_dollar
+      alias: cpm
+      transform_sql: cpm / 1000000.0
+  reddit_ads__campaign_country_passthrough_metrics:
+    - name: cpm 
+      transform_sql: "null"
+  snapchat_ads__campaign_daily_country_report_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  tiktok_ads__campaign_country_report_passthrough_metrics:
+    - name: cpm 
+  twitter_ads__campaign_locations_report_passthrough_metrics:
+    - name: cpm 
+      transform_sql: "null"
+  # Region Report Passthrough Metrics
 ```
 
 >**Note**: Please make sure to use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, `spend`, `conversions`, and `conversions_value`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.

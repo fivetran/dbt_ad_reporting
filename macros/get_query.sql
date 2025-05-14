@@ -202,7 +202,7 @@
     {%- endfor -%}
 {%- endif -%}
 
-{#- For country level reports and lower (currently not passing to region), add country_fields and country_passthrough_metrics -#}
+{#- For country level reports and lower (currently not passing to region but perhaps in the future), add country_fields and country_passthrough_metrics -#}
 {%- if report_type == 'country' -%}
     {%- for country_field in country_fields -%}
         {%- if var('ad_reporting__country_passthrough_metrics', []) -%}
