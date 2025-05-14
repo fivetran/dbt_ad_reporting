@@ -6,5 +6,4 @@
     {%-set dt = date if date else ad_reporting.fivetran_today(tz) -%}
     {%- set n = n|int -%}
     cast({{ dbt.dateadd('day', -1 * n, dt) }} as date)
-    {%- endmacro -%}
 {%- endmacro -%}
