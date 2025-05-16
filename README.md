@@ -588,8 +588,6 @@ vars:
   ad_reporting__url_report__using_null_filter: False # Default is True.
 ```
 
-</details>
-
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connections.
 > IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
@@ -598,7 +596,8 @@ If an individual source table has a different name than the package expects, add
 vars:
     <default_source_table_name>_identifier: your_table_name 
 ```
-    
+
+</details>
 <br>
 
 ### (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
@@ -658,7 +657,7 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 
 ## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
-> **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
+> **If you have any of these dependent packages in your own `packages.yml` we highly recommend you remove them to ensure there are no package version conflicts.**
 
 ```yml
 packages: 
@@ -734,6 +733,9 @@ packages:
   - package: fivetran/twitter_ads_source
     version: [">=0.9.0", "<0.10.0"]
 ```
+
+### Other Dependencies
+The country names in `ad_reporting__monthly_campaign_country_report` are standardized to align with official ISO-3166 names. Greater *global* region names (ex: Southern Asia) are also included and leveraged from [lukes/ISO-3166-Countries-with-Regional-Codes](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes).s
 
 ## How is this package maintained and can I contribute?
 ### Package Maintenance
