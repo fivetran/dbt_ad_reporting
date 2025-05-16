@@ -54,7 +54,7 @@ aggregated as (
     
     select
         source_relation,
-        {{ dbt.date_trunc("month", "date_day") }} as date_month,
+        cast({{ dbt.date_trunc("month", "date_day") }} as date) as date_month,
         platform,
         account_id,
         account_name,

@@ -193,7 +193,7 @@
     {'country_name': 'Portugal', 'alternative_country_name': '', 'country_code': 'PT', 'global_region': 'Southern Europe'},
     {'country_name': 'Puerto Rico', 'alternative_country_name': '', 'country_code': 'PR', 'global_region': 'Latin America and the Caribbean'},
     {'country_name': 'Qatar', 'alternative_country_name': '', 'country_code': 'QA', 'global_region': 'Western Asia'},
-    {'country_name': 'Réunion', 'alternative_country_name': '', 'country_code': 'RE', 'global_region': 'Sub-Saharan Africa'},
+    {'country_name': 'Réunion', 'alternative_country_name': 'Reunion', 'country_code': 'RE', 'global_region': 'Sub-Saharan Africa'},
     {'country_name': 'Romania', 'alternative_country_name': '', 'country_code': 'RO', 'global_region': 'Eastern Europe'},
     {'country_name': 'Russian Federation', 'alternative_country_name': 'Russia', 'country_code': 'RU', 'global_region': 'Eastern Europe'},
     {'country_name': 'Rwanda', 'alternative_country_name': '', 'country_code': 'RW', 'global_region': 'Sub-Saharan Africa'},

@@ -87,6 +87,8 @@
   - Twitter Ads
 - These new reports include their respective [passthrough columns](https://github.com/fivetran/dbt_ad_reporting?tab=readme-ov-file#adding-custom-metrics-to-final-reports) and [model enabling/disabling variables](https://github.com/fivetran/dbt_ad_reporting?tab=readme-ov-file#enabledisable-specific-reports-within-platforms).
 
+> See relevant entries in the [DECISIONLOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md) for these reports.
+
 ## Bug Fixes
 - Resolved a CLI Warning caused by extraneous `endmacro` blocks. ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))
 
@@ -95,6 +97,7 @@
 - Added data validation tests for the new country and region reports.
 - `get_query` macro updated to support country and region reports.
 - Updated LICENSE.
+- Updated the maintainer PR template.
 
 ## Contributors
 - [@QMalcolm](https://github.com/QMalcolm) ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))

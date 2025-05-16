@@ -22,5 +22,3 @@ models:
     intermediate:
       +materialized: ephemeral
       +schema: int_ad_reporting
-      utils:
-        +materialized: table # just for testing
