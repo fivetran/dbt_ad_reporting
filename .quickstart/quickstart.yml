@@ -54,8 +54,44 @@ table_variables:
   pinterest__using_keywords:
     - keyword_history
     - keyword_report
+  pinterest__using_pin_promotion_targeting_report:
+    - pin_promotion_targeting_report
+  pinterest__using_targeting_geo:
+    - targeting_geo
+  pinterest__using_targeting_geo_region:
+    - targeting_geo_region
   twitter_ads__using_keywords:
     - line_item_keywords_report
+  twitter_ads__using_campaign_locations_report:
+    - campaign_locations_report
+  twitter_ads__using_campaign_regions_report:
+    - campaign_regions_report
+  google_ads__using_search_term_keyword_stats:
+    - search_term_keyword_stats
+  facebook_ads__using_demographics_country:
+    - demographics_country
+    - demographics_country_actions
+  facebook_ads__using_demographics_region:
+    - demographics_region
+    - demographics_region_actions
+  linkedin_ads__using_geo:
+    - geo
+  linkedin_ads__using_monthly_ad_analytics_by_member_country:
+    - monthly_ad_analytics_by_member_country
+  linkedin_ads__using_monthly_ad_analytics_by_member_region:
+    - monthly_ad_analytics_by_member_region
+  microsoft_ads__using_geographic_daily_report:
+    - geographic_performance_daily_report
+  reddit_ads__using_campaign_country_report:
+    - campaign_country_report
+  reddit_ads__using_campaign_country_conversions_report:
+    - campaign_country_conversions_report
+  snapchat_ads__using_campaign_country_report:
+    - campaign_geo_country_daily_report
+  snapchat_ads__using_campaign_region_report:  
+    - campaign_geo_region_daily_report
+  tiktok_ads__using_campaign_country_report:
+    - campaign_country_report
 
 destination_configurations:
   databricks:
@@ -72,5 +108,7 @@ public_models: [
   "ad_reporting__ad_report",
   "ad_reporting__keyword_report",
   "ad_reporting__search_report",
-  "ad_reporting__url_report"
+  "ad_reporting__url_report",
+  "ad_reporting__monthly_campaign_country_report",
+  "ad_reporting__monthly_campaign_region_report"
 ]
