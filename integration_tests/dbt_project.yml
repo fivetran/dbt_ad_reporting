@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.13.0'
+version: '1.14.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -15,6 +15,16 @@ models:
 
 vars:
   ad_reporting__metricflow_time_spine_enabled: true
+
+  # IMPORTANT IMPORTANT: COMMENT THESE IN FOR DOCS GENERATION AND VALIDATION TESTS!!!!!! 
+  # facebook_ads__using_demographics_country: true
+  # facebook_ads__using_demographics_region: true
+  # microsoft_ads__using_geographic_daily_report: true 
+  # snapchat_ads__using_campaign_country_report: true 
+  # snapchat_ads__using_campaign_region_report: true
+  # twitter_ads__using_campaign_locations_report: true
+  # twitter_ads__using_campaign_regions_report: true
+  
   # Comment out passthroughs when generating docs!!!
   ############################ START PASSTHROUGHS ############################
   # ad_reporting__ad_passthrough_metrics:
@@ -420,6 +430,10 @@ vars:
     facebook_ads_basic_ad_action_values_identifier: "facebook_ads_basic_ad_action_values_data"
     facebook_ads_campaign_history_identifier: "facebook_ads_campaign_history_data"
     facebook_ads_creative_history_identifier: "facebook_ads_creative_history_data"
+    facebook_ads_demographics_country_identifier: "facebook_ads_demographics_country_data"
+    facebook_ads_demographics_country_actions_identifier: "facebook_ads_demographics_country_actions_data"
+    facebook_ads_demographics_region_identifier: "facebook_ads_demographics_region_data"
+    facebook_ads_demographics_region_actions_identifier: "facebook_ads_demographics_region_actions_data"
 
   google_ads_source:
     google_ads_schema: ad_reporting_integration_tests_8
@@ -433,6 +447,7 @@ vars:
     google_ads_ad_group_stats_identifier: "google_ads_ad_group_stats_data"
     google_ads_campaign_stats_identifier: "google_ads_campaign_stats_data"
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
+    google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
 
   linkedin_source:
     linkedin_ads_schema: ad_reporting_integration_tests_8
@@ -442,6 +457,9 @@ vars:
     linkedin_ads_campaign_history_identifier: "linkedin_ad_campaign_history_data"
     linkedin_ads_creative_history_identifier: "linkedin_ad_creative_history_data"
     linkedin_ads_ad_analytics_by_campaign_identifier: "linkedin_ad_analytics_by_campaign_data"
+    linkedin_ads_geo_identifier: "linkedin_geo_data"
+    linkedin_ads_monthly_ad_analytics_by_member_country_identifier: "linkedin_monthly_ad_analytics_by_member_country_data"
+    linkedin_ads_monthly_ad_analytics_by_member_region_identifier: "linkedin_monthly_ad_analytics_by_member_region_data"
 
   microsoft_ads_source:
     microsoft_ads_schema: ad_reporting_integration_tests_8
@@ -456,6 +474,7 @@ vars:
     microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
     microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
     microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
+    microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
   pinterest_source:
     pinterest_schema: ad_reporting_integration_tests_8
@@ -469,6 +488,9 @@ vars:
     pinterest_ads_campaign_report_identifier: "pinterest_campaign_report_data"
     pinterest_ads_advertiser_history_identifier: "pinterest_advertiser_history_data"
     pinterest_ads_advertiser_report_identifier: "pinterest_advertiser_report_data"
+    pinterest_ads_pin_promotion_targeting_report_identifier: "pinterest_pin_promotion_targeting_report_data"
+    pinterest_ads_targeting_geo_identifier: "pinterest_targeting_geo_data"
+    pinterest_ads_targeting_geo_region_identifier: "pinterest_targeting_geo_region_data"
 
   reddit_ads_source:
     reddit_ads_schema: ad_reporting_integration_tests_8
@@ -484,6 +506,8 @@ vars:
     reddit_ads_ad_conversions_report_identifier: "reddit_ads_ad_conversions"
     reddit_ads_ad_group_conversions_report_identifier: "reddit_ads_ad_group_conversions"
     reddit_ads_campaign_conversions_report_identifier: "reddit_ads_campaign_conversions"
+    reddit_ads_campaign_country_report_identifier: "reddit_ads_campaign_country_report_data"
+    reddit_ads_campaign_country_conversions_report_identifier: "reddit_ads_campaign_country_conversions_report_data"
 
   snapchat_ads_source:
     snapchat_ads_schema: ad_reporting_integration_tests_8
@@ -496,6 +520,8 @@ vars:
     snapchat_ads_campaign_hourly_report_identifier: "snapchat_campaign_hourly_report_data"
     snapchat_ads_creative_history_identifier: "snapchat_creative_history_data"
     snapchat_ads_creative_url_tag_history_identifier: "snapchat_creative_url_tag_history_data"
+    snapchat_ads_campaign_geo_region_daily_report_identifier: "snapchat_campaign_geo_region_daily_report_data"
+    snapchat_ads_campaign_geo_country_daily_report_identifier: "snapchat_campaign_geo_country_daily_report_data"
 
   tiktok_ads_source:
     tiktok_ads_schema: ad_reporting_integration_tests_8
@@ -506,6 +532,7 @@ vars:
     tiktok_ads_ad_report_hourly_identifier: "tiktok_ad_report_hourly_data"
     tiktok_ads_adgroup_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
+    tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
 
   twitter_ads_source:
     twitter_ads_schema: ad_reporting_integration_tests_8
@@ -520,9 +547,13 @@ vars:
     twitter_ads_line_item_report_identifier: "twitter_line_item_report_data"
     twitter_ads_account_report_identifier: "twitter_account_report_data"
     twitter_ads_line_item_keywords_report_identifier: "twitter_line_item_keywords_report_data"
+    twitter_ads_campaign_locations_report_identifier: "twitter_campaign_locations_report_data"
+    twitter_ads_campaign_regions_report_identifier: "twitter_campaign_regions_report_data"
 
 seeds:
   ad_reporting_integration_tests:
+    +docs:
+      show: false
     +quote_columns: "{{ true if target.type in ('redshift') else false }}"
 
     ### Microsoft Seeds
@@ -616,6 +647,21 @@ seeds:
         last_modified_time: "timestamp"
         modified_time: "timestamp"
         spend: "float"
+    microsoft_ads_geographic_performance_daily_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        location_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks: "integer"
+        impressions: "integer"
+        spend: "numeric"
+        conversions_qualified: "integer"
+        conversions: "integer"
+        revenue: "numeric"
+        all_conversions_qualified: "integer"
+        all_conversions: "integer"
+        all_revenue: "numeric"
 
     ### LinkedIn Seeds    
     
@@ -649,6 +695,14 @@ seeds:
         created_time: timestamp
         last_modified_time: timestamp
         account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    linkedin_monthly_ad_analytics_by_member_country_data:
+      +column_types:
+        cost_in_local_currency: numeric
+        cost_in_usd: numeric
+    linkedin_monthly_ad_analytics_by_member_region_data:
+      +column_types:
+        cost_in_local_currency: numeric
+        cost_in_usd: numeric
 
     ### Twitter Seeds
 
@@ -764,6 +818,9 @@ seeds:
         ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    pinterest_pin_promotion_targeting_report_data:
+      +column_types:
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         
     ### Google Seeds
     google_ads_ad_group_stats_data:
@@ -854,6 +911,11 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_search_term_keyword_stats_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     
     ### Facebook Seeds
     facebook_ads_creative_history_data:
@@ -892,7 +954,21 @@ seeds:
         inline: "float"
         _1_d_view: "float"
         _7_d_click: "float"
-        
+    facebook_ads_demographics_country_actions_data:
+      +column_types:
+        value: "float"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_region_actions_data:
+      +column_types:
+        value: "float"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_country_data:
+      +column_types:
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_region_data:
+      +column_types:
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+
     ### Snapchat Seeds
 
     snapchat_ad_hourly_report_data:
@@ -976,4 +1052,10 @@ seeds:
     reddit_ads_campaign_report_data:
       +column_types:
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_campaign_country_conversions_report_data:
+      +column_types:
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    reddit_ads_campaign_country_report_data:
+      +column_types:
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
