@@ -1,6 +1,6 @@
 # dbt_ad_reporting v1.15.0
 
-[PR #149](https://github.com/fivetran/dbt_ad_reporting/pull/149) includes the following updates:
+[PR #150](https://github.com/fivetran/dbt_ad_reporting/pull/150) includes the following updates:
 
 ## Breaking Change for dbt Core < 1.9.6
 > *Note: This is not relevant to Fivetran Quickstart users.*
