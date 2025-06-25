@@ -1,3 +1,37 @@
+# dbt_ad_reporting v1.15.0
+
+[PR #150](https://github.com/fivetran/dbt_ad_reporting/pull/150) includes the following updates:
+
+## Breaking Change for dbt Core < 1.9.6
+> *Note: This is not relevant to Fivetran Quickstart users.*
+
+Migrated `freshness` from a top-level source property to a source `config` in alignment with [recent updates](https://github.com/dbt-labs/dbt-core/issues/11506) from dbt Core. This will resolve the following deprecation warning that users running dbt >= 1.9.6 may have received:
+
+```
+[WARNING]: Deprecated functionality
+Found `freshness` as a top-level property of `<ad platform>` in file
+`models/src_<ad platform>.yml`. The `freshness` top-level property should be moved
+into the `config` of `<ad platform>`.
+```
+
+**IMPORTANT:** Users running dbt Core < 1.9.6 will not be able to utilize freshness tests in this release or any subsequent releases, as older versions of dbt will not recognize freshness as a source `config` and therefore not run the tests.
+
+If you are using dbt Core < 1.9.6 and want to continue running freshness tests on different Ad Platform sources, please elect **one** of the following options:
+  1. (Recommended) Upgrade to dbt Core >= 1.9.6
+  2. Do not upgrade your installed version of the `ad_reporting` package. Pin your dependency on v1.14.0 in your `packages.yml` file.
+  3. Utilize a dbt [override](https://docs.getdbt.com/reference/resource-properties/overrides) to overwrite the each ad source and apply freshness via the [old](https://github.com/fivetran/dbt_facebook_ads_source/blob/v0.9.0/models/src_facebook_ads.yml#L11-L13) top-level property route. This will require you to copy and paste the entirety of the `src_<ad platform>.yml` file ([example](https://github.com/fivetran/dbt_facebook_ads_source/blob/v0.9.0/models/src_facebook_ads.yml#L4-L374)) and add an `overrides: <ad platform source package name>` property. See the individual package CHANGELOGs for more details
+    - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Google Ads](https://github.com/fivetran/dbt_google_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Twitter Ads](https://github.com/fivetran/dbt_twitter/CHANGELOG.md#breaking-change-for-dbt-core--196)
+
 # dbt_ad_reporting v1.14.0
 
 [PR #144](https://github.com/fivetran/dbt_ad_reporting/pull/144) includes the following updates:
