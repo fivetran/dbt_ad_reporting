@@ -2,7 +2,7 @@
 [PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
 
 ## Reddit Ads: Breaking Change
-- In `dbt_reddit_ads_source`, the source used in `stg_reddit_ads__account_tmp` was updated from `ACCOUNT` to `BUSINESS_ACCOUNT`.
+- To align with the [Fivetran Reddit Ads Connector schema](https://fivetran.com/docs/connectors/applications/reddit-ads#schemainformation), updated the source referenced by `stg_reddit_ads__account_tmp` from `ACCOUNT` to `BUSINESS_ACCOUNT` in `dbt_reddit_ads_source`.
 - Added the `reddit_ads__using_business_account` variable to control which source is used. 
   - For Quickstart users, this variable is set automatically.
   - For dbt Core users, this variable is `true` by default, but you can set the variable to `false` in your `dbt_project.yml` to fall back to using `ACCOUNT` instead of `BUSINESS_ACCOUNT`.
