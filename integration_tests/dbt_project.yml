@@ -500,6 +500,7 @@ vars:
     reddit_ads_ad_report_identifier: "reddit_ads_ad_report_data"
     reddit_ads_ad_group_identifier: "reddit_ads_ad_group_data"
     reddit_ads_ad_group_report_identifier: "reddit_ads_ad_group_report_data"
+    reddit_ads_business_account_identifier: "reddit_ads_business_account_identifier"
     reddit_ads_campaign_identifier: "reddit_ads_campaign_data"
     reddit_ads_campaign_report_identifier: "reddit_ads_campaign_report_data"
     reddit_ads_account_conversions_report_identifier: "reddit_ads_account_conversions"
