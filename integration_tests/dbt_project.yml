@@ -52,39 +52,39 @@ vars:
     - name: sales_30_d
       alias: sales_30_d_alias
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: videos
-      tranform_sql: "null"
+      transform_sql: "null"
   amazon_ads__campaign_passthrough_metrics:
     - name: purchases_30_d
       alias: conversions
     - name: sales_30_d
       alias: sales_30_d_alias
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: videos
-      tranform_sql: "null"
+      transform_sql: "null"
   amazon_ads__ad_group_passthrough_metrics:
     - name: purchases_30_d
       alias: conversions
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: videos
-      tranform_sql: "null"
+      transform_sql: "null"
   amazon_ads__targeting_keyword_passthrough_metrics:
     - name: purchases_30_d
       alias: conversions
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: videos
-      tranform_sql: "null"
+      transform_sql: "null"
   amazon_ads__search_term_ad_keyword_passthrough_metrics:
     - name: purchases_30_d
       alias: conversions
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: videos
-      tranform_sql: "null"
+      transform_sql: "null"
 
   apple_search_ads__ad_group_passthrough_metrics:
     - name: conversions
@@ -339,7 +339,7 @@ vars:
     - name: conversion
       alias: conversions
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: video_views_p_100
       alias: videos
   tiktok_ads__campaign_hourly_passthrough_metrics:
@@ -347,7 +347,7 @@ vars:
     - name: conversion
       alias: conversions
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: video_views_p_100
       alias: videos
   tiktok_ads__ad_group_hourly_passthrough_metrics:
@@ -355,7 +355,7 @@ vars:
     - name: conversion
       alias: conversions
     - name: installs
-      tranform_sql: "null"
+      transform_sql: "null"
     - name: video_views_p_100
       alias: videos
 
