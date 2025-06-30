@@ -1020,6 +1020,7 @@ seeds:
 
 
     ### Reddit Ads Seeds
+    
     reddit_ads_account_conversions:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
