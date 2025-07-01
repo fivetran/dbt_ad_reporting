@@ -1,3 +1,17 @@
+# dbt_ad_reporting v1.16.0
+[PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
+
+## Reddit Ads: Breaking Change
+- To align with the [Fivetran Reddit Ads Connector schema](https://fivetran.com/docs/connectors/applications/reddit-ads#schemainformation), updated the source referenced by `stg_reddit_ads__account_tmp` from `ACCOUNT` to `BUSINESS_ACCOUNT` in `dbt_reddit_ads_source`.
+- Added the `reddit_ads__using_business_account` variable to control which source is used. 
+  - For Quickstart users, this variable is set automatically.
+  - For dbt Core users, this variable is `true` by default, but you can set the variable to `false` in your `dbt_project.yml` to fall back to using `ACCOUNT` instead of `BUSINESS_ACCOUNT`.
+  - See the [v0.6.0 `dbt_reddit_ads_source` release notes](https://github.com/fivetran/dbt_reddit_ads_source/releases/tag/v0.6.0) for more information.
+
+## Under the Hood
+- Added the `reddit_ads__using_business_account` variable to `quickstart.yml`.
+- Added seed file `reddit_ads_business_account_data`.
+- Updated the seed column types in `integration_tests/dbt_project.yml`.
 # dbt_ad_reporting v1.15.0
 
 [PR #150](https://github.com/fivetran/dbt_ad_reporting/pull/150) includes the following updates:

@@ -82,6 +82,8 @@ table_variables:
     - monthly_ad_analytics_by_member_region
   microsoft_ads__using_geographic_daily_report:
     - geographic_performance_daily_report
+  reddit_ads__using_business_account:
+    - business_account 
   reddit_ads__using_campaign_country_report:
     - campaign_country_report
   reddit_ads__using_campaign_country_conversions_report:

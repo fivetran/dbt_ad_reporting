@@ -104,7 +104,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.15.0", "<1.16.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.16.0", "<1.17.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
@@ -220,6 +220,7 @@ vars:
   pinterest__using_targeting_geo_region: False # True by default. Disables region-based reporting
 
   # Reddit Ads
+  reddit_ads__using_business_account: false # Default is true. Will use ACCOUNT if set to false.
   reddit_ads__using_campaign_country_report: false # True by default. Disables country-based reporting
   reddit_ads__using_campaign_country_conversions_report: false # True by default. Disables country-based conversions reporting
 
@@ -710,10 +711,10 @@ packages:
     version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/reddit_ads
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/reddit_ads_source
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/snapchat_ads
     version: [">=0.10.0", "<0.11.0"]
