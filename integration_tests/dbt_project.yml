@@ -552,6 +552,8 @@ vars:
     twitter_ads_campaign_regions_report_identifier: "twitter_campaign_regions_report_data"
 
 seeds:
+  +docs:
+    show: False
   ad_reporting_integration_tests:
     +docs:
       show: false
@@ -1080,3 +1082,6 @@ seeds:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True
