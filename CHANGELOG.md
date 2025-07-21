@@ -1,3 +1,9 @@
+# dbt_ad_reporting v1.16.1
+The following updates are included in this patch release:
+
+## Under the Hood
+- Updated monthly campaign country and region models to utilize the `exclude_list` argument when evaluating enabled packages.
+
 # dbt_ad_reporting v1.16.0
 [PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
 

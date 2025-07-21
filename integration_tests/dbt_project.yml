@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.16.0'
+version: '1.16.1'
 profile: 'integration_tests'
 config-version: 2
 
@@ -17,13 +17,13 @@ vars:
   ad_reporting__metricflow_time_spine_enabled: true
 
   # IMPORTANT IMPORTANT: COMMENT THESE IN FOR DOCS GENERATION AND VALIDATION TESTS!!!!!! 
-  # facebook_ads__using_demographics_country: true
-  # facebook_ads__using_demographics_region: true
-  # microsoft_ads__using_geographic_daily_report: true 
-  # snapchat_ads__using_campaign_country_report: true 
-  # snapchat_ads__using_campaign_region_report: true
-  # twitter_ads__using_campaign_locations_report: true
-  # twitter_ads__using_campaign_regions_report: true
+  facebook_ads__using_demographics_country: true
+  facebook_ads__using_demographics_region: true
+  microsoft_ads__using_geographic_daily_report: true 
+  snapchat_ads__using_campaign_country_report: true 
+  snapchat_ads__using_campaign_region_report: true
+  twitter_ads__using_campaign_locations_report: true
+  twitter_ads__using_campaign_regions_report: true
   
   # Comment out passthroughs when generating docs!!!
   ############################ START PASSTHROUGHS ############################
