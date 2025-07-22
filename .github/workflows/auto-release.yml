@@ -10,5 +10,5 @@ jobs:
     if: |
       (github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main') ||
       github.event.label.name == 'pre-release'
-    uses: fivetran/dbt_package_automations/.github/workflows/auto-release.yml@feature/pre-release-support
+    uses: fivetran/dbt_package_automations/.github/workflows/auto-release.yml@main
     secrets: inherit
