@@ -1,3 +1,6 @@
+# dbt_ad_reporting v1.17.0
+[PR #155](https://github.com/fivetran/dbt_ad_reporting/pull/155) includes the following updates:
+
 [PR #154](https://github.com/fivetran/dbt_ad_reporting/pull/154) includes the following updates:
 
 ### Under the Hood - July 2025 Updates
