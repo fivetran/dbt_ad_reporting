@@ -7,17 +7,10 @@
 
 - Updated conditions in `.github/workflows/auto-release.yml`.
 - Added `.github/workflows/generate-docs.yml`.
-- Added `+docs: show: False` to `integration_tests/dbt_project.yml`.
 - Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
 - Updated `maintainer_pull_request_template.md` with improved checklist.
-- Refreshed README tag block:
-  - Standardized Quickstart-compatible badge set
-  - Left-aligned and positioned below the H1 title.
+- Refreshed README tag block.
 - Updated Python image version to `3.10.13` in `pipeline.yml`.
-- Added `CI_DATABRICKS_DBT_CATALOG` to:
-  - `.buildkite/hooks/pre-command` (as an export)
-  - `pipeline.yml` (under the `environment` block, after `CI_DATABRICKS_DBT_TOKEN`)
-- Added `certifi==2025.1.31` to `requirements.txt` (if missing).
 - Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
 
 # dbt_ad_reporting v1.16.0
