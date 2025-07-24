@@ -1085,3 +1085,6 @@ seeds:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True

@@ -1,11 +1,73 @@
-
-target/
-dbt_modules/
-logs/
-.DS_Store
-venv
-dbt_packages/
-env/
-integration_tests/package-lock.yml
+# dbt
+**/package-lock.yml
 package-lock.yml
-integration_tests/.DS_Store
+.dbt/
+dbt_modules/
+dbt_packages/
+logs/
+profiles.yml
+target/
+*.log
+
+# IDE files
+.idea/
+.vscode/
+*~
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# OS generated files
+**/.DS_Store
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
+Thumbs.db
+ehthumbs.db
+
+# Python
+*.egg
+*.egg-info/
+*.py[cod]
+*.so
+*$py.class
+.Python
+__pycache__/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.env
+.installed.cfg
+lib/
+lib64/
+MANIFEST
+parts/
+sdist/
+var/
+wheels/
+
+# Secrets and credentials
+.env.*
+.secrets
+credentials.json
+service-account.json
+
+# Temporary files
+.cache/
+*.temp
+*.tmp
+
+# Virtual environments
+.conda/
+.env
+.venv
+ENV/
+env/
+env.bak/
+venv/
+venv.bak/

@@ -12,13 +12,15 @@ Before marking this PR as "ready for review":
 
 ## PR Overview 
 **Package version introduced in this PR:** 
- 
+- 
+
 **This PR addresses the following Issue/Feature(s):**
 <!-- Add Issue # or internal ticket reference -->
+- 
 
 **Summary of changes:**  
 <!-- 1-2 sentences describing PR changes. -->
-
+- 
 
 ### Submission Checklist  
 - [ ] Alignment meeting with the reviewer (if needed)  
@@ -27,6 +29,7 @@ Before marking this PR as "ready for review":
   - [ ] **Validation Steps:** Check for unintentional effects (e.g., add/run consistency & integrity tests)
   - [ ] **Testing Instructions:** Confirm the change addresses the issue(s)
   - [ ] **Focus Areas:** Complex logic or queries that need extra attention  
+- [ ] Merge any relevant open PRs into this PR
 
 ### Changelog  
 <!-- Recommend drafting changelog notes, then refining via ChatGPT using:  
