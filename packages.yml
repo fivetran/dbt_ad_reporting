@@ -17,9 +17,9 @@ packages:
   - package: fivetran/microsoft_ads
     version: [">=0.12.0", "<0.13.0"]
 
-  - package: fivetran/pinterest
-    version: [">=0.13.0", "<0.14.0"]
-
+  - git: "https://github.com/tysonfoodsreporting/dbt_pinterest.git"
+    revision: "production"  # Replace with the branch or commit you want to reference
+  
   - package: fivetran/reddit_ads
     version: [">=0.6.0", "<0.7.0"]
 
