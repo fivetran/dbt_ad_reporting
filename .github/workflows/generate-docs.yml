@@ -1,0 +1,14 @@
+name: 'generate dbt docs'
+on:
+  pull_request:
+    types:
+      - labeled
+
+jobs:
+  generate-docs:
+    if: github.event.label.name == 'docs:ready'
+    uses: fivetran/dbt_package_automations/.github/workflows/generate-docs.yml@main
+    secrets: inherit
+    with:
+      # This needs to be kept a long list like this, and ': public' should not be included in the last var of the list.
+      schema_var_name: "amazon_ads_schema: 'public', apple_search_ads_schema: 'public', facebook_ads_schema: 'public', google_ads_schema: 'public', linkedin_ads_schema: 'public', microsoft_ads_schema: 'public', pinterest_schema: 'public', reddit_ads_schema: 'public', snapchat_ads_schema: 'public', tiktok_ads_schema: 'public', twitter_ads_schema"

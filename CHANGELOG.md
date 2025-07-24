@@ -1,6 +1,18 @@
 # dbt_ad_reporting v1.17.0
 [PR #155](https://github.com/fivetran/dbt_ad_reporting/pull/155) includes the following updates:
 
+[PR #154](https://github.com/fivetran/dbt_ad_reporting/pull/154) includes the following updates:
+
+### Under the Hood - July 2025 Updates
+
+- Updated conditions in `.github/workflows/auto-release.yml`.
+- Added `.github/workflows/generate-docs.yml`.
+- Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
+- Updated `maintainer_pull_request_template.md` with improved checklist.
+- Refreshed README tag block.
+- Updated Python image version to `3.10.13` in `pipeline.yml`.
+- Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
+
 # dbt_ad_reporting v1.16.0
 [PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
 
