@@ -1,5 +1,32 @@
 # dbt_ad_reporting v1.17.0
-[PR #155](https://github.com/fivetran/dbt_ad_reporting/pull/155) includes the following updates:
+[PR #156](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
+
+## Schema & Data Updates - Reddit Ads
+**16 total changes • 17 possible breaking changes**
+
+| Data Model | Change Type | Old Name | New Name | Notes |
+| --- | --- | --- | --- | --- |
+| `ad_reporting__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `ad_reporting__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `ad_reporting__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `ad_reporting__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `ad_reporting__monthly_campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `ad_reporting__url_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__url_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+
+## Breaking Change - Reddit Ads
+- Updated the datatype of the `spend` fields from `BIGINT` to `NUMERIC` to avoid rounding when converting to dollars and ensure full decimal precision is preserved.
+  - The type cast is applied in the staging layer and propagates through to the transform layer.
 
 # dbt_ad_reporting v1.16.0
 [PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
