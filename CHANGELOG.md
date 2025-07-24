@@ -1,3 +1,6 @@
+# dbt_ad_reporting v1.17.0
+[PR #155](https://github.com/fivetran/dbt_ad_reporting/pull/155) includes the following updates:
+
 # dbt_ad_reporting v1.16.0
 [PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
 
