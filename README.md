@@ -5,11 +5,14 @@
         href="https://github.com/fivetran/dbt_ad_reporting/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.6.0_<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_,<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
+    <a alt="Fivetran Quickstart Compatible"
+        href="https://fivetran.com/docs/transformations/dbt/quickstart">
+        <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
 ## What does this dbt package do?
@@ -41,14 +44,37 @@ Refer to the table below for a detailed view of final tables materialized by def
 | [ad_reporting__keyword_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__keyword_report)   | Each record represents daily metrics by keyword, ad group, campaign and account.                           |
 | [ad_reporting__search_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__search_report) | Each record represents daily metrics by search query, ad group, campaign and account.                        |
 | [ad_reporting__url_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__url_report) | Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account.                        |
+| [ad_reporting__monthly_campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__monthly_campaign_country_report) | Each record represents monthly metrics by campaign, account, and country the ads were served in. Country names are standardized to ISO-3166 names.                        |
+| [ad_reporting__monthly_campaign_region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__monthly_campaign_region_report) |  Each record represents monthly metrics by campaign, account, and region (i.e. state, province, metropolitan area) the ads were served in.                       |
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
+### Materialized Models
+
+Each Quickstart transformation job run materializes the following model counts for each selected connector. The total model count represents all staging, intermediate, and final models, materialized as `view`, `table`, or `incremental`:
+
+| **Connector** | **Model Count** |
+| ------------- | --------------- |
+| Ad Reporting | 10 |
+| [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads) | 30 |
+| [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads) | 26 |
+| [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads) | 34 |
+| [Google Ads](https://github.com/fivetran/dbt_google_ads) | 29 |
+| [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin) | 25 |
+| [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads) | 33 |
+| [Pinterest Ads](https://github.com/fivetran/dbt_pinterest) | 34 |
+| [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads) | 34 |
+| [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads) | 29 |
+| [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads) | 22 |
+| [Twitter Ads](https://github.com/fivetran/dbt_twitter) | 32 |
+
+## Timezone Considerations
+Timezone differences across ad platforms impact standardization due to pre-aggregated data and non-standard timezones. See the [Decision Log - Timezone Considerations](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md#timezone-considerations) for details.
 <!--section-end-->
 
 ## How do I use the dbt package?
 ### Step 1: Pre-Requisites
-**Connector**: Have at least one of the below supported Fivetran ad platform connectors syncing data into your warehouse. This package currently supports:
+- Have at least one of the below supported Fivetran ad platform connections syncing data into your destination. This package currently supports:
     - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
     - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
@@ -62,7 +88,7 @@ Refer to the table below for a detailed view of final tables materialized by def
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 > While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
-- **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
+- This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
 
 #### Databricks Dispatch Configuration
 If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` as well as the `calogica/dbt_expectations` then the `google_ads_source` packages respectively.
@@ -81,11 +107,10 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.11.0", "<1.12.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.17.0", "<1.18.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
-
 
 ### Step 3: Configure Database and Schema Variables
 By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
@@ -119,7 +144,7 @@ vars:
 
     snapchat_schema: snapchat_ads
     snapchat_database: your_database_name 
-    
+
     tiktok_ads_schema: tiktok_ads
     tiktok_ads_database: your_database_name
 
@@ -135,34 +160,87 @@ If you would like to disable all reporting for any specific platform, please inc
 
 ```yml
 vars:
-  ad_reporting__amazon_ads_enabled: False # Amazon Ads package includes 7 end models + 23 staging/intermediate models
-  ad_reporting__apple_search_ads_enabled: False # Apple Search Ads package includes 6 end models + 20 staging models
-  ad_reporting__facebook_ads_enabled: False # Facebook Ads package includes 6 end models + 18 staging/intermediate models
-  ad_reporting__google_ads_enabled: False # Google Ads package includes 6 end models + 20 staging models
-  ad_reporting__linkedin_ads_enabled: False # Linkedin Ad Analytics package includes 5 end models + 12 staging models
-  ad_reporting__microsoft_ads_enabled: False # Microsoft Advertising package includes 7 end models + 22 staging models
-  ad_reporting__pinterest_ads_enabled: False # Pinterest Ads package includes 6 end models + 20 staging models
-  ad_reporting__reddit_ads_enabled: False # Reddit Ads package includes 5 end models + 24 staging models
-  ad_reporting__snapchat_ads_enabled: False # Snapchat Ads package includes 5 end models + 8 staging models
-  ad_reporting__tiktok_ads_enabled: False # TikTok Ads package includes 5 end models + 14 staging models
-  ad_reporting__twitter_ads_enabled: False # Twitter Ads package includes 6 end models + 20 staging models
+  ad_reporting__amazon_ads_enabled: False
+  ad_reporting__apple_search_ads_enabled: False
+  ad_reporting__facebook_ads_enabled: False
+  ad_reporting__google_ads_enabled: False
+  ad_reporting__linkedin_ads_enabled: False
+  ad_reporting__microsoft_ads_enabled: False
+  ad_reporting__pinterest_ads_enabled: False
+  ad_reporting__reddit_ads_enabled: False
+  ad_reporting__snapchat_ads_enabled: False
+  ad_reporting__tiktok_ads_enabled: False
+  ad_reporting__twitter_ads_enabled: False
 ```
 
 #### Enable/Disable Specific Reports within Platforms
-For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below.
+For **Apple Search Ads**, if you are not utilizing the search functionality, you may choose to update the respective variable below ([details](https://github.com/fivetran/dbt_apple_search_ads?tab=readme-ov-file#disabling-additional-models)).
 
-For **Pinterest Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
+For **Facebook Ads**, if you *are* utilizing geo-targeted ads, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_facebook_ads/tree/main?tab=readme-ov-file#enable-or-disable-country-and-region-reports)).
 
-For **Twitter Ads**, if you are not tracking keyword performance, you may choose to update the corresponding variable below.
+For **Google Ads**, if you are not utilizing the search functionality, you may choose to update the corresponding variable below ([details](https://github.com/fivetran/dbt_google_Ads?tab=readme-ov-file#disable-search-term-keyword-stats)).
 
-Add the following variables to your dbt_project.yml file
+For **Linkedin Ads**, if you are not tracking geo-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_linkedin/tree/main?tab=readme-ov-file#disable-country-and-region-reports)).
+
+For **Microsoft Ads**, if you *are* tracking geo-targeted campaign performance, you may choose to update the corresponding variable below ([details](https://github.com/fivetran/dbt_microsoft_ads/tree/main?tab=readme-ov-file#enable-geographic-reports)).
+
+For **Pinterest Ads**, if you are not tracking keyword and/or geo-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_pinterest/tree/main?tab=readme-ov-file#step-4-enabledisable-models-and-sources)).
+
+For **Reddit Ads**, if you are not tracking country-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_reddit_ads/tree/main?tab=readme-ov-file#step-4-enabledisable-models-and-sources)).
+
+For **Snapchat Ads**, if you *are* tracking geo-targeted campaign performance, you may choose to update the corresponding variable below ([details](https://github.com/fivetran/dbt_snapchat_ads/tree/main?tab=readme-ov-file#enabling-models-that-are-disabled-by-default)).
+
+For **TikTok Ads**, if you are not tracking country-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_tiktok_ads/tree/main?tab=readme-ov-file#disable-country-reports)).
+
+For **Twitter Ads**, if you are not tracking keyword performance or *are* tracking geo-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_twitter/tree/main?tab=readme-ov-file#step-4-disabling-or-enabling-models)).
+
+Add the following variables to your `dbt_project.yml` file
 
 ```yml
 vars:
-  apple_search_ads__using_search_terms: False # by default this is assumed to be True
-  pinterest__using_keywords: False # by default this is assumed to be True
-  twitter_ads__using_keywords: False # by default this is assumed to be True
+  # Apple Search Ads
+  apple_search_ads__using_search_terms: False # True by default
+
+  # Facebook Ads
+  facebook_ads__using_demographics_country: True # False by default. Enables country-based reporting
+  facebook_ads__using_demographics_region: True # False by default. Enables region-based reporting
+
+  # Google Ads
+  google_ads__using_search_term_keyword_stats: False # True by default
+
+  # Linkedin Ads
+  linkedin_ads__using_geo: False # True by default
+  linkedin_ads__using_monthly_ad_analytics_by_member_country: False # True by default
+  linkedin_ads__using_monthly_ad_analytics_by_member_region: False # True by default
+
+  # Microsoft Ads
+  microsoft_ads__using_geographic_daily_report: True # False by default. Enables coyntry and region-based reporting
+
+  # Pinterest Ads
+  pinterest__using_keywords: False # True by default
+  pinterest__using_pin_promotion_targeting_report: False # True by default. Disables country and region-based reporting
+  pinterest__using_targeting_geo: False # True by default. Disables country-based reporting
+  pinterest__using_targeting_geo_region: False # True by default. Disables region-based reporting
+
+  # Reddit Ads
+  reddit_ads__using_business_account: false # Default is true. Will use ACCOUNT if set to false.
+  reddit_ads__using_campaign_country_report: false # True by default. Disables country-based reporting
+  reddit_ads__using_campaign_country_conversions_report: false # True by default. Disables country-based conversions reporting
+
+  # Snapchat Ads
+  snapchat_ads__using_campaign_country_report: true # False by default. Enables country-based reporting
+  snapchat_ads__using_campaign_region_report: true # False by default. Enables region-based reporting
+
+  # TikTok Ads
+  tiktok_ads__using_campaign_country_report: False # True by default. Disables country-based reporting
+
+  # Twitter Ads
+  twitter_ads__using_keywords: False # True by default
+  twitter_ads__using_campaign_locations_report: True # False by default. Enables country-based reporting
+  twitter_ads__using_campaign_regions_report: True # False by default. Enables region-based reporting
 ```
+
+> Note: Users running the Ad Reporting models via Fivetran Quickstart will have these variables dynamically set based on the presence of relevant source tables.
 
 ### (Recommended) Step 5: Change the Build Schema
 By default this package will build all models in your `<target_schema>` with the respective package suffixes (see below). This behavior can be tailored to your preference by making use of custom schemas. If you would like to override the current naming conventions, please add the following configuration to your `dbt_project.yml` file and rename `+schema` configs:
@@ -181,12 +259,12 @@ models:
     +schema: apple_search_ads
   apple_search_ads_source:
     +schema: apple_search_ads_source
-  
+
   facebook_ads:
     +schema: facebook_ads
   facebook_ads_source:
     +schema: facebook_ads_source
-  
+
   google_ads:
     +schema: google_ads
   google_ads_source:
@@ -216,12 +294,12 @@ models:
     +schema: snapchat_ads
   snapchat_ads_source:
     +schema: snapchat_ads_source
-  
+
   tiktok_ads:
     +schema: tiktok_ads
   tiktok_ads_source:
     +schema: tiktok_ads_source
-  
+
   twitter_ads:
     +schema: twitter_ads
   twitter_ads_source:
@@ -233,8 +311,8 @@ models:
 ### (Optional) Step 6: Additional configurations
 <details open><summary>Expand/Collapse details</summary>
 
-#### Union multiple connectors
-If you have multiple ad reporting connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connector:
+#### Union multiple connections
+If you have multiple ad reporting connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connection:
 
 ```yml
 vars:
@@ -325,6 +403,10 @@ vars:
     - name: interactions
   ad_reporting__search_passthrough_metrics:
     - name: local_spend_amount
+  ad_reporting__country_passthrough_metrics:
+    - name: video_views
+  ad_reporting__region_passthrough_metrics:
+    - name: billed_engagements
 ```
 
 It is important to ensure that if you want to configure a passthrough metric for an ad reporting end model, that metric **must** be included in all of your upstream variables. Additionally, the name of the metric **must** be consistent across platforms. If a certain upstream platform does not include the metric you **must** include a `transform_sql` argument to pass a null value through (see below for examples). The following configuration is an example when using the Microsoft Ads, Apple Search Ads, Google Ads, Snapchat Ads, TikTok Ads, and Reddit Ads platforms within a `dbt_project.yml` file:
@@ -373,7 +455,6 @@ vars:
     - name: shares
       alias: total_shares
   reddit_ads__campaign_passthrough_metrics:
-      transform_sql: "null"
     - name: total_shares
       transform_sql: "null"
   ad_reporting__campaign_passthrough_metrics: 
@@ -445,9 +526,60 @@ vars:
   apple_search_ads__search_term_passthrough_metrics:
     - name: local_spend_amount
       transform_sql: "cast(local_spend_amount as int64)"
+  google_ads__search_term_keyword_stats_passthrough_metrics:
+    - name: local_spend_amount
       transform_sql: "null"
   ad_reporting__search_passthrough_metrics:
     - name: local_spend_amount
+
+  # Country Report Passthrough Metrics
+  facebook_ads__demographics_country_passthrough_metrics:
+    - name: cpm
+  linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  microsoft_ads__geographic_passthrough_metrics:
+    - name: average_cpm
+      alias: cpm
+  pinterest__pin_promotion_targeting_report_passthrough_metrics:
+    - name: cpm_in_micro_dollar
+      alias: cpm
+      transform_sql: cpm / 1000000.0
+  reddit_ads__campaign_country_passthrough_metrics:
+    - name: cpm 
+      transform_sql: "null"
+  snapchat_ads__campaign_daily_country_report_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  tiktok_ads__campaign_country_report_passthrough_metrics:
+    - name: cpm 
+  twitter_ads__campaign_locations_report_passthrough_metrics:
+    - name: cpm 
+      transform_sql: "null"
+  ad_reporting__country_passthrough_metrics:
+    - name: cpm
+
+  # Region Report Passthrough Metrics
+  facebook_ads__demographics_region_passthrough_metrics:
+    - name: cpm
+  linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  microsoft_ads__geographic_passthrough_metrics:
+    - name: average_cpm
+      alias: cpm
+  pinterest__pin_promotion_targeting_report_passthrough_metrics:
+    - name: cpm_in_micro_dollar
+      alias: cpm
+      transform_sql: cpm / 1000000.0
+  snapchat_ads__campaign_daily_region_report_passthrough_metrics: 
+    - name: cpm 
+      transform_sql: "null"
+  twitter_ads__campaign_regions_report_passthrough_metrics:
+    - name: cpm 
+      transform_sql: "null"
+  ad_reporting__region_passthrough_metrics:
+    - name: cpm
 ```
 
 >**Note**: Please make sure to use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, `spend`, `conversions`, and `conversions_value`) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
@@ -460,17 +592,16 @@ vars:
   ad_reporting__url_report__using_null_filter: False # Default is True.
 ```
 
-</details>
-
 #### Change the source table references
-If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connectors.
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connections.
 > IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
-    
+
 ```yml
 vars:
     <default_source_table_name>_identifier: your_table_name 
 ```
-    
+
+</details>
 <br>
 
 ### (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
@@ -506,16 +637,18 @@ This package includes a model called `metricflow_time_spine.sql` that MetricFlow
 ```yml
 ## root dbt_project.yml
 vars:
-  ad_reporting__metricflow_time_spine_enabled: false ## true by default
+  ad_reporting__metricflow_time_spine_enabled: false ## True by default
 ```
-Additionally, the `dbt_date.get_base_dates` macro is used in the generation of the `metricsflow_time_spine.sql` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish.
+Additionally, the `fivetran_get_base_dates` macro is used in the generation of the `metricsflow_time_spine` model. This macro requires the `dbt_date:time_zone` variable to be defined in the project to generate a time spine based on the defined time zone. The default value in this package is `America/Los_Angeles`. However, you may override this variable in your own project if you wish. See below for an example.
 
->**Note**: This variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. For more information on why this variable is needed and the different value options, refer to the [dbt-date package documentation](https://github.com/calogica/dbt-date#variables).
+>**Note**: This `dbt_date:time_zone` variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. 
+
+You may specify any [valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of America/Los_Angeles. For example, use America/New_York for East Coast Time.
 
 ```yml
 ## root dbt_project.yml
 vars:
-  "dbt_date:time_zone": "America/Chicago" # Default is "America/Los_Angeles"
+  "dbt_date:time_zone": "America/New_York" # Default is "America/Los_Angeles"
 ```
 
 **Semantic Manifest**
@@ -528,7 +661,7 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 
 ## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
-> **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
+> **If you have any of these dependent packages in your own `packages.yml` we highly recommend you remove them to ensure there are no package version conflicts.**
 
 ```yml
 packages: 
@@ -538,75 +671,76 @@ packages:
   - package: dbt-labs/dbt_utils
     version: [">=0.8.0", "<0.9.0"]
 
-  - package: calogica/dbt_date
-    version: [">=0.9.0", "<1.0.0"]
-
   - package: fivetran/amazon_ads
-    version: [">=0.4.0", "<0.5.0"]
-  
+    version: [">=0.5.0", "<0.6.0"]
+
   - package: fivetran/amazon_ads_source
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.5.0", "<0.6.0"]
 
   - package: fivetran/apple_search_ads
-    version: [">=0.4.0", "<0.5.0"]
+    version: [">=0.6.0", "<0.7.0"]
 
   - package: fivetran/apple_search_ads_source
-    version: [">=0.4.0", "<0.5.0"]
-  
+    version: [">=0.6.0", "<0.7.0"]
+
   - package: fivetran/facebook_ads
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/facebook_ads_source
-    version: [">=0.8.0", "<0.9.0"]
-  
+    version: [">=0.10.0", "<0.11.0"]
+
   - package: fivetran/google_ads
-    version: [">=0.11.0", "<0.12.0"]
+    version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/google_ads_source
-    version: [">=0.11.0", "<0.12.0"]
+    version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/linkedin
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.12.0", "<0.13.0"]
 
   - package: fivetran/linkedin_source
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.12.0", "<0.13.0"]
 
   - package: fivetran/microsoft_ads
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.12.0", "<0.13.0"]
 
   - package: fivetran/microsoft_ads_source
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/pinterest
-    version: [">=0.11.0", "<0.12.0"]
+    version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/pinterest_source
-    version: [">=0.11.0", "<0.12.0"]
+    version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/reddit_ads
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.7.0", "<0.8 .0"]
 
   - package: fivetran/reddit_ads_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/snapchat_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/snapchat_ads_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/tiktok_ads_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.9.0", "<0.10.0"]
 
   - package: fivetran/twitter_ads
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/twitter_ads_source
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.10.0", "<0.11.0"]
 ```
+
+### Other Dependencies
+The country names in `ad_reporting__monthly_campaign_country_report` are standardized to align with official ISO-3166 names. Greater *global* region names (ex: Southern Asia) are also included and leveraged from [lukes/ISO-3166-Countries-with-Regional-Codes](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes).
+
 ## How is this package maintained and can I contribute?
 ### Package Maintenance
 The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.

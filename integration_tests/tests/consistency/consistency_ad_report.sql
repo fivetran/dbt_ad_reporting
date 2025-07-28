@@ -8,7 +8,7 @@ with prod as (
         ad_id,
         sum(coalesce(clicks, 0)) as clicks, 
         sum(coalesce(impressions, 0)) as impressions,
-        sum(coalesce(spend, 0)) as spend
+        sum(coalesce(spend, 0)) as spend,
         sum(coalesce(conversions, 0)) as conversions,
         sum(coalesce(conversions_value, 0)) as conversions_value
     from {{ target.schema }}_ad_reporting_prod.ad_reporting__ad_report
@@ -20,7 +20,7 @@ dev as (
         ad_id,
         sum(coalesce(clicks, 0)) as clicks, 
         sum(coalesce(impressions, 0)) as impressions,
-        sum(coalesce(spend, 0)) as spend
+        sum(coalesce(spend, 0)) as spend,
         sum(coalesce(conversions, 0)) as conversions,
         sum(coalesce(conversions_value, 0)) as conversions_value
     from {{ target.schema }}_ad_reporting_dev.ad_reporting__ad_report
@@ -35,7 +35,7 @@ final as (
         prod.impressions as prod_impressions,
         dev.impressions as dev_impressions,
         prod.spend as prod_spend,
-        dev.spend as dev_spend
+        dev.spend as dev_spend,
         prod.conversions as prod_conversions,
         dev.conversions as dev_conversions,
         prod.conversions_value as prod_conversions_value,

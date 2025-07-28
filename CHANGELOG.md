@@ -1,3 +1,210 @@
+# dbt_ad_reporting v1.17.0
+[PR #156](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
+
+## Schema & Data Updates - Reddit Ads
+**17 total changes • 17 possible breaking changes**
+
+| Data Models | Change Type | Old | New | Notes |
+| --- | --- | --- | --- | --- |
+| `ad_reporting__account_report` <br> `ad_reporting__ad_group_report` <br> `ad_reporting__ad_report` <br> `ad_reporting__campaign_report` <br> `ad_reporting__monthly_campaign_country_report` <br> `ad_reporting__url_report` <br> `reddit_ads__account_report` <br> `reddit_ads__ad_group_report` <br> `reddit_ads__ad_report` <br> `reddit_ads__campaign_country_report` <br> `reddit_ads__campaign_report` <br> `reddit_ads__url_report` <br> `stg_reddit_ads__account_report` <br> `stg_reddit_ads__ad_group_report` <br> `stg_reddit_ads__ad_report` <br> `stg_reddit_ads__campaign_country_report` <br> `stg_reddit_ads__campaign_report` | Column datatype | `spend` (`INT`) | `spend` (`NUMERIC`) | Updated the datatype of the `spend` field from `INT` to `NUMERIC` to preserve decimal precision and prevent rounding when converting to dollars. The type cast is applied in the Reddit Ads staging layer and propagates through to the transform layer. See the [dbt_reddit_ads v0.7.0 release](https://github.com/fivetran/dbt_reddit_ads_source/releases/tag/v0.7.0) for more details. |
+
+## Under the Hood
+- Updated conditions in `.github/workflows/auto-release.yml`.
+- Added `.github/workflows/generate-docs.yml`.
+- Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
+- Updated `maintainer_pull_request_template.md` with improved checklist.
+- Refreshed README tag block.
+- Updated Python image version to `3.10.13` in `pipeline.yml`.
+- Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
+
+# dbt_ad_reporting v1.16.0
+[PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
+
+## Reddit Ads: Breaking Change
+- To align with the [Fivetran Reddit Ads Connector schema](https://fivetran.com/docs/connectors/applications/reddit-ads#schemainformation), updated the source referenced by `stg_reddit_ads__account_tmp` from `ACCOUNT` to `BUSINESS_ACCOUNT` in `dbt_reddit_ads_source`.
+- Added the `reddit_ads__using_business_account` variable to control which source is used. 
+  - For Quickstart users, this variable is set automatically.
+  - For dbt Core users, this variable is `true` by default, but you can set the variable to `false` in your `dbt_project.yml` to fall back to using `ACCOUNT` instead of `BUSINESS_ACCOUNT`.
+  - See the [v0.6.0 `dbt_reddit_ads_source` release notes](https://github.com/fivetran/dbt_reddit_ads_source/releases/tag/v0.6.0) for more information.
+
+## Under the Hood
+- Added the `reddit_ads__using_business_account` variable to `quickstart.yml`.
+- Added seed file `reddit_ads_business_account_data`.
+- Updated the seed column types in `integration_tests/dbt_project.yml`.
+# dbt_ad_reporting v1.15.0
+
+[PR #150](https://github.com/fivetran/dbt_ad_reporting/pull/150) includes the following updates:
+
+## Breaking Change for dbt Core < 1.9.6
+> *Note: This is not relevant to Fivetran Quickstart users.*
+
+Migrated `freshness` from a top-level source property to a source `config` in alignment with [recent updates](https://github.com/dbt-labs/dbt-core/issues/11506) from dbt Core. This will resolve the following deprecation warning that users running dbt >= 1.9.6 may have received:
+
+```
+[WARNING]: Deprecated functionality
+Found `freshness` as a top-level property of `<ad platform>` in file
+`models/src_<ad platform>.yml`. The `freshness` top-level property should be moved
+into the `config` of `<ad platform>`.
+```
+
+**IMPORTANT:** Users running dbt Core < 1.9.6 will not be able to utilize freshness tests in this release or any subsequent releases, as older versions of dbt will not recognize freshness as a source `config` and therefore not run the tests.
+
+If you are using dbt Core < 1.9.6 and want to continue running freshness tests on different Ad Platform sources, please elect **one** of the following options:
+  1. (Recommended) Upgrade to dbt Core >= 1.9.6
+  2. Do not upgrade your installed version of the `ad_reporting` package. Pin your dependency on v1.14.0 in your `packages.yml` file.
+  3. Utilize a dbt [override](https://docs.getdbt.com/reference/resource-properties/overrides) to overwrite the each ad source and apply freshness via the [old](https://github.com/fivetran/dbt_facebook_ads_source/blob/v0.9.0/models/src_facebook_ads.yml#L11-L13) top-level property route. This will require you to copy and paste the entirety of the `src_<ad platform>.yml` file ([example](https://github.com/fivetran/dbt_facebook_ads_source/blob/v0.9.0/models/src_facebook_ads.yml#L4-L374)) and add an `overrides: <ad platform source package name>` property. See the individual package CHANGELOGs for more details
+    - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Google Ads](https://github.com/fivetran/dbt_google_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads/CHANGELOG.md#breaking-change-for-dbt-core--196)
+    - [Twitter Ads](https://github.com/fivetran/dbt_twitter/CHANGELOG.md#breaking-change-for-dbt-core--196)
+
+# dbt_ad_reporting v1.14.0
+
+[PR #144](https://github.com/fivetran/dbt_ad_reporting/pull/144) includes the following updates:
+
+**61 total changes • 1 possible breaking change (see `ad_reporting__search_report`)**
+| **Data Model** | **Change type** | **Old name** | **New name** | **Notes** |
+| ---------------- | --------------- | ------------ | ------------ | --------- |
+| [**ad_reporting__monthly_campaign_country_report**](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__monthly_campaign_country_report) | New End Model |  |   | Incorporates new country-based campaign report models from Facebook Ads, Linkedin Ads, Microsoft Ads, Pinterest Ads, Reddit Ads, Snapchat Ads, TikTok Ads, and Twitter Ads. |
+| [**ad_reporting__monthly_campaign_region_report**](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__monthly_campaign_region_report) | New End Model |   |   | Incorporates new region-based campaign report models from Facebook Ads, Linkedin Ads, Microsoft Ads, Pinterest Ads, Snapchat Ads, and Twitter Ads.  |
+| [**ad_reporting__search_report**](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__search_report) | New Supported Platform | Amazon Ads, Apple Search Ads, Microsoft Ads  |  + Google Ads | Incorporates the new `google_ads__search_term_report` model. This is **automatically enabled** but can be disabled by the `google_ads__using_search_term_keyword_stats` variable. |
+| [facebook_ads__country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads.facebook_ads__country_report) | New Individual Platform Model |   |   |  Each record represents the daily performance of a Facebook account at the country level.  |
+| [facebook_ads__region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads.facebook_ads__region_report) | New Individual Platform Model |   |   | Each record represents the daily performance of a Facebook account at the region level.    |
+| [google_ads__search_term_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.google_ads.google_ads__search_term_report)  | New Individual Platform Model |   |   |  Each record represents daily performance of search terms matching tracked keywords, at the ad group level in Google Ads.  |
+| [linkedin_ads__monthly_campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin.linkedin_ads__monthly_campaign_country_report)       | New Individual Platform Model   |          |  | Table that represents the monthly performance of a campaign at the country level.               |
+| [linkedin_ads__monthly_campaign_region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin.linkedin_ads__monthly_campaign_region_report)       | New Individual Platform Model   |          |  | Table that represents the monthly performance of a campaign at the region level.              |
+| [microsoft_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.microsoft_ads.microsoft_ads__campaign_country_report)       | New Individual Platform Model   |          |  | New table that represents the daily performance of a campaign at the country/geographic region level.               |
+| [microsoft_ads__campaign_region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.microsoft_ads.microsoft_ads__campaign_region_report)       | New Individual Platform Model   |          |  | New table that represents the daily performance of a campaign at the geographic region level.               |
+| [pinterest_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.pinterest_ads__campaign_country_report) | New Individual Platform Model | | | New table that represents the daily performance of ads at the country and campaign level. |
+| [pinterest_ads__campaign_region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.pinterest_ads__campaign_region_report) | New Individual Platform Model | | | New table that represents the daily performance of ads at the region and campaign level. |
+| [reddit_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.reddit_ads__campaign_country_report) | New Individual Platform Model   | | | This new table represents the daily performance at the campaign and country level. |
+| [snapchat_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads.snapchat_ads__campaign_country_report) | New Individual Platform Model |   |   |  Each record represents the daily performance of a Snapchat campaign per country.  |
+| [snapchat_ads__campaign_region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads.snapchat_ads__campaign_region_report) | New Individual Platform Model |   |   |  Each record represents the daily performance of a Snapchat campaign per region.  |
+| [tiktok_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.tiktok_ads.tiktok_ads__campaign_country_report)       | New Individual Platform Model   |          |  | New table that represents the daily performance of a campaign at the country/geographic region level.               |
+| [twitter_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.twitter_ads.twitter_ads__campaign_country_report) | New Individual Platform Model |   |   |  Each record in this table represents the daily performance of ads at the account, campaign, and ad-placement level, segmented by country.  |
+| [twitter_ads__campaign_region_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.twitter_ads.twitter_ads__campaign_region_report) | New Individual Platform Model |   |   | Each record in this table represents the daily performance of ads at the account, campaign, and ad-placement level, segmented by geographic region.   |
+| [stg_facebook_ads__demographics_country](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_country) | New Staging Model |   |   |  Uses `demographics_country` source table  |
+| [stg_facebook_ads__demographics_country_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_country_tmp) | New Temp Staging Model |   |   | Uses `demographics_country` source table   |
+| [stg_facebook_ads__demographics_country_actions](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_country_actions) | New Staging Model |   |   |  Uses `demographics_country_actions` source table  |
+| [stg_facebook_ads__demographics_country_actions_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_country_actions_tmp) | New Temp Staging Model |   |   | Uses `demographics_country_actions` source table   |
+| [stg_facebook_ads__demographics_region](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_region) | New Staging Model |   |   |  Uses `demographics_region` source table  |
+| [stg_facebook_ads__demographics_region_tmp](https://fivetran.github.io/dbt_facebook_adbt_ad_reportingds_source/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_region_tmp) | New Temp Staging Model |   |   | Uses `demographics_region` source table   |
+| [stg_facebook_ads__demographics_region_actions](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_region_actions) | New Staging Model |   |   |  Uses `demographics_region_actions` source table  |
+| [stg_facebook_ads__demographics_region_actions_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__demographics_region_actions_tmp) | New Temp Staging Model |   |   | Uses `demographics_region_actions` source table   |
+| [stg_facebook_ads__account_history](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.facebook_ads_source.stg_facebook_ads__account_history) | New Columns |   | `business_state`, `timezone_offset_hours_utc`, `min_daily_budget`  |  |
+| [stg_google_ads__search_term_keyword_stats](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.google_ads_source.stg_google_ads__search_term_keyword_stats) | New Staging Model |   |   |  Uses new `search_term_keyword_stats` source table  |
+| [stg_google_ads__search_term_keyword_stats_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.google_ads_source.stg_google_ads__search_term_keyword_stats_tmp) | New Temp Staging Model |   |   | Uses new `search_term_keyword_stats` source table   |
+| [stg_linkedin_ads__geo_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin_source.stg_linkedin_ads__geo_tmp)       | New Temp Staging Model   |          |  | Temp model added for `geo`.               |
+| [stg_linkedin_ads__geo](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin_source.stg_linkedin_ads__geo)          | New Staging model   |          |    | Staging model added for `geo`.         |
+| [stg_linkedin_ads__monthly_ad_analytics_by_country_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin_source.stg_linkedin_ads__monthly_ad_analytics_by_country_tmp)          | New Temp Staging Model   |          |    | Temp model added for `monthly_ad_analytics_by_member_country`.         |
+| [stg_linkedin_ads__monthly_ad_analytics_by_country](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin_source.stg_linkedin_ads__monthly_ad_analytics_by_country)          | New Staging Model   |          |    | Staging model added for `monthly_ad_analytics_by_member_country`.         |
+| [stg_linkedin_ads__monthly_ad_analytics_by_region_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin_source.stg_linkedin_ads__monthly_ad_analytics_by_region_tmp)          | New Temp Staging Model   |          |    | Temp model added for `monthly_ad_analytics_by_member_region`. Name shortened for warehouse table name length compatibility.         |
+| [stg_linkedin_ads__monthly_ad_analytics_by_region](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.linkedin_source.stg_linkedin_ads__monthly_ad_analytics_by_region)          | New staging model   |          |    | Staging model added for `monthly_ad_analytics_by_member_region`. Name shortened for warehouse table name length compatibility.           |
+| [stg_microsoft_ads__geographic_daily_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.microsoft_ads_source.stg_microsoft_ads__geographic_daily_report_tmp)      | New Temp Staging Model   |          |  | Temp model added for `geographic_performance_daily_report`.               |
+| [stg_microsoft_ads__geographic_daily_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.microsoft_ads_source.stg_microsoft_ads__geographic_daily_report)          | New Staging Model   |          |    | Staging model added for `geographic_performance_daily_report`.         |
+| [stg_microsoft_ads__campaign_history](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.microsoft_ads_source.stg_microsoft_ads__campaign_history)           | New Columns   |          | `budget`, `budget_id`, `budget_type`, `language`     |        |
+| [stg_pinterest_ads__pin_promotion_targeting_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__pin_promotion_targeting_report) | New Staging Model | | | Uses `pin_promotion_targeting_report` source table |
+| [stg_pinterest_ads__targeting_geo_region](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__targeting_geo_region) | New Staging Model | | | Uses `targeting_geo_region` source table       |
+| [stg_pinterest_ads__targeting_geo](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__targeting_geo) | New Staging Model | | | Uses `targeting_geo` source table              |
+| [stg_pinterest_ads__pin_promotion_targeting_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__pin_promotion_targeting_report_tmp) | New Temp Staging Model | | | Uses `pin_promotion_targeting_report` source table |
+| [stg_pinterest_ads__targeting_geo_region_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__targeting_geo_region_tmp) | New Temp Staging Model | | | Uses `targeting_geo_region` source table       |
+| [stg_pinterest_ads__targeting_geo_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__targeting_geo_tmp) | New Temp Staging Model | | | Uses `targeting_geo` source table              |
+| [stg_pinterest_ads__campaign_history](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.pinterest.stg_pinterest_ads__campaign_history) | New Columns | | `start_time`, `end_time`, `budget_spend_cap`, `lifetime_spend_cap`, `objective_type` | |
+| [stg_reddit_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_report) | New Staging Model   | | | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
+| [stg_reddit_ads__campaign_country_conversions_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report) | New Staging Model   | | | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
+| [stg_reddit_ads__campaign_country_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_report_tmp) | New Temp Staging Model   | | | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
+| [stg_reddit_ads__campaign_country_conversions_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report_tmp) | New Temp Staging Model   | | | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
+| [stg_snapchat_ads__campaign_geo_country_daily_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads_source.stg_snapchat_ads__campaign_geo_country_daily_report) | New Staging Model |   |   |  Uses `campaign_geo_country_daily_report` source table  |
+| [stg_snapchat_ads__campaign_geo_region_daily_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads_source.stg_snapchat_ads__campaign_geo_region_daily_report) | New Staging Model |   |   |  Uses `campaign_geo_region_daily_report` source table  |
+| [stg_snapchat_ads__campaign_geo_country_daily_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads_source.stg_snapchat_ads__campaign_geo_country_daily_report_tmp) | New Temp Staging Model |   |   |  Uses `campaign_geo_country_daily_report` source table  |
+| [stg_snapchat_ads__campaign_geo_region_daily_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads_source.stg_snapchat_ads__campaign_geo_region_daily_report_tmp) | New Temp Staging Model |   |   |  Uses `campaign_geo_region_daily_report` source table  |
+| [stg_snapchat_ads__campaign_history](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.snapchat_ads_source.stg_snapchat_ads__campaign_history) | New Columns | | `daily_budget_micro`, `start_time`, `end_time`, `lifetime_spend_cap_micro`, `status`, `objective` |  |
+| [stg_tiktok_ads__campaign_country_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.tiktok_ads_source.stg_tiktok_ads__campaign_country_report_tmp)       | New Temp Staging Model   |          |  | Temp model added for `campaign_country_report`.               |
+| [stg_tiktok_ads__campaign_country_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.tiktok_ads_source.stg_tiktok_ads__campaign_country_report)           | New Staging Model   |          |    | Staging model added for `campaign_country_report`.         |
+| [stg_tiktok_ads__campaign_history](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.tiktok_ads_source.stg_tiktok_ads__campaign_history)           | New Columns   |          | `objective_type`, `status`, `budget`, `budget_mode`, `created_at`, `is_new_structure`   |         |
+| [stg_twitter_ads__campaign_locations_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.twitter_ads_source.stg_twitter_ads__campaign_locations_report) | New Staging Model |   |   |  Uses `campaign_locations_report` source table  |
+| [stg_twitter_ads__campaign_locations_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.twitter_ads_source.stg_twitter_ads__campaign_locations_report_tmp) | New Temp Staging Model |   |   | Uses `campaign_locations_report` source table   |
+| [stg_twitter_ads__campaign_regions_report](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.twitter_ads_source.stg_twitter_ads__campaign_regions_report) | New Staging Model |   |   |  Uses `campaign_regions_report` source table  |
+| [stg_twitter_ads__campaign_regions_report_tmp](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.twitter_ads_source.stg_twitter_ads__campaign_regions_report_tmp) | New Temp Staging Model |   |   | Uses `campaign_regions_report` source table   |
+
+## Feature Updates
+### Google Ads Support in Search Report
+- Google Ads search term report data is now included, by default, in `ad_reporting__search_report`. This leverages the `search_term_keyword_stats` source table from the Google Ads connector.
+  - Transformations related to `search_term_keyword_stats` can be disabled by using the new `google_ads__using_search_term_keyword_stats` variable. See the Google Ads [README](https://github.com/fivetran/dbt_google_ads?tab=readme-ov-file#disable-search-term-keyword-stats) for more details.
+- Introduced the `google_ads__search_term_keyword_stats_passthrough_metrics` [variable](https://github.com/fivetran/dbt_google_Ads?tab=readme-ov-file#adding-passthrough-metrics), which can be used to pass through additional metrics fields from the `search_term_keyword_stats` report to downstream models.
+
+### New Country and Geographic Region Based Campaign Reports
+- Added two new end models: `ad_reporting__monthly_campaign_country_report` and `ad_reporting__monthly_campaign_region_report`, which both reflect monthly campaign performance across different geographies. 
+  - The country names in `ad_reporting__monthly_campaign_country_report` are standardized to align with official ISO-3166 names. Greater *global* region names (ex: Southern Asia) are also included and leveraged from [lukes/ISO-3166-Countries-with-Regional-Codes](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes).
+- The platforms included in these geo-based reports are:
+  - Facebook Ads (data is only available at the account-level; `campaign_name='Account-level'` and `campaign_id` will be null)
+  - Linkedin Ads
+  - Microsoft Ads
+  - Pinterest Ads
+  - Reddit Ads (only in the country report; not in the region report)
+  - Snapchat Ads
+  - TikTok Ads (only in the country report; not in the region report)
+  - Twitter Ads
+- These new reports include their respective [passthrough columns](https://github.com/fivetran/dbt_ad_reporting?tab=readme-ov-file#adding-custom-metrics-to-final-reports) and [model enabling/disabling variables](https://github.com/fivetran/dbt_ad_reporting?tab=readme-ov-file#enabledisable-specific-reports-within-platforms).
+
+- See the relevant entries in the [DECISIONLOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md) for these reports.
+
+## Bug Fixes
+- Resolved a CLI Warning caused by extraneous `endmacro` blocks. ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))
+
+## Under the Hood
+- Updated search report data validation tests to include Google Ads data.
+- Added data validation tests for the new country and region reports.
+- `get_query` macro updated to support country and region reports.
+- Updated LICENSE.
+- Updated the maintainer PR template.
+
+## Contributors
+- [@QMalcolm](https://github.com/QMalcolm) ([PR #143](https://github.com/fivetran/dbt_ad_reporting/pull/143))
+
+# dbt_ad_reporting v1.13.0
+[PR #137](https://github.com/fivetran/dbt_ad_reporting/pull/137) includes the following updates:
+
+## Breaking Changes
+- The following dependencies have been updated following upstream breaking changes. See the below release notes for more information.
+  - `dbt_apple_search_ads` ([v0.5.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v0.5.0))
+  - `dbt_microsoft_ads` ([v0.10.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.10.0))
+- Removed the dependency on [calogica/dbt_date](https://github.com/calogica/dbt-date) as it is no longer actively maintained. To maintain functionality, the `get_base_dates` macro (along with all other dependent macros) used in `metricflow_time_spine` semantic model has been replicated and housed within the `macros/fivetran_date_macros` [folder](https://github.com/fivetran/dbt_ad_reporting/tree/main/macros/fivetran_date_macros). All fivetran_date_macros have been prefixed with `fivetran_` to avoid potential naming conflicts.
+  - In order to make the transition more seamless, we have retained the variable name of `dbt_date:time_zone`. Therefore, although we removed the dependency on the dbt-date macros and have renamed them, this variable will still be the same.
+
+## Bug Fixes
+- Resolved a CLI Warning caused by the `metricflow_time_spine` model not having a properly documented YAML configuration.
+
+## Under The Hood
+- Updated `apple_search_ads` and `microsoft_ads` seed files to keep consistent with changes to seed files in the individual packages.
+- The `conversions` field for `apple_search_ads` now sources from `tap_installs`.
+
+# dbt_ad_reporting v1.12.0
+
+## Breaking Changes
+
+### Snapchat Ads
+- The `dbt_snapchat_ads` dependency has been updated to `[">=0.8.0", "<0.9.0"]`. These upstream versions introduce breaking changes. For details, refer to the [dbt_snapchat_ads v0.8.0](https://github.com/fivetran/dbt_snapchat_ads/releases/tag/v0.8.0) release notes. ([PR #133](https://github.com/fivetran/dbt_ad_reporting/pull/133))
+  - Added ad squad and campaign details to the `snapchat_ads__ad_report` model so they can fill snapchat ad fields `int_ad_reporting__ad_report` model. These details populate the following fields in `ad_reporting__ad_report`: 
+    - `ad_squad_id` corresponds to the `ad_group_id` value. 
+    - `ad_squad_name` corresponds to the `ad_group_name` value.
+    - `campaign_id` and `campaign_name` have the equivalent values.
+
+## Under The Hood
+- Updated validation tests in the `integration_tests` folder to check for discrepancies between `conversions` and `conversions_value`. ([PR #133](https://github.com/fivetran/dbt_ad_reporting/pull/133))
+
+## Documentation
+- Added Quickstart model counts to README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
+- Corrected references to connectors and connections in the README. ([#130](https://github.com/fivetran/dbt_ad_reporting/pull/130))
+- Updated the [DECISIONLOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md#timezone-considerations) and [README](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#timezone-considerations) to include details about timezone differences across ad platforms. ([#131](https://github.com/fivetran/dbt_ad_reporting/pull/131))
+
 # dbt_ad_reporting v1.11.0
 
 ## Breaking Changes

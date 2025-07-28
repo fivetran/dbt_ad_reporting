@@ -1,3 +1,12 @@
+models:
+  - name: metricflow_time_spine
+    description: Metricflow time spine
+    time_spine:
+      standard_granularity_column: date_day
+    columns:
+      - name: date_day
+        granularity: day
+
 semantic_models:
   - name: ad_report
     description: Each record represents daily metrics by ad, ad group, campaign and

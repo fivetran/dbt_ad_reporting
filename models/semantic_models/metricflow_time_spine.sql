@@ -2,7 +2,7 @@
 with 
 
 days as (
-    {{ dbt_date.get_base_dates(n_dateparts=365*10, datepart="day") }}
+    {{ ad_reporting.fivetran_get_base_dates(n_dateparts=365*10, datepart="day") }}
 
 ),
 

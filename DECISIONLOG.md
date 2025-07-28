@@ -31,3 +31,42 @@ tests:
     not_null_ad_reporting__account_report_account_id:
       +enabled: false
 ```
+
+### Timezone Considerations
+
+The following table documents timezone differences across platforms in the `dbt_ad_reporting` package. These differences exist due to the following reasons:
+
+- Ad platforms send pre-aggregated data that cannot be back-calculated to a finer granularity to account for timezone differences. 
+- Some platforms offer hourly report data, which could potentially be standardized. However, this approach does not ensure full coverage due to non-standard timezones, such as ±30-minute and ±45-minute offsets.
+
+Although this presents challenges within this package, customers can achieve standardization by configuring all Ad accounts and connectors to UTC whenever possible.
+
+As of January 2025:
+
+| Platform | Grain of Data | Timezone |
+|----------|---------------|----------|
+| Amazon Ads | Day | CLIENT SET in Amazon Ads |
+| Apple Search Ads | Day | CLIENT SET in Fivetran Connector to either UTC or the Apple Search Ads account timezone |
+| Facebook Ads | Day | CLIENT SET in Facebook Ads |
+| Google Ads | Hour (account, campaign, ad group) and Day (ad) - package uses daily reports | CLIENT SET in Google Ads |
+| Linkedin Ad Analytics | Day | UTC |
+| Microsoft Advertising | Hour - package uses daily reports | CLIENT SET in Microsoft Ads, UTC if not set|
+| Pinterest Ads | Hour - package uses daily reports | UTC |
+| Reddit Ads | Day | UTC |
+| Snapchat Ads | Hour | UTC |
+| TikTok Ads | Hour | UTC |
+| Twitter Ads | Day | CLIENT SET in Twitter Ads |
+
+### Facebook Ads Account-Level Data in Country and Region Campaign Reports
+
+The `ad_reporting__monthly_campaign_country_report` and `ad_reporting__monthly_campaign_region_report` models present data at the monthly, geography, and campaign levels. However, for Facebook Ads, geographic performance data is only available at the _account_ level and does not include campaign data.
+
+We have opted to still include Facebook Ads in these models, but have denoted this difference by setting the `campaign_name` value to `Account-level` and the `campaign_id` as null for Facebook Ads.
+
+### Monthly Grain of Country and Region Campaign Reports
+
+Most of the models in this package reflect ad data at the daily grain for each platform and tracked entity (campaign, keyword, etc.). However, the `ad_reporting__monthly_campaign_country_report` and `ad_reporting__monthly_campaign_region_report` models, as reflected in their names, present data at the *monthy* level.
+
+We have opted for this grain because Linkedin Ads currently only provides geographic performance data by month. Therefore, we have rolled up other platforms' country and region reports from the day to month to align with Linkedin Ads. The upstream individual platforms' models (such as `tiktok_ads__campaign_country_report` or `microsoft_ads__campaign_region_report`) remain at the daily grain and can be leveraged.
+
+Please reach out and create an [issue](https://github.com/fivetran/dbt_ad_reporting/issues) if you would like to see daily geo-based Ad Reporting reports.

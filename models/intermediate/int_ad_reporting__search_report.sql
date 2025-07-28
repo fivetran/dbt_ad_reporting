@@ -1,8 +1,6 @@
-{% if var('apple_search_ads__using_search_terms', True) %}
-    {% set include_list = ['amazon_ads', 'apple_search_ads', 'microsoft_ads'] %}
-{% else %}
-    {% set include_list = ['amazon_ads', 'microsoft_ads'] %}
-{% endif %}
+{% set include_list = ['amazon_ads', 'microsoft_ads'] %}
+{% do include_list.append('apple_search_ads') if var('apple_search_ads__using_search_terms', true) %}
+{% do include_list.append('google_ads') if var('google_ads__using_search_term_keyword_stats', true) %}
 
 {% set enabled_packages = get_enabled_packages(include=include_list)%}
 {{ config(enabled=is_enabled(enabled_packages)) }}
@@ -35,6 +33,7 @@ apple_search_ads as (
                 'search_match_type': 'match_type',
                 'search_query': 'search_term_text',
                 'clicks': 'taps',
+                'conversions': 'tap_installs',
                 'conversions_value': 'null'
             },
         relation=ref('apple_search_ads__search_term_report')
@@ -56,6 +55,22 @@ amazon_ads as (
                 'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__search_report')
+    ) }}
+), 
+{% endif %}
+
+{% if 'google_ads' in enabled_packages and var('google_ads__using_search_term_keyword_stats', True) %}
+google_ads as (
+
+    {{ get_query(
+        platform='google_ads', 
+        report_type='search', 
+        field_mapping={
+                'search_match_type': 'search_term_match_type',
+                'search_query': 'search_term',
+                'keyword_id': 'criterion_id'
+            },
+        relation=ref('google_ads__search_term_report')
     ) }}
 ), 
 {% endif %}

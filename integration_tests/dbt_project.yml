@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '1.11.0'
+version: '1.17.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -14,373 +14,388 @@ models:
   +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
 
 vars:
+  ad_reporting__metricflow_time_spine_enabled: true
+
+  # IMPORTANT IMPORTANT: COMMENT THESE IN FOR DOCS GENERATION AND VALIDATION TESTS!!!!!! 
+  # facebook_ads__using_demographics_country: true # @docs-include
+  # facebook_ads__using_demographics_region: true # @docs-include
+  # microsoft_ads__using_geographic_daily_report: true # @docs-include
+  # snapchat_ads__using_campaign_country_report: true # @docs-include
+  # snapchat_ads__using_campaign_region_report: true # @docs-include
+  # twitter_ads__using_campaign_locations_report: true # @docs-include
+  # twitter_ads__using_campaign_regions_report: true # @docs-include
+  
   # Comment out passthroughs when generating docs!!!
   ############################ START PASSTHROUGHS ############################
-  ad_reporting__ad_passthrough_metrics:
-    - name: conversions
-    - name: videos
-  ad_reporting__campaign_passthrough_metrics:
-    - name: conversions
-    - name: videos
-  ad_reporting__account_passthrough_metrics:
-    - name: conversions
-    - name: videos
-  ad_reporting__ad_group_passthrough_metrics:
-    - name: conversions
-    - name: videos
-  ad_reporting__keyword_passthrough_metrics:
-    - name: conversions
-    - name: videos
-  ad_reporting__search_passthrough_metrics:
-    - name: conversions
-    - name: videos
+  ad_reporting__ad_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: videos # @docs-ignore
+  ad_reporting__campaign_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: videos # @docs-ignore
+  ad_reporting__account_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: videos # @docs-ignore
+  ad_reporting__ad_group_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: videos # @docs-ignore
+  ad_reporting__keyword_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: videos # @docs-ignore
+  ad_reporting__search_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: videos # @docs-ignore
 
-  amazon_ads__advertised_product_passthrough_metrics:
-    - name: purchases_30_d
-      alias: conversions
-    - name: sales_30_d
-      alias: sales_30_d_alias
-    - name: installs
-      tranform_sql: "null"
-    - name: videos
-      tranform_sql: "null"
-  amazon_ads__campaign_passthrough_metrics:
-    - name: purchases_30_d
-      alias: conversions
-    - name: sales_30_d
-      alias: sales_30_d_alias
-    - name: installs
-      tranform_sql: "null"
-    - name: videos
-      tranform_sql: "null"
-  amazon_ads__ad_group_passthrough_metrics:
-    - name: purchases_30_d
-      alias: conversions
-    - name: installs
-      tranform_sql: "null"
-    - name: videos
-      tranform_sql: "null"
-  amazon_ads__targeting_keyword_passthrough_metrics:
-    - name: purchases_30_d
-      alias: conversions
-    - name: installs
-      tranform_sql: "null"
-    - name: videos
-      tranform_sql: "null"
-  amazon_ads__search_term_ad_keyword_passthrough_metrics:
-    - name: purchases_30_d
-      alias: conversions
-    - name: installs
-      tranform_sql: "null"
-    - name: videos
-      tranform_sql: "null"
+  amazon_ads__advertised_product_passthrough_metrics: # @docs-ignore
+    - name: purchases_30_d # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: sales_30_d # @docs-ignore
+      alias: sales_30_d_alias # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  amazon_ads__campaign_passthrough_metrics: # @docs-ignore
+    - name: purchases_30_d # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: sales_30_d # @docs-ignore
+      alias: sales_30_d_alias # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  amazon_ads__ad_group_passthrough_metrics: # @docs-ignore
+    - name: purchases_30_d # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  amazon_ads__targeting_keyword_passthrough_metrics: # @docs-ignore
+    - name: purchases_30_d # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  amazon_ads__search_term_ad_keyword_passthrough_metrics: # @docs-ignore
+    - name: purchases_30_d # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
 
-  apple_search_ads__ad_group_passthrough_metrics:
-    - name: conversions
-    - name: lat_off_installs
-      alias: installs
-    - name: videos
-      transform_sql: "null"
-  apple_search_ads__ad_passthrough_metrics:
-    - name: conversions
-    - name: lat_off_installs
-      alias: installs
-    - name: videos
-      transform_sql: "null"
-  apple_search_ads__campaign_passthrough_metrics:
-    - name: conversions
-    - name: lat_off_installs
-      alias: installs
-    - name: videos
-      transform_sql: "null"
-  apple_search_ads__keyword_passthrough_metrics:
-    - name: conversions
-    - name: lat_off_installs
-      alias: installs
-    - name: videos
-      transform_sql: "null"
-  apple_search_ads__search_term_passthrough_metrics:
-    - name: conversions
-    - name: lat_off_installs
-      alias: installs
-    - name: videos
-      transform_sql: "null"
+  apple_search_ads__ad_group_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: lat_off_installs # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  apple_search_ads__ad_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: lat_off_installs # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  apple_search_ads__campaign_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: lat_off_installs # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  apple_search_ads__keyword_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: lat_off_installs # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  apple_search_ads__search_term_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: lat_off_installs # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: videos # @docs-ignore
+      transform_sql: "null" # @docs-ignore
 
-  facebook_ads__basic_ad_passthrough_metrics: 
-    - name: 'reach'
-      transform_sql: 3333
-    - name: conversions
-    - name: 'frequency'
-      alias: 'fake_freq_name'
-      transform_sql: 78910
-  facebook_ads__basic_ad_actions_passthrough_metrics: 
-    - name: 'inline'
-      alias: 'conversion_value_inline'
-      transform_sql: 1234
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  facebook_ads__basic_ad_action_values_passthrough_metrics: 
-    - name: '_7_d_click'
+  facebook_ads__basic_ad_passthrough_metrics:  # @docs-ignore
+    - name: 'reach' # @docs-ignore
+      transform_sql: 3333 # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: 'frequency' # @docs-ignore
+      alias: 'fake_freq_name' # @docs-ignore
+      transform_sql: 78910 # @docs-ignore
+  facebook_ads__basic_ad_actions_passthrough_metrics:  # @docs-ignore
+    - name: 'inline' # @docs-ignore
+      alias: 'conversion_value_inline' # @docs-ignore
+      transform_sql: 1234 # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  facebook_ads__basic_ad_action_values_passthrough_metrics:  # @docs-ignore
+    - name: '_7_d_click' # @docs-ignore
 
-  google_ads__account_stats_passthrough_metrics:
-    - name: conversions
-    - name: view_through_conversions
-      alias: view_through_conversions_aliased
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  google_ads__ad_stats_passthrough_metrics:
-    - name: conversions
-    - name: view_through_conversions
-      alias: view_through_conversions_aliased
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  google_ads__ad_group_stats_passthrough_metrics:
-    - name: conversions
-    - name: view_through_conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  google_ads__keyword_stats_passthrough_metrics:
-    - name: conversions
-    - name: view_through_conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  google_ads__campaign_stats_passthrough_metrics:
-    - name: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
+  google_ads__account_stats_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: view_through_conversions # @docs-ignore
+      alias: view_through_conversions_aliased # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  google_ads__ad_stats_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: view_through_conversions # @docs-ignore
+      alias: view_through_conversions_aliased # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  google_ads__ad_group_stats_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: view_through_conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  google_ads__keyword_stats_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: view_through_conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  google_ads__campaign_stats_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  google_ads__search_term_keyword_stats_passthrough_metrics: # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
 
-  linkedin_ads__creative_passthrough_metrics:
-    - name: 'external_website_conversions'
-    - name: 'one_click_leads'
-      alias: conversions
-      transform_sql: conversions + external_website_conversions
-    - name: 'conversion_value_in_local_currency'
-    - name: video_views
-      alias: videos
-  linkedin_ads__campaign_passthrough_metrics:
-    - name: 'external_website_conversions'
-    - name: 'one_click_leads'
-      alias: conversions
-      transform_sql: conversions + external_website_conversions
-    - name: 'conversion_value_in_local_currency'
-    - name: video_views
-      alias: videos
+  linkedin_ads__creative_passthrough_metrics: # @docs-ignore
+    - name: 'external_website_conversions' # @docs-ignore
+    - name: 'one_click_leads' # @docs-ignore
+      alias: conversions # @docs-ignore
+      transform_sql: conversions + external_website_conversions # @docs-ignore
+    - name: 'conversion_value_in_local_currency' # @docs-ignore
+    - name: video_views # @docs-ignore
+      alias: videos # @docs-ignore
+  linkedin_ads__campaign_passthrough_metrics: # @docs-ignore
+    - name: 'external_website_conversions' # @docs-ignore
+    - name: 'one_click_leads' # @docs-ignore
+      alias: conversions # @docs-ignore
+      transform_sql: conversions + external_website_conversions # @docs-ignore
+    - name: 'conversion_value_in_local_currency' # @docs-ignore
+    - name: video_views # @docs-ignore
+      alias: videos # @docs-ignore
 
-  microsoft_ads__account_passthrough_metrics: 
-    - name: "conversions_qualified"
-      alias: "conversions"
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  microsoft_ads__ad_passthrough_metrics:
-    - name: "assists" # test something else
-    - name: "revenue" # test revenue field not aliased (Though we are aliasing)
-    - name: "conversions_qualified" 
-      alias: "conversions"
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  microsoft_ads__campaign_passthrough_metrics:
-    - name: "assists" # test something else
-    - name: "revenue" # test revenue field not aliased (Though we are aliasing)
-    - name: "conversions_qualified"
-      alias: "conversions"
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  microsoft_ads__ad_group_passthrough_metrics:
-    - name: "all_conversions"
-      alias: "multipled_all_conversions"
-    - name: "all_conversions_qualified"
-    - name: "conversions_qualified"
-      alias: "conversions"
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  microsoft_ads__keyword_passthrough_metrics:
-    - name: "conversions_qualified"
-      alias: "conversions"
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  microsoft_ads__search_passthrough_metrics:
-    - name: "conversions_qualified"
-      alias: "conversions"
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
+  microsoft_ads__account_passthrough_metrics:  # @docs-ignore
+    - name: "conversions_qualified" # @docs-ignore
+      alias: "conversions" # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  microsoft_ads__ad_passthrough_metrics: # @docs-ignore
+    - name: "assists" # test something else # @docs-ignore
+    - name: "revenue" # test revenue field not aliased (Though we are aliasing) # @docs-ignore
+    - name: "conversions_qualified"  # @docs-ignore
+      alias: "conversions" # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  microsoft_ads__campaign_passthrough_metrics: # @docs-ignore
+    - name: "assists" # test something else # @docs-ignore
+    - name: "revenue" # test revenue field not aliased (Though we are aliasing) # @docs-ignore
+    - name: "conversions_qualified" # @docs-ignore
+      alias: "conversions" # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  microsoft_ads__ad_group_passthrough_metrics: # @docs-ignore
+    - name: "all_conversions" # @docs-ignore
+      alias: "multipled_all_conversions" # @docs-ignore
+    - name: "all_conversions_qualified" # @docs-ignore
+    - name: "conversions_qualified" # @docs-ignore
+      alias: "conversions" # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  microsoft_ads__keyword_passthrough_metrics: # @docs-ignore
+    - name: "conversions_qualified" # @docs-ignore
+      alias: "conversions" # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  microsoft_ads__search_passthrough_metrics: # @docs-ignore
+    - name: "conversions_qualified" # @docs-ignore
+      alias: "conversions" # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
 
-  pinterest__campaign_report_passthrough_metrics:
-    - name: "total_conversions_value_in_micro_dollar"
-      alias: total_conversions_value
-    - name: "paid_impression"
-    - name: total_conversions
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  pinterest__ad_group_report_passthrough_metrics:
-    - name: total_conversions
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  pinterest__advertiser_report_passthrough_metrics:
-    - name: total_conversions
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  pinterest__keyword_report_passthrough_metrics:
-    - name: total_conversions
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  pinterest__pin_promotion_report_passthrough_metrics:
-    - name: "total_conversions_value_in_micro_dollar"
-      alias: total_conversions_value
-    - name: "paid_impression"
-    - name: total_conversions
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
+  pinterest__campaign_report_passthrough_metrics: # @docs-ignore
+    - name: "total_conversions_value_in_micro_dollar" # @docs-ignore
+      alias: total_conversions_value # @docs-ignore
+    - name: "paid_impression" # @docs-ignore
+    - name: total_conversions # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  pinterest__ad_group_report_passthrough_metrics: # @docs-ignore
+    - name: total_conversions # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  pinterest__advertiser_report_passthrough_metrics: # @docs-ignore
+    - name: total_conversions # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  pinterest__keyword_report_passthrough_metrics: # @docs-ignore
+    - name: total_conversions # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  pinterest__pin_promotion_report_passthrough_metrics: # @docs-ignore
+    - name: "total_conversions_value_in_micro_dollar" # @docs-ignore
+      alias: total_conversions_value # @docs-ignore
+    - name: "paid_impression" # @docs-ignore
+    - name: total_conversions # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
 
-  reddit_ads__account_passthrough_metrics: 
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: video_started
-      alias: videos
-  reddit_ads__campaign_passthrough_metrics: 
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: video_started
-      alias: videos
-  reddit_ads__ad_group_passthrough_metrics:
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: video_started
-      alias: videos
-  reddit_ads__ad_passthrough_metrics:
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: video_started
-      alias: videos
+  reddit_ads__account_passthrough_metrics:  # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_started # @docs-ignore
+      alias: videos # @docs-ignore
+  reddit_ads__campaign_passthrough_metrics:  # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_started # @docs-ignore
+      alias: videos # @docs-ignore
+  reddit_ads__ad_group_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_started # @docs-ignore
+      alias: videos # @docs-ignore
+  reddit_ads__ad_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_started # @docs-ignore
+      alias: videos # @docs-ignore
 
-  snapchat_ads__campaign_hourly_report_passthrough_metrics:
-    - name: conversion_add_billing
-      alias: conversion_add_billing_alias
-    - name: conversion_purchases_value
-    - name: conversion_purchases
-      alias: conversions
-    - name: conversion_sign_ups
-      alias: installs
-    - name: video_views
-      alias: videos
-  snapchat_ads__ad_hourly_passthrough_metrics:
-    - name: conversion_add_billing
-      alias: conversion_add_billing_alias
-    - name: conversion_purchases_value
-    - name: conversion_purchases
-      alias: conversions
-    - name: conversion_sign_ups
-      alias: installs
-    - name: video_views
-      alias: videos
-  snapchat_ads__ad_squad_hourly_passthrough_metrics:
-    - name: conversion_purchases
-      alias: conversions
-    - name: conversion_sign_ups
-      alias: installs
-    - name: video_views
-      alias: videos
+  snapchat_ads__campaign_hourly_report_passthrough_metrics: # @docs-ignore
+    - name: conversion_add_billing # @docs-ignore
+      alias: conversion_add_billing_alias # @docs-ignore
+    - name: conversion_purchases_value # @docs-ignore
+    - name: conversion_purchases # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: conversion_sign_ups # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_views # @docs-ignore
+      alias: videos # @docs-ignore
+  snapchat_ads__ad_hourly_passthrough_metrics: # @docs-ignore
+    - name: conversion_add_billing # @docs-ignore
+      alias: conversion_add_billing_alias # @docs-ignore
+    - name: conversion_purchases_value # @docs-ignore
+    - name: conversion_purchases # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: conversion_sign_ups # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_views # @docs-ignore
+      alias: videos # @docs-ignore
+  snapchat_ads__ad_squad_hourly_passthrough_metrics: # @docs-ignore
+    - name: conversion_purchases # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: conversion_sign_ups # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: video_views # @docs-ignore
+      alias: videos # @docs-ignore
 
-  tiktok_ads__ad_hourly_passthrough_metrics:
-    - name: real_time_conversions
-    - name: conversion
-      alias: conversions
-    - name: installs
-      tranform_sql: "null"
-    - name: video_views_p_100
-      alias: videos
-  tiktok_ads__campaign_hourly_passthrough_metrics:
-    - name: real_time_conversions
-    - name: conversion
-      alias: conversions
-    - name: installs
-      tranform_sql: "null"
-    - name: video_views_p_100
-      alias: videos
-  tiktok_ads__ad_group_hourly_passthrough_metrics:
-    - name: real_time_conversions
-    - name: conversion
-      alias: conversions
-    - name: installs
-      tranform_sql: "null"
-    - name: video_views_p_100
-      alias: videos
+  tiktok_ads__ad_hourly_passthrough_metrics: # @docs-ignore
+    - name: real_time_conversions # @docs-ignore
+    - name: conversion # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: video_views_p_100 # @docs-ignore
+      alias: videos # @docs-ignore
+  tiktok_ads__campaign_hourly_passthrough_metrics: # @docs-ignore
+    - name: real_time_conversions # @docs-ignore
+    - name: conversion # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: video_views_p_100 # @docs-ignore
+      alias: videos # @docs-ignore
+  tiktok_ads__ad_group_hourly_passthrough_metrics: # @docs-ignore
+    - name: real_time_conversions # @docs-ignore
+    - name: conversion # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: video_views_p_100 # @docs-ignore
+      alias: videos # @docs-ignore
 
-  twitter_ads__conversion_sale_amount_fields:
-    - conversion_purchases_sale_amount
-    - conversion_custom_sale_amount
-    - conversion_sign_ups_sale_amount
-  twitter_ads__promoted_tweet_report_passthrough_metrics:
-    - name: "conversion_purchases_metric"
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  twitter_ads__campaign_report_passthrough_metrics:
-    - name: "conversion_purchases_metric"
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  twitter_ads__line_item_report_passthrough_metrics: 
-    - name: "conversion_purchases_metric"
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-  twitter_ads__line_item_keywords_report_passthrough_metrics: 
-    - name: "conversion_purchases_metric"
-      alias: conversions
-    - name: installs 
-      transform_sql: "null"
-    - name: videos 
-      transform_sql: "null"
-
+  twitter_ads__conversion_sale_amount_fields: # @docs-ignore
+    - conversion_purchases_sale_amount # @docs-ignore
+    - conversion_custom_sale_amount # @docs-ignore
+    - conversion_sign_ups_sale_amount # @docs-ignore
+  twitter_ads__promoted_tweet_report_passthrough_metrics: # @docs-ignore
+    - name: "conversion_purchases_metric" # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  twitter_ads__campaign_report_passthrough_metrics: # @docs-ignore
+    - name: "conversion_purchases_metric" # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  twitter_ads__line_item_report_passthrough_metrics:  # @docs-ignore
+    - name: "conversion_purchases_metric" # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+  twitter_ads__line_item_keywords_report_passthrough_metrics:  # @docs-ignore
+    - name: "conversion_purchases_metric" # @docs-ignore
+      alias: conversions # @docs-ignore
+    - name: installs  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
+    - name: videos  # @docs-ignore
+      transform_sql: "null" # @docs-ignore
   ############################ END PASSTHROUGHS ############################
 
   amazon_ads_source:
@@ -420,6 +435,10 @@ vars:
     facebook_ads_basic_ad_action_values_identifier: "facebook_ads_basic_ad_action_values_data"
     facebook_ads_campaign_history_identifier: "facebook_ads_campaign_history_data"
     facebook_ads_creative_history_identifier: "facebook_ads_creative_history_data"
+    facebook_ads_demographics_country_identifier: "facebook_ads_demographics_country_data"
+    facebook_ads_demographics_country_actions_identifier: "facebook_ads_demographics_country_actions_data"
+    facebook_ads_demographics_region_identifier: "facebook_ads_demographics_region_data"
+    facebook_ads_demographics_region_actions_identifier: "facebook_ads_demographics_region_actions_data"
 
   google_ads_source:
     google_ads_schema: ad_reporting_integration_tests_8
@@ -433,6 +452,7 @@ vars:
     google_ads_ad_group_stats_identifier: "google_ads_ad_group_stats_data"
     google_ads_campaign_stats_identifier: "google_ads_campaign_stats_data"
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
+    google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
 
   linkedin_source:
     linkedin_ads_schema: ad_reporting_integration_tests_8
@@ -442,6 +462,9 @@ vars:
     linkedin_ads_campaign_history_identifier: "linkedin_ad_campaign_history_data"
     linkedin_ads_creative_history_identifier: "linkedin_ad_creative_history_data"
     linkedin_ads_ad_analytics_by_campaign_identifier: "linkedin_ad_analytics_by_campaign_data"
+    linkedin_ads_geo_identifier: "linkedin_geo_data"
+    linkedin_ads_monthly_ad_analytics_by_member_country_identifier: "linkedin_monthly_ad_analytics_by_member_country_data"
+    linkedin_ads_monthly_ad_analytics_by_member_region_identifier: "linkedin_monthly_ad_analytics_by_member_region_data"
 
   microsoft_ads_source:
     microsoft_ads_schema: ad_reporting_integration_tests_8
@@ -456,6 +479,7 @@ vars:
     microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
     microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
     microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
+    microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
   pinterest_source:
     pinterest_schema: ad_reporting_integration_tests_8
@@ -469,6 +493,9 @@ vars:
     pinterest_ads_campaign_report_identifier: "pinterest_campaign_report_data"
     pinterest_ads_advertiser_history_identifier: "pinterest_advertiser_history_data"
     pinterest_ads_advertiser_report_identifier: "pinterest_advertiser_report_data"
+    pinterest_ads_pin_promotion_targeting_report_identifier: "pinterest_pin_promotion_targeting_report_data"
+    pinterest_ads_targeting_geo_identifier: "pinterest_targeting_geo_data"
+    pinterest_ads_targeting_geo_region_identifier: "pinterest_targeting_geo_region_data"
 
   reddit_ads_source:
     reddit_ads_schema: ad_reporting_integration_tests_8
@@ -478,12 +505,15 @@ vars:
     reddit_ads_ad_report_identifier: "reddit_ads_ad_report_data"
     reddit_ads_ad_group_identifier: "reddit_ads_ad_group_data"
     reddit_ads_ad_group_report_identifier: "reddit_ads_ad_group_report_data"
+    reddit_ads_business_account_identifier: "reddit_ads_business_account_data"
     reddit_ads_campaign_identifier: "reddit_ads_campaign_data"
     reddit_ads_campaign_report_identifier: "reddit_ads_campaign_report_data"
     reddit_ads_account_conversions_report_identifier: "reddit_ads_account_conversions"
     reddit_ads_ad_conversions_report_identifier: "reddit_ads_ad_conversions"
     reddit_ads_ad_group_conversions_report_identifier: "reddit_ads_ad_group_conversions"
     reddit_ads_campaign_conversions_report_identifier: "reddit_ads_campaign_conversions"
+    reddit_ads_campaign_country_report_identifier: "reddit_ads_campaign_country_report_data"
+    reddit_ads_campaign_country_conversions_report_identifier: "reddit_ads_campaign_country_conversions_report_data"
 
   snapchat_ads_source:
     snapchat_ads_schema: ad_reporting_integration_tests_8
@@ -496,6 +526,8 @@ vars:
     snapchat_ads_campaign_hourly_report_identifier: "snapchat_campaign_hourly_report_data"
     snapchat_ads_creative_history_identifier: "snapchat_creative_history_data"
     snapchat_ads_creative_url_tag_history_identifier: "snapchat_creative_url_tag_history_data"
+    snapchat_ads_campaign_geo_region_daily_report_identifier: "snapchat_campaign_geo_region_daily_report_data"
+    snapchat_ads_campaign_geo_country_daily_report_identifier: "snapchat_campaign_geo_country_daily_report_data"
 
   tiktok_ads_source:
     tiktok_ads_schema: ad_reporting_integration_tests_8
@@ -506,6 +538,7 @@ vars:
     tiktok_ads_ad_report_hourly_identifier: "tiktok_ad_report_hourly_data"
     tiktok_ads_adgroup_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
+    tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
 
   twitter_ads_source:
     twitter_ads_schema: ad_reporting_integration_tests_8
@@ -520,9 +553,13 @@ vars:
     twitter_ads_line_item_report_identifier: "twitter_line_item_report_data"
     twitter_ads_account_report_identifier: "twitter_account_report_data"
     twitter_ads_line_item_keywords_report_identifier: "twitter_line_item_keywords_report_data"
+    twitter_ads_campaign_locations_report_identifier: "twitter_campaign_locations_report_data"
+    twitter_ads_campaign_regions_report_identifier: "twitter_campaign_regions_report_data"
 
 seeds:
   ad_reporting_integration_tests:
+    +docs:
+      show: false
     +quote_columns: "{{ true if target.type in ('redshift') else false }}"
 
     ### Microsoft Seeds
@@ -616,6 +653,21 @@ seeds:
         last_modified_time: "timestamp"
         modified_time: "timestamp"
         spend: "float"
+    microsoft_ads_geographic_performance_daily_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        location_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks: "integer"
+        impressions: "integer"
+        spend: "numeric"
+        conversions_qualified: "integer"
+        conversions: "integer"
+        revenue: "numeric"
+        all_conversions_qualified: "integer"
+        all_conversions: "integer"
+        all_revenue: "numeric"
 
     ### LinkedIn Seeds    
     
@@ -649,6 +701,14 @@ seeds:
         created_time: timestamp
         last_modified_time: timestamp
         account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    linkedin_monthly_ad_analytics_by_member_country_data:
+      +column_types:
+        cost_in_local_currency: numeric
+        cost_in_usd: numeric
+    linkedin_monthly_ad_analytics_by_member_region_data:
+      +column_types:
+        cost_in_local_currency: numeric
+        cost_in_usd: numeric
 
     ### Twitter Seeds
 
@@ -764,6 +824,9 @@ seeds:
         ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    pinterest_pin_promotion_targeting_report_data:
+      +column_types:
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         
     ### Google Seeds
     google_ads_ad_group_stats_data:
@@ -854,6 +917,11 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_search_term_keyword_stats_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     
     ### Facebook Seeds
     facebook_ads_creative_history_data:
@@ -892,7 +960,21 @@ seeds:
         inline: "float"
         _1_d_view: "float"
         _7_d_click: "float"
-        
+    facebook_ads_demographics_country_actions_data:
+      +column_types:
+        value: "float"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_region_actions_data:
+      +column_types:
+        value: "float"
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_country_data:
+      +column_types:
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+    facebook_ads_demographics_region_data:
+      +column_types:
+        account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+
     ### Snapchat Seeds
 
     snapchat_ad_hourly_report_data:
@@ -943,37 +1025,66 @@ seeds:
 
 
     ### Reddit Ads Seeds
-
+    
+    reddit_ads_account_conversions:
+      +column_types:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_account_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_account_report_data:
       +column_types:
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_ad_conversions:
+      +column_types:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        ad_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_ad_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    reddit_ads_ad_report_data:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        ad_group_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_ad_group_conversions:
       +column_types:
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        ad_group_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_ad_group_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_ad_group_report_data:
       +column_types:
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        ad_group_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_ad_report_data:
+      +column_types:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        ad_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_business_account_data:
+      +column_types:
+        id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_campaign_conversions:
+      +column_types:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_campaign_country_conversions_report_data:
+      +column_types:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+    reddit_ads_campaign_country_report_data:
+      +column_types:
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_campaign_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_campaign_report_data:
       +column_types:
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True

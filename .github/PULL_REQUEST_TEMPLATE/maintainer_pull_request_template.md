@@ -1,35 +1,38 @@
-## PR Overview
-**This PR will address the following Issue/Feature:**
+<!--
+Pre-Submission Reminders  
+Before marking this PR as "ready for review":
 
-**This PR will result in the following new package version:**
-<!--- Please add details around your decision for breaking vs non-breaking version upgrade. If this is a breaking change, were backwards-compatible options explored? -->
+- `dbt run --full-refresh && dbt test`  
+- `dbt run` && `dbt test` (if incremental models are present)  
+- The related issue is linked, tagged, and appropriately assigned  
+- Documentation and version updates are included, if applicable  
+- `docs` have been regenerated (unless there are no code or YAML changes)  
+- BuildKite integration tests are passing
+-->
 
-**Please provide the finalized CHANGELOG entry which details the relevant changes included in this PR:**
-<!--- Copy/paste the CHANGELOG for this version below. -->
+## PR Overview 
+**Package version introduced in this PR:** 
+- 
 
-## PR Checklist
-### Basic Validation
-Please acknowledge that you have successfully performed the following commands locally:
-- [ ] dbt run –full-refresh && dbt test
-- [ ] dbt run (if incremental models are present) && dbt test
+**This PR addresses the following Issue/Feature(s):**
+<!-- Add Issue # or internal ticket reference -->
+- 
 
-Before marking this PR as "ready for review" the following have been applied:
-- [ ] The appropriate issue has been linked, tagged, and properly assigned
-- [ ] All necessary documentation and version upgrades have been applied
-- [ ] docs were regenerated (unless this PR does not include any code or yml updates)
-- [ ] BuildKite integration tests are passing
-- [ ] Detailed validation steps have been provided below
+**Summary of changes:**  
+<!-- 1-2 sentences describing PR changes. -->
+- 
 
-#### ❗ Special Updates for Ad Reporting ❗
-To reduce integration testing time, not all models should be enabled in the `run_models.sh` vars. Update the variables after `dbt run` and `dbt test` to set:
-- [ ] this PR's package to `true`
-- [ ] Google Ads and Facebook Ads to `true` (if not already)
-- [ ] All other packages to `false`
+### Submission Checklist  
+- [ ] Alignment meeting with the reviewer (if needed)  
+  - [ ] Timeline and validation requirements discussed  
+- [ ] Provide validation details:  
+  - [ ] **Validation Steps:** Check for unintentional effects (e.g., add/run consistency & integrity tests)
+  - [ ] **Testing Instructions:** Confirm the change addresses the issue(s)
+  - [ ] **Focus Areas:** Complex logic or queries that need extra attention  
+- [ ] Merge any relevant open PRs into this PR
 
-### Detailed Validation
-Please share any and all of your validation steps:
-<!--- Provide the steps you took to validate your changes below. -->
-
-### If you had to summarize this PR in an emoji, which would it be?
-<!--- For a complete list of markdown compatible emojis check our this git repo (https://gist.github.com/rxaviers/7360908)  --> 
-:dancer:
+### Changelog  
+<!-- Recommend drafting changelog notes, then refining via ChatGPT using:  
+"Draft a changelog entry based on the following notes." -->
+- [ ] Draft changelog for PR  
+- [ ] Final changelog for release review

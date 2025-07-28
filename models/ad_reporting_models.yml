@@ -343,3 +343,85 @@ models:
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
+
+  - name: ad_reporting__monthly_campaign_country_report
+    description: Each record represents monthly metrics by campaign and country. Country names are standardized to ISO-3166 names.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - platform
+            - date_month
+            - campaign_id
+            - account_id
+            - country
+    columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
+      - name: date_month
+        description: Month of the record, truncated to the first day of the month.
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: The ID representing the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a null value for this field.
+      - name: campaign_name
+        description: The name of the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a value of `Account-level` for this field.
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
+      - name: country 
+        description: Standardized ISO-3166 name of the country where the campaign was served.
+      - name: country_code
+        description: ISO-3166 two-letter code of the country where the campaign was served.
+      - name: global_region
+        description: Greater global region in which the country is located.
+
+  - name: ad_reporting__monthly_campaign_region_report
+    description: Each record represents monthly metrics by campaign and region (state, province, metropolitan area, etc.) provided by each platform.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - platform
+            - date_month
+            - campaign_id
+            - account_id
+            - region
+    columns:
+      - name: source_relation
+        description: '{{ doc("source_relation") }}'
+      - name: date_month
+        description: Month of the record, truncated to the first day of the month.
+      - name: platform
+        description: '{{ doc("platform") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: campaign_id
+        description: The ID representing the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a null value for this field.
+      - name: campaign_name
+        description: The name of the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a value of `Account-level` for this field.
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend  
+        description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
+      - name: region 
+        description: Region the ad was served in. The formatting may vary across platforms. This may be a state, province, metropolitan area, etc. Snapchat Ads provides this as a two-letter abbreviation.
