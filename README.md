@@ -5,11 +5,14 @@
         href="https://github.com/fivetran/dbt_ad_reporting/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="dbt-core">
-        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.6.0_<2.0.0-orange.svg" /></a>
+        <img src="https://img.shields.io/badge/dbt_Core™_version->=1.3.0_,<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
+    <a alt="Fivetran Quickstart Compatible"
+        href="https://fivetran.com/docs/transformations/dbt/quickstart">
+        <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
 ## What does this dbt package do?
@@ -104,14 +107,14 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=1.16.0", "<1.17.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.17.0", "<1.18.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
 
-
 ### Step 3: Configure Database and Schema Variables
-By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connection>_database` variables to your `dbt_project.yml` file (see below).
+By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
+> Please note, cross-database querying, where the `*_database` variable differs from the database specified in your `profiles.yml`, is not supported by all dbt adapters (e.g., dbt-redshift). Refer to the documentation for your specific destination adapter for more details on its capabilities.
 
 ```yml
 vars:
@@ -141,7 +144,7 @@ vars:
 
     snapchat_schema: snapchat_ads
     snapchat_database: your_database_name 
-    
+
     tiktok_ads_schema: tiktok_ads
     tiktok_ads_database: your_database_name
 
@@ -256,12 +259,12 @@ models:
     +schema: apple_search_ads
   apple_search_ads_source:
     +schema: apple_search_ads_source
-  
+
   facebook_ads:
     +schema: facebook_ads
   facebook_ads_source:
     +schema: facebook_ads_source
-  
+
   google_ads:
     +schema: google_ads
   google_ads_source:
@@ -291,12 +294,12 @@ models:
     +schema: snapchat_ads
   snapchat_ads_source:
     +schema: snapchat_ads_source
-  
+
   tiktok_ads:
     +schema: tiktok_ads
   tiktok_ads_source:
     +schema: tiktok_ads_source
-  
+
   twitter_ads:
     +schema: twitter_ads
   twitter_ads_source:
@@ -592,7 +595,7 @@ vars:
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available for sources in which you are unioning together multiple connections.
 > IMPORTANT: See the Apple Store [`dbt_project.yml`](https://github.com/fivetran/dbt_apple_store_source/blob/main/dbt_project.yml)  and Google Play [`dbt_project.yml`](https://github.com/fivetran/dbt_google_play_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
-    
+
 ```yml
 vars:
     <default_source_table_name>_identifier: your_table_name 
@@ -670,7 +673,7 @@ packages:
 
   - package: fivetran/amazon_ads
     version: [">=0.5.0", "<0.6.0"]
-  
+
   - package: fivetran/amazon_ads_source
     version: [">=0.5.0", "<0.6.0"]
 
@@ -679,13 +682,13 @@ packages:
 
   - package: fivetran/apple_search_ads_source
     version: [">=0.6.0", "<0.7.0"]
-  
+
   - package: fivetran/facebook_ads
     version: [">=0.10.0", "<0.11.0"]
 
   - package: fivetran/facebook_ads_source
     version: [">=0.10.0", "<0.11.0"]
-  
+
   - package: fivetran/google_ads
     version: [">=0.13.0", "<0.14.0"]
 
@@ -711,10 +714,10 @@ packages:
     version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/reddit_ads
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/reddit_ads_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/snapchat_ads
     version: [">=0.10.0", "<0.11.0"]

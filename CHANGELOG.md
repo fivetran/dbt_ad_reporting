@@ -1,3 +1,22 @@
+# dbt_ad_reporting v1.17.0
+[PR #156](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
+
+## Schema & Data Updates - Reddit Ads
+**17 total changes • 17 possible breaking changes**
+
+| Data Models | Change Type | Old | New | Notes |
+| --- | --- | --- | --- | --- |
+| `ad_reporting__account_report` <br> `ad_reporting__ad_group_report` <br> `ad_reporting__ad_report` <br> `ad_reporting__campaign_report` <br> `ad_reporting__monthly_campaign_country_report` <br> `ad_reporting__url_report` <br> `reddit_ads__account_report` <br> `reddit_ads__ad_group_report` <br> `reddit_ads__ad_report` <br> `reddit_ads__campaign_country_report` <br> `reddit_ads__campaign_report` <br> `reddit_ads__url_report` <br> `stg_reddit_ads__account_report` <br> `stg_reddit_ads__ad_group_report` <br> `stg_reddit_ads__ad_report` <br> `stg_reddit_ads__campaign_country_report` <br> `stg_reddit_ads__campaign_report` | Column datatype | `spend` (`INT`) | `spend` (`NUMERIC`) | Updated the datatype of the `spend` field from `INT` to `NUMERIC` to preserve decimal precision and prevent rounding when converting to dollars. The type cast is applied in the Reddit Ads staging layer and propagates through to the transform layer. See the [dbt_reddit_ads v0.7.0 release](https://github.com/fivetran/dbt_reddit_ads_source/releases/tag/v0.7.0) for more details. |
+
+## Under the Hood
+- Updated conditions in `.github/workflows/auto-release.yml`.
+- Added `.github/workflows/generate-docs.yml`.
+- Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
+- Updated `maintainer_pull_request_template.md` with improved checklist.
+- Refreshed README tag block.
+- Updated Python image version to `3.10.13` in `pipeline.yml`.
+- Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
+
 # dbt_ad_reporting v1.16.0
 [PR #153](https://github.com/fivetran/dbt_ad_reporting/pull/153) includes the following updates:
 
