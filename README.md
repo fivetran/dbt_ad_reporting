@@ -714,7 +714,7 @@ packages:
     version: [">=0.13.0", "<0.14.0"]
 
   - package: fivetran/reddit_ads
-    version: [">=0.7.0", "<0.8 .0"]
+    version: [">=0.7.0", "<0.8.0"]
 
   - package: fivetran/reddit_ads_source
     version: [">=0.7.0", "<0.8.0"]
