@@ -1,5 +1,11 @@
 {% set enabled_packages = get_enabled_packages() %}
-{{ config(enabled=is_enabled(enabled_packages)) }}
+{{ config(enabled=is_enabled(enabled_packages),
+    unique_key = ['source_relation','platform','date_day','ad_group_id','campaign_id','account_id'],
+    partition_by={
+      "field": "date_day",
+      "data_type": "date",
+      "granularity": "day"
+    }) }}
 
 with base as (
 
@@ -29,7 +35,33 @@ aggregated as (
 
     from base
     {{ dbt_utils.group_by(9) }}
-)
+),
+
+all_data as (
 
 select *
 from aggregated
+
+union all
+
+SELECT 
+source_relation
+,date_day
+,'youtube' as platform
+,cast(account_id as string)
+,account_name
+,cast(campaign_id as string)
+,campaign_name
+,cast(ad_group_id as string)
+,ad_group_name
+,sum(clicks) as clicks
+,sum(impressions) as impressions
+,sum(spend) as spend
+,sum(conversions) as conversions    
+from 
+    {{ref('youtube_ads__custom_ad_summary_report')}}
+group by 1,2,3,4,5,6,7,8,9
+)
+
+select *
+from all_data
