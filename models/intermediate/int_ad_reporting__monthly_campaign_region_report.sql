@@ -37,7 +37,7 @@
     {% do exclude_list.append('twitter_ads') %}
 {% endif %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list) %}
+{% set enabled_packages = get_enabled_packages(include=include_list, exclude=exclude_list) %}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with 
