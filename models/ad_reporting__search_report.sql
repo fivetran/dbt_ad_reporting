@@ -3,7 +3,14 @@
 {% do include_list.append('google_ads') if var('google_ads__using_search_term_keyword_stats', true) %}
 
 {% set enabled_packages = get_enabled_packages(include=include_list)%}
-{{ config(enabled=is_enabled(enabled_packages)) }}
+{{ config(enabled=is_enabled(enabled_packages),
+    unique_key = ['source_relation','platform','date_day','search_query','search_match_type','keyword_id','ad_group_id','campaign_id','account_id'],
+    partition_by={
+      "field": "date_day",
+      "data_type": "date",
+      "granularity": "day"
+    }
+    ) }}
 
 with base as (
 
