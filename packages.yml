@@ -8,8 +8,8 @@ packages:
   - package: fivetran/facebook_ads
     version: [">=0.10.0", "<0.11.0"]
 
-  - package: fivetran/google_ads
-    version: [">=0.14.0", "<0.15.0"]
+  - git: "https://github.com/tysonfoodsreporting/dbt_google_ads.git"
+    revision: "production"
 
   - package: fivetran/linkedin
     version: [">=0.12.0", "<0.13.0"]

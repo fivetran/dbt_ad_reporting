@@ -18,7 +18,7 @@ vars:
 models:
   ad_reporting:
     +materialized: table 
-    +schema: ad_reporting 
+    +schema: ad_reporting_summary_prod
     intermediate:
       +materialized: ephemeral
       +schema: int_ad_reporting
