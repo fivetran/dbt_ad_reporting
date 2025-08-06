@@ -53,7 +53,8 @@ source_relation
 ,sum(clicks) as clicks
 ,sum(impressions) as impressions
 ,sum(spend) as spend
-,sum(conversions) as conversions    
+,sum(conversions) as conversions  
+,sum(conversions_value) as conversions_value  
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 group by 1,2,3,4,5,6,7

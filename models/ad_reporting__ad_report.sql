@@ -61,7 +61,8 @@ source_relation
 ,clicks
 ,impressions
 ,spend
-,conversions    
+,conversions 
+,conversions_value   
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 )
