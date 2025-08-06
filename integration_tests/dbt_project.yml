@@ -162,6 +162,9 @@ seed-paths:
 - "{{ var('seed-paths', 'some_non_existent_directory_as_default') }}"
 models:
   ad_reporting:
+    intermediate:
+      +materialized: table
+      +schema: int_ad_reporting  
     ad_reporting__monthly_campaign_country_report:
       "+schema": "transformed"
     ad_reporting__ad_group_report:

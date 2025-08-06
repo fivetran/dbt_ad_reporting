@@ -49,7 +49,14 @@
     {% do exclude_list.append('twitter_ads') %}
 {% endif %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list, exclude=exclude_list) %}
+{# Log which packages were added to which list #} 
+{{ log("\n Include list before filtering: " ~ include_list, info=True) }}
+{{ log("\n Exclude list before filtering: " ~ exclude_list, info=True) }}
+
+{% set enabled_packages = get_enabled_packages(exclude=exclude_list) %}
+
+{# Log final enabled packages after filtering by global enablement #}
+{{ log("\n Enabled packages after get_enabled_packages(): " ~ enabled_packages, info=True) }}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with 
