@@ -47,7 +47,7 @@ from aggregated
 union all
 
 SELECT 
-source_relation
+'' as source_relation
 ,date_day
 ,'youtube' as platform
 ,cast(account_id as string)
