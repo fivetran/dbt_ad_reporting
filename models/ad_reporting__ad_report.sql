@@ -65,6 +65,28 @@ source_relation
 ,conversions_value   
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
+
+union all
+
+SELECT 
+source_relation
+,date_day
+,platform
+,account_id
+,account_name
+,campaign_id
+,campaign_name
+,ad_group_id
+,ad_group_name
+,ad_id
+,ad_name
+,clicks
+,impressions
+,spend
+,conversions  
+, null as conversions_value  
+from {{ ref('ttd_ads__ad_report') }}  
+
 )
 
 select *
