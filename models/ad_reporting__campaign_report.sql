@@ -43,7 +43,7 @@ from aggregated
 union all
 
 SELECT 
-source_relation
+'' as source_relation
 ,date_day
 ,'youtube' as platform
 ,cast(account_id as string)
@@ -58,6 +58,23 @@ source_relation
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 group by 1,2,3,4,5,6,7
+
+union all
+
+SELECT 
+source_relation
+,date_day
+,platform
+,account_id
+,account_name
+,campaign_id
+,campaign_name
+,clicks
+,impressions
+,spend
+,conversions    
+, null as conversions_value
+from {{ ref('ttd_ads__campaign_report') }}  
 )
 
 select *
