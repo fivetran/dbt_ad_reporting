@@ -71,3 +71,4 @@ env/
 env.bak/
 venv/
 venv.bak/
+dbt_internal_packages/

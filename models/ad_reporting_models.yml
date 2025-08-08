@@ -6,11 +6,12 @@ models:
     description: Each record represents daily metrics by account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -41,13 +42,14 @@ models:
     description: Each record represents daily metrics by ad group, campaign and account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - ad_group_id
-            - campaign_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -81,17 +83,18 @@ models:
         description: '{{ doc("conversions_value") }}'
 
   - name: ad_reporting__ad_report
-    description: Each record represents daily metrics by ad, ad group, campaign and account. 
+    description: Each record represents daily metrics by ad, ad group, campaign and account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - ad_id
-            - ad_group_id
-            - campaign_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_id
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -121,7 +124,7 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
@@ -132,12 +135,13 @@ models:
     description: Each record represents daily metrics by campaign and account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - campaign_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -159,7 +163,7 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
@@ -170,15 +174,16 @@ models:
     description: Each record represents daily metrics by keyword, ad group, campaign and account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - keyword_id
-            - keyword_match_type
-            - ad_group_id
-            - campaign_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - keyword_id
+              - keyword_match_type
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -210,7 +215,7 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
@@ -218,19 +223,20 @@ models:
         description: '{{ doc("conversions_value") }}'
 
   - name: ad_reporting__search_report
-    description: Each record represents daily metrics by search query, ad group, campaign and account. 
+    description: Each record represents daily metrics by search query, ad group, campaign and account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - search_query
-            - search_match_type
-            - keyword_id
-            - ad_group_id
-            - campaign_id
-            - account_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - search_query
+              - search_match_type
+              - keyword_id
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -264,35 +270,36 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
-        description: '{{ doc("spend") }}' 
+      - name: spend
+        description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
 
   - name: ad_reporting__url_report
-    description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account. 
+    description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - ad_group_id
-            - campaign_id
-            - account_id
-            - base_url
-            - url_host
-            - url_path
-            - utm_campaign
-            - utm_content
-            - utm_medium
-            - utm_source
-            - utm_term
           config:
             # Below is so we don't run this test if the user has allowed urls to have null entries
             enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_group_id
+              - campaign_id
+              - account_id
+              - base_url
+              - url_host
+              - url_path
+              - utm_campaign
+              - utm_content
+              - utm_medium
+              - utm_source
+              - utm_term
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -337,8 +344,8 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
-        description: '{{ doc("spend") }}' 
+      - name: spend
+        description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
@@ -348,13 +355,14 @@ models:
     description: Each record represents monthly metrics by campaign and country. Country names are standardized to ISO-3166 names.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_month
-            - campaign_id
-            - account_id
-            - country
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_month
+              - campaign_id
+              - account_id
+              - country
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -374,13 +382,13 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
-      - name: country 
+      - name: country
         description: Standardized ISO-3166 name of the country where the campaign was served.
       - name: country_code
         description: ISO-3166 two-letter code of the country where the campaign was served.
@@ -391,13 +399,14 @@ models:
     description: Each record represents monthly metrics by campaign and region (state, province, metropolitan area, etc.) provided by each platform.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_month
-            - campaign_id
-            - account_id
-            - region
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_month
+              - campaign_id
+              - account_id
+              - region
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -417,11 +426,11 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
-      - name: region 
+      - name: region
         description: Region the ad was served in. The formatting may vary across platforms. This may be a state, province, metropolitan area, etc. Snapchat Ads provides this as a two-letter abbreviation.
