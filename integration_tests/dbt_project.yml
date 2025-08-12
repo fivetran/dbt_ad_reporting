@@ -1,204 +1,21 @@
-# name: 'ad_reporting_integration_tests'
-# version: '1.0.0'
-# profile: 'integration_tests'
-# config-version: 2
-
-
-# config-version: 2
-# name: "ad_reporting_integration_tests"
-# version: "1.0.0"
-# target-path: "target"
-# profile: 'integration_tests'
-# vars:
-#   ad_reporting__amazon_ads_enabled: false
-#   ad_reporting__apple_search_ads_enabled: false
-#   ad_reporting__facebook_ads_enabled: false
-#   ad_reporting__google_ads_enabled: true
-#   ad_reporting__linkedin_ads_enabled: false
-#   ad_reporting__microsoft_ads_enabled: false
-#   ad_reporting__pinterest_ads_enabled: false
-#   ad_reporting__reddit_ads_enabled: false
-#   ad_reporting__snapchat_ads_enabled: false
-#   ad_reporting__tiktok_ads_enabled: false
-#   ad_reporting__twitter_ads_enabled: false
-#   # amazon_ads__portfolio_history_enabled: false
-#   # amazon_ads_database: "singular-vector-135519"
-#   # amazon_ads_union_schemas: []
-#   # apple_search_ads__using_search_terms: false
-#   # apple_search_ads_database: "singular-vector-135519"
-#   # apple_search_ads_union_schemas: []
-#   # facebook_ads__using_demographics_country: false
-#   # facebook_ads__using_demographics_region: false
-#   # facebook_ads_database: "singular-vector-135519"
-#   # facebook_ads_union_schemas: []
-#   google_ads__using_search_term_keyword_stats: true
-#   google_ads_database: "singular-vector-135519"
-#   google_ads_union_schemas: 
-#     - "google_ads_dmitry"
-#     - "luke_google_ads"
-#   # linkedin_ads__using_geo: false
-#   # linkedin_ads__using_monthly_ad_analytics_by_member_country: false
-#   # linkedin_ads__using_monthly_ad_analytics_by_member_region: false
-#   # linkedin_ads_database: "singular-vector-135519"
-#   # linkedin_ads_union_schemas: []
-#   # microsoft_ads__using_geographic_daily_report: false
-#   # microsoft_ads_database: "singular-vector-135519"
-#   # microsoft_ads_union_schemas: []
-#   # pinterest__using_keywords: false
-#   # pinterest__using_pin_promotion_targeting_report: false
-#   # pinterest__using_targeting_geo: false
-#   # pinterest__using_targeting_geo_region: false
-#   # pinterest_ads_union_schemas: []
-#   # pinterest_database: "singular-vector-135519"
-#   # reddit_ads__using_campaign_country_conversions_report: false
-#   # reddit_ads__using_campaign_country_report: false
-#   # reddit_ads_database: "singular-vector-135519"
-#   # reddit_ads_union_schemas: []
-#   # snapchat_ads__using_campaign_country_report: false
-#   # snapchat_ads__using_campaign_region_report: false
-#   # snapchat_ads_union_schemas: []
-#   # snapchat_database: "singular-vector-135519"
-#   # tiktok_ads__using_campaign_country_report: false
-#   # tiktok_ads_database: "singular-vector-135519"
-#   # tiktok_ads_union_schemas: []
-#   # twitter_ads__using_campaign_locations_report: false
-#   # twitter_ads__using_campaign_regions_report: false
-#   # twitter_ads__using_keywords: false
-#   # twitter_ads_database: "singular-vector-135519"
-#   # twitter_ads_union_schemas: []
-# model-paths:
-# - "models"
-# seed-paths:
-# - "seeds"
-# - "{{ var('seed-paths', 'some_non_existent_directory_as_default') }}"
-# models:
-#   ad_reporting:
-#     ad_reporting__monthly_campaign_country_report:
-#       "+schema": "transformed"
-#     ad_reporting__ad_group_report:
-#       "+schema": "transformed"
-#     ad_reporting__ad_report:
-#       "+schema": "transformed"
-#     ad_reporting__account_report:
-#       "+schema": "transformed"
-#     ad_reporting__monthly_campaign_region_report:
-#       "+schema": "transformed"
-#     ad_reporting__search_report:
-#       "+schema": "transformed"
-#     ad_reporting__keyword_report:
-#       "+schema": "transformed"
-#     ad_reporting__campaign_report:
-#       "+schema": "transformed"
-#     ad_reporting__url_report:
-#       "+schema": "transformed"
-#   "+schema": "transformed_source"
-
-config-version: 2
-name: "ad_reporting_integration_tests"
-version: "1.0.0"
-target-path: "target"
+name: 'ad_reporting_integration_tests'
+version: '1.17.1'
 profile: 'integration_tests'
-vars:
-  ad_reporting__amazon_ads_enabled: false
-  ad_reporting__apple_search_ads_enabled: false
-  ad_reporting__facebook_ads_enabled: false
-  ad_reporting__google_ads_enabled: true
-  ad_reporting__linkedin_ads_enabled: false
-  ad_reporting__microsoft_ads_enabled: false
-  ad_reporting__pinterest_ads_enabled: false
-  ad_reporting__reddit_ads_enabled: false
-  ad_reporting__snapchat_ads_enabled: false
-  ad_reporting__tiktok_ads_enabled: false
-  ad_reporting__twitter_ads_enabled: false
-  amazon_ads__portfolio_history_enabled: false
-  # amazon_ads_database: "singular-vector-135519"
-  amazon_ads_union_schemas: []
-  apple_search_ads__using_search_terms: false
-  #  apple_search_ads_database: "singular-vector-135519"
-  apple_search_ads_union_schemas: []
-  facebook_ads__using_demographics_country: false
-  facebook_ads__using_demographics_region: false
-  # facebook_ads_database: "singular-vector-135519"
-  facebook_ads_union_schemas: []
-  google_ads__using_search_term_keyword_stats: true
-  google_ads_database: "singular-vector-135519"
-  google_ads_union_schemas:
-  - "google_ads_dmitry"
-  - "luke_google_ads"
-  linkedin_ads__using_geo: false
-  linkedin_ads__using_monthly_ad_analytics_by_member_country: false
-  linkedin_ads__using_monthly_ad_analytics_by_member_region: false
-  # linkedin_ads_database: "singular-vector-135519"
-  linkedin_ads_union_schemas: []
-  microsoft_ads__using_geographic_daily_report: false
-  # microsoft_ads_database: "singular-vector-135519"
-  microsoft_ads_union_schemas: []
-  pinterest__using_keywords: false
-  pinterest__using_pin_promotion_targeting_report: false
-  pinterest__using_targeting_geo: false
-  pinterest__using_targeting_geo_region: false
-  pinterest_ads_union_schemas: []
-  # pinterest_database: "singular-vector-135519"
-  reddit_ads__using_campaign_country_conversions_report: false
-  reddit_ads__using_campaign_country_report: false
-  # reddit_ads_database: "singular-vector-135519"
-  reddit_ads_union_schemas: []
-  snapchat_ads__using_campaign_country_report: false
-  snapchat_ads__using_campaign_region_report: false
-  snapchat_ads_union_schemas: []
-  # snapchat_database: "singular-vector-135519"
-  tiktok_ads__using_campaign_country_report: false
-  # tiktok_ads_database: "singular-vector-135519"
-  tiktok_ads_union_schemas: []
-  twitter_ads__using_campaign_locations_report: false
-  twitter_ads__using_campaign_regions_report: false
-  twitter_ads__using_keywords: false
-  # twitter_ads_database: "singular-vector-135519"
-  twitter_ads_union_schemas: []
-model-paths:
-- "models"
-seed-paths:
-- "seeds"
-- "{{ var('seed-paths', 'some_non_existent_directory_as_default') }}"
+config-version: 2
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+
+  - macro_namespace: dbt_expectations
+    search_order: ['google_ads_source', 'dbt_expectations']
+
 models:
-  ad_reporting:
-    intermediate:
-      +materialized: table
-      +schema: int_ad_reporting  
-    ad_reporting__monthly_campaign_country_report:
-      "+schema": "transformed"
-    ad_reporting__ad_group_report:
-      "+schema": "transformed"
-    ad_reporting__ad_report:
-      "+schema": "transformed"
-    ad_reporting__account_report:
-      "+schema": "transformed"
-    ad_reporting__monthly_campaign_region_report:
-      "+schema": "transformed"
-    ad_reporting__search_report:
-      "+schema": "transformed"
-    ad_reporting__keyword_report:
-      "+schema": "transformed"
-    ad_reporting__campaign_report:
-      "+schema": "transformed"
-    ad_reporting__url_report:
-      "+schema": "transformed"
-  "+schema": "transformed_source"
+  +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
 
-# dispatch:
-#   - macro_namespace: dbt_utils
-#     search_order: ['spark_utils', 'dbt_utils']
+vars:
+  ad_reporting__metricflow_time_spine_enabled: true
 
-#   - macro_namespace: dbt_expectations
-#     search_order: ['google_ads_source', 'dbt_expectations']
-
-# models:
-#   +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
-
-# vars:
-#   ad_reporting__metricflow_time_spine_enabled: true
-#   google_ads_union_schemas: ['zz_dbt_avinash_seed','zz_dbt_avinash_seed_2']
-  
   # IMPORTANT IMPORTANT: COMMENT THESE IN FOR DOCS GENERATION AND VALIDATION TESTS!!!!!! 
   # facebook_ads__using_demographics_country: true # @docs-include
   # facebook_ads__using_demographics_region: true # @docs-include
@@ -207,19 +24,7 @@ models:
   # snapchat_ads__using_campaign_region_report: true # @docs-include
   # twitter_ads__using_campaign_locations_report: true # @docs-include
   # twitter_ads__using_campaign_regions_report: true # @docs-include
-
-  # ad_reporting__amazon_ads_enabled: False
-  # ad_reporting__google_ads_enabled: True
-  # ad_reporting__apple_search_ads_enabled: False
-  # ad_reporting__facebook_ads_enabled: False
-  # ad_reporting__linkedin_ads_enabled: False
-  # ad_reporting__microsoft_ads_enabled: False
-  # ad_reporting__pinterest_ads_enabled: False
-  # ad_reporting__reddit_ads_enabled: False
-  # ad_reporting__snapchat_ads_enabled: False
-  # ad_reporting__tiktok_ads_enabled: False
-  # ad_reporting__twitter_ads_enabled: False
-
+  
   # Comment out passthroughs when generating docs!!!
   ############################ START PASSTHROUGHS ############################
   ad_reporting__ad_passthrough_metrics: # @docs-ignore
@@ -594,7 +399,7 @@ models:
   ############################ END PASSTHROUGHS ############################
 
   amazon_ads_source:
-    amazon_ads_schema: zz_dbt_avinash_seed
+    amazon_ads_schema: ad_reporting_integration_tests_8
     amazon_ads_ad_group_history_identifier: "amazon_ads_ad_group_history_data"
     amazon_ads_ad_group_level_report_identifier: "amazon_ads_ad_group_level_report_data"
     amazon_ads_advertised_product_report_identifier: "amazon_ads_advertised_product_report_data"
@@ -608,7 +413,7 @@ models:
     amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
 
   apple_search_ads_source:
-    apple_search_ads_schema: zz_dbt_avinash_seed
+    apple_search_ads_schema: ad_reporting_integration_tests_8
     apple_search_ads_organization_identifier: "apple_search_organization_data"
     apple_search_ads_campaign_history_identifier: "apple_search_campaign_history_data"
     apple_search_ads_campaign_report_identifier: "apple_search_campaign_report_data"
@@ -621,7 +426,7 @@ models:
     apple_search_ads_search_term_report_identifier: "apple_search_search_term_report_data"
 
   facebook_ads_source:
-    facebook_ads_schema: zz_dbt_avinash_seed
+    facebook_ads_schema: ad_reporting_integration_tests_8
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
@@ -636,7 +441,7 @@ models:
     facebook_ads_demographics_region_actions_identifier: "facebook_ads_demographics_region_actions_data"
 
   google_ads_source:
-    google_ads_schema: zz_dbt_avinash_seed
+    google_ads_schema: ad_reporting_integration_tests_8
     google_ads_ad_stats_identifier: "google_ads_ad_stats_data"
     google_ads_ad_history_identifier: "google_ads_ad_history_data"
     google_ads_ad_group_history_identifier: "google_ads_ad_group_history_data"
@@ -650,7 +455,7 @@ models:
     google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
 
   linkedin_source:
-    linkedin_ads_schema: zz_dbt_avinash_seed
+    linkedin_ads_schema: ad_reporting_integration_tests_8
     linkedin_ads_account_history_identifier: "linkedin_ad_account_history_data"
     linkedin_ads_ad_analytics_by_creative_identifier: "linkedin_ad_analytics_by_creative_data"
     linkedin_ads_campaign_group_history_identifier: "linkedin_ad_campaign_group_history_data"
@@ -662,7 +467,7 @@ models:
     linkedin_ads_monthly_ad_analytics_by_member_region_identifier: "linkedin_monthly_ad_analytics_by_member_region_data"
 
   microsoft_ads_source:
-    microsoft_ads_schema: zz_dbt_avinash_seed
+    microsoft_ads_schema: ad_reporting_integration_tests_8
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
     microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -677,7 +482,7 @@ models:
     microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
   pinterest_source:
-    pinterest_schema: zz_dbt_avinash_seed
+    pinterest_schema: ad_reporting_integration_tests_8
     pinterest_ads_ad_group_history_identifier: "pinterest_ad_group_history_data"
     pinterest_ads_campaign_history_identifier: "pinterest_campaign_history_data"
     pinterest_ads_pin_promotion_history_identifier: "pinterest_pin_promotion_history_data"
@@ -693,7 +498,7 @@ models:
     pinterest_ads_targeting_geo_region_identifier: "pinterest_targeting_geo_region_data"
 
   reddit_ads_source:
-    reddit_ads_schema: zz_dbt_avinash_seed
+    reddit_ads_schema: ad_reporting_integration_tests_8
     reddit_ads_account_identifier: "reddit_ads_account_data"
     reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
     reddit_ads_ad_identifier: "reddit_ads_ad_data"
@@ -711,7 +516,7 @@ models:
     reddit_ads_campaign_country_conversions_report_identifier: "reddit_ads_campaign_country_conversions_report_data"
 
   snapchat_ads_source:
-    snapchat_ads_schema: zz_dbt_avinash_seed
+    snapchat_ads_schema: ad_reporting_integration_tests_8
     snapchat_ads_ad_account_history_identifier:  "snapchat_ad_account_history_data"
     snapchat_ads_ad_history_identifier: "snapchat_ad_history_data"
     snapchat_ads_ad_hourly_report_identifier: "snapchat_ad_hourly_report_data"
@@ -725,7 +530,7 @@ models:
     snapchat_ads_campaign_geo_country_daily_report_identifier: "snapchat_campaign_geo_country_daily_report_data"
 
   tiktok_ads_source:
-    tiktok_ads_schema: zz_dbt_avinash_seed
+    tiktok_ads_schema: ad_reporting_integration_tests_8
     tiktok_ads_adgroup_history_identifier: "tiktok_adgroup_history_data"
     tiktok_ads_ad_history_identifier: "tiktok_ad_history_data"
     tiktok_ads_advertiser_identifier: "tiktok_advertiser_data"
@@ -736,7 +541,7 @@ models:
     tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
 
   twitter_ads_source:
-    twitter_ads_schema: zz_dbt_avinash_seed
+    twitter_ads_schema: ad_reporting_integration_tests_8
     twitter_ads_account_history_identifier: "twitter_account_history_data"
     twitter_ads_campaign_history_identifier: "twitter_campaign_history_data"
     twitter_ads_line_item_history_identifier: "twitter_line_item_history_data"
@@ -1023,100 +828,100 @@ seeds:
       +column_types:
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         
-    # ### Google Seeds
-    # google_ads_ad_group_stats_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_ad_stats_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_campaign_stats_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_keyword_stats_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_campaign_history_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_ad_group_history_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_ad_history_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_ad_group_criterion_history_data:
-    #   +column_types:
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    # google_ads_search_term_keyword_stats_data:
-    #   +column_types:
-    #     ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    #     campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    ### Google Seeds
+    google_ads_ad_group_stats_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_stats_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_campaign_stats_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_keyword_stats_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_campaign_history_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_group_history_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_history_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_ad_group_criterion_history_data:
+      +column_types:
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_criterion_criterion_id:  "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        base_adgroup_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_search_term_keyword_stats_data:
+      +column_types:
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     
     ### Facebook Seeds
     facebook_ads_creative_history_data:
