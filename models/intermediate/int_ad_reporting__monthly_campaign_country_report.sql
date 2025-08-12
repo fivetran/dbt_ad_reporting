@@ -8,7 +8,19 @@
 {% do include_list.append('tiktok_ads') if var('tiktok_ads__using_campaign_country_report', true) %}
 {% do include_list.append('twitter_ads') if var('twitter_ads__using_campaign_locations_report', false) %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list) %}
+-- Used for logging macro behavior, can be removed after PR review
+{{ log("include_list before filtering for intermediate country report: " ~ include_list, info=True) }}
+
+{% if include_list | length > 0 %}
+    {% set enabled_packages = get_enabled_packages(include=include_list) %}
+{% else %}
+    {% set enabled_packages = [] %}
+{% endif %}
+
+-- Used for logging macro behavior, can be removed after PR review
+{{ log("enabled_packages after macro filtering for intermediate country report: " ~ enabled_packages, info=True) }}
+{{ log("Model enabled for intermediate country report? " ~ is_enabled(enabled_packages), info=True) }}
+
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with 

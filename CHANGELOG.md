@@ -1,3 +1,16 @@
+# dbt_ad_reporting v1.17.1
+[PR #158](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
+
+## Bug Fixes
+- Added conditionals to prevent compilation errors by disabling the following models when (1) none of the ad packages that have region/country reports are enabled, and (2) ad packages that do not have region/country reports are the only ones enabled.  
+  - `ad_reporting__monthly_campaign_country_report` (When only Amazon, Apple and/or Google Ads are enabled)
+  - `int_ad_reporting__monthly_campaign_country_report` (When only Amazon, Apple and/or Google Ads are enabled)
+  - `ad_reporting__monthly_campaign_region_report` (When only Amazon, Apple, Google, Reddit and/or Tiktok Ads are enabled)
+  - `int_ad_reporting__monthly_campaign_region_report` (When only Amazon, Apple, Google, Reddit and/or Tiktok Ads are enabled)
+
+## Quickstart Updates
+- Updated `require-dbt-version` range in `quickstart.yml` to `>=1.6.0` to match dbt-core due to MetricFlow requirements.
+
 # dbt_ad_reporting v1.17.0
 [PR #156](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
 

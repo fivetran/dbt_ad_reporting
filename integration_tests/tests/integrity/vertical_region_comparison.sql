@@ -111,6 +111,10 @@ final as (
 {% for platform in enabled_packages %}
     select 
         '{{ platform }}' as platform
+        {% for metric in metrics %}
+        , report.{{ metric }} as ad_reporting_{{ metric }}
+        , {{ platform }}.{{ metric }} as platform_{{ metric }}
+        {% endfor %}
     from report
     join {{ platform }}
         on report.platform = '{{ platform }}'
