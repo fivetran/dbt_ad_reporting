@@ -1,3 +1,13 @@
+# dbt_ad_reporting v1.18.0
+[PR #161](https://github.com/fivetran/dbt_ad_reporting/pull/161) includes the following updates:
+
+### dbt Fusion Compatibility Updates
+- Updated package to maintain compatibility with dbt-core versions both before and after v1.10.6, which introduced a breaking change to multi-argument test syntax (e.g., `unique_combination_of_columns`).
+- Temporarily removed unsupported tests to avoid errors and ensure smoother upgrades across different dbt-core versions. These tests will be reintroduced once a safe migration path is available.
+  - Removed all `dbt_utils.unique_combination_of_columns` tests.
+  - Removed all accepted_values tests.
+  - Moved `loaded_at_field: _fivetran_synced` under the `config:` block in `src_ad_reporting.yml`.
+
 # dbt_ad_reporting v1.17.0
 [PR #156](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
 
