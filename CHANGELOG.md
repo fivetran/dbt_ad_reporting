@@ -1,3 +1,16 @@
+# dbt_ad_reporting v2.0.0
+[PR #161](https://github.com/fivetran/dbt_ad_reporting/pull/161) includes the following updates:
+
+## Upstream Breaking Changes
+
+### Source Package Consolidation 
+- Removed the dependency on the `fivetran/**_source` package for all ad transformation packages. See the v1.0.0 release notes of each ad package for more details (example from `dbt_apple_search_ads` ([link](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v1.0.0))).
+
+### dbt Fusion Compatibility Updates
+- Updated package to maintain compatibility with dbt-core versions both before and after v1.10.6, which introduced a breaking change to multi-argument test syntax (e.g., `unique_combination_of_columns`).
+- Temporarily removed unsupported tests to avoid errors and ensure smoother upgrades across different dbt-core versions. These tests will be reintroduced once a safe migration path is available.
+  - Removed all `dbt_utils.unique_combination_of_columns` tests. 
+
 # dbt_ad_reporting v1.17.0
 [PR #156](https://github.com/fivetran/dbt_ad_reporting/pull/156) includes the following updates:
 
