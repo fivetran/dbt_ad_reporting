@@ -62,7 +62,11 @@ SELECT
 ,impressions
 ,spend
 ,conversions 
-,conversions_value   
+,conversions_value  ,
+sum(video_views_25) as video_25p_watched,  
+sum(video_views_50) as video_50p_watched, 
+sum(video_views_75) as video_75p_watched, 
+sum(video_views_100) as video_complete_watched
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 
@@ -84,7 +88,11 @@ source_relation
 ,impressions
 ,spend
 ,conversions  
-, null as conversions_value  
+, null as conversions_value,
+player_25p_complete as video_25p_watched, 
+player_50p_complete as video_50p_watched, 
+player_75p_complete as video_75p_watched, 
+player_completed_views as video_complete_watched 
 from {{ ref('ttd_ads__ad_report') }}  
 
 )

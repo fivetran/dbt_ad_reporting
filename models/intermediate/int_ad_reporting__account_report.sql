@@ -2,7 +2,7 @@
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with
-{% for package in ['facebook_ads', 'google_ads', 'microsoft_ads'] %}
+{% for package in ['facebook_ads',  'microsoft_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
     {{ get_query(
@@ -13,7 +13,22 @@ with
 ),
 {% endif %}
 {% endfor %}
+{% if 'google_ads' in enabled_packages %}
+google_ads as (
 
+    {{ get_query(
+        platform='google_ads', 
+        report_type='account', 
+        field_mapping={
+                'video_25p_watched': 'null',
+                'video_50p_watched': 'null',
+                'video_75p_watched': 'null',
+                'video_complete_watched': 'null',
+            },
+        relation=ref('google_ads__account_report')
+    ) }}
+),
+{% endif %}
 {% if 'apple_search_ads' in enabled_packages %}
 apple_search_ads as (
 
@@ -58,7 +73,11 @@ pinterest_ads as (
                 'account_id': 'advertiser_id',
                 'account_name': 'advertiser_name',
                 'conversions': 'total_conversions',
-                'conversions_value': 'total_conversions_value'
+                'conversions_value': 'total_conversions_value',
+                'video_25p_watched': 'video_total_25_p',
+                'video_50p_watched': 'video_total_50_p',
+                'video_75p_watched': 'video_total_75_p',
+                'video_complete_watched': 'video_total_100_p',
             },
         relation=ref('pinterest_ads__advertiser_report')
     ) }}
@@ -76,7 +95,11 @@ snapchat_ads as (
                 'account_name': 'ad_account_name',
                 'clicks':'swipes',
                 'conversions': 'total_conversions',
-                'conversions_value': 'conversion_purchases_value'
+                'conversions_value': 'conversion_purchases_value',
+                'video_25p_watched': 'video_25p_watched',
+                'video_50p_watched': 'video_50p_watched',
+                'video_75p_watched': 'video_75p_watched',
+                'video_complete_watched': 'video_complete_watched',
             },
         relation=ref('snapchat_ads__account_report')
     ) }}
@@ -93,7 +116,11 @@ tiktok_ads as (
                 'account_id': 'advertiser_id',
                 'account_name': 'advertiser_name',
                 'conversions': 'conversion',
-                'conversions_value': 'total_conversion_value'
+                'conversions_value': 'total_conversion_value',
+                'video_25p_watched': 'video_views_p_25',
+                'video_50p_watched': 'video_views_p_50',
+                'video_75p_watched': 'video_views_p_75',
+                'video_complete_watched': 'video_views_p_100',
             },
         relation=ref('tiktok_ads__advertiser_report')
     ) }}
