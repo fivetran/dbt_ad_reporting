@@ -124,7 +124,7 @@
 
 {#- For url level reports, add ad_fields and ad_passthrough_metrics (if any) -#}
 {%- if report_type == 'url' -%}
-    {%- if var('ad_reporting__ad_passthrough_metrics', []) -%}
+    {%- if var('ad_reporting__ad_url_passthrough_metrics', []) -%}
         {%- set ad_passthrough_metrics_values = [] -%}
         {%- set ad_passthrough_metrics_array_of_dicts = var('ad_reporting__ad_passthrough_metrics') -%}
             {%- for ad_passthrough_metrics_dict in ad_passthrough_metrics_array_of_dicts -%}
