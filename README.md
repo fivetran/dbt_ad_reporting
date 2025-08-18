@@ -248,57 +248,57 @@ By default this package will build all models in your `<target_schema>` with the
 ```yml
 models:  
   ad_reporting:
-    +schema: ad_reporting
+    +schema: ad_reporting # default schema suffix
 
   amazon_search_ads:
-    +schema: amazon_ads
+    +schema: amazon_ads # default schema suffix
   amazon_ads_source:
-    +schema: amazon_ads_source
+    +schema: amazon_ads_source # default schema suffix
 
   apple_search_ads:
-    +schema: apple_search_ads
+    +schema: apple_search_ads # default schema suffix
   apple_search_ads_source:
-    +schema: apple_search_ads_source
+    +schema: apple_search_ads_source # default schema suffix
 
   facebook_ads:
-    +schema: facebook_ads
+    +schema: facebook_ads # default schema suffix
   facebook_ads_source:
-    +schema: facebook_ads_source
+    +schema: facebook_ads_source # default schema suffix
 
   google_ads:
-    +schema: google_ads
+    +schema: google_ads # default schema suffix
   google_ads_source:
-    +schema: google_ads_source
+    +schema: google_ads_source # default schema suffix
 
   linkedin:
-    +schema: linkedin
+    +schema: linkedin_ads # default schema suffix
   linkedin_source:
-    +schema: linkedin_source
+    +schema: linkedin_ads_source # default schema suffix
 
   microsoft_ads:
-    +schema: microsoft_ads
+    +schema: microsoft_ads # default schema suffix
   microsoft_ads_source:
-    +schema: microsoft_ads_source
+    +schema: microsoft_ads_source # default schema suffix
 
   pinterest:
-    +schema: pinterest
+    +schema: pinterest # default schema suffix
   pinterest_source:
-    +schema: pinterest_source
+    +schema: pinterest_source # default schema suffix
 
   reddit_ads:
-    +schema: reddit_ads
+    +schema: reddit_ads # default schema suffix
   reddit_ads_source:
-    +schema: reddit_ads_source
+    +schema: reddit_ads_source # default schema suffix
 
   snapchat_ads:
-    +schema: snapchat_ads
+    +schema: snapchat_ads # default schema suffix
   snapchat_ads_source:
-    +schema: snapchat_ads_source
+    +schema: snapchat_ads_source # default schema suffix
 
   tiktok_ads:
     +schema: tiktok_ads
   tiktok_ads_source:
-    +schema: tiktok_ads_source
+    +schema: stg_tiktok_ads # default schema suffix
 
   twitter_ads:
     +schema: twitter_ads
