@@ -252,58 +252,58 @@ models:
 
   amazon_search_ads:
     +schema: amazon_ads # default schema suffix
-  amazon_ads_source:
-    +schema: amazon_ads_source # default schema suffix
+    staging:
+      +schema: amazon_ads_source # default schema suffix
 
   apple_search_ads:
     +schema: apple_search_ads # default schema suffix
-  apple_search_ads_source:
-    +schema: apple_search_ads_source # default schema suffix
+    staging:
+      +schema: apple_search_ads_source # default schema suffix
 
   facebook_ads:
     +schema: facebook_ads # default schema suffix
-  facebook_ads_source:
-    +schema: facebook_ads_source # default schema suffix
+    staging:
+      +schema: facebook_ads_source # default schema suffix
 
   google_ads:
     +schema: google_ads # default schema suffix
-  google_ads_source:
-    +schema: google_ads_source # default schema suffix
+    staging:
+      +schema: google_ads_source # default schema suffix
 
   linkedin:
     +schema: linkedin_ads # default schema suffix
-  linkedin_source:
-    +schema: linkedin_ads_source # default schema suffix
+    staging:
+      +schema: linkedin_ads_source # default schema suffix
 
   microsoft_ads:
     +schema: microsoft_ads # default schema suffix
-  microsoft_ads_source:
-    +schema: microsoft_ads_source # default schema suffix
+    staging:
+      +schema: microsoft_ads_source # default schema suffix
 
   pinterest:
     +schema: pinterest # default schema suffix
-  pinterest_source:
-    +schema: pinterest_source # default schema suffix
+    staging:
+      +schema: pinterest_source # default schema suffix
 
   reddit_ads:
     +schema: reddit_ads # default schema suffix
-  reddit_ads_source:
-    +schema: reddit_ads_source # default schema suffix
+    staging:
+      +schema: reddit_ads_source # default schema suffix
 
   snapchat_ads:
     +schema: snapchat_ads # default schema suffix
-  snapchat_ads_source:
-    +schema: snapchat_ads_source # default schema suffix
+    staging:
+      +schema: snapchat_ads_source # default schema suffix
 
   tiktok_ads:
-    +schema: tiktok_ads
-  tiktok_ads_source:
-    +schema: stg_tiktok_ads # default schema suffix
+    +schema: tiktok_ads # default schema suffix
+    staging:
+      +schema: stg_tiktok_ads # default schema suffix
 
   twitter_ads:
-    +schema: twitter_ads
-  twitter_ads_source:
-    +schema: twitter_ads_source
+    +schema: twitter_ads # default schema suffix
+    staging:
+      +schema: twitter_ads_source # default schema suffix
 ```
 
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
