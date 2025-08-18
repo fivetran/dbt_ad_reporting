@@ -63,10 +63,10 @@ SELECT
 ,spend
 ,conversions 
 ,conversions_value  ,
-sum(video_views_25) as video_25p_watched,  
-sum(video_views_50) as video_50p_watched, 
-sum(video_views_75) as video_75p_watched, 
-sum(video_views_100) as video_complete_watched
+video_views_25 as video_25p_watched,  
+video_views_50 as video_50p_watched, 
+video_views_75 as video_75p_watched, 
+video_views_100 as video_complete_watched
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 
