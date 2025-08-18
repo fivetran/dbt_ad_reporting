@@ -19,7 +19,7 @@ google_ads as (
 
     {{ get_query(
         platform='google_ads', 
-        report_type='account', 
+        report_type='ad_group', 
         field_mapping={
                 'video_25p_watched': 'null',
                 'video_50p_watched': 'null',
