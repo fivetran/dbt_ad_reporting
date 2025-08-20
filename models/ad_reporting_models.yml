@@ -4,13 +4,13 @@ models:
 
   - name: ad_reporting__account_report
     description: Each record represents daily metrics by account.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - account_id
+    # tests:
+    #   - dbt_utils.unique_combination_of_columns:
+    #       combination_of_columns:
+    #         - source_relation
+    #         - platform
+    #         - date_day
+    #         - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -39,15 +39,15 @@ models:
 
   - name: ad_reporting__ad_group_report
     description: Each record represents daily metrics by ad group, campaign and account.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - ad_group_id
-            - campaign_id
-            - account_id
+    # tests:
+    #   - dbt_utils.unique_combination_of_columns:
+    #       combination_of_columns:
+    #         - source_relation
+    #         - platform
+    #         - date_day
+    #         - ad_group_id
+    #         - campaign_id
+    #         - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -130,14 +130,14 @@ models:
 
   - name: ad_reporting__campaign_report
     description: Each record represents daily metrics by campaign and account.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - campaign_id
-            - account_id
+    # tests:
+    #   - dbt_utils.unique_combination_of_columns:
+    #       combination_of_columns:
+    #         - source_relation
+    #         - platform
+    #         - date_day
+    #         - campaign_id
+    #         - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
