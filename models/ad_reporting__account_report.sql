@@ -80,6 +80,26 @@ player_75p_complete as video_75p_watched,
 player_completed_views as video_complete_watched
 from {{ ref('ttd_ads__account_report') }}
 
+union all
+
+SELECT 
+source_relation
+,date_day
+,platform
+,account_id
+,account_name
+,clicks
+,impressions
+,spend
+,conversions   
+, conversions_value,
+null as video_25p_watched, 
+video_midpoint as video_50p_watched, 
+null as video_75p_watched, 
+video_complete as video_complete_watched
+from {{ ref('amazon_dsp__account_report') }}
+
+
 )
 
 select *
