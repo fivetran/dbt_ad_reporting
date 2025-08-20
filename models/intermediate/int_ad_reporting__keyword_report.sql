@@ -103,11 +103,7 @@ amazon_ads as (
                 'spend': 'cost',
                 'keyword_match_type': 'match_type',
                 'conversions': 'purchases_30_d',
-                'conversions_value': 'sales_30_d',
-                'video_25p_watched': 'null',
-                'video_50p_watched': 'null',
-                'video_75p_watched': 'null',
-                'video_complete_watched': 'null'
+                'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__keyword_report')
     ) }}
