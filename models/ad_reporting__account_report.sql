@@ -69,17 +69,17 @@ source_relation
 ,platform
 ,account_id
 ,account_name
-,clicks
-,impressions
-,spend
-,conversions   
+,sum(clicks) as clicks
+,sum(impressions) as impressions
+,sum(spend) as spend
+,sum(conversions) as conversions 
 , null as conversions_value,
-player_25p_complete as video_25p_watched, 
-player_50p_complete as video_50p_watched, 
-player_75p_complete as video_75p_watched, 
-player_completed_views as video_complete_watched
+sum(player_25p_complete) as video_25p_watched, 
+sum(player_50p_complete) as video_50p_watched, 
+sum(player_75p_complete) as video_75p_watched, 
+sum(player_completed_views) as video_complete_watched
 from {{ ref('ttd_ads__account_report') }}
-
+group by 1,2,3,4,5
 union all
 
 SELECT 
