@@ -176,7 +176,12 @@ amazon_ads as (
         field_mapping={
                 'spend': 'cost',
                 'conversions': 'purchases_30_d',
-                'conversions_value': 'sales_30_d'
+                'conversions_value': 'sales_30_d',
+                'video_25p_watched': 'null',
+                'video_50p_watched': 'null',
+                'video_75p_watched': 'null',
+                'video_complete_watched': 'null'
+                
             },
         relation=ref('amazon_ads__ad_group_report')
     ) }}
