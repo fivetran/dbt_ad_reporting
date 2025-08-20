@@ -14,6 +14,7 @@ with
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
                 'video_complete_watched': 'null',
+                'conversion_value': 'null'
             }
     ) }}
 ),
@@ -61,7 +62,12 @@ facebook_ads as (
         report_type='ad', 
         field_mapping={
                 'ad_group_id': 'ad_set_id',
-                'ad_group_name': 'ad_set_name'
+                'ad_group_name': 'ad_set_name',
+                'video_25p_watched': 'null',
+                'video_50p_watched': 'null',
+                'video_75p_watched': 'null',
+                'video_complete_watched': 'null',
+                'conversions_value': 'null'
             },
         relation=ref('facebook_ads__ad_report')
     ) }}

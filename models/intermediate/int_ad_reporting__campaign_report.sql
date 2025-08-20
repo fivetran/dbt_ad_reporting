@@ -14,6 +14,7 @@ with
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
                 'video_complete_watched': 'null',
+                'conversions_value': 'null'
             }
     ) }}
 ),
