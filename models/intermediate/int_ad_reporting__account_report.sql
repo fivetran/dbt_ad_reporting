@@ -8,7 +8,13 @@ with
     {{ get_query(
         platform=package,
         report_type='account',
-        relation=ref(package ~ '__account_report')
+        relation=ref(package ~ '__account_report'),
+        field_mapping={
+                'video_25p_watched': 'null',
+                'video_50p_watched': 'null',
+                'video_75p_watched': 'null',
+                'video_complete_watched': 'null',
+            }
     ) }}
 ),
 {% endif %}
@@ -77,7 +83,7 @@ pinterest_ads as (
                 'video_25p_watched': 'video_total_25_p',
                 'video_50p_watched': 'video_total_50_p',
                 'video_75p_watched': 'video_total_75_p',
-                'video_complete_watched': 'video_total_100_p',
+                'video_complete_watched': 'video_total_100_p'
             },
         relation=ref('pinterest_ads__advertiser_report')
     ) }}
@@ -120,7 +126,7 @@ tiktok_ads as (
                 'video_25p_watched': 'video_views_p_25',
                 'video_50p_watched': 'video_views_p_50',
                 'video_75p_watched': 'video_views_p_75',
-                'video_complete_watched': 'video_views_p_100',
+                'video_complete_watched': 'video_views_p_100'
             },
         relation=ref('tiktok_ads__advertiser_report')
     ) }}
@@ -151,11 +157,7 @@ amazon_ads as (
         field_mapping={
                 'spend': 'cost',
                 'conversions': 'purchases_30_d',
-                'conversions_value': 'sales_30_d',
-                'video_25p_watched': 'null',
-                'video_50p_watched': 'null',
-                'video_75p_watched': 'null',
-                'video_complete_watched': 'null'
+                'conversions_value': 'sales_30_d'
             },
         relation=ref('amazon_ads__account_report')
     ) }}

@@ -8,7 +8,13 @@ with
     {{ get_query(
         platform=package,
         report_type='campaign',
-        relation=ref(package ~ '__campaign_report')
+        relation=ref(package ~ '__campaign_report'),
+        field_mapping={
+                'video_25p_watched': 'null',
+                'video_50p_watched': 'null',
+                'video_75p_watched': 'null',
+                'video_complete_watched': 'null',
+            }
     ) }}
 ),
 {% endif %}
