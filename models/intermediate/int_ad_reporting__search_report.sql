@@ -52,7 +52,11 @@ amazon_ads as (
                 'search_match_type': 'match_type',
                 'search_query': 'search_term',
                 'conversions': 'purchases_30_d',
-                'conversions_value': 'sales_30_d'
+                'conversions_value': 'sales_30_d',
+                'video_25p_watched': 'null',
+                'video_50p_watched': 'null',
+                'video_75p_watched': 'null',
+                'video_complete_watched': 'null'
             },
         relation=ref('amazon_ads__search_report')
     ) }}
