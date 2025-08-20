@@ -86,7 +86,7 @@ SELECT
 source_relation
 ,date_day
 ,platform
-,account_id
+,cast(account_id as string)
 ,account_name
 ,clicks
 ,impressions
