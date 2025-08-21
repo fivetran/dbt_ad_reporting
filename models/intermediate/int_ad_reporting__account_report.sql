@@ -2,7 +2,7 @@
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with
-{% for package in ['facebook_ads',  'microsoft_ads'] %}
+{% for package in ['microsoft_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
     {{ get_query(
@@ -20,6 +20,23 @@ with
 ),
 {% endif %}
 {% endfor %}
+{% if 'facebook_ads' in enabled_packages %}
+facebook_ads as (
+
+    {{ get_query(
+        platform='facebook_ads', 
+        report_type='account', 
+        field_mapping={
+                'video_25p_watched': 'video_p_25_watched',
+                'video_50p_watched': 'video_p_50_watched',
+                'video_75p_watched': 'video_p_75_watched',
+                'video_complete_watched': 'video_p_100_watched',
+                'conversions_value': 'null'
+            },
+        relation=ref('facebook_ads__custom_summary_report')
+    ) }}
+),
+{% endif %}
 {% if 'google_ads' in enabled_packages %}
 google_ads as (
 

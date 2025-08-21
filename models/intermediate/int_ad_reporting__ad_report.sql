@@ -61,15 +61,15 @@ facebook_ads as (
         platform='facebook_ads', 
         report_type='ad', 
         field_mapping={
-                'ad_group_id': 'ad_set_id',
-                'ad_group_name': 'ad_set_name',
-                'video_25p_watched': 'null',
-                'video_50p_watched': 'null',
-                'video_75p_watched': 'null',
-                'video_complete_watched': 'null',
-                'conversions_value': 'null'
+                'video_25p_watched': 'video_p_25_watched',
+                'video_50p_watched': 'video_p_50_watched',
+                'video_75p_watched': 'video_p_75_watched',
+                'video_complete_watched': 'video_p_100_watched',
+                'conversions_value': 'null',
+                'ad_group_id':'adset_id',
+                'ad_group_name': 'adset_name'
             },
-        relation=ref('facebook_ads__ad_report')
+        relation=ref('facebook_ads__custom_summary_report')
     ) }}
 ),
 {% endif %}
