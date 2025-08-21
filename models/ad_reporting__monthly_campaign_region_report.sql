@@ -6,7 +6,7 @@
 {% do include_list.append('snapchat_ads') if var('snapchat_ads__using_campaign_region_report', false) %}
 {% do include_list.append('twitter_ads') if var('twitter_ads__using_campaign_regions_report', false) %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list) %}
+{% set enabled_packages = get_enabled_packages(include=include_list)%}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with base as (

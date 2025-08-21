@@ -8,7 +8,7 @@
 {% do include_list.append('tiktok_ads') if var('tiktok_ads__using_campaign_country_report', true) %}
 {% do include_list.append('twitter_ads') if var('twitter_ads__using_campaign_locations_report', false) %}
 
-{% set enabled_packages = get_enabled_packages(include=include_list) %}
+{% set enabled_packages = get_enabled_packages(include=include_list)%}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with base as (
