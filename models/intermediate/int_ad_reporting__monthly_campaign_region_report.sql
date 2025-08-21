@@ -6,19 +6,7 @@
 {% do include_list.append('snapchat_ads') if var('snapchat_ads__using_campaign_region_report', false) %}
 {% do include_list.append('twitter_ads') if var('twitter_ads__using_campaign_regions_report', false) %}
 
--- Used for logging macro behavior, can be removed after PR review
-{{ log("include_list before filtering for intermediate region report: " ~ include_list, info=True) }}
-
-{% if include_list | length > 0 %}
-    {% set enabled_packages = get_enabled_packages(include=include_list) %}
-{% else %}
-    {% set enabled_packages = [] %}
-{% endif %}
-
--- Used for logging macro behavior, can be removed after PR review
-{{ log("enabled_packages after macro filtering for intermediate region report: " ~ enabled_packages, info=True) }}
-{{ log("Model enabled for intermediate region report? " ~ is_enabled(enabled_packages), info=True) }}
-
+{% set enabled_packages = get_enabled_packages(include=include_list) %}
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with 
