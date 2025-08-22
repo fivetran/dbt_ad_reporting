@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '2.0.0'
+version: '2.0.1'
 profile: 'integration_tests'
 config-version: 2
 
@@ -399,7 +399,7 @@ vars:
   ############################ END PASSTHROUGHS ############################
 
   amazon_ads:
-    amazon_ads_schema: ad_reporting_integration_tests_8
+    amazon_ads_schema: ad_reporting_integration_tests_9
     amazon_ads_ad_group_history_identifier: "amazon_ads_ad_group_history_data"
     amazon_ads_ad_group_level_report_identifier: "amazon_ads_ad_group_level_report_data"
     amazon_ads_advertised_product_report_identifier: "amazon_ads_advertised_product_report_data"
@@ -413,7 +413,7 @@ vars:
     amazon_ads_search_term_ad_keyword_report_identifier: "amazon_ads_search_term_ad_keyword_report_data"
 
   apple_search_ads:
-    apple_search_ads_schema: ad_reporting_integration_tests_8
+    apple_search_ads_schema: ad_reporting_integration_tests_9
     apple_search_ads_organization_identifier: "apple_search_organization_data"
     apple_search_ads_campaign_history_identifier: "apple_search_campaign_history_data"
     apple_search_ads_campaign_report_identifier: "apple_search_campaign_report_data"
@@ -425,8 +425,9 @@ vars:
     apple_search_ads_keyword_report_identifier: "apple_search_keyword_report_data"
     apple_search_ads_search_term_report_identifier: "apple_search_search_term_report_data"
 
+
   facebook_ads:
-    facebook_ads_schema: ad_reporting_integration_tests_8
+    facebook_ads_schema: ad_reporting_integration_tests_9
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
@@ -440,8 +441,9 @@ vars:
     facebook_ads_demographics_region_identifier: "facebook_ads_demographics_region_data"
     facebook_ads_demographics_region_actions_identifier: "facebook_ads_demographics_region_actions_data"
 
+
   google_ads:
-    google_ads_schema: ad_reporting_integration_tests_8
+    google_ads_schema: ad_reporting_integration_tests_9
     google_ads_ad_stats_identifier: "google_ads_ad_stats_data"
     google_ads_ad_history_identifier: "google_ads_ad_history_data"
     google_ads_ad_group_history_identifier: "google_ads_ad_group_history_data"
@@ -454,8 +456,9 @@ vars:
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
     google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
 
+
   linkedin:
-    linkedin_ads_schema: ad_reporting_integration_tests_8
+    linkedin_ads_schema: ad_reporting_integration_tests_9
     linkedin_ads_account_history_identifier: "linkedin_ad_account_history_data"
     linkedin_ads_ad_analytics_by_creative_identifier: "linkedin_ad_analytics_by_creative_data"
     linkedin_ads_campaign_group_history_identifier: "linkedin_ad_campaign_group_history_data"
@@ -466,8 +469,9 @@ vars:
     linkedin_ads_monthly_ad_analytics_by_member_country_identifier: "linkedin_monthly_ad_analytics_by_member_country_data"
     linkedin_ads_monthly_ad_analytics_by_member_region_identifier: "linkedin_monthly_ad_analytics_by_member_region_data"
 
+
   microsoft_ads:
-    microsoft_ads_schema: ad_reporting_integration_tests_8
+    microsoft_ads_schema: ad_reporting_integration_tests_9
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
     microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -481,8 +485,9 @@ vars:
     microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
     microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
+
   pinterest:
-    pinterest_schema: ad_reporting_integration_tests_8
+    pinterest_schema: ad_reporting_integration_tests_9
     pinterest_ads_ad_group_history_identifier: "pinterest_ad_group_history_data"
     pinterest_ads_campaign_history_identifier: "pinterest_campaign_history_data"
     pinterest_ads_pin_promotion_history_identifier: "pinterest_pin_promotion_history_data"
@@ -497,8 +502,9 @@ vars:
     pinterest_ads_targeting_geo_identifier: "pinterest_targeting_geo_data"
     pinterest_ads_targeting_geo_region_identifier: "pinterest_targeting_geo_region_data"
 
+
   reddit_ads:
-    reddit_ads_schema: ad_reporting_integration_tests_8
+    reddit_ads_schema: ad_reporting_integration_tests_9
     reddit_ads_account_identifier: "reddit_ads_account_data"
     reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
     reddit_ads_ad_identifier: "reddit_ads_ad_data"
@@ -515,8 +521,9 @@ vars:
     reddit_ads_campaign_country_report_identifier: "reddit_ads_campaign_country_report_data"
     reddit_ads_campaign_country_conversions_report_identifier: "reddit_ads_campaign_country_conversions_report_data"
 
+
   snapchat_ads:
-    snapchat_ads_schema: ad_reporting_integration_tests_8
+    snapchat_ads_schema: ad_reporting_integration_tests_9
     snapchat_ads_ad_account_history_identifier:  "snapchat_ad_account_history_data"
     snapchat_ads_ad_history_identifier: "snapchat_ad_history_data"
     snapchat_ads_ad_hourly_report_identifier: "snapchat_ad_hourly_report_data"
@@ -529,8 +536,9 @@ vars:
     snapchat_ads_campaign_geo_region_daily_report_identifier: "snapchat_campaign_geo_region_daily_report_data"
     snapchat_ads_campaign_geo_country_daily_report_identifier: "snapchat_campaign_geo_country_daily_report_data"
 
+
   tiktok_ads:
-    tiktok_ads_schema: ad_reporting_integration_tests_8
+    tiktok_ads_schema: ad_reporting_integration_tests_9
     tiktok_ads_adgroup_history_identifier: "tiktok_adgroup_history_data"
     tiktok_ads_ad_history_identifier: "tiktok_ad_history_data"
     tiktok_ads_advertiser_identifier: "tiktok_advertiser_data"
@@ -540,8 +548,9 @@ vars:
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
     tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
 
+
   twitter_ads:
-    twitter_ads_schema: ad_reporting_integration_tests_8
+    twitter_ads_schema: ad_reporting_integration_tests_9
     twitter_ads_account_history_identifier: "twitter_account_history_data"
     twitter_ads_campaign_history_identifier: "twitter_campaign_history_data"
     twitter_ads_line_item_history_identifier: "twitter_line_item_history_data"
