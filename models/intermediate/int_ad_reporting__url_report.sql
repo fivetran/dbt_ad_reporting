@@ -2,7 +2,7 @@
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
 with
-{% for package in ['google_ads', 'microsoft_ads'] %}
+{% for package in ['google_ads', 'microsoft_ads','youtube_ads'] %}
 {% if package in enabled_packages %}
 {{ package }} as (
     {{ get_query(
