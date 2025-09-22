@@ -15,8 +15,7 @@
     'snapchat_ads',
     'tiktok_ads',
     'twitter_ads',
-    'reddit_ads',
-    'youtube_ads'] %}
+    'reddit_ads'] %}
 
 {% set enabled_packages = [] %}
 
