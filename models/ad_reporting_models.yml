@@ -275,21 +275,22 @@ models:
     description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account. 
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - platform
-            - date_day
-            - ad_group_id
-            - campaign_id
-            - account_id
-            - base_url
-            - url_host
-            - url_path
-            - utm_campaign
-            - utm_content
-            - utm_medium
-            - utm_source
-            - utm_term
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_group_id
+              - campaign_id
+              - account_id
+              - base_url
+              - url_host
+              - url_path
+              - utm_campaign
+              - utm_content
+              - utm_medium
+              - utm_source
+              - utm_term
           config:
             # Below is so we don't run this test if the user has allowed urls to have null entries
             enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
