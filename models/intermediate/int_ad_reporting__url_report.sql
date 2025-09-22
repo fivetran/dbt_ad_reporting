@@ -1,4 +1,4 @@
-{% set enabled_packages = get_enabled_packages(include=['youtube_ads']) %}
+{% set enabled_packages = get_enabled_packages(include=['youtube_ads','facebook_ads','pinterest_ads','tiktok_ads', 'snapchat_ads','google_ads']) %}
 
 {{ config(enabled=is_enabled(enabled_packages)) }}
 

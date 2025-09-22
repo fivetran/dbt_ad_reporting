@@ -1,4 +1,4 @@
-{% set enabled_packages = get_enabled_packages(exclude=['amazon_ads', 'apple_search_ads']) %}
+{% set enabled_packages = get_enabled_packages(include=['youtube_ads','facebook_ads','pinterest_ads','tiktok_ads', 'snapchat_ads','google_ads']) %}
 {{ config(enabled=is_enabled(enabled_packages),
     unique_key = ['source_relation','platform','date_day','ad_group_id','campaign_id','account_id','base_url','url_host','url_path','utm_campaign','utm_content','utm_medium','utm_source','utm_term'],
     partition_by={
