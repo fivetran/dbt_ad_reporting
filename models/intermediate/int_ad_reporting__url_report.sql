@@ -1,4 +1,4 @@
-{% set enabled_packages = get_enabled_packages(include=['youtube_ads','facebook_ads','pinterest_ads','tiktok_ads', 'snapchat_ads','google_ads']) %}
+{% set enabled_packages = get_enabled_packages(include=['youtube_ads','facebook_ads','pinterest_ads','tiktok_ads', 'snapchat_ads','google_ads', 'ttd_ads']) %}
 
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
@@ -47,6 +47,23 @@ linkedin_ads as (
                 'conversions_value': 'conversion_value_in_local_currency'
             },
         relation=ref('linkedin_ads__url_report')
+    ) }}
+),
+{% endif %}
+
+{% if 'ttd_ads' in enabled_packages %}
+ttd_ads as (
+
+    {{ get_query(
+        platform='ttd_ads', 
+        report_type='url', 
+        field_mapping={
+        'base_url': 'null',
+        'url_host': 'null',
+        'url_path': 'null',
+        'conversion_value': 'null'
+            },
+        relation=ref('ttd_ads__url_report')
     ) }}
 ),
 {% endif %}
