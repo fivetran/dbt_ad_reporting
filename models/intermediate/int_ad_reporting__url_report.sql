@@ -61,7 +61,7 @@ ttd_ads as (
         'base_url': 'null',
         'url_host': 'null',
         'url_path': 'null',
-        'conversion_value': 'null'
+        'conversions_value': 'null'
             },
         relation=ref('ttd_ads__url_report')
     ) }}
