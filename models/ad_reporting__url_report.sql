@@ -26,6 +26,8 @@ aggregated as (
         campaign_name,
         ad_group_id,
         ad_group_name,
+        ad_id,
+        ad_name,
         base_url,
         url_host,
         url_path,
@@ -40,10 +42,10 @@ aggregated as (
         sum(conversions) as conversions,
         sum(conversions_value) as conversions_value
 
-        {{ ad_reporting_persist_pass_through_columns(pass_through_variable='ad_reporting__ad_url_passthrough_metrics', transform = 'sum', alias_fields=['conversions', 'conversions_value']) }}
+        
 
     from base
-    {{ dbt_utils.group_by(17) }}
+    {{ dbt_utils.group_by(19) }}
 )
 
 select *

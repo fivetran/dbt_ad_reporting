@@ -61,7 +61,9 @@ pinterest_ads as (
                 'account_id': 'advertiser_id',
                 'account_name': 'advertiser_name',
                 'conversions': 'total_conversions',
-                'conversions_value': 'total_conversions_value'
+                'conversions_value': 'total_conversions_value',
+                'ad_id': 'pin_promotion_id',
+                'ad_name': 'pin_name'
             },
         relation=ref('pinterest_ads__url_report')
     ) }}
