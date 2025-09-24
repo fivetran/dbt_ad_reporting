@@ -92,7 +92,7 @@ source_relation
 ,performance_date as date_day
 ,'zefr' as platform
 ,null as account_id
-,null as account_name
+,account_name
 ,campaign_group_id as campaign_id
 ,campaign_group_name as campaign_name
 ,sum(clicks) as clicks
