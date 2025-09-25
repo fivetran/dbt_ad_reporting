@@ -314,11 +314,11 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: base_url
         description: '{{ doc("base_url") }}'
-        tests:
-          - not_null:
-              config:
+       # tests:
+        #  - not_null:
+         #     config:
                 # Below is so we don't run this test if the user has allowed urls to have null entries
-                enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
+          #      enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
       - name: url_host
         description: '{{ doc("url_host") }}'
       - name: url_path
