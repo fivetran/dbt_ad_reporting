@@ -119,7 +119,7 @@ sum(video_view_25pct) as video_25p_watched,
 sum(video_view_50pct) as video_50p_watched, 
 sum(video_view_75pct) as video_75p_watched, 
 sum(video_view_100pct) as video_complete_watched
-from {{ ref('zefr_ad_summary_report.sql') }}  
+from {{ ref('zefr_ad_summary_report') }}  
 group by 1,2,3,4,5,6,7,8,9,10,11
 )
 
