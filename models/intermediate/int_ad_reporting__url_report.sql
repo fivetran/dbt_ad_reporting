@@ -1,4 +1,4 @@
-{% set enabled_packages = get_enabled_packages(include=['youtube_ads','facebook_ads','pinterest_ads','tiktok_ads', 'snapchat_ads','google_ads']) %}
+{% set enabled_packages = get_enabled_packages(include=['youtube_ads','facebook_ads','pinterest_ads','tiktok_ads', 'snapchat_ads','google_ads', 'ttd_ads']) %}
 
 {{ config(enabled=is_enabled(enabled_packages)) }}
 
@@ -51,6 +51,23 @@ linkedin_ads as (
 ),
 {% endif %}
 
+{% if 'ttd_ads' in enabled_packages %}
+ttd_ads as (
+
+    {{ get_query(
+        platform='ttd_ads', 
+        report_type='url', 
+        field_mapping={
+        'base_url': 'null',
+        'url_host': 'null',
+        'url_path': 'null',
+        'conversions_value': 'null'
+            },
+        relation=ref('ttd_ads__url_report')
+    ) }}
+),
+{% endif %}
+
 {% if 'pinterest_ads' in enabled_packages %}
 pinterest_ads as (
 
@@ -61,7 +78,9 @@ pinterest_ads as (
                 'account_id': 'advertiser_id',
                 'account_name': 'advertiser_name',
                 'conversions': 'total_conversions',
-                'conversions_value': 'total_conversions_value'
+                'conversions_value': 'total_conversions_value',
+                'ad_id': 'pin_promotion_id',
+                'ad_name': 'pin_name'
             },
         relation=ref('pinterest_ads__url_report')
     ) }}
