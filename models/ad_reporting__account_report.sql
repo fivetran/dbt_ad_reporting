@@ -105,7 +105,7 @@ SELECT
 '' as source_relation
 ,performance_date as date_day
 ,'zefr' as platform
-,null as account_id
+,'' as account_id
 ,account_name
 ,clicks
 ,impressions

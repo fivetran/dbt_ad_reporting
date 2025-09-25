@@ -102,13 +102,13 @@ SELECT
 '' as source_relation
 ,performance_date as date_day
 ,'zefr' as platform
-,null as account_id
+,'' as account_id
 ,account_name
 ,campaign_group_id as campaign_id
 ,campaign_group_name as campaign_name
 ,ad_group_id
 ,ad_group_name
-,null as ad_id
+,'' as ad_id
 ,ad_name
 ,sum(clicks) as clicks
 ,sum(impressions) as impressions
