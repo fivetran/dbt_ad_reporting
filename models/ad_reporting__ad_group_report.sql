@@ -103,9 +103,9 @@ SELECT
 ,campaign_group_name as campaign_name
 ,ad_group_id
 ,ad_group_name
-,clicks as clicks
-,impressions as impressions
-,spend as spend
+,clicks
+,impressions
+,spend
 , null as conversions 
 , null as conversions_value,
 video_view_25pct as video_25p_watched, 
