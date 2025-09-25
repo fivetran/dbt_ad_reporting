@@ -283,7 +283,6 @@ models:
             - campaign_id
             - ad_id
             - account_id
-            - base_url
             - url_host
             - url_path
             - utm_campaign
