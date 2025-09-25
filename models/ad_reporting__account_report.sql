@@ -99,6 +99,25 @@ null as video_75p_watched,
 video_complete as video_complete_watched
 from {{ ref('amazon_dsp__account_report') }}
 
+union all
+
+SELECT 
+'' as source_relation
+,performance_date as date_day
+,'zefr' as platform
+,null as account_id
+,account_name
+,clicks
+,impressions
+,spend
+,null as conversions 
+,null as conversions_value,
+video_view_25pct as video_25p_watched, 
+video_view_50pct as video_50p_watched, 
+video_view_75pct as video_75p_watched, 
+video_view_100pct as video_complete_watched
+from {{ ref('zefr_account_summary_report') }}
+
 
 )
 

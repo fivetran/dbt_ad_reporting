@@ -90,6 +90,29 @@ sum(player_75p_complete) as video_75p_watched,
 sum(player_completed_views) as video_complete_watched
 from {{ ref('ttd_ads__ad_group_report') }}
 group by 1,2,3,4,5,6,7,8,9
+
+union all 
+
+SELECT 
+'' as source_relation
+,performance_date as date_day
+,'zefr' as platform
+,null as account_id
+,account_name
+,campaign_group_id as campaign_id
+,campaign_group_name as campaign_name
+,ad_group_id
+,ad_group_name
+,clicks
+,impressions
+,spend
+, null as conversions 
+, null as conversions_value,
+video_view_25pct as video_25p_watched, 
+video_view_50pct as video_50p_watched, 
+video_view_75pct as video_75p_watched, 
+video_view_100pct as video_complete_watched
+from {{ ref('zefr_adgroup_summary_report') }}
 )
 
 select *
