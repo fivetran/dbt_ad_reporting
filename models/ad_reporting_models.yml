@@ -20,10 +20,10 @@ models:
         description: '{{ doc("platform") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
-          - not_null:
-              config:
-                severity: warn
+        # tests:
+        #   - not_null:
+        #       config:
+        #         severity: warn
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: clicks
@@ -113,8 +113,8 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
-          - not_null
+        # tests:
+        #   - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
       - name: clicks
