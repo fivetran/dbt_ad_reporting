@@ -49,6 +49,18 @@ Refer to the table below for a detailed view of final tables materialized by def
 
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
+Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_ad_reporting). Check out some [sample reports here](https://fivetran-ad-reporting.streamlit.app/ad_performance).
+
+### Example Visualizations
+
+Curious what these tables can do? The Ad Reporting models provide advertising performance data that can be visualized to track key metrics like spend, impressions, click-through rates, conversion rates, and return on ad spend across different campaign structures and time periods. Check out example visualizations in the [Fivetran Ad Reporting Streamlit App](https://fivetran-ad-reporting.streamlit.app/ad_performance), and see how you can use these tables in your own reporting. Below is a screenshot of an example dashboard; explore the app for more.
+
+<p align="center">
+  <a href="https://fivetran-ad-reporting.streamlit.app/ad_performance">
+    <img src="https://raw.githubusercontent.com/fivetran/dbt_ad_reporting/main/images/streamlit_example.png" alt="Fivetran Ad Reporting Streamlit App" width="100%">
+  </a>
+</p>
+
 ### Materialized Models
 
 Each Quickstart transformation job run materializes the following model counts for each selected connector. The total model count represents all staging, intermediate, and final models, materialized as `view`, `table`, or `incremental`:
