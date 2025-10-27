@@ -71,3 +71,6 @@ env/
 env.bak/
 venv/
 venv.bak/
+
+# Claude Code files
+CLAUDE.md
