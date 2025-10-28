@@ -106,6 +106,27 @@ video_view_75pct as video_75p_watched,
 video_view_100pct as video_complete_watched
 from {{ ref('zefr_campaign_summary_report') }}  
 
+union all
+
+ SELECT 
+'' as source_relation,
+ date_day.
+platform,
+account_id,
+account_name,
+campaign_id,
+campaign_name,
+clicks,
+impressions,
+spend,
+conversions, 
+conversions_value,
+null as video_25p_watched, 
+video_midpoint as video_50p_watched, 
+null as video_75p_watched, 
+video_complete as video_complete_watched
+from {{ ref('amazon_dsp__campaign_report') }}  
+
 
 )
 
