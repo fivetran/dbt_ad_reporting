@@ -110,7 +110,7 @@ union all
 
  SELECT 
 '' as source_relation,
- date_day.
+ date_day,
 platform,
 account_id,
 account_name,
