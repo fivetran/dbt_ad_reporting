@@ -116,26 +116,26 @@ from {{ ref('zefr_adgroup_summary_report') }}
 
 union all 
 
-    select
-        "" as source_relation,
-        date_day,
-        'amazondsp' as platform,
-        safe_cast(advertiser_id as string) as account_id,
-        advertiser_name as account_name,
-		safe_cast(campaign_id as string) as campaign_id,
-        campaign_name,
-		safe_cast(ad_group_id as string) as ad_group_id,
-		ad_group_name,
-        sum(roas_clicks) as clicks ,
-        sum(impressions)  as impressions,
-        sum(total_cost) as spend,
-        sum(total_purchases) as conversions,
-        sum(sales_usd) as conversions_value,
-		sum(video_start) as video_25p_watched, 
-		sum(video_midpoint) as video_50p_watched, 
-		null as video_75p_watched, 
-		sum(video_complete) as video_complete_watched
-from  {{ ref('stg_amazondsp_ad_report') }}
+select
+	"" as source_relation,
+	date_day,
+	'amazondsp' as platform,
+	safe_cast(account_id as string) ,
+	account_name,
+	safe_cast(campaign_id as string) as campaign_id,
+	campaign_name,
+	safe_cast(ad_group_id as string) as ad_group_id,
+	ad_group_name,
+	sum(clicks) as clicks ,
+	sum(impressions)  as impressions,
+	sum(spend) as spend,
+	sum(conversions) as conversions,
+	sum(conversions_value) as conversions_value,
+	sum(video_start) as video_25p_watched,
+	sum(video_midpoint) as video_50p_watched,
+	null as video_75p_watched,
+	sum(video_complete) as video_complete_watched
+from  {{ ref('amazon_dsp__ad_group_report') }}
     group by 1,2,3,4,5,6,7,8,9 
     )
 
