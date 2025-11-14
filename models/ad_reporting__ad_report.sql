@@ -121,6 +121,33 @@ sum(video_view_75pct) as video_75p_watched,
 sum(video_view_100pct) as video_complete_watched
 from {{ ref('zefr_ad_summary_report') }}  
 group by 1,2,3,4,5,6,7,8,9,10,11
+
+union all 
+
+select
+        "" as source_relation,
+        date_day,
+        'amazondsp' as platform,
+        safe_cast(advertiser_id as string) as account_id,
+        advertiser_name as account_name,
+		safe_cast(campaign_id as string) as campaign_id,
+        campaign_name,
+		safe_cast(ad_group_id as string) as ad_group_id,
+		ad_group_name,
+    safe_cast(ad_id as string) as ad_id,
+ad_name,
+        sum(roas_clicks) as clicks ,
+        sum(impressions)  as impressions,
+        sum(total_cost) as spend,
+        sum(total_purchases) as conversions,
+        sum(sales_usd) as conversions_value,
+		sum(video_start) as video_25p_watched, 
+		sum(video_midpoint) as video_50p_watched, 
+		null as video_75p_watched, 
+		sum(video_complete) as video_complete_watched
+from {{ ref('stg_amazondsp_ad_report') }}
+    group by 1,2,3,4,5,6,7,8,9,10,11
+    
 )
 
 select *
