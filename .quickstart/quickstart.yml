@@ -1,4 +1,4 @@
-dbt_versions: '>=1.6.0 <2.0.0'
+dbt_versions: '>=1.6.0 <3.0.0'
 
 multi_connector_config:
     amazon_ads:

@@ -1,3 +1,10 @@
+# dbt_ad_reporting v2.2.0
+
+[PR #167](https://github.com/fivetran/dbt_ad_reporting/pull/167) includes the following updates:
+
+## Features
+  - Increases the required dbt version upper limit to v3.0.0
+
 # dbt_ad_reporting v2.1.0
 
 ## Schema Updates - Facebook Ads
