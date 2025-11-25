@@ -119,7 +119,7 @@ Include the following github package version in your `packages.yml`
 ```yaml
 packages:
   - package: fivetran/ad_reporting
-    version: [">=2.1.0", "<2.2.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=2.2.0", "<2.3.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
