@@ -1,4 +1,9 @@
 packages:
+  - git: https://github.com/fivetran/dbt_reddit_ads.git
+    revision: feature/conversion_metrics_by_event
+
+  - git: https://github.com/fivetran/dbt_facebook_ads.git
+    revision: add_custom_action_conversions
 
   - package: fivetran/amazon_ads
     version: [">=1.1.0", "<1.2.0"]
@@ -6,8 +11,8 @@ packages:
   - package: fivetran/apple_search_ads
     version: [">=1.1.0", "<1.2.0"]
 
-  - package: fivetran/facebook_ads 
-    version: [">=1.3.0", "<1.4.0"]
+  # - package: fivetran/facebook_ads 
+  #   version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/google_ads
     version: [">=1.1.0", "<1.2.0"]
@@ -21,8 +26,8 @@ packages:
   - package: fivetran/pinterest
     version: [">=1.1.0", "<1.2.0"]
 
-  - package: fivetran/reddit_ads
-    version: [">=1.3.0", "<1.4.0"]
+  # - package: fivetran/reddit_ads
+  #   version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/snapchat_ads
     version: [">=1.1.0", "<1.2.0"]
