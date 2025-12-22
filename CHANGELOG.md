@@ -3,8 +3,8 @@
 [PR #168](https://github.com/fivetran/dbt_ad_reporting/pull/168) includes the following updates:
 
 ## Upstream Breaking Changes
-- Increases the required facebook_ads package to version 1.3.0.
-- Increases the required reddit_ads package to version 1.3.0.
+- Increases the required facebook_ads package to version 1.3.0. [dbt_facebook_ads CHANGELOG.md](https://github.com/fivetran/dbt_facebook_ads/blob/main/CHANGELOG.md#dbt_facebook_ads-v130)
+- Increases the required reddit_ads package to version 1.3.0.[dbt_reddit_ads CHANGELOG.md](https://github.com/fivetran/dbt_reddit_ads/blob/main/CHANGELOG.md#dbt_reddit_ads-v130)
 
 # dbt_ad_reporting v2.2.0
 
