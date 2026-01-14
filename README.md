@@ -1,4 +1,5 @@
-# Ad Reporting dbt Package ([Docs](https://fivetran.github.io/dbt_ad_reporting/))
+<!--section="ad-reporting_transformation_model"-->
+# Ad Reporting dbt Package
 
 <p align="left">
     <a alt="License"
@@ -15,28 +16,51 @@
         <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
+This dbt package transforms data from Fivetran's Ad Reporting connector into analytics-ready tables.
+
+## Resources
+
+- Number of materialized models¹: 10
+- Connector documentation
+  - [Ad Reporting connector documentation](https://fivetran.com/docs/connectors/applications/ad-reporting)
+  - [Ad Reporting ERD](https://fivetran.com/docs/connectors/applications/ad-reporting#schemainformation)
+- dbt package documentation
+  - [GitHub repository](https://github.com/fivetran/dbt_ad_reporting)
+  - [dbt Docs](https://fivetran.github.io/dbt_ad_reporting/#!/overview)
+  - [DAG](https://fivetran.github.io/dbt_ad_reporting/#!/overview?g_v=1)
+  - [Changelog](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md)
+
 ## What does this dbt package do?
-- Standardizes schemas from various ad platform connectors and creates reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels.
-- Currently supports the following Fivetran ad platform connectors:
-    - [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads)
-    - [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
-    - [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
-    - [Google Ads](https://github.com/fivetran/dbt_google_ads)
-    - [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
-    - [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
-    - [Pinterest Ads](https://github.com/fivetran/dbt_pinterest)
-    - [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads)
-    - [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
-    - [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
-    - [Twitter Ads](https://github.com/fivetran/dbt_twitter)
+This package enables you to standardize schemas from various ad platform connectors and create reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels. It creates enriched models with metrics focused on cross-platform advertising performance analysis.
+
+Currently supports the following Fivetran ad platform connectors:
+- [Amazon Ads](https://github.com/fivetran/dbt_amazon_ads)
+- [Apple Search Ads](https://github.com/fivetran/dbt_apple_search_ads)
+- [Facebook Ads](https://github.com/fivetran/dbt_facebook_ads)
+- [Google Ads](https://github.com/fivetran/dbt_google_ads)
+- [LinkedIn Ad Analytics](https://github.com/fivetran/dbt_linkedin)
+- [Microsoft Advertising](https://github.com/fivetran/dbt_microsoft_ads)
+- [Pinterest Ads](https://github.com/fivetran/dbt_pinterest)
+- [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads)
+- [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads)
+- [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads)
+- [Twitter Ads](https://github.com/fivetran/dbt_twitter)
+
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
-- Generates a comprehensive data dictionary of your source and modeled Ad Reporting data via the [dbt docs site](https://fivetran.github.io/dbt_ad_reporting/)
 
-<!--section="ad_reporting_transformation_model"-->
-Refer to the table below for a detailed view of final tables materialized by default within this package. Additionally, check out our [Docs site](https://fivetran.github.io/dbt_ad_reporting/#!/overview) for more details about these models.
+### Output schema
+Final output tables are generated in the following target schema:
 
-| **Table** | **Details** |
-|-----------|-------------|
+```
+<your_database>.<connector/schema_name>_ad_reporting
+```
+
+### Final output tables
+
+By default, this package materializes the following final tables:
+
+| Table | Description |
+| :---- | :---- |
 | [`ad_reporting__account_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__account_report) | Represents daily performance aggregated at the account level across all advertising platforms, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>How does cross-platform performance compare across different accounts and platforms?</li><li>Which advertising platforms are delivering the best ROI by account?</li><li>Are there seasonal performance patterns consistent across platforms?</li></ul> |
 | [`ad_reporting__campaign_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__campaign_report) | Represents daily performance aggregated at the campaign level across all advertising platforms, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>Which campaigns are most efficient across different advertising platforms?</li><li>How do similar campaign types perform across Google, Facebook, LinkedIn, etc.?</li><li>Are there cross-platform budget allocation opportunities?</li></ul> |
 | [`ad_reporting__ad_group_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__ad_group_report) | Represents daily performance aggregated at the ad group level across all advertising platforms, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>Which ad group strategies work best across different platforms?</li><li>Do certain audience segments perform consistently across platforms?</li><li>How should budget be reallocated between platforms for similar ad groups?</li></ul> |
@@ -47,13 +71,14 @@ Refer to the table below for a detailed view of final tables materialized by def
 | [`ad_reporting__monthly_campaign_country_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__monthly_campaign_country_report) | Represents monthly performance aggregated at the campaign level by country across all advertising platforms, including `spend`, `clicks`, `impressions`, and `conversions`, with standardized ISO-3166 country names.<br><br>**Example Analytics Questions:**<ul><li>Which countries deliver the best cross-platform advertising performance?</li><li>How do geographic performance patterns vary between advertising platforms?</li><li>Are there country-specific platform preferences for ad performance?</li></ul> |
 | [`ad_reporting__monthly_campaign_region_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.ad_reporting.ad_reporting__monthly_campaign_region_report) | Represents monthly performance aggregated at the campaign level by region across all advertising platforms, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>Which regions show the strongest cross-platform advertising performance?</li><li>How do regional preferences vary between different advertising platforms?</li><li>Are there regional opportunities for cross-platform budget optimization?</li></ul> |
 
+¹ Each Quickstart transformation job run materializes these models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+
+---
+
 > The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
+## Visualizations
 Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_ad_reporting). Check out some [sample reports here](https://fivetran-ad-reporting.streamlit.app/ad_performance).
-
-### Example Visualizations
-
-Curious what these tables can do? The Ad Reporting models provide advertising performance data that can be visualized to track key metrics like spend, impressions, click-through rates, conversion rates, and return on ad spend across different campaign structures and time periods. Check out example visualizations in the [Fivetran Ad Reporting Streamlit App](https://fivetran-ad-reporting.streamlit.app/ad_performance), and see how you can use these tables in your own reporting. Below is a screenshot of an example dashboard; explore the app for more.
 
 <p align="center">
   <a href="https://fivetran-ad-reporting.streamlit.app/ad_performance">
@@ -82,11 +107,11 @@ Each Quickstart transformation job run materializes the following model counts f
 
 ## Timezone Considerations
 Timezone differences across ad platforms impact standardization due to pre-aggregated data and non-standard timezones. See the [Decision Log - Timezone Considerations](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md#timezone-considerations) for details.
-<!--section-end-->
 
-## How do I use the dbt package?
-### Step 1: Pre-Requisites
-- Have at least one of the below supported Fivetran ad platform connections syncing data into your destination. This package currently supports:
+## Prerequisites
+To use this dbt package, you must have the following:
+
+- At least one of the below supported Fivetran ad platform connections syncing data into your destination. This package currently supports:
     - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
     - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
     - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
@@ -100,7 +125,24 @@ Timezone differences across ad platforms impact standardization due to pre-aggre
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 > While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
-- This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, **Postgres** and **Databricks**. Ensure you are using one of these supported databases.
+- A BigQuery, Snowflake, Redshift, Postgres, or Databricks destination.
+
+## How do I use the dbt package?
+You can either add this dbt package in the Fivetran dashboard or import it into your dbt project:
+
+- To add the package in the Fivetran dashboard, follow our [Quickstart guide](https://fivetran.com/docs/transformations/dbt).
+- To add the package to your dbt project, follow the setup instructions in the dbt package's [README file](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#how-do-i-use-the-dbt-package) to use this package.
+
+### Installing the Package
+Include the following github package version in your `packages.yml`
+> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+```yaml
+packages:
+  - package: fivetran/ad_reporting
+    version: [">=2.4.0", "<2.5.0"] # we recommend using ranges to capture non-breaking changes automatically
+```
+
+Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
 
 #### Databricks Dispatch Configuration
 If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` as well as the `calogica/dbt_expectations` then the `google_ads_source` packages respectively.
@@ -113,18 +155,7 @@ dispatch:
     search_order: ['google_ads_source', 'dbt_expectations']
 ```
 
-### Step 2: Installing the Package
-Include the following github package version in your `packages.yml`
-> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
-```yaml
-packages:
-  - package: fivetran/ad_reporting
-    version: [">=2.2.0", "<2.3.0"] # we recommend using ranges to capture non-breaking changes automatically
-```
-
-Do NOT include the individual ad platform packages in this file. The ad reporting package itself has dependencies on these packages and will install them as well.
-
-### Step 3: Configure Database and Schema Variables
+### Configure Database and Schema Variables
 By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
 > Please note, cross-database querying, where the `*_database` variable differs from the database specified in your `profiles.yml`, is not supported by all dbt adapters (e.g., dbt-redshift). Refer to the documentation for your specific destination adapter for more details on its capabilities.
 
@@ -164,7 +195,7 @@ vars:
     twitter_ads_database: your_database_name  
 ```
 
-### Step 4: Enabling/Disabling Models
+### Enabling/Disabling Models
 This package takes into consideration that not every account will have every feature enabled per platform. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs.
 
 #### Disable Platform Specific Reporting
@@ -254,7 +285,7 @@ vars:
 
 > Note: Users running the Ad Reporting models via Fivetran Quickstart will have these variables dynamically set based on the presence of relevant source tables.
 
-### (Recommended) Step 5: Change the Build Schema
+### (Recommended) Change the Build Schema
 By default this package will build all models in your `<target_schema>` with the respective package suffixes (see below). This behavior can be tailored to your preference by making use of custom schemas. If you would like to override the current naming conventions, please add the following configuration to your `dbt_project.yml` file and rename `+schema` configs:
 
 ```yml
@@ -320,7 +351,7 @@ models:
 
 > Provide a blank `+schema: ` to write to the `target_schema` without any suffix.
 
-### (Optional) Step 6: Additional configurations
+### (Optional) Additional configurations
 <details open><summary>Expand/Collapse details</summary>
 
 #### Union multiple connections
@@ -615,7 +646,7 @@ vars:
 </details>
 <br>
 
-### (Optional) Step 7: Orchestrate your models with Fivetran Transformations for dbt Core™
+### (Optional) Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for details</summary>
 <br>
 
@@ -624,7 +655,7 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 </details>
 <br>
 
-### (Optional) Step 8: Use predefined Metrics and the dbt Semantic Layer
+### (Optional) Use predefined Metrics and the dbt Semantic Layer
 <details><summary>Expand for details</summary>
 
 On top of the `ad_reporting__ad_report` final model, the Ad Reporting dbt package defines common [Metrics](https://docs.getdbt.com/docs/build/build-metrics-intro) using [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) that can be queried with the [dbt Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl). These metrics include:
@@ -722,9 +753,11 @@ packages:
 ### Other Dependencies
 The country names in `ad_reporting__monthly_campaign_country_report` are standardized to align with official ISO-3166 names. Greater *global* region names (ex: Southern Asia) are also included and leveraged from [lukes/ISO-3166-Countries-with-Regional-Codes](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes).
 
+<!--section="ad-reporting_maintenance"-->
 ## How is this package maintained and can I contribute?
+
 ### Package Maintenance
-The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
+The Fivetran team maintaining this package only maintains the [latest version](https://hub.getdbt.com/fivetran/ad_reporting/latest/) of the package. We highly recommend you stay consistent with the latest version of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
 ### Opinionated Decisions
 In creating this package, which is meant for a wide range of use cases, we had to take opinionated stances on a few different questions we came across during development. We've consolidated significant choices we made in the [DECISIONLOG.md](https://github.com/fivetran/dbt_ad_reporting/blob/main/DECISIONLOG.md), and will continue to update as the package evolves. We are always open to and encourage feedback on these choices, and the package in general.
@@ -732,12 +765,14 @@ In creating this package, which is meant for a wide range of use cases, we had t
 ### Contributions
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions.
 
-We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
+We highly encourage and welcome contributions to this package. Learn how to contribute to a package in dbt's [Contributing to an external dbt package article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657).
 
 #### Contributors
 We thank [everyone](https://github.com/fivetran/dbt_ad_reporting/graphs/contributors) who has taken the time to contribute. Each PR, bug report, and feature request has made this package better and is truly appreciated.
 
 A special thank you to [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation), who we closely collaborated with to introduce native conversion support to our Ad packages.
+
+<!--section-end-->
 
 ## Are there any resources available?
 - If you encounter any questions or want to reach out for help, see the [GitHub Issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose) section to find the right avenue of support for you.
