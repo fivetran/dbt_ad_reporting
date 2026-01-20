@@ -9,7 +9,7 @@
 - Increases the required Amazon Ads package to version [1.2.0](https://github.com/fivetran/dbt_amazon_ads/releases/tag/v1.2.0)
 - Increases the required Apple Search Ads package to version [1.2.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v1.2.0)
 - Increases the required Facebook Ads package to version [1.4.0](https://github.com/fivetran/dbt_facebook_ads/releases/tag/v1.4.0)
-- Increases the required Google Ads package to version [1.3.0](https://github.com/fivetran/dbt_google_ads/releases/tag/v1.3.0)
+- Increases the required Google Ads package to version [1.2.0](https://github.com/fivetran/dbt_google_ads/releases/tag/v1.2.0)
 - Increases the required LinkedIn Ads package to version [1.2.0](https://github.com/fivetran/dbt_linkedin/releases/tag/v1.2.0)
 - Increases the required Microsoft Ads package to version [1.2.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v1.2.0)
 - Increases the required Pinterest Ads package to version [1.2.0](https://github.com/fivetran/dbt_pinterest/releases/tag/v1.2.0)
