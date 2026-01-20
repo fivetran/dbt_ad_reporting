@@ -56,6 +56,7 @@ Currently supports the following Fivetran ad platform connectors:
 - [Twitter Ads](https://github.com/fivetran/dbt_twitter)
 
 > NOTE: You do _not_ need to have all of these connector types to use this package, though you should have at least two.
+> Additionally, individual platform models may include platform-specific metrics and fields that are better suited for deeper, platform-level analysis.
 
 ### Output schema
 Final output tables are generated in the following target schema:
@@ -83,8 +84,6 @@ By default, this package materializes the following final tables:
 ¹ Each Quickstart transformation job run materializes these models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 
 ---
-
-> The individual platform models may have additional platform-specific metrics and fields better suited for deep-dive analyses at the platform level.
 
 ## Visualizations
 Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_ad_reporting). Check out some [sample reports here](https://fivetran-ad-reporting.streamlit.app/ad_performance).
