@@ -22,8 +22,17 @@ This dbt package transforms data from Fivetran's Ad Reporting connector into ana
 
 - Number of materialized models¹: 10
 - Connector documentation
-  - [Ad Reporting connector documentation](https://fivetran.com/docs/connectors/applications/ad-reporting)
-  - [Ad Reporting ERD](https://fivetran.com/docs/connectors/applications/ad-reporting#schemainformation)
+  - [Amazon Ads](https://fivetran.com/docs/applications/amazon-ads)
+  - [Apple Search Ads](https://fivetran.com/docs/applications/apple-search-ads)
+  - [Facebook Ads](https://fivetran.com/docs/applications/facebook-ads)
+  - [Google Ads](https://fivetran.com/docs/applications/google-ads)
+  - [LinkedIn Ad Analytics](https://fivetran.com/docs/applications/linkedin-ads)
+  - [Microsoft Advertising](https://fivetran.com/docs/applications/microsoft-advertising)
+  - [Pinterest Ads](https://fivetran.com/docs/applications/pinterest-ads)
+  - [Reddit Ads](https://fivetran.com/docs/applications/reddit-ads)
+  - [Snapchat Ads](https://fivetran.com/docs/applications/snapchat-ads)
+  - [TikTok Ads](https://fivetran.com/docs/applications/tiktok-ads)
+  - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 - dbt package documentation
   - [GitHub repository](https://github.com/fivetran/dbt_ad_reporting)
   - [dbt Docs](https://fivetran.github.io/dbt_ad_reporting/#!/overview)
@@ -132,6 +141,8 @@ You can either add this dbt package in the Fivetran dashboard or import it into 
 
 - To add the package in the Fivetran dashboard, follow our [Quickstart guide](https://fivetran.com/docs/transformations/data-models/quickstart-management#quickstartmanagement).
 - To add the package to your dbt project, follow the setup instructions in the dbt package's [README file](https://github.com/fivetran/dbt_ad_reporting/blob/main/README.md#how-do-i-use-the-dbt-package) to use this package.
+
+<!--section-end-->
 
 ### Installing the Package
 Include the following github package version in your `packages.yml`
@@ -717,37 +728,37 @@ packages:
     version: [">=1.0.0", "<2.0.0"]
 
   - package: fivetran/amazon_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/apple_search_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
-  - package: fivetran/facebook_ads
-    version: [">=1.1.0", "<1.2.0"] 
+  - package: fivetran/facebook_ads 
+    version: [">=1.4.0", "<1.5.0"]
 
   - package: fivetran/google_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/linkedin
-    version: [">=1.0.0", "<1.1.0"]
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/microsoft_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/pinterest
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/reddit_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.4.0", "<1.5.0"]
 
   - package: fivetran/snapchat_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=1.0.0", "<1.1.0"] 
+    version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/twitter_ads
-    version: [">=1.0.0", "<1.1.0"]
+    version: [">=1.2.0", "<1.3.0"]
 ```
 
 ### Other Dependencies
