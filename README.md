@@ -696,6 +696,7 @@ Additionally, the `fivetran_get_base_dates` macro is used in the generation of t
 >**Note**: This `dbt_date:time_zone` variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. 
 
 You may specify any [valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of America/Los_Angeles. For example, use America/New_York for East Coast Time.
+<details open><summary>Expand/Collapse details</summary>
 
 ```yml
 ## root dbt_project.yml
@@ -721,6 +722,10 @@ vars:
 
 # Disable all semantic layer resources from the package
 semantic-models:
+  ad_reporting:
+    +enabled: false
+
+metrics:
   ad_reporting:
     +enabled: false
 ```
