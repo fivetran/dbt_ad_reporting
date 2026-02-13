@@ -711,6 +711,21 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 </details>
 <br>
 
+### (Optional) Disable Semantic Models
+If you would like to disable semantic models, disable the package’s semantic layer resources in the relevant YAML file.
+
+```yml
+# Disable the package's time spine model
+vars:
+  ad_reporting__metricflow_time_spine_enabled: false
+
+# Disable all semantic layer resources from the package
+semantic-models:
+  ad_reporting:
+    +enabled: false
+```
+See [dbt documentation](https://docs.getdbt.com/reference/resource-configs/enabled?version=2.0#disable-semantic-layer-resources-from-a-package) for more details.
+
 ## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` we highly recommend you remove them to ensure there are no package version conflicts.**
