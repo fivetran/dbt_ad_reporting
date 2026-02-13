@@ -725,10 +725,10 @@ metrics:
     +enabled: false
 ```
 See [dbt documentation](https://docs.getdbt.com/reference/resource-configs/enabled?version=2.0#disable-semantic-layer-resources-from-a-package) for more details.
+
 </details>
 <br>
-</details>
-<br>
+
 ## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` we highly recommend you remove them to ensure there are no package version conflicts.**
