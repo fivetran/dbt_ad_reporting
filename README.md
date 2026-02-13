@@ -696,8 +696,7 @@ Additionally, the `fivetran_get_base_dates` macro is used in the generation of t
 >**Note**: This `dbt_date:time_zone` variable is defined under the `ad_reporting` hierarchy within this package and should not adjust any local global variable values in your project if you already have this variable defined. 
 
 You may specify any [valid timezone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in place of America/Los_Angeles. For example, use America/New_York for East Coast Time.
-<details open><summary>Expand/Collapse details</summary>
-
+Also, we wouldn't want to define the variable in the dbt_project.yml.
 ```yml
 ## root dbt_project.yml
 vars:
@@ -709,10 +708,7 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 
 > **Note**: Metricflow is only supported in dbt>=v1.6.0, therefore, please take note of the correct dbt version.
 
-</details>
-<br>
-
-### (Optional) Disable Semantic Models
+## Disable Semantic Models
 If you would like to disable semantic models, disable the package’s semantic layer resources in the relevant YAML file.
 
 ```yml
@@ -730,6 +726,8 @@ metrics:
     +enabled: false
 ```
 See [dbt documentation](https://docs.getdbt.com/reference/resource-configs/enabled?version=2.0#disable-semantic-layer-resources-from-a-package) for more details.
+</details>
+<br>
 
 ## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
