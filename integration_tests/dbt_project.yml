@@ -13,7 +13,7 @@ dispatch:
 models:
   +persist_docs:
     relation: true
-    columns: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
   +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
 
 vars:
