@@ -11,6 +11,9 @@ dispatch:
     search_order: ['google_ads_source', 'dbt_expectations']
 
 models:
+  +persist_docs:
+    relation: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
   +schema: "ad_reporting_{{ var('directed_schema','dev') }}"
 
 vars:
