@@ -458,10 +458,10 @@ vars:
     google_ads_campaign_stats_identifier: "google_ads_campaign_stats_data"
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
     google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
-    google_ads_campaign_bidding_strategy_history_identifier: "google_ads_campaign_bidding_strategy_history_data"
-    google_ads_campaign_bid_modifier_history_identifier: "google_ads_campaign_bid_modifier_history_data"
-    google_ads_campaign_criterion_history_identifier: "google_ads_campaign_criterion_history_data"
-    google_ads_campaign_budget_history_identifier: "google_ads_campaign_budget_history_data"
+    google_ads_campaign_bid_modifier_history_identifier: "campaign_bid_modifier_history_data"
+    google_ads_campaign_budget_history_identifier: "campaign_budget_history_data"
+    google_ads_campaign_criterion_history_identifier: "campaign_criterion_history_data"
+    google_ads_campaign_bidding_strategy_history_identifier: "campaign_bidding_strategy_history_data"
 
 
   linkedin:
@@ -938,18 +938,15 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    google_ads_campaign_bidding_strategy_history_data:
-      +column_types:
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        target_cpa_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        cpc_bid_ceiling_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        cpc_bid_floor_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        location_fraction_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    google_ads_campaign_bid_modifier_history_data:
+    campaign_bid_modifier_history_data:
       +column_types:
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         criterion_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    google_ads_campaign_criterion_history_data:
+    campaign_budget_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    campaign_criterion_history_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -960,14 +957,9 @@ seeds:
         user_interest_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         user_list_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         mobile_app_category_constant_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    google_ads_campaign_budget_history_data:
+    campaign_bidding_strategy_history_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        amount_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        reference_count: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        recommended_budget_amount_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        total_amount_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
 
     ### Facebook Seeds
     facebook_ads_creative_history_data:

@@ -1,3 +1,6 @@
-campaign_id,updated_at,cpc_bid_ceiling_micros,cpc_bid_floor_micros,enhanced_cpc,enhanced_cpc_enabled,location,location_fraction_micros,manual_cpa,manual_cpm,manual_cpv,name,status,target_cpa_micros,target_cpm,target_roas,type,_fivetran_active
-9935249409,2022-06-21T03:38:52,10000000,1000000,false,false,,,,,,TargetCpa,ENABLED,5000000,,2.5,TARGET_CPA,false
-9935249409,2022-08-01T14:21:25,10000000,1000000,false,false,,,,,,TargetCpa,ENABLED,6000000,,2.5,TARGET_CPA,true
+campaign_id,updated_at,cpc_bid_ceiling_micros,cpc_bid_floor_micros,enhanced_cpc,enhanced_cpc_enabled,location,location_fraction_micros,manual_cpa,manual_cpm,manual_cpv,name,status,target_cpa_micros,target_cpm,target_roas,type,_fivetran_active,_fivetran_synced
+9935249409,2022-08-01 14:21:25,5000000,100000,TRUE,TRUE,US,500000,2.50,1.75,0.25,Manual CPC Strategy,ENABLED,,,3.5,MANUAL_CPC,TRUE,2022-08-01 14:21:26
+9935249409,2022-08-02 15:22:30,,,FALSE,FALSE,CA,,5.00,,,Target CPA Strategy,ENABLED,15000000,,4.0,TARGET_CPA,TRUE,2022-08-02 15:22:31
+9935249409,2022-08-03 16:23:35,10000000,250000,TRUE,TRUE,UK,750000,,,0.50,Enhanced CPC Strategy,ENABLED,,,2.8,ENHANCED_CPC,TRUE,2022-08-03 16:23:36
+9935249409,2022-08-04 17:24:40,,,FALSE,FALSE,AU,,3.75,2.25,,Target ROAS Strategy,ENABLED,,,5.2,TARGET_ROAS,TRUE,2022-08-04 17:24:41
+9935249409,2022-08-05 18:25:45,7500000,150000,FALSE,FALSE,DE,250000,4.00,,0.75,Maximize Clicks Strategy,PAUSED,,,3.0,MAXIMIZE_CLICKS,TRUE,2022-08-05 18:25:46
