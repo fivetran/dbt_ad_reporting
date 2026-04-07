@@ -1,0 +1,3 @@
+campaign_id,criterion_id,bid_modifier,interaction_type,interaction_event_types,updated_at,_fivetran_active
+9935249409,123,1.2,CALLS,,2022-06-21T03:38:52,false
+9935249409,123,1.5,CALLS,,2022-08-01T14:21:25,true

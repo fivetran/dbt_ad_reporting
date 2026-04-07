@@ -1,0 +1,3 @@
+id,updated_at,campaign_id,amount_micros,delivery_method,explicitly_shared,name,reference_count,status,has_recommended_budget,period,recommended_budget_amount_micros,total_amount_micros,type,_fivetran_active
+789,2022-06-21T03:38:52,9935249409,10000000,STANDARD,false,Test Budget,1,ENABLED,false,DAILY,,,STANDARD,false
+789,2022-08-01T14:21:25,9935249409,12000000,STANDARD,false,Test Budget,1,ENABLED,false,DAILY,,,STANDARD,true

@@ -430,7 +430,7 @@ vars:
 
 
   facebook_ads:
-    facebook_ads_schema: ad_reporting_integration_tests_9
+    facebook_ads_schema: zz_dbt_savage
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
@@ -458,6 +458,10 @@ vars:
     google_ads_campaign_stats_identifier: "google_ads_campaign_stats_data"
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
     google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
+    google_ads_campaign_bidding_strategy_history_identifier: "google_ads_campaign_bidding_strategy_history_data"
+    google_ads_campaign_bid_modifier_history_identifier: "google_ads_campaign_bid_modifier_history_data"
+    google_ads_campaign_criterion_history_identifier: "google_ads_campaign_criterion_history_data"
+    google_ads_campaign_budget_history_identifier: "google_ads_campaign_budget_history_data"
 
 
   linkedin:
@@ -474,7 +478,7 @@ vars:
 
 
   microsoft_ads:
-    microsoft_ads_schema: ad_reporting_integration_tests_9
+    microsoft_ads_schema: zz_dbt_savage
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
     microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -526,7 +530,7 @@ vars:
 
 
   snapchat_ads:
-    snapchat_ads_schema: ad_reporting_integration_tests_9
+    snapchat_ads_schema: zz_dbt_savage
     snapchat_ads_ad_account_history_identifier:  "snapchat_ad_account_history_data"
     snapchat_ads_ad_history_identifier: "snapchat_ad_history_data"
     snapchat_ads_ad_hourly_report_identifier: "snapchat_ad_hourly_report_data"
@@ -934,7 +938,37 @@ seeds:
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         customer_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-    
+    google_ads_campaign_bidding_strategy_history_data:
+      +column_types:
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        target_cpa_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        cpc_bid_ceiling_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        cpc_bid_floor_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        location_fraction_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_campaign_bid_modifier_history_data:
+      +column_types:
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        criterion_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_campaign_criterion_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        geo_target_constant_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        mobile_device_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        operating_system_version_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        topic_constant_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        user_interest_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        user_list_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        mobile_app_category_constant_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    google_ads_campaign_budget_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        amount_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        reference_count: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        recommended_budget_amount_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        total_amount_micros: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+
     ### Facebook Seeds
     facebook_ads_creative_history_data:
       +column_types:        
