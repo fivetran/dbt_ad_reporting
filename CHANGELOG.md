@@ -1,3 +1,10 @@
+# dbt_ad_reporting v2.5.0
+
+[PR #173](https://github.com/fivetran/dbt_ad_reporting/pull/173) includes the following update:
+
+## Upstream Breaking Change
+- Increases the required google_ads package to version [1.3.0](https://github.com/fivetran/dbt_google_ads/blob/main/CHANGELOG.md#dbt_google_ads-v130)
+
 # dbt_ad_reporting v2.4.0
 
 [PR #169](https://github.com/fivetran/dbt_ad_reporting/pull/169) includes the following updates:
