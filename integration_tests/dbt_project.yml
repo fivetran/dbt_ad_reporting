@@ -430,7 +430,7 @@ vars:
 
 
   facebook_ads:
-    facebook_ads_schema: zz_dbt_savage
+    facebook_ads_schema: ad_reporting_integration_tests_9
     facebook_ads_account_history_identifier: "facebook_ads_account_history_data"
     facebook_ads_ad_history_identifier: "facebook_ads_ad_history_data"
     facebook_ads_ad_set_history_identifier: "facebook_ads_ad_set_history_data"
@@ -478,7 +478,7 @@ vars:
 
 
   microsoft_ads:
-    microsoft_ads_schema: zz_dbt_savage
+    microsoft_ads_schema: ad_reporting_integration_tests_9
     microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
     microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
     microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -530,7 +530,7 @@ vars:
 
 
   snapchat_ads:
-    snapchat_ads_schema: zz_dbt_savage
+    snapchat_ads_schema: ad_reporting_integration_tests_9
     snapchat_ads_ad_account_history_identifier:  "snapchat_ad_account_history_data"
     snapchat_ads_ad_history_identifier: "snapchat_ad_history_data"
     snapchat_ads_ad_hourly_report_identifier: "snapchat_ad_hourly_report_data"
