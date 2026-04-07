@@ -458,10 +458,10 @@ vars:
     google_ads_campaign_stats_identifier: "google_ads_campaign_stats_data"
     google_ads_ad_group_criterion_history_identifier: "google_ads_ad_group_criterion_history_data"
     google_ads_search_term_keyword_stats_identifier: "google_ads_search_term_keyword_stats_data"
-    google_ads_campaign_bid_modifier_history_identifier: "campaign_bid_modifier_history_data"
-    google_ads_campaign_budget_history_identifier: "campaign_budget_history_data"
-    google_ads_campaign_criterion_history_identifier: "campaign_criterion_history_data"
-    google_ads_campaign_bidding_strategy_history_identifier: "campaign_bidding_strategy_history_data"
+    google_ads_campaign_bid_modifier_history_identifier: "google_ads_campaign_bid_modifier_history_data"
+    google_ads_campaign_budget_history_identifier: "google_ads_campaign_budget_history_data"
+    google_ads_campaign_criterion_history_identifier: "google_ads_campaign_criterion_history_data"
+    google_ads_campaign_bidding_strategy_history_identifier: "google_ads_campaign_bidding_strategy_history_data"
 
 
   linkedin:
