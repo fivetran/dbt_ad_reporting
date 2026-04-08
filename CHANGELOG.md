@@ -4,6 +4,7 @@
 
 ## Upstream Breaking Change
 - Increases the required google_ads package to version [1.3.0](https://github.com/fivetran/dbt_google_ads/blob/main/CHANGELOG.md#dbt_google_ads-v130)
+  - Note that this version includes a [schema change](https://github.com/fivetran/dbt_google_ads/blob/main/CHANGELOG.md#schemadata-change) that adds net-new models to the package and new fields to the `google_ads__campaign_report`.
 
 # dbt_ad_reporting v2.4.0
 
