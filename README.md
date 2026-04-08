@@ -741,7 +741,7 @@ packages:
     version: [">=1.4.0", "<1.5.0"]
 
   - package: fivetran/google_ads
-    version: [">=1.2.0", "<1.3.0"]
+    version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/linkedin
     version: [">=1.2.0", "<1.3.0"]
