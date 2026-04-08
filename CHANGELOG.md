@@ -1,3 +1,26 @@
+# dbt_ad_reporting v2.5.0
+
+[PR #173](https://github.com/fivetran/dbt_ad_reporting/pull/173) includes the following update:
+
+## Upstream Breaking Change
+- Increases the required google_ads package to version [1.3.0](https://github.com/fivetran/dbt_google_ads/blob/main/CHANGELOG.md#dbt_google_ads-v130)
+  - This version includes [configurable threshold variables](https://github.com/fivetran/dbt_google_ads/blob/main/CHANGELOG.md#feature-updates) for customizable diagnostic report optimization logic.
+
+## Schema/Data Change - Google Ads
+
+**8 total changes • 2 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| `google_ads__campaign_report` | New Column | | `ctr` | Click-through rate for ad relevance analysis<br><br>**Possible breaking change**: New column may affect downstream use |
+| `google_ads__campaign_report` | New Column | | `serving_status` | Current serving status of the campaign<br><br>**Possible breaking change**: New column may affect downstream use |
+| `google_ads__campaign_bid_modifiers_report` | New Model | | | Analyzes bid modifier effectiveness at campaign-criterion level with performance-based recommendations |
+| `google_ads__campaign_budget_diagnostics_report` | New Model | | | Diagnoses daily campaign budget utilization and performance constraints with prioritized optimization recommendations |
+| `stg_google_ads__campaign_bid_modifier_history`<br>`stg_google_ads__campaign_bid_modifier_history_tmp` | New Staging Models | | | Historical bid modifier configurations and adjustments at campaign-criterion level |
+| `stg_google_ads__campaign_bidding_strategy_history`<br>`stg_google_ads__campaign_bidding_strategy_history_tmp` | New Staging Models | | | Historical bidding strategy configurations including target CPA and ROAS settings |
+| `stg_google_ads__campaign_budget_history`<br>`stg_google_ads__campaign_budget_history_tmp` | New Staging Models | | | Historical campaign budget configurations including daily and lifetime budget settings |
+| `stg_google_ads__campaign_criterion_history`<br>`stg_google_ads__campaign_criterion_history_tmp` | New Staging Models | | | Historical campaign-level targeting criteria including location, device, and audience settings |
+
 # dbt_ad_reporting v2.4.0
 
 [PR #169](https://github.com/fivetran/dbt_ad_reporting/pull/169) includes the following updates:
