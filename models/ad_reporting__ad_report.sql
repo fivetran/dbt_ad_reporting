@@ -174,7 +174,7 @@ select
  null as video_50p_watched,
  null as video_75p_watched,
  sum(video_complete) as video_complete_watched
-from {{ ref('summary_walmart_dsp_ad_report') }}
+from {{ ref('walmart_dsp_ad_report') }}
     group by 1,2,3,4,5,6,7,8,9,10,11
 )
 
