@@ -147,7 +147,35 @@ select
  sum(video_complete) as video_complete_watched
 from {{ ref('amazon_dsp__ad_report') }}
     group by 1,2,3,4,5,6,7,8,9,10,11
+
     
+
+union all 
+
+select
+ "" as source_relation,
+ date_day,
+ 'walmartdsp' as platform,
+ safe_cast(account_id as string),
+ account_name,
+ safe_cast(campaign_id as string) as campaign_id,
+ campaign_name,
+ safe_cast(ad_group_id as string) as ad_group_id,
+ ad_group_name,
+ safe_cast(ad_id as string),
+ ad_name,
+ sum(clicks) as clicks,
+ sum(impressions) as impressions,
+ sum(spend) as spend,
+ sum(conversions) as conversions,
+ sum(conversions_value) as conversions_value,
+ -- Mapping Walmart metrics to common video quartiles
+ sum(video_start) as video_25p_watched,
+ null as video_50p_watched,
+ null as video_75p_watched,
+ sum(video_complete) as video_complete_watched
+from {{ ref('walmart_dsp_ad_report') }}
+    group by 1,2,3,4,5,6,7,8,9,10,11
 )
 
 select *
