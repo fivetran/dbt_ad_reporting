@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '2.5.0'
+version: '2.6.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -554,6 +554,7 @@ vars:
     tiktok_ads_adgroup_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
     tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
+    tiktok_ads_location_identifier: "tiktok_location_data"
 
 
   twitter_ads:

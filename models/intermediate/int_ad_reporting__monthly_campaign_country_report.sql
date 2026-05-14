@@ -133,7 +133,7 @@ tiktok_ads as (
                 'account_name': 'advertiser_name',
                 'conversions': 'conversion',
                 'conversions_value': 'null',
-                'country': 'null',
+                'country': 'country_name' if var('tiktok_ads__using_location', true) else 'null',
                 'country_code': 'country_code'
             },
         relation=ref('tiktok_ads__campaign_country_report')

@@ -1,0 +1,7 @@
+_fivetran_synced,advertiser_id,area_type,country_code,parent_id,region_id,region_level,region_name,support_below_18
+2025-04-21 10:00:00,1,ADMIN,US,,US,COUNTRY,United States,false
+2025-04-21 10:00:00,2,METROPOLITAN_OR_DMA,CA,,CA,COUNTRY,Canada,false
+2025-04-21 10:00:00,3,ADMIN,GB,,GB,COUNTRY,United Kingdom,false
+2025-04-21 10:00:00,4,ADMIN,AU,,AU,COUNTRY,Australia,false
+2025-04-21 10:00:00,1,ADMIN,US,US,US_CA,PROVINCE,California,false
+2025-04-21 10:00:00,2,METROPOLITAN_OR_DMA,CA,CA,CA_ON,PROVINCE,Ontario,false

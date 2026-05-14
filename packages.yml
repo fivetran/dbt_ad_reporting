@@ -27,7 +27,7 @@ packages:
     version: [">=1.2.0", "<1.3.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=1.2.0", "<1.3.0"]
+    version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/twitter_ads
     version: [">=1.2.0", "<1.3.0"]
