@@ -127,6 +127,26 @@ null as video_75p_watched,
 video_complete as video_complete_watched
 from {{ ref('amazon_dsp__campaign_report') }}  
 
+union all
+
+SELECT
+'' as source_relation,
+date_day,
+'walmartdsp' as platform,
+safe_cast(account_id as string),
+account_name,
+safe_cast(campaign_id as string),
+campaign_name,
+clicks,
+impressions,
+spend,
+conversions,
+conversions_value,
+video_start as video_25p_watched,
+null as video_50p_watched,
+null as video_75p_watched,
+video_complete as video_complete_watched
+from {{ ref('walmart_dsp_campaign_report') }}
 
 )
 
