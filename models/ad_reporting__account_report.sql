@@ -118,9 +118,26 @@ video_view_75pct as video_75p_watched,
 video_view_100pct as video_complete_watched
 from {{ ref('zefr_account_summary_report') }}
 
+union all
+
+SELECT
+'' as source_relation,
+date_day,
+'walmartdsp' as platform,
+safe_cast(account_id as string),
+account_name,
+cast(clicks as INT64),
+cast(impressions as INT64),
+cast(spend as FLOAT64),
+cast(conversions as FLOAT64),
+cast(conversions_value as FLOAT64),
+cast(video_start as FLOAT64) as video_25p_watched,
+null as video_50p_watched,
+null as video_75p_watched,
+cast(video_complete as FLOAT64) as video_complete_watched
+from {{ ref('walmart_dsp_account_report') }}
 
 )
 
 select *
 from all_data
-
