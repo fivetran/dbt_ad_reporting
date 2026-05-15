@@ -595,79 +595,43 @@ seeds:
     microsoft_ads_ad_history_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
         modified_time: "timestamp"
-        spend: "float"
     microsoft_ads_ad_group_performance_daily_report_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
-        modified_time: "timestamp"
         spend: "float"
     microsoft_ads_account_performance_daily_report_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
-        modified_time: "timestamp"
         spend: "float"
     microsoft_ads_keyword_history_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
         modified_time: "timestamp"
-        spend: "float"
     microsoft_ads_keyword_performance_daily_report_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
-        modified_time: "timestamp"
         spend: "float"
     microsoft_ads_search_performance_daily_report_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
-        modified_time: "timestamp"
         spend: "float"
     microsoft_ads_campaign_performance_daily_report_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        last_modified_time: "timestamp"
-        modified_time: "timestamp"
         spend: "float"
     microsoft_ads_geographic_performance_daily_report_data:
       +column_types:
@@ -744,105 +708,57 @@ seeds:
       +column_types:
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_campaign_history_data:
       +column_types:
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_pin_promotion_history_data:
       +column_types:
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_pin_promotion_report_data:
       +column_types:
-        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_ad_group_report_data:
       +column_types:
-        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_advertiser_history_data:
       +column_types:
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_advertiser_report_data:
       +column_types:
-        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_campaign_report_data:
       +column_types:
-        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_keyword_history_data:
       +column_types:
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_keyword_report_data:
       +column_types:
-        id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        ad_account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         keyword_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_pin_promotion_targeting_report_data:
       +column_types:
+        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
+        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         
     ### Google Seeds
     google_ads_ad_group_stats_data:
