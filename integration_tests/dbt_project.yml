@@ -654,11 +654,8 @@ seeds:
     linkedin_ad_creative_history_data:
       +column_types:
         created_time: timestamp
-        last_modified_time: timestamp
-        status: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         intended_status: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar' }}"
         last_modified_at: timestamp
-        created_at: timestamp
     linkedin_ad_analytics_by_campaign_data:
       +column_types:
         day: timestamp
@@ -755,10 +752,7 @@ seeds:
         advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     pinterest_pin_promotion_targeting_report_data:
       +column_types:
-        ad_group_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        advertiser_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         campaign_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
-        pin_promotion_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         
     ### Google Seeds
     google_ads_ad_group_stats_data:
