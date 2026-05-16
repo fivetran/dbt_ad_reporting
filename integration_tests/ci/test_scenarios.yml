@@ -14,7 +14,7 @@ additional_schema_variables:
   - "google_ads_schema"
   - "linkedin_ads_schema"
   - "microsoft_ads_schema"
-  - "pinterest_ads_schema"
+  - "pinterest_schema"
   - "reddit_ads_schema"
   - "snapchat_ads_schema"
   - "tiktok_ads_schema"
