@@ -2,9 +2,6 @@
 
 [PR #175](https://github.com/fivetran/dbt_ad_reporting/pull/175) includes the following updates:
 
-## Upstream Dependency Change
-- Increases the required TikTok Ads package to version [1.3.0](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v130)
-
 ## Under the Hood
 - For TikTok Ads, the `country` column in `ad_reporting__monthly_campaign_country_report` now sources directly from `country_name` in the upstream package when `tiktok_ads__using_location` is `true`, rather than relying on the country code mapping table. No change in output expected.
 
