@@ -1,6 +1,6 @@
 # dbt_ad_reporting v2.6.0
 
-[PR #175](https://github.com/fivetran/dbt_ad_reporting/pull/175) includes the following updates:
+[PR #176](https://github.com/fivetran/dbt_ad_reporting/pull/176) includes the following updates:
 
 ## Under the Hood
 - For TikTok Ads, the `country` column in `ad_reporting__monthly_campaign_country_report` now sources directly from `country_name` in the upstream package when `tiktok_ads__using_location` is `true`, rather than relying on the country code mapping table. No change in output expected.
