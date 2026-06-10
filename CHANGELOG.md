@@ -2,6 +2,16 @@
 
 [PR #177](https://github.com/fivetran/dbt_ad_reporting/pull/177) includes the following updates:
 
+## Schema/Data Changes (--full-refresh required after upgrading)
+**1 total change • 1 possible breaking change**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ------------- | ----------- | --- | --- | ----- |
+| All models | `source_relation` column (when not using the union connections of the same type feature) | Empty string (`''`) | `<database>.<schema>` |  |
+
+## Feature Updates
+- Introduces the new (recommended) `{connector_name}_sources` variables for more robust union data configuration. The old `{connector_name}_union_schemas` and `{connector_name}_union_databases` variables will still be supported. See the [README](https://github.com/fivetran/dbt_ad_reporting/tree/main#define-database-and-schema-variables) for specific details.
+
 ## Upstream Dependency Changes
 - Increases the required Amazon Ads package to version [1.3.0](https://github.com/fivetran/dbt_amazon_ads/releases/tag/v1.3.0)
 - Increases the required Apple Search Ads package to version [1.3.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v1.3.0)
@@ -14,6 +24,10 @@
 - Increases the required Snapchat Ads package to version [1.3.0](https://github.com/fivetran/dbt_snapchat_ads/releases/tag/v1.3.0)
 - Increases the required TikTok Ads package to version [1.3.0](https://github.com/fivetran/dbt_tiktok_ads/releases/tag/v1.3.0)
 - Increases the required Twitter Ads package to version [1.3.0](https://github.com/fivetran/dbt_twitter/releases/tag/v1.3.0)
+
+## Under the Hood
+- Adds the `fivetran_using_source_casing` variable for case-sensitive destination support. When enabled, downstream transformations respect source casing to ensure consistent results. See the [Additional Configurations](https://github.com/fivetran/dbt_ad_reporting/#source-casing-for-case-sensitive-destinations) section of the README for details.
+- Introduces `fivetran_utils.partition_by_source_relation` to conditionally include `source_relation` in partition clauses only when multiple sources are configured.
 
 # dbt_ad_reporting v2.6.0
 

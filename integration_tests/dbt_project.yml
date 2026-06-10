@@ -577,7 +577,7 @@ seeds:
   ad_reporting_integration_tests:
     +docs:
       show: false
-    +quote_columns: "{{ true if target.type in ('redshift') else false }}"
+    +quote_columns: "{{ target.type in ('redshift') or var('fivetran_using_source_casing', false) }}"
 
     ### Microsoft Seeds
     microsoft_ads_account_history_data:

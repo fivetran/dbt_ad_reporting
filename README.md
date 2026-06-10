@@ -152,8 +152,9 @@ dispatch:
     search_order: ['google_ads_source', 'dbt_expectations']
 ```
 
-### Configure Database and Schema Variables
-By default, this package looks for your ad platform data in your target database. If this is not where your app platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
+### Define database and schema variables
+#### Option A: Single connection(s)
+By default, this package looks for your ad platform data in your target database. If this is not where your ad platform data is stored, add the relevant `<connector>_database` variables to your `dbt_project.yml` file (see below).
 > Please note, cross-database querying, where the `*_database` variable differs from the database specified in your `profiles.yml`, is not supported by all dbt adapters (e.g., dbt-redshift). Refer to the documentation for your specific destination adapter for more details on its capabilities.
 
 ```yml
@@ -182,8 +183,8 @@ vars:
     reddit_ads_schema: reddit_ads
     reddit_ads_database: your_database_name 
 
-    snapchat_schema: snapchat_ads
-    snapchat_database: your_database_name 
+    snapchat_ads_schema: snapchat_ads
+    snapchat_ads_database: your_database_name 
 
     tiktok_ads_schema: tiktok_ads
     tiktok_ads_database: your_database_name
@@ -191,6 +192,120 @@ vars:
     twitter_ads_schema: twitter_ads
     twitter_ads_database: your_database_name  
 ```
+
+#### Option B: Union multiple connections
+If you have multiple ad platform connections of the same type in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. For each source table, the package will union all of the data together and pass the unioned table into the transformations. The `source_relation` column in each model indicates the origin of each record.
+
+To use this functionality, you will need to set the below variables in your root `dbt_project.yml` file:
+```yml
+# dbt_project.yml
+
+vars:
+  amazon_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  apple_search_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  facebook_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  google_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  linkedin_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  microsoft_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  pinterest_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  reddit_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  snapchat_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  tiktok_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+
+  twitter_ads_sources:
+    - database: connection_1_destination_name # Required
+      schema: connection_1_schema_name # Required
+      name: connection_1_source_name # Required only if following the step in the following subsection
+
+    - database: connection_2_destination_name
+      schema: connection_2_schema_name
+      name: connection_2_source_name
+```
+
+> Previous versions of this package employed two separate, mutually exclusive variables for unioning for each platform: (eg. `google_ads_union_schemas` and `google_ads_union_databases`). While these variables are still supported, the new approach shared above are the recommended variables to configure.
+
+#### Optional: Incorporate unioned sources into DAG
+
+If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple Ad Platform connections of the same type, you can define your sources in a property `.yml` file. Set the variable `has_defined_sources: true` in your `dbt_project.yml`. Otherwise, your connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
 
 ### Enabling/Disabling Models
 This package takes into consideration that not every account will have every feature enabled per platform. If your syncs exclude certain tables, it is because you either don't use that functionality in your respective ad platforms or have actively excluded some tables from your syncs.
@@ -350,48 +465,6 @@ models:
 
 ### (Optional) Additional configurations
 <details open><summary>Expand/Collapse details</summary>
-
-#### Union multiple connections
-If you have multiple ad reporting connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `<package_name>_union_schemas` OR `<package_name>_union_databases` variables (cannot do both) in your root `dbt_project.yml` file. Below are the variables and examples for each connection:
-
-```yml
-vars:
-    amazon_ads_union_schemas: ['amazon_ads_usa','amazon_ads_canada']
-    amazon_ads_union_databases: ['amazon_ads_usa','amazon_ads_canada']
-
-    apple_search_ads_union_schemas: ['apple_search_ads_usa','apple_search_ads_canada']
-    apple_search_ads_union_databases: ['apple_search_ads_usa','apple_search_ads_canada']
-
-    facebook_ads_union_schemas: ['facebook_ads_usa','facebook_ads_canada']
-    facebook_ads_union_databases: ['facebook_ads_usa','facebook_ads_canada']
-
-    google_ads_union_schemas: ['google_ads_usa','google_ads_canada']
-    google_ads_union_databases: ['google_ads_usa','google_ads_canada']
-
-    linkedin_ads_union_schemas: ['linkedin_usa','linkedin_canada']
-    linkedin_ads_union_databases: ['linkedin_usa','linkedin_canada']
-
-    microsoft_ads_union_schemas: ['microsoft_ads_usa','microsoft_ads_canada']
-    microsoft_ads_union_databases: ['microsoft_ads_usa','microsoft_ads_canada']
-
-    pinterest_ads_union_schemas: ['pinterest_usa','pinterest_canada']
-    pinterest_ads_union_databases: ['pinterest_usa','pinterest_canada']
-
-    reddit_ads_union_schemas: ['reddit_ads_usa','reddit_ads_canada']
-    reddit_ads_union_databases: ['reddit_ads_usa','reddit_ads_canada']
-
-    snapchat_ads_union_schemas: ['snapchat_ads_usa','snapchat_ads_canada']
-    snapchat_ads_union_databases: ['snapchat_ads_usa','snapchat_ads_canada']
-
-    tiktok_ads_union_schemas: ['tiktok_ads_usa','tiktok_ads_canada']
-    tiktok_ads_union_databases: ['tiktok_ads_usa','tiktok_ads_canada']
-
-    twitter_ads_union_schemas: ['twitter_usa','twitter_canada']
-    twitter_ads_union_databases: ['twitter_usa','twitter_canada']
-```
-> NOTE: The native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
-
-To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
 #### Configure types of conversion events
 For the following platforms, conversion data is sent along with the type of event that you may or may not consider to be a conversion. For the most part, the packages consider **leads**, **purchases**, and **custom** user-defined events as conversions by default, but this can be configured via the appropriate variables.
@@ -732,37 +805,37 @@ packages:
     version: [">=1.0.0", "<2.0.0"]
 
   - package: fivetran/amazon_ads
-    version: [">=1.2.0", "<1.3.0"]
-
-  - package: fivetran/apple_search_ads
-    version: [">=1.2.0", "<1.3.0"]
-
-  - package: fivetran/facebook_ads 
-    version: [">=1.4.0", "<1.5.0"]
-
-  - package: fivetran/google_ads
     version: [">=1.3.0", "<1.4.0"]
 
-  - package: fivetran/linkedin
-    version: [">=1.2.0", "<1.3.0"]
+  - package: fivetran/apple_search_ads
+    version: [">=1.3.0", "<1.4.0"]
 
-  - package: fivetran/microsoft_ads
-    version: [">=1.2.0", "<1.3.0"]
+  - package: fivetran/facebook_ads 
+    version: [">=1.5.0", "<1.6.0"]
 
-  - package: fivetran/pinterest
-    version: [">=1.2.0", "<1.3.0"]
-
-  - package: fivetran/reddit_ads
+  - package: fivetran/google_ads
     version: [">=1.4.0", "<1.5.0"]
 
+  - package: fivetran/linkedin
+    version: [">=1.3.0", "<1.4.0"]
+
+  - package: fivetran/microsoft_ads
+    version: [">=1.3.0", "<1.4.0"]
+
+  - package: fivetran/pinterest
+    version: [">=1.3.0", "<1.4.0"]
+
+  - package: fivetran/reddit_ads
+    version: [">=1.5.0", "<1.6.0"]
+
   - package: fivetran/snapchat_ads
-    version: [">=1.2.0", "<1.3.0"]
+    version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=1.2.0", "<1.3.0"]
+    version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/twitter_ads
-    version: [">=1.2.0", "<1.3.0"]
+    version: [">=1.3.0", "<1.4.0"]
 ```
 
 ### Other Dependencies
