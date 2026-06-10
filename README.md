@@ -713,6 +713,14 @@ vars:
     <default_source_table_name>_identifier: your_table_name 
 ```
 
+#### Source casing for case-sensitive destinations
+By default, the package applies case-insensitive comparisons when resolving `source_relation` values. If your destination is case-sensitive and you want downstream transformations to respect the exact casing of your source database and schema names, set the following variable:
+
+```yml
+vars:
+    fivetran_using_source_casing: true
+```
+
 </details>
 <br>
 
