@@ -1,3 +1,20 @@
+# dbt_ad_reporting v2.7.0
+
+[PR #177](https://github.com/fivetran/dbt_ad_reporting/pull/177) includes the following updates:
+
+## Upstream Dependency Changes
+- Increases the required Amazon Ads package to version [1.3.0](https://github.com/fivetran/dbt_amazon_ads/releases/tag/v1.3.0)
+- Increases the required Apple Search Ads package to version [1.3.0](https://github.com/fivetran/dbt_apple_search_ads/releases/tag/v1.3.0)
+- Increases the required Facebook Ads package to version [1.5.0](https://github.com/fivetran/dbt_facebook_ads/releases/tag/v1.5.0)
+- Increases the required Google Ads package to version [1.4.0](https://github.com/fivetran/dbt_google_ads/releases/tag/v1.4.0)
+- Increases the required LinkedIn Ads package to version [1.3.0](https://github.com/fivetran/dbt_linkedin/releases/tag/v1.3.0)
+- Increases the required Microsoft Ads package to version [1.3.0](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v1.3.0)
+- Increases the required Pinterest Ads package to version [1.3.0](https://github.com/fivetran/dbt_pinterest/releases/tag/v1.3.0)
+- Increases the required Reddit Ads package to version [1.5.0](https://github.com/fivetran/dbt_reddit_ads/releases/tag/v1.5.0)
+- Increases the required Snapchat Ads package to version [1.3.0](https://github.com/fivetran/dbt_snapchat_ads/releases/tag/v1.3.0)
+- Increases the required TikTok Ads package to version [1.3.0](https://github.com/fivetran/dbt_tiktok_ads/releases/tag/v1.3.0)
+- Increases the required Twitter Ads package to version [1.3.0](https://github.com/fivetran/dbt_twitter/releases/tag/v1.3.0)
+
 # dbt_ad_reporting v2.6.0
 
 [PR #176](https://github.com/fivetran/dbt_ad_reporting/pull/176) includes the following updates:
