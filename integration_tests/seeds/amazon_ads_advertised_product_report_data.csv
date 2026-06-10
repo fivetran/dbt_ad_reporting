@@ -1,4 +1,4 @@
-ad_group_id,ad_id,campaign_id,date,_fivetran_synced,campaign_budget_amount,campaign_budget_currency_code,campaign_budget_type,clicks,cost,impressions, advertised_asin, advertised_sku
+ad_group_id,ad_id,campaign_id,date,_fivetran_synced,campaign_budget_amount,campaign_budget_currency_code,campaign_budget_type,clicks,cost,impressions,advertised_asin,advertised_sku
 501,8108,5555,2022-12-10,2022-12-13 17:17:13.167000,250.0,USD,DAILY_BUDGET,2,2.53,166,,
 501,8108,5555,2022-12-06,2022-12-13 17:17:13.017000,250.0,USD,DAILY_BUDGET,3,5.29,75,,
 421,77,2187,2022-08-20,2022-10-14 11:39:03.648000,2000.0,USD,DAILY_BUDGET,3,3.79,1310,,
