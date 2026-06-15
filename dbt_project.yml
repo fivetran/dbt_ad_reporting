@@ -17,8 +17,11 @@ vars:
 
 models:
   ad_reporting:
-    +materialized: table 
-    +schema: ad_reporting 
+    +materialized: table
+    +schema: ad_reporting
     intermediate:
       +materialized: ephemeral
       +schema: int_ad_reporting
+
+flags:
+  validate_macro_args: true
