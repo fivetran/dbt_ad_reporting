@@ -1,3 +1,10 @@
+# dbt_ad_reporting v2.6.1
+
+[PR #NNN](https://github.com/fivetran/dbt_ad_reporting/pull/NNN) includes the following updates:
+
+## Bug Fixes
+- Fixes macro argument types
+
 # dbt_ad_reporting v2.6.0
 
 [PR #176](https://github.com/fivetran/dbt_ad_reporting/pull/176) includes the following updates:
