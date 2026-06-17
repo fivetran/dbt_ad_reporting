@@ -247,11 +247,11 @@ multi_connector_config:
             display_name: "LinkedIn Ads: Additional Campaign Analytics Metrics"
           linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics:
             type: dictionary
-            description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY` report columns to include in `linkedin_ads__monthly_country_report`"
+            description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY` report columns to include in `linkedin_ads__monthly_campaign_country_report`"
             display_name: "LinkedIn Ads: Additional Country Analytics Metrics"
           linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics:
             type: dictionary
-            description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` report columns to include in `linkedin_ads__monthly_region_report`"
+            description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` report columns to include in `linkedin_ads__monthly_campaign_region_report`"
             display_name: "LinkedIn Ads: Additional Region Analytics Metrics"
     bingads:
        database_key: microsoft_ads_database
@@ -428,7 +428,7 @@ multi_connector_config:
             display_name: "Twitter Ads: Conversion Value Fields"
           twitter_ads__promoted_tweet_report_passthrough_metrics:
             type: dictionary
-            description: "Additional `PROMOTED_TWEET_REPORT` columns to include in `twitter_ads__promoted_tweet_report`, `twitter_ads__account_report`, and `twitter_ads__promoted_url_report`"
+            description: "Additional `PROMOTED_TWEET_REPORT` columns to include in `twitter_ads__promoted_tweet_report`, `twitter_ads__account_report`, and `twitter_ads__url_report`"
             display_name: "Twitter Ads: Additional Promoted Tweet Report Metrics"
           twitter_ads__line_item_report_passthrough_metrics:
             type: dictionary
@@ -436,7 +436,7 @@ multi_connector_config:
             display_name: "Twitter Ads: Additional Line Item Report Metrics"
           twitter_ads__line_item_keywords_report_passthrough_metrics:
             type: dictionary
-            description: "Additional `LINE_ITEM__KEYWORDS_REPORT` columns to include in `twitter_ads__keyword_report`"
+            description: "Additional `LINE_ITEM_KEYWORDS_REPORT` columns to include in `twitter_ads__keyword_report`"
             display_name: "Twitter Ads: Additional Keyword Report Metrics"
           twitter_ads__campaign_report_passthrough_metrics:
             type: dictionary

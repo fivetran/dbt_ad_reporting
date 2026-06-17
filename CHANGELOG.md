@@ -1,6 +1,6 @@
 # dbt_ad_reporting v2.6.1-a1
 
-[PR #179](https://github.com/fivetran/dbt_ad_reporting/pull/176) includes the following updates:
+[PR #179](https://github.com/fivetran/dbt_ad_reporting/pull/179) includes the following updates:
 
 ## Feature Update
 - Adds support for configuring individual package-level variables and models in Quickstart.
