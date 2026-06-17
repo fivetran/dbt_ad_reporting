@@ -301,11 +301,11 @@ multi_connector_config:
             display_name: "Pinterest Ads: Additional Advertiser Report Metrics"
           pinterest__campaign_report_passthrough_metrics:
             type: dictionary
-            description: "Additional `CAMPAIGN_REPORT` columns to include in `pinterest_ads__advertiser_report`"
+            description: "Additional `CAMPAIGN_REPORT` columns to include in `pinterest_ads__campaign_report`"
             display_name: "Pinterest Ads: Additional Campaign Report Metrics"
           pinterest__keyword_report_passthrough_metrics:
             type: dictionary
-            description: "Additional `KEYWORD_REPORT` columns to include in `pinterest_ads__advertiser_report`"
+            description: "Additional `KEYWORD_REPORT` columns to include in `pinterest_ads__keyword_report`"
             display_name: "Pinterest Ads: Additional Keyword Report Metrics"
           pinterest__pin_promotion_targeting_report_passthrough_metrics:
             type: dictionary
@@ -382,11 +382,11 @@ multi_connector_config:
           - tiktok_ads__url_report
           - tiktok_ads__campaign_country_report
        supported_vars:
-          tiktok_ads__ad_group_hourly_passthrough_metrics:
+          tiktok_ads__ad_hourly_passthrough_metrics:
             type: dictionary
             description: "Additional `AD_REPORT_HOURLY` columns to include in `tiktok_ads__ad_report`, `tiktok_ads__advertiser_report`, and `tiktok_ads__url_report`"
             display_name: "TikTok Ads: Additional Ad Report Metrics"
-          tiktok_ads__ad_hourly_passthrough_metrics:
+          tiktok_ads__ad_group_hourly_passthrough_metrics:
             type: dictionary
             description: "Additional `ADGROUP_REPORT_HOURLY` columns to include in `tiktok_ads__ad_group_report`"
             display_name: "TikTok Ads: Additional Ad Group Report Metrics"
