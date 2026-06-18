@@ -1,3 +1,13 @@
+# dbt_ad_reporting v2.6.1
+
+[PR #181](https://github.com/fivetran/dbt_ad_reporting/pull/181) includes the following updates:
+
+## Bug Fixes
+- Updates macro argument type annotations in `macros_docs.yml` to support dbt's `validate_macro_args` flag.
+
+## Contributors
+- [@morgangellert](https://github.com/morgangellert) ([PR #180](https://github.com/fivetran/dbt_ad_reporting/pull/180))
+
 # dbt_ad_reporting v2.6.0
 
 [PR #176](https://github.com/fivetran/dbt_ad_reporting/pull/176) includes the following updates:
