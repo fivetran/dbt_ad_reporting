@@ -984,3 +984,4 @@ seeds:
 flags:
   send_anonymous_usage_stats: False
   use_colors: True
+  validate_macro_args: True

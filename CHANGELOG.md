@@ -29,6 +29,16 @@
 - Adds the `fivetran_using_source_casing` variable for case-sensitive destination support. When enabled, downstream transformations respect source casing to ensure consistent results. See the [Additional Configurations](https://github.com/fivetran/dbt_ad_reporting/#source-casing-for-case-sensitive-destinations) section of the README for details.
 - Introduces `fivetran_utils.partition_by_source_relation` to conditionally include `source_relation` in partition clauses only when multiple sources are configured.
 
+# dbt_ad_reporting v2.6.1
+
+[PR #181](https://github.com/fivetran/dbt_ad_reporting/pull/181) includes the following updates:
+
+## Bug Fixes
+- Updates macro argument type annotations in `macros_docs.yml` to support dbt's `validate_macro_args` flag.
+
+## Contributors
+- [@morgangellert](https://github.com/morgangellert) ([PR #180](https://github.com/fivetran/dbt_ad_reporting/pull/180))
+
 # dbt_ad_reporting v2.6.0
 
 [PR #176](https://github.com/fivetran/dbt_ad_reporting/pull/176) includes the following updates:
