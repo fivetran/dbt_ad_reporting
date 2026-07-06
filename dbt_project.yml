@@ -1,5 +1,5 @@
 name: 'ad_reporting'
-version: '2.6.1'
+version: '2.7.1'
 
 config-version: 2
 
@@ -17,8 +17,8 @@ vars:
 
 models:
   ad_reporting:
-    +materialized: table 
-    +schema: ad_reporting 
+    +materialized: table
+    +schema: ad_reporting
     intermediate:
       +materialized: ephemeral
       +schema: int_ad_reporting

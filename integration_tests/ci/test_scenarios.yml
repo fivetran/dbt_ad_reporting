@@ -41,3 +41,9 @@ test_scenarios:
       ad_reporting__tiktok_ads_enabled: false
       ad_reporting__twitter_ads_enabled: false
     include_incremental: false
+
+  - name: "MDLS"
+    vars:
+      fivetran_using_source_casing: true
+    include_incremental: false
+    include_dbt_seed: true
