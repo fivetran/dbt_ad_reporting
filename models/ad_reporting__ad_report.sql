@@ -69,7 +69,7 @@ video_views_75 as video_75p_watched,
 video_views_100 as video_complete_watched,
 video_views,
 video_plays,
-enagements
+engagements
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 
