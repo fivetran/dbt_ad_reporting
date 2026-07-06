@@ -13,27 +13,6 @@ multi_connector_config:
           - amazon_ads__ad_report
           - amazon_ads__keyword_report
           - amazon_ads__search_report
-       supported_vars:
-          amazon_ads__advertised_product_passthrough_metrics:
-            type: dictionary
-            description: "Additional `ADVERTISED_PRODUCT_REPORT` columns to include in `amazon_ads__ad_report`"
-            display_name: "Amazon Ads: Additional Ad Report Metrics"
-          amazon_ads__campaign_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_REPORT` columns to include in `amazon_ads__campaign_report`, `amazon_ads__account_report`, and `amazon_ads__portfolio_report`"
-            display_name: "Amazon Ads: Additional Campaign Report Metrics"
-          amazon_ads__ad_group_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_GROUP_LEVEL_REPORT` columns to include in `amazon_ads__ad_group_report`"
-            display_name: "Amazon Ads: Additional Ad Group Report Metrics"
-          amazon_ads__targeting_keyword_passthrough_metrics:
-            type: dictionary
-            description: "Additional `TARGETING_KEYWORD_REPORT` columns to include in `amazon_ads__keyword_report`"
-            display_name: "Amazon Ads: Additional Keyword Report Metrics"
-          amazon_ads__search_term_ad_keyword_passthrough_metrics:
-            type: dictionary
-            description: "Additional `SEARCH_TERM_AD_KEYWORD_REPORT` columns to include in `amazon_ads__search_report`"
-            display_name: "Amazon Ads: Additional Search Term Report Metrics"
     apple_search_ads:
        database_key: apple_search_ads_database
        union_schema_key: apple_search_ads_union_schemas
@@ -45,27 +24,6 @@ multi_connector_config:
           - apple_search_ads__ad_report
           - apple_search_ads__keyword_report
           - apple_search_ads__search_term_report
-       supported_vars:
-          apple_search_ads__ad_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_LEVEL_REPORT` columns to include in `apple_search_ads__ad_report`"
-            display_name: "Apple Search Ads: Additional Ad Report Metrics"
-          apple_search_ads__campaign_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_REPORT` columns to include in `apple_search_ads__campaign_report` and `apple_search_ads__organization_report`"
-            display_name: "Apple Search Ads: Additional Campaign Report Metrics"
-          apple_search_ads__ad_group_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_GROUP_REPORT` columns to include in `apple_search_ads__ad_group_report`"
-            display_name: "Apple Search Ads: Additional Ad Group Report Metrics"
-          apple_search_ads__keyword_passthrough_metrics:
-            type: dictionary
-            description: "Additional `KEYWORD_REPORT` columns to include in `apple_search_ads__keyword_report`"
-            display_name: "Apple Search Ads: Additional Keyword Report Metrics"
-          apple_search_ads__search_term_passthrough_metrics:
-            type: dictionary
-            description: "Additional `SEARCH_TERM_REPORT` columns to include in `apple_search_ads__search_term_report`"
-            display_name: "Apple Search Ads: Additional Search Term Report Metrics"
     facebook_ads:
        database_key: facebook_ads_database
        union_schema_key: facebook_ads_union_schemas
@@ -79,35 +37,6 @@ multi_connector_config:
           - facebook_ads__url_tags
           - facebook_ads__country_report
           - facebook_ads__region_report
-       supported_vars:
-          facebook_ads__basic_ad_passthrough_metrics:
-            type: dictionary
-            description: "Additional `BASIC_AD` report columns to include in `facebook_ads__account_report`, `facebook_ads__ad_report`, `facebook_ads__campaign_report`, `facebook_ads__ad_set_report`, and `facebook_ads__url_report`"
-            display_name: "Facebook Ads: Additional Ad Metrics"
-          facebook_ads__basic_ad_actions_passthrough_metrics:
-            type: dictionary
-            description: "Additional `BASIC_AD_ACTIONS` report columns to include in `facebook_ads__account_report`, `facebook_ads__ad_report`, `facebook_ads__campaign_report`, `facebook_ads__ad_set_report`, and `facebook_ads__url_report`"
-            display_name: "Facebook Ads: Additional Ad Conversion Metrics"
-          facebook_ads__basic_ad_action_values_passthrough_metrics:
-            type: dictionary
-            description: "Additional `BASIC_AD_ACTION_VALUES` report columns to include in `facebook_ads__account_report`, `facebook_ads__ad_report`, `facebook_ads__campaign_report`, `facebook_ads__ad_set_report`, and `facebook_ads__url_report`"
-            display_name: "Facebook Ads: Additional Ad Conversion Value Metrics"
-          facebook_ads__demographics_country_passthrough_metrics:
-            type: dictionary
-            description: "Additional `DEMOGRAPHICS_COUNTRY` report columns to include in `facebook_ads__country_report`"
-            display_name: "Facebook Ads: Additional Country Ad Metrics"
-          facebook_ads__demographics_country_actions_passthrough_metrics:
-            type: dictionary
-            description: "Additional `DEMOGRAPHICS_COUNTRY_ACTIONS` report columns to include in `facebook_ads__country_report`"
-            display_name: "Facebook Ads: Additional Country Ad Conversion Metrics"
-          facebook_ads__demographics_region_passthrough_metrics:
-            type: dictionary
-            description: "Additional `DEMOGRAPHICS_REGION` report columns to include in `facebook_ads__region_report`"
-            display_name: "Facebook Ads: Additional Region Ad Metrics"
-          facebook_ads__demographics_region_actions_passthrough_metrics:
-            type: dictionary
-            description: "Additional `DEMOGRAPHICS_REGION_ACTIONS` report columns to include in `facebook_ads__region_report`"
-            display_name: "Facebook Ads: Additional Region Ad Conversion Metrics"
     google_ads:
        database_key: google_ads_database
        union_schema_key: google_ads_union_schemas
@@ -128,30 +57,6 @@ multi_connector_config:
             value: false
             description: "Are you leveraging the auto-tag feature within Google Ads instead of manually adding UTMs to ads?"
             display_name: "Google Ads: Auto-Tagging Enabled"
-          google_ads__ad_stats_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_STATS` report columns to include in `google_ads__ad_report` and `google_ads__url_report`"
-            display_name: "Google Ads: Additional Ad Stats Metrics"
-          google_ads__campaign_stats_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_STATS` report columns to include in `google_ads__campaign_report`"
-            display_name: "Google Ads: Additional Campaign Stats Metrics"
-          google_ads__ad_group_stats_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_GROUP_STATS` report columns to include in `google_ads__ad_group_report`"
-            display_name: "Google Ads: Additional Ad Group Stats Metrics"
-          google_ads__account_stats_passthrough_metrics:
-            type: dictionary
-            description: "Additional `ACCOUNT_STATS` report columns to include in `google_ads__account_report`"
-            display_name: "Google Ads: Additional Account Stats Metrics"
-          google_ads__keyword_stats_passthrough_metrics:
-            type: dictionary
-            description: "Additional `KEYWORD_STATS` report columns to include in `google_ads__keyword_report`"
-            display_name: "Google Ads: Additional Keyword Stats Metrics"
-          google_ads__search_term_keyword_stats_passthrough_metrics:
-            type: dictionary
-            description: "Additional `SEARCH_TERM_KEYWORD_STATS` report columns to include in `google_ads__search_term_report`"
-            display_name: "Google Ads: Additional Search Term Keyword Stats Metrics"
           google_ads__spend_low:
             type: float
             value: 100.0
@@ -237,22 +142,6 @@ multi_connector_config:
               - "one_click_leads"
             description: "Metrics from `AD_ANALYTICS_BY_CAMPAIGN`, `AD_ANALYTICS_BY_CREATIVE`, `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY`, AND `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` that will be tracked as conversions"
             display_name: "LinkedIn Ads: Conversion Metrics"
-          linkedin_ads__creative_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_ANALYTICS_BY_CREATIVE` report columns to include in `linkedin_ads__creative_report` and `linkedin_ads__url_report`"
-            display_name: "LinkedIn Ads: Additional Creative Analytics Metrics"
-          linkedin_ads__campaign_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_ANALYTICS_BY_CAMPAIGN` report columns to include in `linkedin_ads__campaign_report`, `linkedin_ads__campaign_group_report`, and `linkedin_ads__account_report`"
-            display_name: "LinkedIn Ads: Additional Campaign Analytics Metrics"
-          linkedin_ads__monthly_ad_analytics_by_member_country_passthrough_metrics:
-            type: dictionary
-            description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_COUNTRY` report columns to include in `linkedin_ads__monthly_campaign_country_report`"
-            display_name: "LinkedIn Ads: Additional Country Analytics Metrics"
-          linkedin_ads__monthly_ad_analytics_by_member_region_passthrough_metrics:
-            type: dictionary
-            description: "Additional `MONTHLY_AD_ANALYTICS_BY_MEMBER_REGION` report columns to include in `linkedin_ads__monthly_campaign_region_report`"
-            display_name: "LinkedIn Ads: Additional Region Analytics Metrics"
     bingads:
        database_key: microsoft_ads_database
        union_schema_key: microsoft_ads_union_schemas
@@ -286,31 +175,6 @@ multi_connector_config:
           - pinterest_ads__url_report
           - pinterest_ads__campaign_country_report
           - pinterest_ads__campaign_region_report
-       supported_vars:
-          pinterest__pin_promotion_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `PIN_PROMOTION_REPORT` columns to include in `pinterest_ads__advertiser_report` and `pinterest_ads__url_report`"
-            display_name: "Pinterest Ads: Additional Pin Promotion Report Metrics"
-          pinterest__ad_group_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_GROUP_REPORT` columns to include in `pinterest_ads__ad_group_report`"
-            display_name: "Pinterest Ads: Additional Ad Group Report Metrics"
-          pinterest__advertiser_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `ADVERTISER_REPORT` columns to include in `pinterest_ads__advertiser_report`"
-            display_name: "Pinterest Ads: Additional Advertiser Report Metrics"
-          pinterest__campaign_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_REPORT` columns to include in `pinterest_ads__campaign_report`"
-            display_name: "Pinterest Ads: Additional Campaign Report Metrics"
-          pinterest__keyword_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `KEYWORD_REPORT` columns to include in `pinterest_ads__keyword_report`"
-            display_name: "Pinterest Ads: Additional Keyword Report Metrics"
-          pinterest__pin_promotion_targeting_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `PIN_PROMOTION_TARGETING_REPORT` columns to include in `pinterest_ads__campaign_country_report` and `pinterest_ads__campaign_region_report`"
-            display_name: "Pinterest Ads: Additional Geographic Report Metrics"
     reddit_ads:
        database_key: reddit_ads_database
        union_schema_key: reddit_ads_union_schemas
@@ -350,26 +214,6 @@ multi_connector_config:
               - "conversion_purchases"
             description: "Report metrics that will be tracked as conversions"
             display_name: "Snapchat Ads: Conversion Metrics"
-          snapchat_ads__ad_hourly_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_HOURLY_REPORT` columns to include in `snapchat_ads__ad_report`, `snapchat_ads__account_report`, and `snapchat_ads__url_report`"
-            display_name: "Snapchat Ads: Additional Ad Report Metrics"
-          snapchat_ads__ad_squad_hourly_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_SQUAD_HOURLY_REPORT` columns to include in `snapchat_ads__ad_squad_report`"
-            display_name: "Snapchat Ads: Additional Ad Squad Report Metrics"
-          snapchat_ads__campaign_hourly_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_HOURLY_REPORT` columns to include in `snapchat_ads__campaign_report`"
-            display_name: "Snapchat Ads: Additional Campaign Report Metrics"
-          snapchat_ads__campaign_daily_country_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_GEO_COUNTRY_DAILY_REPORT` columns to include in `snapchat_ads__campaign_country_report`"
-            display_name: "Snapchat Ads: Additional Campaign Country Report Metrics"
-          snapchat_ads__campaign_daily_region_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_GEO_REGION_DAILY_REPORT` columns to include in `snapchat_ads__campaign_region_report`"
-            display_name: "Snapchat Ads: Additional Campaign Region Report Metrics"
     tiktok_ads:
        database_key: tiktok_ads_database
        union_schema_key: tiktok_ads_union_schemas
@@ -381,23 +225,6 @@ multi_connector_config:
           - tiktok_ads__ad_report
           - tiktok_ads__url_report
           - tiktok_ads__campaign_country_report
-       supported_vars:
-          tiktok_ads__ad_hourly_passthrough_metrics:
-            type: dictionary
-            description: "Additional `AD_REPORT_HOURLY` columns to include in `tiktok_ads__ad_report`, `tiktok_ads__advertiser_report`, and `tiktok_ads__url_report`"
-            display_name: "TikTok Ads: Additional Ad Report Metrics"
-          tiktok_ads__ad_group_hourly_passthrough_metrics:
-            type: dictionary
-            description: "Additional `ADGROUP_REPORT_HOURLY` columns to include in `tiktok_ads__ad_group_report`"
-            display_name: "TikTok Ads: Additional Ad Group Report Metrics"
-          tiktok_ads__campaign_hourly_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_REPORT_HOURLY` columns to include in `tiktok_ads__campaign_report`"
-            display_name: "TikTok Ads: Additional Campaign Report Metrics"
-          tiktok_ads__campaign_country_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_COUNTRY_REPORT` columns to include in `tiktok_ads__campaign_country_report`"
-            display_name: "TikTok Ads: Additional Campaign Country Report Metrics"
     twitter_ads:
        database_key: twitter_ads_database
        union_schema_key: twitter_ads_union_schemas
@@ -426,30 +253,6 @@ multi_connector_config:
               - "conversion_custom_sale_amount"
             description: "Which `*_sale_amount` fields should be included in calculating the total value of conversions"
             display_name: "Twitter Ads: Conversion Value Fields"
-          twitter_ads__promoted_tweet_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `PROMOTED_TWEET_REPORT` columns to include in `twitter_ads__promoted_tweet_report`, `twitter_ads__account_report`, and `twitter_ads__url_report`"
-            display_name: "Twitter Ads: Additional Promoted Tweet Report Metrics"
-          twitter_ads__line_item_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `LINE_ITEM_REPORT` columns to include in `twitter_ads__line_item_report`"
-            display_name: "Twitter Ads: Additional Line Item Report Metrics"
-          twitter_ads__line_item_keywords_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `LINE_ITEM_KEYWORDS_REPORT` columns to include in `twitter_ads__keyword_report`"
-            display_name: "Twitter Ads: Additional Keyword Report Metrics"
-          twitter_ads__campaign_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_REPORT` columns to include in `twitter_ads__campaign_report`"
-            display_name: "Twitter Ads: Additional Campaign Report Metrics"
-          twitter_ads__campaign_locations_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_LOCATIONS_REPORT` columns to include in `twitter_ads__campaign_country_report`"
-            display_name: "Twitter Ads: Additional Campaign Country Report Metrics"
-          twitter_ads__campaign_regions_report_passthrough_metrics:
-            type: dictionary
-            description: "Additional `CAMPAIGN_REGIONS_REPORT` columns to include in `twitter_ads__campaign_region_report`"
-            display_name: "Twitter Ads: Additional Campaign Region Report Metrics"
 
 table_variables:
   amazon_ads__portfolio_history_enabled:
