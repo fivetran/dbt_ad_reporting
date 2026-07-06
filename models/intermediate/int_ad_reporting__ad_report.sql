@@ -14,8 +14,8 @@ with
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
                 'video_complete_watched': 'null',
-                'conversion_value': 'null',
-                'video_views': 'null'
+                'conversion_value': 'null'
+                
             }
     ) }}
 ),
@@ -32,7 +32,9 @@ google_ads as (
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
                 'video_complete_watched': 'null',
-                'video_views': 'null'
+                'video_views': 'null',
+                'video_plays': 'null',
+                'engagements': 'null'
 
             },
         relation=ref('google_ads__ad_report')
@@ -72,7 +74,9 @@ facebook_ads as (
                 'conversions_value': 'null',
                 'ad_group_id':'adset_id',
                 'ad_group_name': 'adset_name',  
-                 'video_views': 'null'    
+                 'video_views': 'video_views',
+                 'video_plays': 'video_plays',
+                 'engagements': 'null'  
             },
         relation=ref('facebook_ads__custom_summary_report')
     ) }}
@@ -119,7 +123,9 @@ pinterest_ads as (
                 'video_50p_watched': 'video_total_50_p',
                 'video_75p_watched': 'video_total_75_p',
                 'video_complete_watched': 'video_total_100_p',
-                'video_views': 'null'
+                'video_views': 'null',
+                'video_plays': 'null',
+                'engagements': 'null'
             },
         relation=ref('pinterest_ads__pin_promotion_report')
     ) }}
@@ -146,7 +152,9 @@ snapchat_ads as (
                 'video_50p_watched': 'video_50p_watched',
                 'video_75p_watched': 'video_75p_watched',
                 'video_complete_watched': 'video_complete_watched',
-                'video_views': 'null'
+                'video_views': 'video_views',
+                'video_plays': 'video_plays',
+                'engagements': 'null'
             },
         relation=ref('snapchat_ads__ad_report')
     ) }}
@@ -168,7 +176,9 @@ tiktok_ads as (
                 'video_50p_watched': 'video_views_p_50',
                 'video_75p_watched': 'video_views_p_75',
                 'video_complete_watched': 'video_views_p_100',
-                'video_views': 'null'
+                'video_views': 'video_views',
+                'video_plays': 'video_plays',
+                'engagements': 'null'
             },
         relation=ref('tiktok_ads__ad_report')
     ) }}
@@ -208,8 +218,10 @@ amazon_ads as (
                 'video_25p_watched': 'null',
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
-                'video_complete_watched': 'null',
-                'video_views': 'null'
+                'video_complete_watched': 'null',   
+                'video_views': 'null',
+                'video_plays': 'null',
+                'engagements': 'null'
             },
         relation=ref('amazon_ads__ad_report')
     ) }}
