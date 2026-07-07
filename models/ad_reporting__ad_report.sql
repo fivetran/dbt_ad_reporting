@@ -66,7 +66,10 @@ SELECT
 video_views_25 as video_25p_watched,  
 video_views_50 as video_50p_watched, 
 video_views_75 as video_75p_watched, 
-video_views_100 as video_complete_watched
+video_views_100 as video_complete_watched,
+video_views,
+video_plays,
+engagements
 from 
     {{ref('youtube_ads__custom_ad_summary_report')}}
 
@@ -92,7 +95,10 @@ source_relation
 sum(player_25p_complete) as video_25p_watched, 
 sum(player_50p_complete) as video_50p_watched, 
 sum(player_75p_complete) as video_75p_watched, 
-sum(player_completed_views) as video_complete_watched
+sum(player_completed_views) as video_complete_watched,
+sum(video_views) as video_views,
+sum(video_plays) as video_plays,
+sum(engagements) as engagements
 from {{ ref('ttd_ads__ad_report') }}  
 group by 1,2,3,4,5,6,7,8,9,10,11
 
@@ -118,7 +124,10 @@ SELECT
 sum(video_view_25pct) as video_25p_watched, 
 sum(video_view_50pct) as video_50p_watched, 
 sum(video_view_75pct) as video_75p_watched, 
-sum(video_view_100pct) as video_complete_watched
+sum(video_view_100pct) as video_complete_watched,
+null as video_views,
+null as video_plays,
+null as engagements
 from {{ ref('zefr_ad_summary_report') }}  
 group by 1,2,3,4,5,6,7,8,9,10,11
 
@@ -144,7 +153,10 @@ select
  sum(video_start) as video_25p_watched,
  sum(video_midpoint) as video_50p_watched,
  null as video_75p_watched,
- sum(video_complete) as video_complete_watched
+ sum(video_complete) as video_complete_watched,
+ sum(video_views) as video_views,
+ sum(video_plays) as video_plays,
+ sum(engagements) as engagements
 from {{ ref('amazon_dsp__ad_report') }}
     group by 1,2,3,4,5,6,7,8,9,10,11
 
@@ -173,7 +185,10 @@ select
  sum(video_start) as video_25p_watched,
  null as video_50p_watched,
  null as video_75p_watched,
- sum(video_complete) as video_complete_watched
+ sum(video_complete) as video_complete_watched,
+ sum(video_views) as video_views,
+ sum(video_plays) as video_plays,
+ sum(engagements) as engagements
 from {{ ref('walmart_dsp_ad_report') }}
     group by 1,2,3,4,5,6,7,8,9,10,11
 )
