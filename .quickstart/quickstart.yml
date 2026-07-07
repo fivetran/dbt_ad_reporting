@@ -257,6 +257,8 @@ multi_connector_config:
 table_variables:
   amazon_ads__portfolio_history_enabled:
     - portfolio_history
+  _fivetran_quickstart_amazon_product_ad_history:
+    - product_ad_history
   apple_search_ads__using_search_terms:
     - search_term_report
   pinterest__using_keywords:
@@ -276,12 +278,24 @@ table_variables:
     - campaign_regions_report
   google_ads__using_search_term_keyword_stats:
     - search_term_keyword_stats
+  google_ads__using_campaign_bid_modifier_history:
+    - campaign_bid_modifier_history
+  google_ads__using_campaign_budget_history:
+    - campaign_budget_history
+  google_ads__using_campaign_criterion_history:
+    - campaign_criterion_history
+  google_ads__using_campaign_bidding_strategy_history:
+    - campaign_bidding_strategy_history
   facebook_ads__using_demographics_country:
     - demographics_country
     - demographics_country_actions
   facebook_ads__using_demographics_region:
     - demographics_region
     - demographics_region_actions
+  _fivetran_quickstart_facebook_basic_ad_actions:
+    - basic_ad_actions
+  _fivetran_quickstart_facebook_basic_ad_action_values:
+    - basic_ad_action_values
   linkedin_ads__using_geo:
     - geo
   linkedin_ads__using_monthly_ad_analytics_by_member_country:
@@ -300,8 +314,12 @@ table_variables:
     - campaign_geo_country_daily_report
   snapchat_ads__using_campaign_region_report:
     - campaign_geo_region_daily_report
+  _fivetran_quickstart_snapchat_creative_url_tag_history:
+    - creative_url_tag_history
   tiktok_ads__using_campaign_country_report:
     - campaign_country_report
+  tiktok_ads__using_location:
+    - location
 
 destination_configurations:
   databricks:
