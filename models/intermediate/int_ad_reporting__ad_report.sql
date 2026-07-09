@@ -123,8 +123,8 @@ pinterest_ads as (
                 'video_50p_watched': 'video_total_50_p',
                 'video_75p_watched': 'video_total_75_p',
                 'video_complete_watched': 'video_total_100_p',
-                'video_views': 'null',
-                'video_plays': 'null',
+                'video_views': 'video_views',
+                'video_plays': 'video_plays',
                 'engagements': 'null'
             },
         relation=ref('pinterest_ads__pin_promotion_report')
