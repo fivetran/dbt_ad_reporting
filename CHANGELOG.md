@@ -1,6 +1,6 @@
 # dbt_ad_reporting v2.7.2
 
-[PR #180](https://github.com/fivetran/dbt_ad_reporting/pull/180) includes the following updates:
+[PR #182](https://github.com/fivetran/dbt_ad_reporting/pull/182) includes the following updates:
 
 ## Under the Hood
 - Removes Quickstart UI redundancies by surfacing only connector-level models that are not implicitly run by Ad Reporting:
