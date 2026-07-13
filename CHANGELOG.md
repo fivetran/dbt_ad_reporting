@@ -1,3 +1,13 @@
+# dbt_ad_reporting v2.7.2
+
+[PR #182](https://github.com/fivetran/dbt_ad_reporting/pull/182) includes the following updates:
+
+## Under the Hood
+- Removes Quickstart UI redundancies by surfacing only connector-level models that are not implicitly run by Ad Reporting:
+  - [`amazon_ads__portfolio_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.amazon_ads.amazon_ads__portfolio_report)
+  - [`google_ads__campaign_bid_modifiers_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.google_ads.google_ads__campaign_bid_modifiers_report)
+  - [`google_ads__campaign_budget_diagnostics_report`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.google_ads.google_ads__campaign_budget_diagnostics_report)
+
 # dbt_ad_reporting v2.7.1
 
 [PR #179](https://github.com/fivetran/dbt_ad_reporting/pull/179) includes the following updates:
