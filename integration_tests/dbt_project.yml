@@ -10,6 +10,12 @@ dispatch:
   - macro_namespace: dbt_expectations
     search_order: ['google_ads_source', 'dbt_expectations']
 
+  - macro_namespace: linkedin
+    search_order: ['ad_reporting', 'linkedin']
+
+  - macro_namespace: facebook_ads
+    search_order: ['ad_reporting', 'facebook_ads']
+
 models:
   +persist_docs:
     relation: true
@@ -184,7 +190,7 @@ vars:
     - name: 'external_website_conversions' # @docs-ignore
     - name: 'one_click_leads' # @docs-ignore
       alias: conversions # @docs-ignore
-      transform_sql: conversions + external_website_conversions # @docs-ignore
+      transform_sql: "cast(conversions as bigint) + cast(external_website_conversions as bigint)" # @docs-ignore
     - name: 'conversion_value_in_local_currency' # @docs-ignore
     - name: video_views # @docs-ignore
       alias: videos # @docs-ignore
@@ -192,7 +198,7 @@ vars:
     - name: 'external_website_conversions' # @docs-ignore
     - name: 'one_click_leads' # @docs-ignore
       alias: conversions # @docs-ignore
-      transform_sql: conversions + external_website_conversions # @docs-ignore
+      transform_sql: "cast(conversions as bigint) + cast(external_website_conversions as bigint)" # @docs-ignore
     - name: 'conversion_value_in_local_currency' # @docs-ignore
     - name: video_views # @docs-ignore
       alias: videos # @docs-ignore
