@@ -1,3 +1,11 @@
+# dbt_ad_reporting v2.7.3
+
+[PR #185](https://github.com/fivetran/dbt_ad_reporting/pull/185) includes the following updates:
+
+## Feature Updates
+- Adds support for DuckDB as a destination.
+
+
 # dbt_ad_reporting v2.7.2
 
 [PR #182](https://github.com/fivetran/dbt_ad_reporting/pull/182) includes the following updates:

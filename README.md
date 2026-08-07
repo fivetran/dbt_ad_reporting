@@ -120,7 +120,7 @@ To use this dbt package, you must have the following:
     - [Twitter Ads](https://fivetran.com/docs/applications/twitter-ads)
 > While you need only one of the above connectors to utilize this package, we recommend having at least two to gain the rollup benefit of this package.
 
-- A BigQuery, Snowflake, Redshift, Postgres, or Databricks destination.
+- A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, **Databricks**, or **DuckDB** destination.
 
 ## How do I use the dbt package?
 You can either add this dbt package in the Fivetran dashboard or import it into your dbt project:
