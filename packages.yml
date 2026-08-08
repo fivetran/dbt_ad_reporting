@@ -51,6 +51,6 @@ packages:
   warn-unpinned: false
   # - package: fivetran/twitter_ads
   #   version: [">=1.3.0", "<1.4.0"]
-- git: https://github.com/fivetran/dbt_twitter_ads.git
+- git: https://github.com/fivetran/dbt_twitter.git
   revision: MagicBot/duckdb-support
   warn-unpinned: false
