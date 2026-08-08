@@ -7,7 +7,7 @@ on:
 jobs:
   generate-docs:
     if: github.event.label.name == 'docs:ready'
-    uses: fivetran/dbt_package_automations/.github/workflows/generate-docs.yml@main
+    uses: fivetran/dbt_package_automations/.github/workflows/generate-docs.yml@docs-generator-status-report
     secrets: inherit
     with:
       # This needs to be kept a long list like this, and ': public' should not be included in the last var of the list.
