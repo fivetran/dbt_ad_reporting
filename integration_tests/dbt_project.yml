@@ -10,12 +10,6 @@ dispatch:
   - macro_namespace: dbt_expectations
     search_order: ['google_ads_source', 'dbt_expectations']
 
-  - macro_namespace: linkedin
-    search_order: ['ad_reporting', 'linkedin']
-
-  - macro_namespace: facebook_ads
-    search_order: ['ad_reporting', 'facebook_ads']
-
 models:
   +persist_docs:
     relation: true
