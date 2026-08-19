@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '2.7.2'
+version: '2.7.3'
 profile: 'integration_tests'
 config-version: 2
 
@@ -184,7 +184,7 @@ vars:
     - name: 'external_website_conversions' # @docs-ignore
     - name: 'one_click_leads' # @docs-ignore
       alias: conversions # @docs-ignore
-      transform_sql: conversions + external_website_conversions # @docs-ignore
+      transform_sql: "cast(conversions as bigint) + cast(external_website_conversions as bigint)" # @docs-ignore
     - name: 'conversion_value_in_local_currency' # @docs-ignore
     - name: video_views # @docs-ignore
       alias: videos # @docs-ignore
@@ -192,7 +192,7 @@ vars:
     - name: 'external_website_conversions' # @docs-ignore
     - name: 'one_click_leads' # @docs-ignore
       alias: conversions # @docs-ignore
-      transform_sql: conversions + external_website_conversions # @docs-ignore
+      transform_sql: "cast(conversions as bigint) + cast(external_website_conversions as bigint)" # @docs-ignore
     - name: 'conversion_value_in_local_currency' # @docs-ignore
     - name: video_views # @docs-ignore
       alias: videos # @docs-ignore

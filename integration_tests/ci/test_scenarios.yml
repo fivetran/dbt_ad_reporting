@@ -22,6 +22,7 @@ additional_schema_variables:
 
 include_databricks_sql: false
 include_sqlserver: false
+include_duckdb: true
 include_dbt_compile: true
 
 test_scenarios:

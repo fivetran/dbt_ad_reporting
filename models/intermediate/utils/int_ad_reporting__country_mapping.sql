@@ -265,16 +265,16 @@
     {'country_name': 'Unknown', 'alternative_country_name': '', 'country_code': 'Unknown', 'global_region': 'Unknown'}
 ] %}
 
-{# 
-Postgres requires double single quotes '' to escape a single quote in a string
+{#
+Postgres and DuckDB require double single quotes '' to escape a single quote in a string
 The other warehouses use a backslash \ to escape a single quote in a string
 #}
 
 with create_country_mapping as (
     {%- for country in country_mapping %}
     select
-        '{{ country.country_name | replace("'", "\\'") if target.type != "postgres" else country.country_name | replace("'", "''") }}' as country_name,
-        '{{ country.alternative_country_name | replace("'", "\\'") if target.type != "postgres" else country.alternative_country_name | replace("'", "''") }}' as alternative_country_name,
+        '{{ country.country_name | replace("'", "''") if target.type in ("postgres", "duckdb") else country.country_name | replace("'", "\\'") }}' as country_name,
+        '{{ country.alternative_country_name | replace("'", "''") if target.type in ("postgres", "duckdb") else country.alternative_country_name | replace("'", "\\'") }}' as alternative_country_name,
         '{{ country.country_code }}' as country_code,
         '{{ country.global_region }}' as global_region
 
