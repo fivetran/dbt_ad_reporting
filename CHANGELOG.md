@@ -2,7 +2,7 @@
 
 [PR #186](https://github.com/fivetran/dbt_ad_reporting/pull/186) includes the following updates:
 
-## Breaking Change
+## Breaking Change (non-Quickstart)
 - Bumps the minimum required dbt version to `>=1.12.0`.
 
 ## Feature Update
