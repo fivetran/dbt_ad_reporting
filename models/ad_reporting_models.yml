@@ -65,42 +65,162 @@ models:
         description: '{{ doc("conversions_value") }}'
 
   - name: ad_reporting__ad_report
-    description: Each record represents daily metrics by ad, ad group, campaign and account. 
+    description: Each record represents daily metrics by ad, ad group, campaign and account.
+    semantic_model:
+      enabled: true
+      name: ad_report
+    primary_entity: ad
+    agg_time_dimension: date_day
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
+        
       - name: date_day
         description: '{{ doc("date_day") }}'
+        granularity: day
+        dimension:
+          type: time
+
       - name: platform
         description: '{{ doc("platform") }}'
+        dimension:
+          type: categorical
+
       - name: account_id
         description: '{{ doc("account_id") }}'
+        dimension:
+          type: categorical
+
       - name: account_name
         description: '{{ doc("account_name") }}'
+        dimension:
+          type: categorical
+
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
+        dimension:
+          type: categorical
+
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
+        dimension:
+          type: categorical
+
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
+        dimension:
+          type: categorical
+
       - name: ad_group_name
         description: '{{ doc("ad_group_name") }}'
+        dimension:
+          type: categorical
+
       - name: ad_id
         description: '{{ doc("ad_id") }}'
         tests:
           - not_null
+        dimension:
+          type: categorical
+
       - name: ad_name
         description: '{{ doc("ad_name") }}'
+        dimension:
+          type: categorical
+
       - name: clicks
         description: '{{ doc("clicks") }}'
+      
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+
+      - name: spend
         description: '{{ doc("spend") }}'
+        dimension:
+          type: categorical
+
       - name: conversions
         description: '{{ doc("conversions") }}'
+
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
+
+
+    metrics:
+      - name: active_ads
+        description: Count of ads witth spend > 0.
+        type: simple
+        filter: |
+          {{Dimension('ad__spend')}} > 0
+        label: 'Active Ads (Fivetran)'
+        agg: count_distinct
+        expr: ad_id
+      
+      - name: avg_spend_nonzero
+        description: Average ad spend, ignores zero-spend days.
+        type: simple
+        filter: |
+          {{Dimension('ad__spend')}} > 0
+        label: 'Avg Spend Non-Zero (Fivetran)'
+        agg: average
+        expr: spend
+      
+      - name: avg_spend
+        description: Average ad spend, does not ignore zero-spend days.
+        type: simple
+        label: 'Avg Spend (Fivetran)'
+        agg: average
+        expr: spend
+      
+      - name: clicks
+        description: Total clicks
+        type: simple
+        label: 'Ad Clicks (Fivetran)'
+        agg: sum
+        expr: clicks
+      
+      - name: impressions
+        description: Total impressions
+        type: simple
+        label: 'Ad Impressions (Fivetran)'
+        agg: sum
+        expr: impressions
+      
+      - name: spend
+        description: Total spend (in currency of individual platforms)
+        type: simple
+        label: 'Ad Spend (Fivetran)'
+        agg: sum
+        expr: spend
+      
+      - name: clickthrough_rate
+        description: Percentage of impressions that did convert into clicks.
+        label: 'Ad Clickthrough Rate (Fivetran)'
+        type: derived
+        expr: clicks/impressions
+        input_metrics:
+          - name: clicks
+          - name: impressions
+      
+      - name: cost_per_click
+        description: The ratio of spend to clicks
+        label: 'Average Ad Cost Per Click (Fivetran)'
+        type: derived
+        expr: spend/clicks
+        input_metrics:
+          - name: clicks
+          - name: spend
+
+      - name: bounce_rate
+        description: Percentage of impressions that did not convert into clicks.
+        label: 'Average Ad Bounce Rate (Fivetran)'
+        type: derived
+        expr: impressions - clicks/impressions
+        input_metrics:
+          - name: impressions
+          - name: clicks
+
+
 
   - name: ad_reporting__campaign_report
     description: Each record represents daily metrics by campaign and account.
@@ -125,7 +245,7 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
@@ -165,7 +285,7 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
@@ -173,7 +293,7 @@ models:
         description: '{{ doc("conversions_value") }}'
 
   - name: ad_reporting__search_report
-    description: Each record represents daily metrics by search query, ad group, campaign and account. 
+    description: Each record represents daily metrics by search query, ad group, campaign and account.
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -207,15 +327,15 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
-        description: '{{ doc("spend") }}' 
+      - name: spend
+        description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
 
   - name: ad_reporting__url_report
-    description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account. 
+    description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account.
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -260,8 +380,8 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
-        description: '{{ doc("spend") }}' 
+      - name: spend
+        description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
@@ -288,13 +408,13 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
-      - name: country 
+      - name: country
         description: Standardized ISO-3166 name of the country where the campaign was served.
       - name: country_code
         description: ISO-3166 two-letter code of the country where the campaign was served.
@@ -322,11 +442,11 @@ models:
         description: '{{ doc("clicks") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
-      - name: spend  
+      - name: spend
         description: '{{ doc("spend") }}'
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
-      - name: region 
+      - name: region
         description: Region the ad was served in. The formatting may vary across platforms. This may be a state, province, metropolitan area, etc. Snapchat Ads provides this as a two-letter abbreviation.

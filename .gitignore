@@ -8,6 +8,7 @@ logs/
 profiles.yml
 target/
 *.log
+dbt_internal_packages/
 
 # IDE files
 .idea/
