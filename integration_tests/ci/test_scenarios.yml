@@ -5,8 +5,9 @@ dbt_adapter_versions:
   postgres: ">=1.12.0,<2.0.0"
   redshift: ">=1.12.0,<2.0.0"
   databricks: ">=1.12.0,<2.0.0"
-  dbt_core_version: "1.12.0"
-  
+
+dbt_core_version: "1.12.0"
+
 schema_variable_name: "amazon_ads_schema"
 
 additional_schema_variables:
