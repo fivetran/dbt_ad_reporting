@@ -2,8 +2,8 @@
 dbt_adapter_versions:
   snowflake: ">=1.12.0,<2.0.0"
   bigquery: ">=1.12.0,<2.0.0"
-  postgres: ">=1.12.0,<2.0.0"
-  redshift: ">=1.12.0,<2.0.0"
+  postgres: ">=1.11.0,<2.0.0"
+  redshift: ">=1.11.0,<2.0.0"
   databricks: ">=1.12.0,<2.0.0"
 
 dbt_core_version: ">=1.12.0,<2.0.0"
