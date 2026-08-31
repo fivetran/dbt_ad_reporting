@@ -24,7 +24,7 @@ This dbt package transforms data from Fivetran's Ad Reporting connector into ana
   - [DAG](https://fivetran.github.io/dbt_ad_reporting/#!/overview?g_v=1)
   - [Changelog](https://github.com/fivetran/dbt_ad_reporting/blob/main/CHANGELOG.md)
 - dbt Core™ supported versions
-  - `>=1.3.0, <3.0.0`
+  - `>=1.12.0, <3.0.0`
 
 ## What does this dbt package do?
 This package enables you to standardize schemas from various ad platform connectors and create reporting models for clicks, spend and impressions aggregated to the account, campaign, ad group, ad, keyword and search levels. It creates enriched models with metrics focused on cross-platform advertising performance analysis.

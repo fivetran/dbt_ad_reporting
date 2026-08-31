@@ -1,9 +1,9 @@
 name: 'ad_reporting'
-version: '2.7.3'
+version: '2.8.0'
 
 config-version: 2
 
-require-dbt-version: [">=1.6.0", "<3.0.0"]
+require-dbt-version: [">=1.12.0", "<3.0.0"]
 
 vars:
   ad_reporting:

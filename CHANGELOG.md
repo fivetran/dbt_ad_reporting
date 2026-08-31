@@ -1,3 +1,13 @@
+# dbt_ad_reporting v2.8.0
+
+[PR #186](https://github.com/fivetran/dbt_ad_reporting/pull/186) includes the following updates:
+
+## Breaking Change (non-Quickstart)
+- Bumps the minimum required dbt version to `>=1.12.0`.
+
+## Feature Update
+- Migrates the `ad_reporting__ad_report` semantic model and metrics to the new dbt YAML metrics spec, colocating dimensions and metrics directly within `models/ad_reporting_models.yml` instead of separate `semantic_models` and `metrics` files. Metric names, calculations, and values are unchanged.
+
 # dbt_ad_reporting v2.7.3
 
 [PR #185](https://github.com/fivetran/dbt_ad_reporting/pull/185) includes the following updates:
