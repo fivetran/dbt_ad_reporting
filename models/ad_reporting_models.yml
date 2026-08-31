@@ -69,12 +69,11 @@ models:
     semantic_model:
       enabled: true
       name: ad_report
-    primary_entity: ad
     agg_time_dimension: date_day
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
-        
+
       - name: date_day
         description: '{{ doc("date_day") }}'
         granularity: day
@@ -120,8 +119,9 @@ models:
         description: '{{ doc("ad_id") }}'
         tests:
           - not_null
-        dimension:
-          type: categorical
+        entity:
+          type: primary
+          name: ad
 
       - name: ad_name
         description: '{{ doc("ad_name") }}'
@@ -130,7 +130,7 @@ models:
 
       - name: clicks
         description: '{{ doc("clicks") }}'
-      
+
       - name: impressions
         description: '{{ doc("impressions") }}'
 
@@ -155,7 +155,7 @@ models:
         label: 'Active Ads (Fivetran)'
         agg: count_distinct
         expr: ad_id
-      
+
       - name: avg_spend_nonzero
         description: Average ad spend, ignores zero-spend days.
         type: simple
@@ -164,35 +164,35 @@ models:
         label: 'Avg Spend Non-Zero (Fivetran)'
         agg: average
         expr: spend
-      
+
       - name: avg_spend
         description: Average ad spend, does not ignore zero-spend days.
         type: simple
         label: 'Avg Spend (Fivetran)'
         agg: average
         expr: spend
-      
+
       - name: clicks
         description: Total clicks
         type: simple
         label: 'Ad Clicks (Fivetran)'
         agg: sum
         expr: clicks
-      
+
       - name: impressions
         description: Total impressions
         type: simple
         label: 'Ad Impressions (Fivetran)'
         agg: sum
         expr: impressions
-      
+
       - name: spend
         description: Total spend (in currency of individual platforms)
         type: simple
         label: 'Ad Spend (Fivetran)'
         agg: sum
         expr: spend
-      
+
       - name: clickthrough_rate
         description: Percentage of impressions that did convert into clicks.
         label: 'Ad Clickthrough Rate (Fivetran)'
@@ -201,7 +201,7 @@ models:
         input_metrics:
           - name: clicks
           - name: impressions
-      
+
       - name: cost_per_click
         description: The ratio of spend to clicks
         label: 'Average Ad Cost Per Click (Fivetran)'
@@ -219,7 +219,6 @@ models:
         input_metrics:
           - name: impressions
           - name: clicks
-
 
 
   - name: ad_reporting__campaign_report
