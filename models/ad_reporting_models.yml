@@ -145,10 +145,9 @@ models:
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
 
-
     metrics:
       - name: active_ads
-        description: Count of ads witth spend > 0.
+        description: Count of ads with spend > 0.
         type: simple
         filter: |
           {{Dimension('ad__spend')}} > 0
@@ -215,11 +214,10 @@ models:
         description: Percentage of impressions that did not convert into clicks.
         label: 'Average Ad Bounce Rate (Fivetran)'
         type: derived
-        expr: impressions - clicks/impressions
+        expr: (impressions - clicks)/impressions
         input_metrics:
           - name: impressions
           - name: clicks
-
 
   - name: ad_reporting__campaign_report
     description: Each record represents daily metrics by campaign and account.
