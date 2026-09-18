@@ -1,6 +1,6 @@
 # dbt_ad_reporting v2.8.0-a1
 
-[PR #TBD](https://github.com/fivetran/dbt_ad_reporting/pull/TBD) includes the following updates:
+[PR #187](https://github.com/fivetran/dbt_ad_reporting/pull/187) includes the following updates:
 
 ## Schema/Data Change
 **1 total change • 0 possible breaking changes**
