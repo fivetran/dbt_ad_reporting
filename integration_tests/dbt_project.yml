@@ -555,6 +555,7 @@ vars:
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
     tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
     tiktok_ads_location_identifier: "tiktok_location_data"
+    tiktok_ads_smart_plus_ad_history_identifier: "tiktok_smart_plus_ad_history_data"
 
 
   twitter_ads:
