@@ -840,7 +840,7 @@ packages:
     version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/tiktok_ads
-    version: 1.5.0-a1
+    version: 1.5.0-a2
 
   - package: fivetran/twitter_ads
     version: [">=1.3.0", "<1.4.0"]
