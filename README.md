@@ -97,7 +97,7 @@ Each Quickstart transformation job run materializes the following model counts f
 | [Pinterest Ads](https://github.com/fivetran/dbt_pinterest) | 34 |
 | [Reddit Ads](https://github.com/fivetran/dbt_reddit_ads) | 34 |
 | [Snapchat Ads](https://github.com/fivetran/dbt_snapchat_ads) | 29 |
-| [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads) | 22 |
+| [TikTok Ads](https://github.com/fivetran/dbt_tiktok_ads) | 28 |
 | [Twitter Ads](https://github.com/fivetran/dbt_twitter) | 32 |
 
 ## Timezone Considerations
@@ -345,7 +345,7 @@ For **Reddit Ads**, if you are not tracking country-targeted campaign performanc
 
 For **Snapchat Ads**, if you *are* tracking geo-targeted campaign performance, you may choose to update the corresponding variable below ([details](https://github.com/fivetran/dbt_snapchat_ads/tree/main?tab=readme-ov-file#enabling-models-that-are-disabled-by-default)).
 
-For **TikTok Ads**, if you are not tracking country-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_tiktok_ads/tree/main?tab=readme-ov-file#disable-country-reports)).
+For **TikTok Ads**, if you are not tracking country-targeted campaign performance, you may choose to update the corresponding variable below ([details](https://github.com/fivetran/dbt_tiktok_ads/tree/main?tab=readme-ov-file#disable-country-reports)). If you are not syncing `creative_history` and/or `smart_plus_ad_history`, you may also choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_tiktok_ads/tree/main?tab=readme-ov-file#disable-smart-ads-enrichment)).
 
 For **Twitter Ads**, if you are not tracking keyword performance or *are* tracking geo-targeted campaign performance, you may choose to update the corresponding variables below ([details](https://github.com/fivetran/dbt_twitter/tree/main?tab=readme-ov-file#step-4-disabling-or-enabling-models)).
 
@@ -388,6 +388,8 @@ vars:
 
   # TikTok Ads
   tiktok_ads__using_campaign_country_report: False # True by default. Disables country-based reporting
+  tiktok_ads__using_creative_history: False # True by default. Disables Smart+ ad enrichment in ad_report, advertiser_report, and url_report
+  tiktok_ads__using_smart_plus_ad_history: False # True by default. Disables Smart+ ad URL enrichment in url_report
 
   # Twitter Ads
   twitter_ads__using_keywords: False # True by default
@@ -840,7 +842,7 @@ packages:
     version: [">=1.3.0", "<1.4.0"]
 
   - package: fivetran/tiktok_ads
-    version: [">=1.3.0", "<1.4.0"]
+    version: 1.5.0-a2
 
   - package: fivetran/twitter_ads
     version: [">=1.3.0", "<1.4.0"]

@@ -1,3 +1,30 @@
+# dbt_ad_reporting v2.8.0-a2
+
+[PR #187](https://github.com/fivetran/dbt_ad_reporting/pull/187) includes the following updates:
+
+## Schema/Data Change
+**2 total changes • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| `ad_reporting__ad_report`, `ad_reporting__advertiser_report`, `ad_reporting__url_report` | Bug Fix | For TikTok Smart+ ads, `ad_id`, `ad_name`, `account_id`, `account_name`, and the URL fields still resolved to `null` on `v2.8.0-a1` | These fields now resolve correctly for TikTok Smart+ ads | Increases the required `tiktok_ads` package version to [1.5.0-a2](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150-a2), which corrects the join key used to resolve TikTok Smart+ ads (`creative_history.creative_id`, not `smart_plus_ad_history.smart_plus_ad_id`). See the [tiktok_ads CHANGELOG](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150-a2) for details |
+| `stg_tiktok_ads__creative_history`<br>`stg_tiktok_ads__creative_history_tmp` | New Staging Models | | | Carries `advertiser_id`/`adgroup_id`/`campaign_id`/`creative_name` for TikTok Smart+ ads, resolved via `creative_id` |
+
+## Feature Update
+- Adds the `tiktok_ads__using_creative_history` variable (`true` by default). See the [tiktok_ads README](https://github.com/fivetran/dbt_tiktok_ads/tree/main#disable-smart-ads-enrichment) for details.
+
+
+# dbt_ad_reporting v2.8.0-a1
+
+[PR #187](https://github.com/fivetran/dbt_ad_reporting/pull/187) includes the following updates:
+
+## Schema/Data Change
+**1 total change • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| `ad_reporting__ad_report`, `ad_reporting__advertiser_report`, `ad_reporting__url_report` | Bug Fix | For TikTok Smart+ ads, `ad_id`, `ad_name`, `account_id`, `account_name`, and the URL fields resolved to `null` | These fields now resolve correctly for TikTok Smart+ ads | Increases the required `tiktok_ads` package version to [1.5.0-a1](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150-a1), which fixes the underlying null-attribute join issue for Smart+ ads. See the [tiktok_ads CHANGELOG](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150-a1) for details |
+
 # dbt_ad_reporting v2.7.3
 
 [PR #185](https://github.com/fivetran/dbt_ad_reporting/pull/185) includes the following updates:
