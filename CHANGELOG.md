@@ -1,4 +1,4 @@
-# dbt_ad_reporting v2.8.0
+# dbt_ad_reporting v2.8.0-a2
 
 [PR #187](https://github.com/fivetran/dbt_ad_reporting/pull/187) includes the following updates:
 
@@ -7,7 +7,7 @@
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
-| `ad_reporting__ad_report`, `ad_reporting__advertiser_report`, `ad_reporting__url_report` | Bug Fix | For TikTok Smart+ ads, `ad_id`, `ad_name`, `account_id`, `account_name`, and the URL fields resolved to `null` | These fields now resolve correctly for TikTok Smart+ ads | Increases the required `tiktok_ads` package version to [1.5.0](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150), which resolves TikTok Smart+ ads through `creative_history`. See the [tiktok_ads CHANGELOG](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150) for details |
+| `ad_reporting__ad_report`, `ad_reporting__advertiser_report`, `ad_reporting__url_report` | Bug Fix | For TikTok Smart+ ads, `ad_id`, `ad_name`, `account_id`, `account_name`, and the URL fields resolved to `null` | These fields now resolve correctly for TikTok Smart+ ads | Increases the required `tiktok_ads` package version to [1.5.0-a2](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150-a2), which resolves TikTok Smart+ ads through `creative_history`. See the [tiktok_ads CHANGELOG](https://github.com/fivetran/dbt_tiktok_ads/blob/main/CHANGELOG.md#dbt_tiktok_ads-v150-a2) for details |
 | `stg_tiktok_ads__creative_history`<br>`stg_tiktok_ads__creative_history_tmp` | New Staging Models | | | Carries `advertiser_id`/`adgroup_id`/`campaign_id`/`creative_name` for TikTok Smart+ ads, resolved via `creative_id` |
 | `stg_tiktok_ads__smart_plus_ad_history`<br>`stg_tiktok_ads__smart_plus_ad_history_tmp` | New Staging Models | | | Enriches Smart+ ad landing page URL/UTM fields in `ad_reporting__url_report` |
 
