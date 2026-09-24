@@ -233,6 +233,10 @@ table_variables:
     - campaign_country_report
   tiktok_ads__using_location:
     - location
+  tiktok_ads__using_creative_history:
+    - creative_history
+  tiktok_ads__using_smart_plus_ad_history:
+    - smart_plus_ad_history
 
 destination_configurations:
   databricks:
