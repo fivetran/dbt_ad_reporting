@@ -698,6 +698,7 @@ seeds:
     twitter_tweet_url_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        expanded_url: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(1000)' }}"
     twitter_promoted_tweet_history_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -826,9 +827,10 @@ seeds:
 
     ### Facebook Seeds
     facebook_ads_creative_history_data:
-      +column_types:        
+      +column_types:
         page_link: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
         template_page_link: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        object_story_link_data_child_attachments: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(2000)' }}"
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     facebook_ads_account_history_data:
