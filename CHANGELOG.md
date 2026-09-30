@@ -1,3 +1,17 @@
+# dbt_ad_reporting v2.9.0
+
+[PR #189](https://github.com/fivetran/dbt_ad_reporting/pull/189) includes the following updates:
+
+## Schema/Data Change
+**2 total changes • 2 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| **Possible breaking change:** [`stg_reddit_ads__ad_group`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.stg_reddit_ads__ad_group) | Removed Column | `optimization_strategy_type` | | Reddit has deprecated `optimization_strategy_type` and the Fivetran connector no longer syncs it. The field is not used in any `ad_reporting` end models. |
+| **Possible breaking change:** [`stg_reddit_ads__ad`](https://fivetran.github.io/dbt_ad_reporting/#!/model/model.reddit_ads.stg_reddit_ads__ad) | Removed Column | `is_processing` | | Reddit has deprecated `is_processing` on the ad entity and the Fivetran connector no longer syncs it. The field is not used in any `ad_reporting` end models, and `is_processing` is unchanged on `stg_reddit_ads__ad_group` and `stg_reddit_ads__campaign`. |
+
+Both changes come from expanding the supported `reddit_ads` package range to `[">=1.5.0", "<1.7.0"]`, which includes [reddit_ads v1.6.0](https://github.com/fivetran/dbt_reddit_ads/blob/main/CHANGELOG.md#dbt_reddit_ads-v160).
+
 # dbt_ad_reporting v2.8.0
 
 [PR #187](https://github.com/fivetran/dbt_ad_reporting/pull/187) includes the following updates:
