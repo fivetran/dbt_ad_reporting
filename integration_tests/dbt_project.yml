@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '2.7.3'
+version: '2.8.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -555,6 +555,8 @@ vars:
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
     tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
     tiktok_ads_location_identifier: "tiktok_location_data"
+    tiktok_ads_smart_plus_ad_history_identifier: "tiktok_smart_plus_ad_history_data"
+    tiktok_ads_creative_history_identifier: "tiktok_creative_history_data"
 
 
   twitter_ads:
@@ -696,6 +698,7 @@ seeds:
     twitter_tweet_url_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        expanded_url: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(1000)' }}"
     twitter_promoted_tweet_history_data:
       +column_types:
         tweet_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
@@ -824,9 +827,10 @@ seeds:
 
     ### Facebook Seeds
     facebook_ads_creative_history_data:
-      +column_types:        
+      +column_types:
         page_link: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
         template_page_link: "{{ 'string' if target.type in ['bigquery','spark', 'databricks'] else 'varchar' }}"
+        object_story_link_data_child_attachments: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(2000)' }}"
         id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
         account_id: "{{ 'int64' if target.type == 'bigquery' else 'bigint' }}"
     facebook_ads_account_history_data:
@@ -981,6 +985,11 @@ seeds:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+
+    ### TikTok Seeds
+    tiktok_creative_history_data:
+      +column_types:
+        identity_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
 flags:
   send_anonymous_usage_stats: False
   use_colors: True
