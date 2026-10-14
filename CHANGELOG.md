@@ -1,3 +1,19 @@
+# dbt_ad_reporting v2.9.0
+
+[PR #XX](https://github.com/fivetran/dbt_ad_reporting/pull/XX) includes the following updates:
+
+## Schema/Data Change
+**2 total changes • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| `ad_reporting__account_report`<br>`ad_reporting__campaign_report`<br>`ad_reporting__ad_group_report`<br>`ad_reporting__ad_report`<br>`ad_reporting__url_report`<br>`ad_reporting__monthly_campaign_country_report` | Changed field | `account_name` was `null` for all Reddit Ads rows. | `account_name` returns the Reddit account name. | Updates the `reddit_ads` package to `v1.7.0`, which adds the account name from the `name` column in the `business_account` source table. See the [dbt_reddit_ads v1.7.0 release notes](https://github.com/fivetran/dbt_reddit_ads/releases/tag/v1.7.0). |
+| `ad_reporting__keyword_report` | Changed field | `account_id`, `account_name`, `campaign_id`, `campaign_name`, `ad_group_id`, and `ad_group_name` were `null` for Pinterest Ads rows when a keyword was missing from the keyword history, for example a keyword deleted in Pinterest. | These fields populate from the IDs on the keyword report row. | Updates the `pinterest` package to `v1.4.0`. Spend and other metrics are unchanged. `keyword_text` and `keyword_match_type` remain `null` for keywords missing from the keyword history. See the [dbt_pinterest v1.4.0 release notes](https://github.com/fivetran/dbt_pinterest/releases/tag/v1.4.0). |
+
+## Under the Hood
+- Adds a `name` column to the `reddit_ads_business_account_data` seed file and updates its `id` to match the account ID in the report seed files.
+- Adds a keyword report row with a `keyword_id` that is missing from `pinterest_keyword_history_data` to the `pinterest_keyword_report_data` seed file.
+
 # dbt_ad_reporting v2.8.0
 
 [PR #187](https://github.com/fivetran/dbt_ad_reporting/pull/187) and [PR #189](https://github.com/fivetran/dbt_ad_reporting/pull/189) include the following updates:

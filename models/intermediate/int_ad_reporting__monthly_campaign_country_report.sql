@@ -92,7 +92,6 @@ reddit_ads as (
         platform='reddit_ads', 
         report_type='country', 
         field_mapping={
-                'account_name': 'null',
                 'conversions_value': 'total_value',
                 'country': 'null',
                 'country_code': 'country'
