@@ -18,7 +18,7 @@ packages:
     version: [">=1.3.0", "<1.4.0"]
 
   # TODO BEFORE MERGE: replace this git branch with the released package.
-  #   Release dbt_pinterest v1.4.0 first, then use: version: [">=1.4.0", "<1.5.0"]
+  #   Release dbt_pinterest v1.3.2 first, then use: version: [">=1.3.0", "<1.4.0"]
   - git: https://github.com/fivetran/dbt_pinterest.git
     revision: bugfix/keyword-report-id-fallback
     warn-unpinned: false
