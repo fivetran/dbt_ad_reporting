@@ -24,7 +24,7 @@ packages:
     warn-unpinned: false
 
   # TODO BEFORE MERGE: replace this git branch with the released package.
-  #   Release dbt_reddit_ads v1.7.0 first, then use: version: [">=1.7.0", "<1.8.0"]
+  #   Release dbt_reddit_ads v1.6.1 first, then use: version: [">=1.6.0", "<1.7.0"]
   - git: https://github.com/fivetran/dbt_reddit_ads.git
     revision: feature/account-name
     warn-unpinned: false

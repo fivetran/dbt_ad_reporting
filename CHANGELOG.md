@@ -1,15 +1,9 @@
-# dbt_ad_reporting v2.9.0
+# dbt_ad_reporting v2.8.1
 
 [PR #190](https://github.com/fivetran/dbt_ad_reporting/pull/190) includes the following updates:
 
-## Schema/Data Change
-**1 total change • 0 possible breaking changes**
-
-| Data Model(s) | Change type | Old | New | Notes |
-| ---------- | ----------- | -------- | -------- | ----- |
-| `ad_reporting__account_report`<br>`ad_reporting__campaign_report`<br>`ad_reporting__ad_group_report`<br>`ad_reporting__ad_report`<br>`ad_reporting__url_report`<br>`ad_reporting__monthly_campaign_country_report` | Changed field | `account_name` was `null` for all Reddit Ads rows. | `account_name` returns the Reddit account name. | Updates the `reddit_ads` package to `v1.7.0`, which adds the account name from the `name` column in the `business_account` source table. See the [dbt_reddit_ads v1.7.0 release notes](https://github.com/fivetran/dbt_reddit_ads/releases/tag/v1.7.0). |
-
 ## Bug Fix
+- Fixes `account_name` returning `null` for all Reddit Ads rows in `ad_reporting__account_report`, `ad_reporting__campaign_report`, `ad_reporting__ad_group_report`, `ad_reporting__ad_report`, `ad_reporting__url_report`, and `ad_reporting__monthly_campaign_country_report`. Updates the `reddit_ads` package to `v1.6.1`, which adds the account name from the `name` column in the `business_account` source table. See the [dbt_reddit_ads v1.6.1 release notes](https://github.com/fivetran/dbt_reddit_ads/releases/tag/v1.6.1).
 - Fixes `ad_reporting__keyword_report` returning `null` for `account_id`, `account_name`, `campaign_id`, `campaign_name`, `ad_group_id`, and `ad_group_name` on Pinterest Ads rows when a keyword was missing from the keyword history, for example a keyword deleted in Pinterest. Updates the `pinterest` package to `v1.3.2`, which populates these fields from the keyword report row. See the [dbt_pinterest v1.3.2 release notes](https://github.com/fivetran/dbt_pinterest/releases/tag/v1.3.2).
 
 
