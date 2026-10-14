@@ -1,6 +1,6 @@
 # dbt_ad_reporting v2.9.0
 
-[PR #XX](https://github.com/fivetran/dbt_ad_reporting/pull/XX) includes the following updates:
+[PR #190](https://github.com/fivetran/dbt_ad_reporting/pull/190) includes the following updates:
 
 ## Schema/Data Change
 **2 total changes • 0 possible breaking changes**
