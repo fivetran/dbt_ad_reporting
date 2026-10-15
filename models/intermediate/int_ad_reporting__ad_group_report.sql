@@ -161,7 +161,6 @@ reddit_ads as (
         platform='reddit_ads', 
         report_type='ad_group', 
         field_mapping={
-                'account_name': 'null',
                 'conversions_value': 'total_value'
             },
         relation=ref('reddit_ads__ad_group_report')
