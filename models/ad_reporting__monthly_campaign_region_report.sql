@@ -32,7 +32,7 @@ aggregated as (
         sum(coalesce(conversions, 0)) as conversions,
         sum(coalesce(conversions_value, 0)) as conversions_value
 
-        {{ ad_reporting_persist_pass_through_columns(pass_through_variable='ad_reporting__country_passthrough_metrics', transform = 'sum', alias_fields=['conversions', 'conversions_value']) }}
+        {{ ad_reporting_persist_pass_through_columns(pass_through_variable='ad_reporting__region_passthrough_metrics', transform = 'sum', alias_fields=['conversions', 'conversions_value']) }}
 
     from base
     {{ dbt_utils.group_by(8) }}
