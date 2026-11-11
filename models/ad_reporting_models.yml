@@ -273,7 +273,7 @@ models:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
       - name: date_month
-        description: Month of the record, truncated to the first day of the month.
+        description: '{{ doc("date_month") }}'
       - name: platform
         description: '{{ doc("platform") }}'
       - name: account_id
@@ -281,9 +281,9 @@ models:
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: campaign_id
-        description: The ID representing the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a null value for this field.
+        description: '{{ doc("campaign_id_geo") }}'
       - name: campaign_name
-        description: The name of the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a value of `Account-level` for this field.
+        description: '{{ doc("campaign_name_geo") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
       - name: impressions
@@ -295,11 +295,11 @@ models:
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
       - name: country 
-        description: Standardized ISO-3166 name of the country where the campaign was served.
+        description: '{{ doc("country") }}'
       - name: country_code
-        description: ISO-3166 two-letter code of the country where the campaign was served.
+        description: '{{ doc("country_code") }}'
       - name: global_region
-        description: Greater global region in which the country is located.
+        description: '{{ doc("global_region") }}'
 
   - name: ad_reporting__monthly_campaign_region_report
     description: Each record represents monthly metrics by campaign and region (state, province, metropolitan area, etc.) provided by each platform.
@@ -307,7 +307,7 @@ models:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
       - name: date_month
-        description: Month of the record, truncated to the first day of the month.
+        description: '{{ doc("date_month") }}'
       - name: platform
         description: '{{ doc("platform") }}'
       - name: account_id
@@ -315,9 +315,9 @@ models:
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: campaign_id
-        description: The ID representing the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a null value for this field.
+        description: '{{ doc("campaign_id_geo") }}'
       - name: campaign_name
-        description: The name of the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a value of `Account-level` for this field.
+        description: '{{ doc("campaign_name_geo") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
       - name: impressions
@@ -329,4 +329,4 @@ models:
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
       - name: region 
-        description: Region the ad was served in. The formatting may vary across platforms. This may be a state, province, metropolitan area, etc. Snapchat Ads provides this as a two-letter abbreviation.
+        description: '{{ doc("region") }}'
