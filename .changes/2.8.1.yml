@@ -1,3 +1,0 @@
-version: 2.8.1
-under_the_hood:
-- description: Adds `dbt_utils.unique_combination_of_columns` tests to the staging and end models. The tests use the `arguments` syntax introduced in dbt v1.10, which the new v1.11.0 minimum supports.

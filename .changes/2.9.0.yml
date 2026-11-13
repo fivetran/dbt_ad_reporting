@@ -1,0 +1,6 @@
+version: 2.9.0
+pr_number: 195
+new_features:
+- description: Raises the minimum supported dbt version from v1.6.0 to v1.10.0.
+under_the_hood:
+- description: Adds `dbt_utils.unique_combination_of_columns` tests to the staging and end models. The tests use the `arguments` syntax introduced in dbt v1.10.0, the new minimum supported version.
