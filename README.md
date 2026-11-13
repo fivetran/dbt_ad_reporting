@@ -778,7 +778,7 @@ You may notice a new run artifact called `semantic_manifest.json`. This file ser
 > **Note**: Metricflow is only supported in dbt>=v1.6.0, therefore, please take note of the correct dbt version.
 
 #### Disable Semantic Models
-If you would like to disable semantic models, disable the package’s semantic layer resources in the relevant YAML file.
+If you would like to disable semantic models, disable the package's semantic layer resources in the relevant YAML file.
 
 ```yml
 # Disable the package's time spine model
@@ -863,7 +863,7 @@ In creating this package, which is meant for a wide range of use cases, we had t
 ### Contributions
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions.
 
-We highly encourage and welcome contributions to this package. Learn how to contribute to a package in dbt's [Contributing to an external dbt package article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657).
+We highly encourage and welcome contributions to this package. Learn how to contribute to a package by reading the guidelines in our [CONTRIBUTING.md](https://github.com/fivetran/dbt_ad_reporting/blob/main/CONTRIBUTING.md) document.
 
 #### Contributors
 We thank [everyone](https://github.com/fivetran/dbt_ad_reporting/graphs/contributors) who has taken the time to contribute. Each PR, bug report, and feature request has made this package better and is truly appreciated.
