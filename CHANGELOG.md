@@ -1,3 +1,15 @@
+# dbt_ad_reporting v2.8.2
+
+[PR #194](https://github.com/fivetran/dbt_ad_reporting/pull/194) includes the following updates:
+
+## Under the Hood
+- **Column description accuracy**: Corrects and expands the column descriptions on the end models so the dbt docs match what the models actually output. No model logic, schema, or output changed.
+  - `ad_reporting__monthly_campaign_region_report` described its `campaign_id` and `campaign_name` fields as country data. Both now describe the region report.
+  - `conversions_value` now notes that it is null for Apple Search Ads in every report, and for Facebook Ads and TikTok Ads in the monthly country and region reports.
+  - `clicks` and `conversions` now note that the underlying platform metric varies, so counts from different platforms represent different events and are not directly comparable.
+  - `spend` now notes that values are in each account's own currency and are not converted.
+  - `global_region` now names the UN M49 region scheme it uses and notes that it is empty for countries outside that scheme.
+
 # dbt_ad_reporting v2.8.1
 
 [PR #190](https://github.com/fivetran/dbt_ad_reporting/pull/190) includes the following updates:
