@@ -7,7 +7,7 @@
 - Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
 
 ## Under the Hood
-- **Column description accuracy**: Corrects and expands the column descriptions on the end models so the dbt docs match what the models actually output. No model logic, schema, or output changed.
+- **Column description accuracy**: Corrects and expands the column descriptions on the end models so the dbt docs match model output.
 
 # dbt_ad_reporting v2.8.1
 
