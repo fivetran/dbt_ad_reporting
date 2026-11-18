@@ -1,3 +1,14 @@
+# dbt_ad_reporting v2.9.0
+
+[PR #195](https://github.com/fivetran/dbt_ad_reporting/pull/195) includes the following updates:
+
+## Feature Update
+- Raises the minimum dbt version to 1.10.0.
+- Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
+
+## Under the Hood
+- **Column description accuracy**: Corrects and expands the column descriptions on the end models so the dbt docs match what the models actually output. No model logic, schema, or output changed.
+
 # dbt_ad_reporting v2.8.1
 
 [PR #190](https://github.com/fivetran/dbt_ad_reporting/pull/190) includes the following updates:
