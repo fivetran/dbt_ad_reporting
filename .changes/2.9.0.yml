@@ -1,24 +1,8 @@
 version: 2.9.0
 pr_number: 195
 new_features:
-- description: Raises the minimum supported dbt version from v1.6.0 to v1.10.0.
+- description: Raises the minimum dbt version to 1.10.0.
+- description: Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
 under_the_hood:
-- description: Adds `dbt_utils.unique_combination_of_columns` tests to the staging
-    and end models. The tests use the `arguments` syntax introduced in dbt v1.10.0,
-    the new minimum supported version.
 - title: Column description accuracy
-  description: Corrects and expands the column descriptions on the end models so the
-    dbt docs match what the models actually output. No model logic, schema, or output
-    changed.
-  details:
-  - '`ad_reporting__monthly_campaign_region_report` described its `campaign_id` and
-    `campaign_name` fields as country data. Both now describe the region report.'
-  - '`conversions_value` now notes that it is null for Apple Search Ads in every report,
-    and for Facebook Ads and TikTok Ads in the monthly country and region reports.'
-  - '`clicks` and `conversions` now note that the underlying platform metric varies,
-    so counts from different platforms represent different events and are not directly
-    comparable.'
-  - '`spend` now notes that values are in each account''s own currency and are not
-    converted.'
-  - '`global_region` now names the UN M49 region scheme it uses and notes that it
-    is empty for countries outside that scheme.'
+  description: Corrects and expands the column descriptions on the end models so the dbt docs match what the models actually output. No model logic, schema, or output changed.
