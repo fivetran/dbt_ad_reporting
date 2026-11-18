@@ -7,6 +7,5 @@ new_features:
 under_the_hood:
 - title: Column description accuracy
   description: Corrects and expands the column descriptions on the end models so the
-    dbt docs match what the models actually output. No model logic, schema, or output
-    changed.
+    dbt docs match model output.
 date: '2026-11-18'
