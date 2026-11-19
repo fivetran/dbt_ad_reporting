@@ -5,7 +5,5 @@ new_features:
 - description: Adds `dbt_utils.unique_combination_of_columns` tests to staging and
     end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
 under_the_hood:
-- title: Column description accuracy
-  description: Corrects and expands the column descriptions on the end models so the
-    dbt docs match model output.
+- description: Updates yml column documentation to match model output.
 date: '2026-11-18'
