@@ -1,7 +1,8 @@
 version: 2.9.0
 pr_number: 195
 new_features:
-- description: Raises the minimum dbt version to 1.10.0.
+- title: Breaking change
+  description: Raises the minimum dbt version to 1.10.0.
 - description: Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
 dependencies:
 - package: fivetran/amazon_ads
