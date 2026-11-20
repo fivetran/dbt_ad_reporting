@@ -1,33 +1,66 @@
 packages:
-  - package: fivetran/amazon_ads
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_amazon_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_amazon_ads 1.4.0 is published:
+    # - package: fivetran/amazon_ads
+    #   version: [">=1.4.0", "<1.5.0"]
 
-  - package: fivetran/apple_search_ads
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_apple_search_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_apple_search_ads 1.4.0 is published:
+    # - package: fivetran/apple_search_ads
+    #   version: [">=1.4.0", "<1.5.0"]
 
-  - package: fivetran/facebook_ads
-    version: [">=1.5.0", "<1.6.0"]
+  - git: https://github.com/fivetran/dbt_facebook_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_facebook_ads 1.7.0 is published:
+    # - package: fivetran/facebook_ads
+    #   version: [">=1.7.0", "<1.8.0"]
 
-  - package: fivetran/google_ads
-    version: [">=1.4.0", "<1.5.0"]
+  - git: https://github.com/fivetran/dbt_google_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_google_ads 1.5.0 is published:
+    # - package: fivetran/google_ads
+    #   version: [">=1.5.0", "<1.6.0"]
 
-  - package: fivetran/linkedin
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_linkedin.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_linkedin 1.4.0 is published:
+    # - package: fivetran/linkedin
+    #   version: [">=1.4.0", "<1.5.0"]
 
-  - package: fivetran/microsoft_ads
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_microsoft_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_microsoft_ads 1.4.0 is published:
+    # - package: fivetran/microsoft_ads
+    #   version: [">=1.4.0", "<1.5.0"]
 
-  - package: fivetran/pinterest
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_pinterest.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_pinterest 1.4.0 is published:
+    # - package: fivetran/pinterest
+    #   version: [">=1.4.0", "<1.5.0"]
 
-  - package: fivetran/reddit_ads
-    version: [">=1.6.0", "<1.7.0"]
+  - git: https://github.com/fivetran/dbt_reddit_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_reddit_ads 1.7.0 is published:
+    # - package: fivetran/reddit_ads
+    #   version: [">=1.7.0", "<1.8.0"]
 
-  - package: fivetran/snapchat_ads
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_snapchat_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_snapchat_ads 1.4.0 is published:
+    # - package: fivetran/snapchat_ads
+    #   version: [">=1.4.0", "<1.5.0"]
 
-  - package: fivetran/tiktok_ads
-    version: [">=1.5.0", "<1.6.0"]
+  - git: https://github.com/fivetran/dbt_tiktok_ads.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_tiktok_ads 1.7.0 is published:
+    # - package: fivetran/tiktok_ads
+    #   version: [">=1.7.0", "<1.8.0"]
 
-  - package: fivetran/twitter_ads
-    version: [">=1.3.0", "<1.4.0"]
+  - git: https://github.com/fivetran/dbt_twitter.git
+    revision: magicbot/fy27-updates
+    # Switch back to the hub release once dbt_twitter 1.4.0 is published:
+    # - package: fivetran/twitter_ads
+    #   version: [">=1.4.0", "<1.5.0"]
