@@ -37,8 +37,8 @@ body:
   - type: checkboxes
     id: contributing
     attributes:
-      label: Are you interested in contributing this feature?
-      description: Our team will assess this feature and let you know if we will add it to a future sprint. However, if you would like to expedite the feature, we encourage you to contribute to the package via a PR. Our team will then work with you to approve and merge your contributions as soon as possible.
+      label: Are you willing to open a PR to contribute this feature?
+      description: Our packages are maintained by a small team of engineers with finite capacity, and we receive more PRs than we can thoroughly review, test, and merge. Our team will assess this feature and let you know if we will add it to a future sprint. If you are willing to open a PR, we will work with you to approve and merge.
       options:
         - label: Yes.
         - label: Yes, but I will need assistance.

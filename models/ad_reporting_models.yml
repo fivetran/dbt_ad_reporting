@@ -4,6 +4,14 @@ models:
 
   - name: ad_reporting__account_report
     description: Each record represents daily metrics by account.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -13,7 +21,7 @@ models:
         description: '{{ doc("platform") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null:
               config:
                 severity: warn
@@ -32,6 +40,16 @@ models:
 
   - name: ad_reporting__ad_group_report
     description: Each record represents daily metrics by ad group, campaign and account.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -49,7 +67,7 @@ models:
         description: '{{ doc("campaign_name") }}'
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_group_name
         description: '{{ doc("ad_group_name") }}'
@@ -66,6 +84,17 @@ models:
 
   - name: ad_reporting__ad_report
     description: Each record represents daily metrics by ad, ad group, campaign and account. 
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_id
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -87,7 +116,7 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
@@ -104,6 +133,15 @@ models:
 
   - name: ad_reporting__campaign_report
     description: Each record represents daily metrics by campaign and account.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -117,7 +155,7 @@ models:
         description: '{{ doc("account_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
@@ -134,6 +172,18 @@ models:
 
   - name: ad_reporting__keyword_report
     description: Each record represents daily metrics by keyword, ad group, campaign and account.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - keyword_id
+              - keyword_match_type
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -155,7 +205,7 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: keyword_text
         description: '{{ doc("keyword_text") }}'
@@ -174,6 +224,19 @@ models:
 
   - name: ad_reporting__search_report
     description: Each record represents daily metrics by search query, ad group, campaign and account. 
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - search_query
+              - search_match_type
+              - keyword_id
+              - ad_group_id
+              - campaign_id
+              - account_id
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -199,7 +262,7 @@ models:
         description: '{{ doc("keyword_text") }}'
       - name: search_query
         description: '{{ doc("search_query") }}'
-        tests:
+        data_tests:
           - not_null
       - name: search_match_type
         description: '{{ doc("search_match_type") }}'
@@ -216,6 +279,27 @@ models:
 
   - name: ad_reporting__url_report
     description: Each record represents daily metrics by URL (and if applicable, URL UTM parameters), ad group, campaign and account. 
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_day
+              - ad_group_id
+              - campaign_id
+              - account_id
+              - base_url
+              - url_host
+              - url_path
+              - utm_campaign
+              - utm_content
+              - utm_medium
+              - utm_source
+              - utm_term
+          config:
+            # Below is so we don't run this test if the user has allowed urls to have null entries
+            enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
@@ -237,7 +321,7 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: base_url
         description: '{{ doc("base_url") }}'
-        tests:
+        data_tests:
           - not_null:
               config:
                 # Below is so we don't run this test if the user has allowed urls to have null entries
@@ -269,11 +353,22 @@ models:
 
   - name: ad_reporting__monthly_campaign_country_report
     description: Each record represents monthly metrics by campaign and country. Country names are standardized to ISO-3166 names.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_month
+              - campaign_id
+              - account_id
+              - country
+              - country_code
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
       - name: date_month
-        description: Month of the record, truncated to the first day of the month.
+        description: '{{ doc("date_month") }}'
       - name: platform
         description: '{{ doc("platform") }}'
       - name: account_id
@@ -281,9 +376,9 @@ models:
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: campaign_id
-        description: The ID representing the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a null value for this field.
+        description: '{{ doc("campaign_id_geo") }}'
       - name: campaign_name
-        description: The name of the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a value of `Account-level` for this field.
+        description: '{{ doc("campaign_name_geo") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
       - name: impressions
@@ -295,19 +390,29 @@ models:
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
       - name: country 
-        description: Standardized ISO-3166 name of the country where the campaign was served.
+        description: '{{ doc("country") }}'
       - name: country_code
-        description: ISO-3166 two-letter code of the country where the campaign was served.
+        description: '{{ doc("country_code") }}'
       - name: global_region
-        description: Greater global region in which the country is located.
+        description: '{{ doc("global_region") }}'
 
   - name: ad_reporting__monthly_campaign_region_report
     description: Each record represents monthly metrics by campaign and region (state, province, metropolitan area, etc.) provided by each platform.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - platform
+              - date_month
+              - campaign_id
+              - account_id
+              - region
     columns:
       - name: source_relation
         description: '{{ doc("source_relation") }}'
       - name: date_month
-        description: Month of the record, truncated to the first day of the month.
+        description: '{{ doc("date_month") }}'
       - name: platform
         description: '{{ doc("platform") }}'
       - name: account_id
@@ -315,9 +420,9 @@ models:
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: campaign_id
-        description: The ID representing the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a null value for this field.
+        description: '{{ doc("campaign_id_geo") }}'
       - name: campaign_name
-        description: The name of the campaign, if present in the source data. Facebook Ads presents country data only at the account level and will have a value of `Account-level` for this field.
+        description: '{{ doc("campaign_name_geo") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
       - name: impressions
@@ -329,4 +434,4 @@ models:
       - name: conversions_value
         description: '{{ doc("conversions_value") }}'
       - name: region 
-        description: Region the ad was served in. The formatting may vary across platforms. This may be a state, province, metropolitan area, etc. Snapchat Ads provides this as a two-letter abbreviation.
+        description: '{{ doc("region") }}'
