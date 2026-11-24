@@ -50,6 +50,8 @@ dependencies:
   old_version: '[">=1.3.0", "<1.4.0"]'
   new_version: '[">=1.4.0", "<1.5.0"]'
   description: Adds support for the latest upstream release.
+bug_fixes:
+- description: Adds DuckDB versions of the date conversion and date spine macros. This fixes dbt v2 strict static analysis errors, where `date()` wasn't recognized and `metricflow_time_spine` compared a timestamp with a date.
 under_the_hood:
 - description: Updates yml column documentation to match model output.
 date: '2026-11-18'
