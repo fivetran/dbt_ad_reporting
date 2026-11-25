@@ -6,6 +6,9 @@
 - **Breaking change**: Raises the minimum dbt version to 1.10.0.
 - Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
 
+## Bug Fix
+- Adds DuckDB versions of the date conversion and date spine macros. This fixes dbt v2 strict static analysis errors, where `date()` wasn't recognized and `metricflow_time_spine` compared a timestamp with a date.
+
 ## Dependency Updates
 - Bumps `fivetran/amazon_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
 - Bumps `fivetran/apple_search_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
