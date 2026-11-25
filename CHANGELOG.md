@@ -1,3 +1,30 @@
+# dbt_ad_reporting v2.9.0
+
+[PR #195](https://github.com/fivetran/dbt_ad_reporting/pull/195) includes the following updates:
+
+## Feature Update
+- **Breaking change**: Raises the minimum dbt version to 1.10.0.
+- Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
+
+## Bug Fix
+- Adds DuckDB versions of the date conversion and date spine macros. This fixes dbt v2 strict static analysis errors, where `date()` wasn't recognized and `metricflow_time_spine` compared a timestamp with a date.
+
+## Dependency Updates
+- Bumps `fivetran/amazon_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/apple_search_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/facebook_ads` from [">=1.5.0", "<1.6.0"] to [">=1.7.0", "<1.8.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/google_ads` from [">=1.4.0", "<1.5.0"] to [">=1.5.0", "<1.6.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/linkedin` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/microsoft_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/pinterest` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/reddit_ads` from [">=1.6.0", "<1.7.0"] to [">=1.7.0", "<1.8.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/snapchat_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/tiktok_ads` from [">=1.5.0", "<1.6.0"] to [">=1.7.0", "<1.8.0"] — Adds support for the latest upstream release.
+- Bumps `fivetran/twitter_ads` from [">=1.3.0", "<1.4.0"] to [">=1.4.0", "<1.5.0"] — Adds support for the latest upstream release.
+
+## Under the Hood
+- Updates yml column documentation to match model output.
+
 # dbt_ad_reporting v2.8.1
 
 [PR #190](https://github.com/fivetran/dbt_ad_reporting/pull/190) includes the following updates:

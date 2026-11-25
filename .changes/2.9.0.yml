@@ -1,0 +1,59 @@
+version: 2.9.0
+pr_number: 195
+new_features:
+- title: Breaking change
+  description: Raises the minimum dbt version to 1.10.0.
+- description: Adds `dbt_utils.unique_combination_of_columns` tests to staging and
+    end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_ad_reporting/issues/new/choose).
+dependencies:
+- package: fivetran/amazon_ads
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/apple_search_ads
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/facebook_ads
+  old_version: '[">=1.5.0", "<1.6.0"]'
+  new_version: '[">=1.7.0", "<1.8.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/google_ads
+  old_version: '[">=1.4.0", "<1.5.0"]'
+  new_version: '[">=1.5.0", "<1.6.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/linkedin
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/microsoft_ads
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/pinterest
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/reddit_ads
+  old_version: '[">=1.6.0", "<1.7.0"]'
+  new_version: '[">=1.7.0", "<1.8.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/snapchat_ads
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/tiktok_ads
+  old_version: '[">=1.5.0", "<1.6.0"]'
+  new_version: '[">=1.7.0", "<1.8.0"]'
+  description: Adds support for the latest upstream release.
+- package: fivetran/twitter_ads
+  old_version: '[">=1.3.0", "<1.4.0"]'
+  new_version: '[">=1.4.0", "<1.5.0"]'
+  description: Adds support for the latest upstream release.
+bug_fixes:
+- description: Adds DuckDB versions of the date conversion and date spine macros.
+    This fixes dbt v2 strict static analysis errors, where `date()` wasn't recognized
+    and `metricflow_time_spine` compared a timestamp with a date.
+under_the_hood:
+- description: Updates yml column documentation to match model output.
+date: '2026-11-18'

@@ -1,5 +1,5 @@
 name: 'ad_reporting_integration_tests'
-version: '2.8.1'
+version: '2.9.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -554,6 +554,7 @@ vars:
     tiktok_ads_adgroup_report_hourly_identifier: "tiktok_adgroup_report_hourly_data"
     tiktok_ads_campaign_report_hourly_identifier: "tiktok_campaign_report_hourly_data"
     tiktok_ads_campaign_country_report_identifier: "tiktok_campaign_country_report_data"
+    tiktok_ads_campaign_age_gender_report_identifier: "tiktok_campaign_age_gender_report_data"
     tiktok_ads_location_identifier: "tiktok_location_data"
     tiktok_ads_smart_plus_ad_history_identifier: "tiktok_smart_plus_ad_history_data"
     tiktok_ads_creative_history_identifier: "tiktok_creative_history_data"
